@@ -1,0 +1,33 @@
+﻿  Graph.cpp
+E:\VS community\VC\Tools\MSVC\14.24.28314\include\xhash(146,53): error C2672: 'operator __surrogate_func': no matching overloaded function found
+E:\VS community\VC\Tools\MSVC\14.24.28314\include\xhash(172): message : see reference to variable template 'const bool _Nothrow_hash<hash_pair,std::pair<int,int> >' being compiled
+E:\VS community\VC\Tools\MSVC\14.24.28314\include\xhash(172): message : while compiling class template member function 'size_t std::_Uhash_compare<_Kty,_Hasher,_Keyeq>::operator ()<_Key>(const _Keyty &) noexcept(<expr>) const'
+          with
+          [
+              _Kty=std::pair<int,int>,
+              _Hasher=hash_pair,
+              _Keyeq=std::equal_to<std::pair<int,int>>,
+              _Key=std::pair<int,int>,
+              _Keyty=std::pair<int,int>
+          ]
+E:\Universitate\Semestrul2-GitHub\Algoritmica-Grafurilor\First-Project-c++\Graph.cpp(13): message : see reference to function template instantiation 'std::pair<std::_List_iterator<std::_List_val<std::_List_simple_types<_Ty>>>,bool> std::_Hash<std::_Umap_traits<_Kty,int,std::_Uhash_compare<_Kty,_Hasher,_Keyeq>,_Alloc,false>>::emplace<std::pair<int,int>&,int>(std::pair<int,int> &,int &&)' being compiled
+          with
+          [
+              _Ty=std::pair<const std::pair<int,int>,int>,
+              _Kty=std::pair<int,int>,
+              _Hasher=hash_pair,
+              _Keyeq=std::equal_to<std::pair<int,int>>,
+              _Alloc=std::allocator<std::pair<const std::pair<int,int>,int>>
+          ]
+E:\Universitate\Semestrul2-GitHub\Algoritmica-Grafurilor\First-Project-c++\Graph.cpp(13): message : see reference to function template instantiation 'std::pair<std::_List_iterator<std::_List_val<std::_List_simple_types<_Ty>>>,bool> std::_Hash<std::_Umap_traits<_Kty,int,std::_Uhash_compare<_Kty,_Hasher,_Keyeq>,_Alloc,false>>::emplace<std::pair<int,int>&,int>(std::pair<int,int> &,int &&)' being compiled
+          with
+          [
+              _Ty=std::pair<const std::pair<int,int>,int>,
+              _Kty=std::pair<int,int>,
+              _Hasher=hash_pair,
+              _Keyeq=std::equal_to<std::pair<int,int>>,
+              _Alloc=std::allocator<std::pair<const std::pair<int,int>,int>>
+          ]
+E:\VS community\VC\Tools\MSVC\14.24.28314\include\xhash(146,1): error C2783: 'int hash_pair::operator ()(const std::pair<int,int> &) const': could not deduce template argument for '__formal'
+E:\Universitate\Semestrul2-GitHub\Algoritmica-Grafurilor\First-Project-c++\Graph.h(12): message : see declaration of 'hash_pair::operator ()'
+E:\VS community\VC\Tools\MSVC\14.24.28314\include\xhash(145,44): error C2056: illegal expression

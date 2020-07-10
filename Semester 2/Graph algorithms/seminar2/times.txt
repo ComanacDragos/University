@@ -1,0 +1,40 @@
+
+
+This implementation uses dictionaries of lists
+For DictGraph the times are: 
+The time for 1000 vertices is:  0:00:00.314185
+The time for 2000 vertices is:  0:00:01.299523
+The time for 3000 vertices is:  0:00:02.864308
+The time for 4000 vertices is:  0:00:05.120298
+The time for 5000 vertices is:  0:00:08.331809
+The time for 6000 vertices is:  0:00:12.984215
+The time for 7000 vertices is:  0:00:17.445798
+The time for 8000 vertices is:  0:00:21.267089
+The time for 9000 vertices is:  0:00:28.402024
+The time for 10000 vertices is:  0:00:35.197784
+
+
+This implementation uses dictionaries of lists
+ For DoubleDictGraph the times are: 
+The time for 1000 vertices is:  0:00:00.028923
+The time for 2000 vertices is:  0:00:00.056848
+The time for 3000 vertices is:  0:00:00.088762
+The time for 4000 vertices is:  0:00:00.135677
+The time for 5000 vertices is:  0:00:00.175518
+The time for 6000 vertices is:  0:00:00.203428
+The time for 7000 vertices is:  0:00:00.224407
+The time for 8000 vertices is:  0:00:00.273289
+The time for 9000 vertices is:  0:00:00.340062
+The time for 10000 vertices is:  0:00:00.353105
+
+For MatrGraph the times are:
+The time for 1000 vertices is:  0:00:00.496633
+The time for 2000 vertices is:  0:00:01.883011
+The time for 3000 vertices is:  0:00:04.159861
+The time for 4000 vertices is:  0:00:07.807081
+The time for 5000 vertices is:  0:00:12.288637
+The time for 6000 vertices is:  0:00:17.681682
+The time for 7000 vertices is:  0:00:23.159248
+The time for 8000 vertices is:  0:00:31.648304
+The time for 9000 vertices is:  0:00:40.164558
+The time for 10000 vertices is:  0:00:52.153401
