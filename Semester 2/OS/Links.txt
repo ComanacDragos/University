@@ -1,0 +1,10 @@
+https://www.ntfs.com/fat_systems.htm
+
+http://www.ntfs.com/ntfs_basics.htm
+
+http://www.cs.cornell.edu/courses/cs614/1999sp/papers/pathfinder.html
+
+BSOIONivelFizic.pdf
+
+
+NumarMatricol % 10 == 4 : https://meet.jit.si/ubb.cs.os.exam.2020-06-23.09.00.mod.10.equals.4

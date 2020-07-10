@@ -1,0 +1,111 @@
+Seminar 2
+
+grep -v "^[ \t{}]*$\| ^[ \t]*//" a.c
+
+-v all lines that do not match
+
+\t - tab
+wc -l (word count)
+
+S = `expr 3 + 2`
+
+N = $(expr 3 + 2)
+
+bc - calculator (quit to exit)
+
+
+strace
+
+md5 sha1 sha256 sh512 
+-gives an unique number
+echo abc | md5sum
+
+find gives everything in the directory recursively
+
+ls -d doesn t show the children
+
+
+no space after =
+
+. & at the end to still run in the same console
+
+ps
+wait <number>
+
+
+
+
+L6
+wait returneaza pid ul  copiului terminat
+
+perror
+
+citim din 0
+scriem in 1
+
+
+
+wait(status) status - cum s a terminat procesul fiu
+
+L4
+
+sed .. g global
+
+du -ah
+du -ab
+
+
+awk 'cond {cod}' 
+cond : $n ~ /regExForAwk/ 
+
+
+sum = 0
+n=0
+
+for i in .. 
+face split dupa  separatorul inter spatiu
+
+for i in 'ls'; do
+	isfile=$(file $i | grep -c "text")
+	if [isifle -eq 1]; then #intre stringuri cu = normal
+		# ; e pt a pune 2 intr pe aceeasi linie
+	fsize = $(du 'b $i | cut -f1)
+	a[$n] = fsize #  nu necesita declarare
+	sum=$((sum+fsize))
+	n=$((n+1))
+	fi
+done
+
+for i in $(seq 0 $n); do
+	echo ${a[i]}
+done
+echo "total $sum"
+
+ghilimelele simple nu permit expandarea variabelor
+si cele duble permit
+
+
+`` incearca sa execute 
+
+
+
+Course 4
+
+ps - processes
+
+ps -e -f (+all processes and details)
+
+
+& run script in the background
+
+
+exit(0) - exits the process
+
+kill id
+
+
+Lab8 
+
+${}- expresie
+arr[@] - valori
+!arr[@] - chei

@@ -1,0 +1,33 @@
+-intram pe srv si scriem in nano raspunsurile la intrebari
+-vor fi 10-15 intrebari
+-examenul dureaZA 1 ORA
+-raspunsul trebuie sa fie concis
+-putem raspunde intr o propozitie
+
+Materie:
+-ce a discutat la curs
+-aia se cere
+
+-intrebari din toata materia\
+(expresii regulare,bash,shell,linie de comanda,programare
+awk, procese,exec ,fork wait pipe fifo, popen,threaduri, mecanisme
+de sincronizare(5 de la teorie), probleme producer-consumer
+deadlock, metode de prevenire,metode de detectie,alocarea memoriei
+sisteme de fisiere, chiar si fat NTFS
+-fara partea e layout pe disk
+
+
+-ne incarca ceva notite de curs mai vechi in care gasim
+lucruri despre threaduri si mecanisme de sincronizare
+
+-avem voie cu un cheatsheet un a4 fata verso scris de mana scanat
+si pus pe pc
+-nu putem sa avem  acelasi cheatsheet cu alta persoana
+
+
+-reaspunsuri scurte si argumentarea sa fie concisa
+
+ex: Q: cum putem preveni deadlock ?
+    A: blocam resrusele in aceasi orinde, (oricarea e ordinea
+	o respectam peste tot)
+
