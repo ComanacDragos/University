@@ -1,0 +1,21 @@
+[2020-04-29 08:16:48] [info] Start Program:
+Path:"E:\\Universitate\\Semestrul2-GitHub\\OOP\\Lab8-9\\Debug\\Lab8-9.exe"
+Arguments:
+Working directory: "E:\\Universitate\\Semestrul2-GitHub\\OOP\\Lab8-9\\"
+Modules: Selected: E:\Universitate\Semestrul2-GitHub\OOP\Lab8-9\Debug\Lab8-9.exe Excluded: 
+Sources: Selected: E:\Universitate\Semestrul2-GitHub\OOP\Lab8-9 Excluded: 
+Log Level: Normal
+Cover Children: 0
+Aggregate by file: 1
+Continue after C++ exception: 0
+Optimized build support: 0
+Export: binary C:\Users\Dragos\AppData\Local\Temp\vjlk2ham.5vi 
+Input coverage: 
+Unified diff: 
+Excluded line regular expressions: 
+Substitute pdb source paths: 
+
+[2020-04-29 08:16:48] [info] Module: E:\Universitate\Semestrul2-GitHub\OOP\Lab8-9\Debug\Lab8-9.exe is selected because it matches selected pattern: E:\Universitate\Semestrul2-GitHub\OOP\Lab8-9\Debug\Lab8-9.exe
+[2020-04-29 08:16:51] [info] ----------------------------------------------------
+[2020-04-29 08:16:51] [info] Coverage binary generated in file: C:\Users\Dragos\AppData\Local\Temp\vjlk2ham.5vi
+[2020-04-29 08:16:51] [info] ----------------------------------------------------

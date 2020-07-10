@@ -1,0 +1,6 @@
+Mercedes-Benz|SUV|2013|blue
+Fiat|Bravo|2007|red
+Car3|model3|2003|red
+Car2|model1|2001|green
+Car1|model2|2002|blue
+Fiat|modelFiat|2005|grey

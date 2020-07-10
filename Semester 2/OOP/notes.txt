@@ -1,0 +1,43 @@
+#Lab1
+
+Properties -> c/c++ -> General -> SDL checks -> No
+-> Precompiled Header -> Don't use
+
+projecteuler.net
+
+
+#Lecture1
+
+www.cs.ubbcluj.ro/~iuliana/oop
+
+* dereferencing operator
+*(b+3) takes the value from the address at b+3
+b is a pointer to the first element of the array
+
+
+pointer = a var that stores an address
+
+& address operator
+
+void f(int* a)
+{
+*a = *a +2;
+}
+
+int main ()
+{
+int x = 0;
+f(&x); 
+}
+
+
+
+
+- no abreviations
+- no 1 char var names except indexes
+-names:what are they used for
+
+
+Lecure 5
+
+passing / returning by value -- copy being made

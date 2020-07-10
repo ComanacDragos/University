@@ -1,0 +1,5 @@
+1,2,user1,answer1,5
+2,2,user3,answer2,3
+3,1,user2,answer3,4
+3,3,user3,bla,0
+4,3,user2,bla,0

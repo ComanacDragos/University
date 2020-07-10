@@ -1,0 +1,3 @@
+Orange,Juice Drinks,2
+Water,Drinks,6
+Chocolate,Sweets,3

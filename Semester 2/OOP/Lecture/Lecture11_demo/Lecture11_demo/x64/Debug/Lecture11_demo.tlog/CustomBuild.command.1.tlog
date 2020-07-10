@@ -1,0 +1,10 @@
+^E:\UNIVERSITATE\SEMESTRUL2-GITHUB\OOP\LECTURE\LECTURE11_DEMO\LECTURE11_DEMO\LECTURE11_DEMO.H
+"E:\Qt\5.14.2\msvc2017_64\bin\moc.exe"  "E:\Universitate\Semestrul2-GitHub\OOP\Lecture\Lecture11_demo\Lecture11_demo\lecture11_demo.h" -o ".\GeneratedFiles\Debug\moc_lecture11_demo.cpp"  -DUNICODE -DWIN32 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB  "-I.\GeneratedFiles" "-I." "-IE:\Qt\5.14.2\msvc2017_64\include" "-I.\GeneratedFiles\Debug\." "-IE:\Qt\5.14.2\msvc2017_64\include\QtCore" "-IE:\Qt\5.14.2\msvc2017_64\include\QtGui" "-IE:\Qt\5.14.2\msvc2017_64\include\QtWidgets"
+^E:\UNIVERSITATE\SEMESTRUL2-GITHUB\OOP\LECTURE\LECTURE11_DEMO\LECTURE11_DEMO\LECTURE11_DEMO.UI
+"E:\Qt\5.14.2\msvc2017_64\bin\uic.exe" -o ".\GeneratedFiles\ui_lecture11_demo.h" "E:\Universitate\Semestrul2-GitHub\OOP\Lecture\Lecture11_demo\Lecture11_demo\lecture11_demo.ui"
+^E:\UNIVERSITATE\SEMESTRUL2-GITHUB\OOP\LECTURE\LECTURE11_DEMO\LECTURE11_DEMO\LECTURE11_DEMO.QRC
+"E:\Qt\5.14.2\msvc2017_64\bin\rcc.exe" -name "lecture11_demo" -no-compress "E:\Universitate\Semestrul2-GitHub\OOP\Lecture\Lecture11_demo\Lecture11_demo\lecture11_demo.qrc" -o .\GeneratedFiles\qrc_lecture11_demo.cpp
+^E:\UNIVERSITATE\SEMESTRUL2-GITHUB\OOP\LECTURE\LECTURE11_DEMO\LECTURE11_DEMO\DIALOGGENESLISTWIDGET.UI
+"E:\Qt\5.14.2\msvc2017_64\bin\uic.exe" -o ".\GeneratedFiles\ui_DialogGenesListWidget.h" "E:\Universitate\Semestrul2-GitHub\OOP\Lecture\Lecture11_demo\Lecture11_demo\DialogGenesListWidget.ui"
+^E:\UNIVERSITATE\SEMESTRUL2-GITHUB\OOP\LECTURE\LECTURE11_DEMO\LECTURE11_DEMO\DIALOGGENESLISTVIEW.UI
+"E:\Qt\5.14.2\msvc2017_64\bin\uic.exe" -o ".\GeneratedFiles\ui_DialogGenesListView.h" "E:\Universitate\Semestrul2-GitHub\OOP\Lecture\Lecture11_demo\Lecture11_demo\DialogGenesListView.ui"

@@ -1,0 +1,8 @@
+﻿  main.c
+E:\Universitate\Semestrul2-GitHub\OOP\Sem1\main.c(10,18): error C2065: 'new': undeclared identifier
+E:\Universitate\Semestrul2-GitHub\OOP\Sem1\main.c(10,18): error C2143: syntax error: missing ';' before 'type'
+E:\Universitate\Semestrul2-GitHub\OOP\Sem1\main.c(10,18): error C2143: syntax error: missing ';' before '['
+E:\Universitate\Semestrul2-GitHub\OOP\Sem1\main.c(10,18): warning C4091: ' ': ignored on left of 'int' when no variable is declared
+E:\Universitate\Semestrul2-GitHub\OOP\Sem1\main.c(10,1): warning C4047: 'initializing': 'int *' differs in levels of indirection from 'int'
+  service.c
+  Generating Code...

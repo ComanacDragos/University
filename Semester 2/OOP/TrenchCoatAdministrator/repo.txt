@@ -1,0 +1,13 @@
+coat3,L,120,https://m.media-amazon.com/images/I/515R11jmKQL._SR500500_.jpg
+coat4,a,3,a
+coat6,S,130,https://m.media-amazon.com/images/I/515R11jmKQL._SR500500_.jpg
+coat10,XXL,100,https://m.media-amazon.com/images/I/515R11jmKQL._SR500500_.jpg
+coat11,a,3,a
+coat12,XXL,150,https://m.media-amazon.com/images/I/515R11jmKQL._SR500500_.jpg
+coat1,S,180,abcd
+coat5,XXL,210,https://m.media-amazon.com/images/I/515R11jmKQL._SR50500_.jpg
+abc,M,120,https://m.media-amazon.com/images/I/515R11jmKQL._SR500500_.jpg
+2,A,5,A
+3,a,3,a
+1,a,4,a
+4,ads,45,ccccc

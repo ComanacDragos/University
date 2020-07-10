@@ -1,0 +1,21 @@
+[2020-03-31 18:36:50] [info] Start Program:
+Path:"E:\\Universitate\\Semestrul2-GitHub\\OOP\\Lab5\\Debug\\Lab5.exe"
+Arguments:
+Working directory: "E:\\Universitate\\Semestrul2-GitHub\\OOP\\Lab5\\"
+Modules: Selected: E:\Universitate\Semestrul2-GitHub\OOP\Lab5\Debug\Lab5.exe Excluded: 
+Sources: Selected: E:\Universitate\Semestrul2-GitHub\OOP\Lab5 Excluded: 
+Log Level: Normal
+Cover Children: 0
+Aggregate by file: 1
+Continue after C++ exception: 0
+Optimized build support: 0
+Export: binary C:\Users\Dragos\AppData\Local\Temp\ucfmsld5.0mj 
+Input coverage: 
+Unified diff: 
+Excluded line regular expressions: 
+Substitute pdb source paths: 
+
+[2020-03-31 18:36:50] [info] Module: E:\Universitate\Semestrul2-GitHub\OOP\Lab5\Debug\Lab5.exe is selected because it matches selected pattern: E:\Universitate\Semestrul2-GitHub\OOP\Lab5\Debug\Lab5.exe
+[2020-03-31 18:37:41] [info] ----------------------------------------------------
+[2020-03-31 18:37:41] [info] Coverage binary generated in file: C:\Users\Dragos\AppData\Local\Temp\hrxyiypt.0xu
+[2020-03-31 18:37:41] [info] ----------------------------------------------------

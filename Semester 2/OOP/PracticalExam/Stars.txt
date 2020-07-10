@@ -1,0 +1,8 @@
+star1,constelation1,30,20,50
+AnotherStar2,constelation1,1000,1000,50
+star2,constelation2,60,40,50
+star4,constelation2,50,50,50
+star3,constelation3,30,40,50
+newStar,constelation3,500,400,50
+weirdStar,constelation3,100,100,10
+AnotherStar1,constelation3,150,150,150

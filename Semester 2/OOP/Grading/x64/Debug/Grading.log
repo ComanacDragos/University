@@ -1,0 +1,21 @@
+﻿  Reading Qt configuration (E:\Qt\5.14.2\msvc2017_64\bin\qmake.exe)
+  uic GUI.ui
+  uic Programmer.ui
+  uic Tester.ui
+  rcc GUI.qrc
+   RCC: Warning: No resources in 'E:\Universitate\Semestrul2-GitHub\OOP\Grading\GUI.qrc'.
+  moc GUI.h
+  moc Programmer.h
+  moc Tester.h
+  Programmer.cpp
+  Repository.cpp
+  Service.cpp
+  Tester.cpp
+  Domain.cpp
+  GUI.cpp
+  main.cpp
+  qrc_GUI.cpp
+  moc_GUI.cpp
+  moc_Programmer.cpp
+  moc_Tester.cpp
+  Grading.vcxproj -> E:\Universitate\Semestrul2-GitHub\OOP\Grading\x64\Debug\Grading.exe

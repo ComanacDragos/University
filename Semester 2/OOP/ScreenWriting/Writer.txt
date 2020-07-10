@@ -1,0 +1,3 @@
+writer1,Assistant
+writer2,Junior
+writer3,Senior

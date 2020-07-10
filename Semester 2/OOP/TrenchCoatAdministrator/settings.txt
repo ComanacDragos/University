@@ -1,0 +1,2 @@
+coatRepository=repo.txt
+userCoatRepository=HTMLRepo.html

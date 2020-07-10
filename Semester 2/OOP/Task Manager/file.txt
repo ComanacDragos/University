@@ -1,0 +1,6 @@
+Solve_OOP 120 1
+Respond_To_Emails 45 2
+eat 30 3
+visit_parent 30 3
+buy_a_jacket 120 2
+bla 50 1

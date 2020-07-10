@@ -1,0 +1,16 @@
+﻿  main.cpp
+E:\Universitate\Semestrul2-GitHub\OOP\WrittenExamPractice\Pepene.h(98,53): warning C4305: 'argument': truncation from 'double' to 'float'
+E:\Universitate\Semestrul2-GitHub\OOP\WrittenExamPractice\Pepene.h(99,46): warning C4305: 'argument': truncation from 'double' to 'float'
+E:\Universitate\Semestrul2-GitHub\OOP\WrittenExamPractice\Pepene.h(101,56): warning C4305: 'argument': truncation from 'double' to 'float'
+E:\Universitate\Semestrul2-GitHub\OOP\WrittenExamPractice\Carnet.h(50,24): warning C4101: 'ex': unreferenced local variable
+E:\Universitate\Semestrul2-GitHub\OOP\WrittenExamPractice\Complex.h(92,25): warning C4101: 'e': unreferenced local variable
+E:\Universitate\Semestrul2-GitHub\OOP\WrittenExamPractice\ChannelWithUnique.h(74,27): warning C4101: 'exc': unreferenced local variable
+E:\Universitate\Semestrul2-GitHub\OOP\WrittenExamPractice\ChannelWithUnique.h(83,28): warning C4101: 'exc': unreferenced local variable
+E:\Universitate\Semestrul2-GitHub\OOP\WrittenExamPractice\ChannelWithUnique.h(108,28): warning C4101: 'exc': unreferenced local variable
+E:\Universitate\Semestrul2-GitHub\OOP\WrittenExamPractice\ChannelWithUnique.h(118,28): warning C4101: 'exc': unreferenced local variable
+E:\Universitate\Semestrul2-GitHub\OOP\WrittenExamPractice\ChannelWithUnique.h(128,28): warning C4101: 'exc': unreferenced local variable
+E:\Universitate\Semestrul2-GitHub\OOP\WrittenExamPractice\Encoder.h(54,12): warning C4018: '<': signed/unsigned mismatch
+E:\Universitate\Semestrul2-GitHub\OOP\WrittenExamPractice\Encoder.h(54,31): warning C4018: '<': signed/unsigned mismatch
+E:\Universitate\Semestrul2-GitHub\OOP\WrittenExamPractice\Encoder.h(60,12): warning C4018: '<': signed/unsigned mismatch
+E:\Universitate\Semestrul2-GitHub\OOP\WrittenExamPractice\Encoder.h(65,12): warning C4018: '<': signed/unsigned mismatch
+  WrittenExamPractice.vcxproj -> E:\Universitate\Semestrul2-GitHub\OOP\WrittenExamPractice\Debug\WrittenExamPractice.exe

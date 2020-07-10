@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29806.167
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Seminar2", "Seminar2.vcxproj", "{6EE08DBC-C542-4A22-AB6F-592BAB7CA983}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6EE08DBC-C542-4A22-AB6F-592BAB7CA983}.Debug|x64.ActiveCfg = Debug|x64
+		{6EE08DBC-C542-4A22-AB6F-592BAB7CA983}.Debug|x64.Build.0 = Debug|x64
+		{6EE08DBC-C542-4A22-AB6F-592BAB7CA983}.Debug|x86.ActiveCfg = Debug|Win32
+		{6EE08DBC-C542-4A22-AB6F-592BAB7CA983}.Debug|x86.Build.0 = Debug|Win32
+		{6EE08DBC-C542-4A22-AB6F-592BAB7CA983}.Release|x64.ActiveCfg = Release|x64
+		{6EE08DBC-C542-4A22-AB6F-592BAB7CA983}.Release|x64.Build.0 = Release|x64
+		{6EE08DBC-C542-4A22-AB6F-592BAB7CA983}.Release|x86.ActiveCfg = Release|Win32
+		{6EE08DBC-C542-4A22-AB6F-592BAB7CA983}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6836CAD3-D10E-45F1-920B-928CA9395754}
+	EndGlobalSection
+EndGlobal

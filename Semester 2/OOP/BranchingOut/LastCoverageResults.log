@@ -1,0 +1,29 @@
+[2020-03-26 15:37:12] [info] Start Program:
+Path:"E:\\Universitate\\Semestrul2-GitHub\\OOP\\BranchingOut\\Debug\\BranchingOut.exe"
+Arguments:
+Working directory: "E:\\Universitate\\Semestrul2-GitHub\\OOP\\BranchingOut\\"
+Modules: Selected: E:\Universitate\Semestrul2-GitHub\OOP\BranchingOut\Debug\BranchingOut.exe Excluded: 
+Sources: Selected: E:\Universitate\Semestrul2-GitHub\OOP\BranchingOut Excluded: 
+Log Level: Normal
+Cover Children: 0
+Aggregate by file: 1
+Continue after C++ exception: 0
+Optimized build support: 0
+Export: binary C:\Users\Dragos\AppData\Local\Temp\dnuirjue.qgz 
+Input coverage: 
+Unified diff: 
+Excluded line regular expressions: 
+Substitute pdb source paths: 
+
+[2020-03-26 15:37:12] [info] Module: E:\Universitate\Semestrul2-GitHub\OOP\BranchingOut\Debug\BranchingOut.exe is selected because it matches selected pattern: E:\Universitate\Semestrul2-GitHub\OOP\BranchingOut\Debug\BranchingOut.exe
+[2020-03-26 15:37:14] [error] 
+
+----------------------------------------------------
+*** Your application has thrown an unhandled exception. Code: 3221225477: EXCEPTION_ACCESS_VIOLATION
+----------------------------------------------------
+If your application was built with optimization enabled, make sure you use --optimized_build
+
+[2020-03-26 15:37:15] [info] ----------------------------------------------------
+[2020-03-26 15:37:15] [info] Coverage binary generated in file: C:\Users\Dragos\AppData\Local\Temp\dnuirjue.qgz
+[2020-03-26 15:37:15] [info] ----------------------------------------------------
+[2020-03-26 15:37:15] [error] Your program stop with error code: -1073741819

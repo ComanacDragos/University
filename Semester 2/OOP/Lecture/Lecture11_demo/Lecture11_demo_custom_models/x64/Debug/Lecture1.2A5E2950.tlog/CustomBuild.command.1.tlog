@@ -1,0 +1,6 @@
+^E:\UNIVERSITATE\SEMESTRUL2-GITHUB\OOP\LECTURE\LECTURE11_DEMO\LECTURE11_DEMO_CUSTOM_MODELS\LECTURE11_DEMO_CUSTOM_MODELS.H
+"E:\Qt\5.14.2\msvc2017_64\bin\moc.exe"  "E:\Universitate\Semestrul2-GitHub\OOP\Lecture\Lecture11_demo\Lecture11_demo_custom_models\lecture11_demo_custom_models.h" -o ".\GeneratedFiles\Debug\moc_lecture11_demo_custom_models.cpp"  -DUNICODE -DWIN32 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB  "-I.\GeneratedFiles" "-I." "-IE:\Qt\5.14.2\msvc2017_64\include" "-I.\GeneratedFiles\Debug\." "-IE:\Qt\5.14.2\msvc2017_64\include\QtCore" "-IE:\Qt\5.14.2\msvc2017_64\include\QtGui" "-IE:\Qt\5.14.2\msvc2017_64\include\QtWidgets"
+^E:\UNIVERSITATE\SEMESTRUL2-GITHUB\OOP\LECTURE\LECTURE11_DEMO\LECTURE11_DEMO_CUSTOM_MODELS\LECTURE11_DEMO_CUSTOM_MODELS.UI
+"E:\Qt\5.14.2\msvc2017_64\bin\uic.exe" -o ".\GeneratedFiles\ui_lecture11_demo_custom_models.h" "E:\Universitate\Semestrul2-GitHub\OOP\Lecture\Lecture11_demo\Lecture11_demo_custom_models\lecture11_demo_custom_models.ui"
+^E:\UNIVERSITATE\SEMESTRUL2-GITHUB\OOP\LECTURE\LECTURE11_DEMO\LECTURE11_DEMO_CUSTOM_MODELS\LECTURE11_DEMO_CUSTOM_MODELS.QRC
+"E:\Qt\5.14.2\msvc2017_64\bin\rcc.exe" -name "lecture11_demo_custom_models" -no-compress "E:\Universitate\Semestrul2-GitHub\OOP\Lecture\Lecture11_demo\Lecture11_demo_custom_models\lecture11_demo_custom_models.qrc" -o .\GeneratedFiles\qrc_lecture11_demo_custom_models.cpp

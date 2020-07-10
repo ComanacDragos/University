@@ -1,0 +1,4 @@
+﻿  main.c
+E:\Universitate\Semestrul2-GitHub\OOP\BranchingOut\main.c(46,24): warning C4047: '=': 'void *' differs in levels of indirection from 'int'
+E:\Universitate\Semestrul2-GitHub\OOP\BranchingOut\main.c(43,1): warning C4047: 'initializing': 'int' differs in levels of indirection from 'int *'
+  BranchingOut.vcxproj -> E:\Universitate\Semestrul2-GitHub\OOP\BranchingOut\Debug\BranchingOut.exe

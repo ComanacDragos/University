@@ -1,0 +1,21 @@
+[2020-04-10 18:03:56] [info] Start Program:
+Path:"E:\\Universitate\\Semestrul2-GitHub\\OOP\\Lab5-6\\Debug\\Lab5-6.exe"
+Arguments:
+Working directory: "E:\\Universitate\\Semestrul2-GitHub\\OOP\\Lab5-6\\"
+Modules: Selected: E:\Universitate\Semestrul2-GitHub\OOP\Lab5-6\Debug\Lab5-6.exe Excluded: 
+Sources: Selected: E:\Universitate\Semestrul2-GitHub\OOP\Lab5-6 Excluded: 
+Log Level: Normal
+Cover Children: 0
+Aggregate by file: 1
+Continue after C++ exception: 0
+Optimized build support: 0
+Export: binary C:\Users\Dragos\AppData\Local\Temp\k0pmlslk.qpa 
+Input coverage: 
+Unified diff: 
+Excluded line regular expressions: 
+Substitute pdb source paths: 
+
+[2020-04-10 18:03:56] [info] Module: E:\Universitate\Semestrul2-GitHub\OOP\Lab5-6\Debug\Lab5-6.exe is selected because it matches selected pattern: E:\Universitate\Semestrul2-GitHub\OOP\Lab5-6\Debug\Lab5-6.exe
+[2020-04-10 18:04:42] [info] ----------------------------------------------------
+[2020-04-10 18:04:42] [info] Coverage binary generated in file: C:\Users\Dragos\AppData\Local\Temp\xmalldgd.qiv
+[2020-04-10 18:04:42] [info] ----------------------------------------------------

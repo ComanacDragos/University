@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29806.167
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HospitalDepartments", "HospitalDepartments.vcxproj", "{538CD4B1-BE93-4F89-B2C0-EC9202BB1EB8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{538CD4B1-BE93-4F89-B2C0-EC9202BB1EB8}.Debug|x64.ActiveCfg = Debug|x64
+		{538CD4B1-BE93-4F89-B2C0-EC9202BB1EB8}.Debug|x64.Build.0 = Debug|x64
+		{538CD4B1-BE93-4F89-B2C0-EC9202BB1EB8}.Release|x64.ActiveCfg = Release|x64
+		{538CD4B1-BE93-4F89-B2C0-EC9202BB1EB8}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {05087D2D-0A9E-4E56-BC1E-F3E0544499E4}
+	EndGlobalSection
+EndGlobal

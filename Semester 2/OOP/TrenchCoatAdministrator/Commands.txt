@@ -1,0 +1,27 @@
+fileLocation repo.txt
+mylistLocation CSVRepo.csv
+mode A
+add 1 b 3 a
+list
+mode B
+save coat11
+save coat7
+save coat2
+save coat5
+mylist
+exit
+
+
+
+fileLocation repo.txt
+mylistLocation HTMLRepo.html
+mode A
+add coat1 a 3 a
+list
+mode B
+save coat1
+save coat7
+save coat2
+save coat5
+mylist
+exit
