@@ -1,0 +1,35 @@
+     1                                  bits 32
+     2                                  global _array_max
+     3                                  
+     4                                  segment data public data use32
+     5 00000000 00000000                    mx dd 0
+     6                                  
+     7                                  segment code public code use32
+     8                                          
+     9                                  _array_max:
+    10 00000000 55                              push EBP
+    11 00000001 89E5                            mov EBP, ESP
+    12 00000003 60                              pushad
+    13                                          
+    14 00000004 8B4D08                          mov ECX, [EBP+8]
+    15 00000007 8B750C                          mov ESI, [EBP+12]
+    16                                          
+    17 0000000A AD                              lodsd
+    18 0000000B A3[00000000]                    mov [mx], EAX
+    19 00000010 49                              dec ECX
+    20                                          
+    21                                          loop1:
+    22 00000011 AD                                  lodsd
+    23 00000012 3905[00000000]                      cmp [mx], EAX
+    24 00000018 7F05                                jg endLoop
+    25 0000001A A3[00000000]                        mov [mx], EAX
+    26                                              
+    27                                              endLoop:
+    28 0000001F E2F0                                loop loop1
+    29                                          
+    30 00000021 A1[00000000]                    mov EAX, [mx]
+    31                                          
+    32 00000026 61                              popad
+    33 00000027 89EC                            mov ESP, EBP
+    34 00000029 5D                              pop EBP
+    35 0000002A C3                              ret

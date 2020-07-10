@@ -1,0 +1,32 @@
+     1                                  bits 32
+     2                                  global start
+     3                                  
+     4                                  segment data public data use32
+     5 00000000 316132763376653335-         s1 db "1a2v3ve35df37abc"
+     5 00000009 64663337616263     
+     6                                      len equ $-s1
+     7 00000010 <res 00000064>              res resb 100
+     8                                  
+     9                                  segment code public code use32
+    10                                  start:
+    11 00000000 BE[00000000]                mov ESI, s1
+    12 00000005 BF[10000000]                mov EDI, res
+    13 0000000A B910000000                  mov ECX, len
+    14                                      loop1:
+    15 0000000F AC                              lodsb
+    16 00000010 3C30                            cmp AL, '0'
+    17 00000012 7205                            jb endLoop
+    18                                          
+    19 00000014 3C39                            cmp AL, '9'
+    20 00000016 7701                            ja endLoop
+    21                                          
+    22 00000018 AA                              stosb
+    23                                          
+    24                                      endLoop:
+    25 00000019 E2F4                        loop loop1
+    26                                  
+    27                                  _base10Digits:
+    28                                  
+    29                                  
+    30                                  
+    31 0000001B C3                      ret

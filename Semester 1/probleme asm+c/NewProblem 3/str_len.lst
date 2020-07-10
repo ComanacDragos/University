@@ -1,0 +1,26 @@
+     1                                  bits 32
+     2                                  global start
+     3                                  
+     4                                  extern exit
+     5                                  import exit msvcrt.dll
+     6                                  
+     7                                  segment data public data use32
+     8 00000000 6162636465                  s db "abcde"
+     9                                  
+    10                                  segment code public code use32
+    11                                  
+    12                                      start:
+    13 00000000 BE[00000000]                mov ESI, s
+    14                                      
+    15 00000005 B900000000                  mov ECX, 0
+    16                                      loop1:
+    17 0000000A AC                          lodsb
+    18 0000000B 3C00                        cmp AL, 0
+    19 0000000D 7403                        je endLoop
+    20 0000000F 41                          inc ECX
+    21 00000010 EBF8                        jmp loop1
+    22                                  
+    23                                      endLoop:
+    24                                  
+    25 00000012 6A00                        push dword 0
+    26 00000014 FF15[00000000]              call [exit]

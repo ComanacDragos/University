@@ -1,0 +1,9 @@
+﻿  main.c
+E:\asm_tools\probleme asm+c\NewProblem 3\main.c(11,6): warning C4013: 'gets' undefined; assuming extern returning int
+E:\asm_tools\probleme asm+c\NewProblem 3\main.c(16,30): warning C4047: 'function': 'char *' differs in levels of indirection from 'int'
+E:\asm_tools\probleme asm+c\NewProblem 3\main.c(16,30): warning C4024: 'strcpy': different types for formal and actual parameter 2
+E:\asm_tools\probleme asm+c\NewProblem 3\main.c(17,32): warning C4047: 'function': 'char *' differs in levels of indirection from 'int'
+E:\asm_tools\probleme asm+c\NewProblem 3\main.c(17,32): warning C4024: 'strcpy': different types for formal and actual parameter 2
+E:\asm_tools\probleme asm+c\NewProblem 3\main.c(21,9): warning C4477: 'printf' : format string '%s' requires an argument of type 'char *', but variadic argument 1 has type 'int'
+E:\asm_tools\probleme asm+c\NewProblem 3\main.c(22,9): warning C4477: 'printf' : format string '%s' requires an argument of type 'char *', but variadic argument 1 has type 'int'
+  NewProblem 3.vcxproj -> E:\asm_tools\probleme asm+c\NewProblem 3\Debug\NewProblem 3.exe

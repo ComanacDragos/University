@@ -1,0 +1,37 @@
+     1                                  bits 32
+     2                                  global start
+     3                                  
+     4                                  extern exit
+     5                                  import exit msvcrt.dll
+     6                                  
+     7                                  segment data public data use32
+     8 00000000 616263                      s1 db "abc"
+     9                                      len1 equ 3
+    10 00000003 64656667                    s2 db "defg"
+    11                                      len2 equ 4
+    12 00000007 <res 000000C8>              res_conc resb 200
+    13                                      
+    14                                  segment code public code use32
+    15                                      start:
+    16                                      
+    17 00000000 BE[00000000]                mov ESI, s1
+    18 00000005 B903000000                  mov ECX, len1
+    19 0000000A BF[07000000]                mov EDI, res_conc
+    20                                      
+    21                                      loop1:
+    22 0000000F AC                              lodsb
+    23 00000010 AA                              stosb
+    24 00000011 E2FC                        loop loop1
+    25                                      
+    26 00000013 BE[03000000]                mov ESI, s2
+    27 00000018 B904000000                  mov ECX, len2
+    28                                      
+    29                                      loop2:
+    30 0000001D AC                              lodsb
+    31 0000001E AA                              stosb
+    32 0000001F E2FC                        loop loop2
+    33                                      
+    34 00000021 6A00                        push dword 0
+    35 00000023 FF15[00000000]              call [exit]
+    36                                      
+    37                                      

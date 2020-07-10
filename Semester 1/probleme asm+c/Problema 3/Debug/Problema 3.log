@@ -1,0 +1,5 @@
+﻿  base10.asm:49: error: symbol `loop1' redefined
+  base10.asm:55: error: symbol `endLoop' redefined
+E:\VS community\MSBuild\Microsoft\VC\v160\Microsoft.CppCommon.targets(139,5): error MSB3073: The command "E:\asm_tools\nasm\nasm.exe base10.asm -f win32 -g -o base10.obj
+E:\VS community\MSBuild\Microsoft\VC\v160\Microsoft.CppCommon.targets(139,5): error MSB3073: 
+E:\VS community\MSBuild\Microsoft\VC\v160\Microsoft.CppCommon.targets(139,5): error MSB3073: :VCEnd" exited with code 1.

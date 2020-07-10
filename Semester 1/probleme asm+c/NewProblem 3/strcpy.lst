@@ -1,0 +1,28 @@
+     1                                  bits 32
+     2                                  global start
+     3                                  
+     4                                  segment data public data use32
+     5                                  
+     6 00000000 61626300                    s1 db "abc", 0
+     7 00000004 <res 000000C8>              s2 resb 200
+     8                                  
+     9                                  segment code public code use32
+    10                                      start:
+    11                                      
+    12 00000000 BE[00000000]                mov ESI,s1
+    13 00000005 BF[04000000]                mov EDI,s2
+    14                                      
+    15                                      loop1:
+    16 0000000A AC                              lodsb
+    17 0000000B 3C00                            cmp AL, 0
+    18 0000000D 7403                            je endLoop1
+    19 0000000F AA                              stosb
+    20 00000010 EBF8                            jmp loop1
+    21                                      endLoop1:
+    22                                      
+    23 00000012 C60733                      mov byte [EDI], "3"
+    24                                      
+    25 00000015 6A00                        push dword 0
+    26                                         
+    27                                      
+    28                                      

@@ -1,0 +1,5 @@
+     1                                  bits 32
+     2                                  global start
+     3                                  segment code use32 class=code
+     4                                  start:
+     5 00000000 6A00                    push dword 0

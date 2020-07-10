@@ -1,0 +1,6 @@
+﻿  main.c
+E:\asm_tools\probleme asm+c\Problem 24\main.c(12,31): warning C4133: '=': incompatible types - from 'FILE *' to 'int *'
+E:\asm_tools\probleme asm+c\Problem 24\main.c(17,14): warning C4133: 'function': incompatible types - from 'int *' to 'FILE *const '
+E:\asm_tools\probleme asm+c\Problem 24\main.c(19,13): warning C4133: 'function': incompatible types - from 'int *' to 'FILE *'
+E:\asm_tools\probleme asm+c\Problem 24\main.c(7,17): warning C4101: 'i': unreferenced local variable
+  Problem 24.vcxproj -> E:\asm_tools\probleme asm+c\Problem 24\Debug\Problem 24.exe
