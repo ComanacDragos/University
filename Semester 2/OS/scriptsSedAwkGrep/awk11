@@ -1,0 +1,12 @@
+BEGIN {
+s = 0
+lc = 0
+}
+{
+sum += $1
+lc += 1
+}
+END {
+
+print (sum/lc) " " sum " " lc
+}

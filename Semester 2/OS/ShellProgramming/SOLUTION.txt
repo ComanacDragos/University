@@ -1,0 +1,1 @@
+ls -l | grep "^.\{7\}r.x.*\.txt$" | awk '{print $NF}' | sort -r

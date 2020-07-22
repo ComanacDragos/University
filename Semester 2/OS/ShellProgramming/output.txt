@@ -1,0 +1,5 @@
+output.err
+output.txt
+output2.txt
+stdoutput.txt
+rm: cannot remove 'bl': No such file or directory

@@ -1,0 +1,12 @@
+#!/bin/bash
+
+while true;do
+	read -p "Give string: " F
+	if [ -n $F ];then
+		if [ $F = "stop" ];then
+			echo "Terminating..."
+			exit 1
+		fi
+		echo $F
+	fi
+done

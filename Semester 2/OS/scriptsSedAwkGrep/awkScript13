@@ -1,0 +1,14 @@
+BEGIN{
+	v=0
+	c=0
+}
+$0 ~ /[aeiou]$/ {
+v=v+1
+}
+$0 ~ /[a-z]$/ && /[^aeiou]$/{
+c=c+1
+}
+END{
+print "Vowels: "v
+print "Consonants: "c
+}

@@ -1,0 +1,133 @@
+s1.sh
+
+#!/bin/bash
+
+names=`awk '{print $1}' ../Data/who.fake`
+
+
+for name in $names; do
+	psCount=`grep -c "^\<$name\>" ../Data/ps.fake`
+	echo "$name $psCount"
+done
+
+s2.sh
+
+#!/bin/bash
+
+count=0
+dir=`find ../Data/dir`
+
+for file in $dir; do
+	if [ -f $file ]; then
+		lines=`wc -l $file | awk '{print $1}'`
+		if [ $lines -ge 500 ]; then
+			echo $file
+			count=`expr $count + 1`
+			if [ $count -eq 2 ]; then
+				break
+			fi
+		fi
+	fi
+done
+
+s3.sh
+
+#!/bin/bash
+
+logFiles=`find ../Data/copyDir`
+
+for i in `find ../Data/copyDir -type f -name "*.log"`; do
+	echo -n `cat $i | sort > $i.new`
+	echo -n `cat $i.new > $i`
+	echo -n `rm $i.new`
+done
+
+
+
+
+s4.sh
+
+#!/bin/bash
+
+paths=`find ..`
+
+for i in $paths; do
+	if [ -L $i ]; then
+		echo $i
+		if ! [ -e $i ]; then
+			echo $i
+		fi
+	fi
+done
+
+
+
+
+s6.sh
+
+#!/bin/bash
+
+
+files=`find ../Data/copyDirS5`
+
+newFiles=""
+for i in $files; do
+	permisions=`ls -d -l $i`
+	if [ `echo $permisions | grep -c "^.\{8\}w"` -eq 1 ]; then
+		echo `ls -l $i`
+		chmod o-w $i	
+		echo `ls -l $i`
+		
+	fi
+done
+
+s7.sh
+
+#!/bin/bash
+
+f=`cat ../Data/s7Input.txt`
+
+s=""
+
+for i in $f; do
+	append="@scs.ubbcluj.ro"
+	s="$s$i$append, "
+done
+
+s=`echo $s | sed "s/,$//"`
+
+echo $s
+
+
+s8.sh
+
+#!/bin/bash
+tail -n+2 ../Data/df.fake | \
+sed "s/M//g" | \
+sed "s/%//g" | \
+awk '$4 < 1000 || $5 > 80{print $6}' 
+
+s9.sh
+
+#!/bin/bash
+
+paths=`find ../Data/testDir`
+
+
+for i in $paths
+do
+	for j in $paths
+	do
+	if [ -f $i ] && [ -f $j ]
+	then
+		f1=`md5sum $i | awk '{print $1}'`
+		f2=`md5sum $j | awk '{print $1}'`
+		if [ $f1 = $f2 ] && [ $i != $j ]
+		then
+			echo $i " " $j
+		fi
+	fi
+	done
+done
+
+
