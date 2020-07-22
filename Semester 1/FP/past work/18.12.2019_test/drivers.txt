@@ -1,0 +1,5 @@
+ion,10,21
+vasile,50,102
+popa,1,4
+comanac,2,4
+marian,10,23

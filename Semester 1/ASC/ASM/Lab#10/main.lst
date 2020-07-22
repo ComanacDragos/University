@@ -1,0 +1,53 @@
+     1                                  bits 32
+     2                                  global start
+     3                                  
+     4                                  extern exit, scanf, printf
+     5                                  import exit msvcrt.dll
+     6                                  import scanf msvcrt.dll
+     7                                  import printf msvcrt.dll
+     8                                  
+     9                                  %include "FACT.asm"
+     1                              <1> %ifndef _FACTd_ASM_
+     2                              <1> %define _FACTd_ASM_
+     3                              <1> 
+     4                              <1> factorial:
+     5 00000000 B801000000          <1>         mov EAX, 1
+     6 00000005 8B5C2404            <1>         mov EBX, [ESP+4]
+     7 00000009 8B0B                <1>         mov ECX, [EBX]
+     8                              <1>         l:
+     9 0000000B F7E1                <1>             mul ECX
+    10 0000000D E2FC                <1>         loop l
+    11                              <1>         
+    12 0000000F C3                  <1>         ret 
+    13                              <1> 
+    14                              <1> 
+    15                              <1> 
+    16                              <1> %endif
+    10                                  
+    11                                  segment data use32 class=data
+    12 00000010 257500                      f db "%u", 0
+    13 00000013 <res 00000004>              n resd 1
+    14 00000017 663D2025752000              f2 db "f= %u ", 0
+    15                                      
+    16                                  segment code use32 class=code
+    17                                  
+    18                                      start:
+    19 00000000 68[13000000]                push n
+    20 00000005 68[10000000]                push f
+    21 0000000A FF15[00000000]              call [scanf]
+    22 00000010 83C408                      add esp, 4*2
+    23                                      
+    24 00000013 68[13000000]                push n
+    25 00000018 E8(00000000)                call factorial
+    26 0000001D 83C404                      add esp, 4
+    27                                      
+    28 00000020 50                          push eax
+    29 00000021 68[17000000]                push f2
+    30 00000026 FF15[00000000]              call [printf]
+    31 0000002C 83C408                      add esp, 4*2
+    32                                      
+    33 0000002F EBFE                        jmp $
+    34 00000031 6A00                        push dword 0
+    35 00000033 FF15[00000000]              call [exit]
+    36                                      
+    37                                      

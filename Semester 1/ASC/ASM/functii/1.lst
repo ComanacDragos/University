@@ -1,0 +1,91 @@
+     1                                  bits 32
+     2                                  global start
+     3                                  
+     4                                  extern exit, printf, scanf
+     5                                  import exit msvcrt.dll
+     6                                  import printf msvcrt.dll
+     7                                  import scanf msvcrt.dll
+     8                                  
+     9                                  
+    10                                  segment data
+    11                                  
+    12 00000000 47697665206E756D62-         msg1 db "Give number: ", 0
+    12 00000009 65723A2000         
+    13 0000000E 546865207265717569-         msg2 db "The requied value is: %d", 0
+    13 00000017 65642076616C756520-
+    13 00000020 69733A20256400     
+    14                                      
+    15 00000027 256400                      f_d db "%d", 0
+    16                                      
+    17                                      
+    18 0000002A <res 00000002>              a resw 1
+    19 0000002C <res 00000001>              m resb 1
+    20 0000002D <res 00000001>              n resb 1
+    21                                      
+    22                                  segment code
+    23                                  
+    24                                      start:
+    25 00000000 68[00000000]                push msg1
+    26 00000005 FF15[00000000]              call [printf]
+    27 0000000B 83C404                      add ESP, 4*1
+    28                                      
+    29 0000000E 68[2A000000]                push a
+    30 00000013 68[27000000]                push f_d
+    31 00000018 FF15[00000000]              call [scanf]
+    32                                      
+    33 0000001E 68[00000000]                push msg1
+    34 00000023 FF15[00000000]              call [printf]
+    35 00000029 83C404                      add ESP, 4*1
+    36                                      
+    37 0000002C 68[2C000000]                push m
+    38 00000031 68[27000000]                push f_d
+    39 00000036 FF15[00000000]              call [scanf]
+    40                                      
+    41 0000003C 68[00000000]                push msg1
+    42 00000041 FF15[00000000]              call [printf]
+    43 00000047 83C404                      add ESP, 4*1
+    44                                      
+    45 0000004A 68[2D000000]                push n
+    46 0000004F 68[27000000]                push f_d
+    47 00000054 FF15[00000000]              call [scanf]
+    48                                          
+    49                                  
+    50 0000005A 66A1[2A000000]              mov AX, [a]
+    51 00000060 8A0D[2D000000]              mov CL, [n]
+    52 00000066 66D3E8                      shr AX, CL ; AX/2 
+    53                                  
+    54 00000069 66BB0000                    mov BX, 0
+    55                                      
+    56 0000006D B900000000                  mov ECX, 0
+    57 00000072 8A0D[2C000000]              mov CL, [m]
+    58 00000078 2A0D[2D000000]              sub CL, byte [n]
+    59 0000007E FEC1                        inc CL
+    60                                      loop1: 
+    61 00000080 66D1E3                          shl BX, 1
+    62 00000083 6683C301                        add BX, 1
+    63                                          
+    64                                          ;1: BX = 1
+    65                                          ;2: BX = 10 -> BX = 11
+    66                                          ;3: BX = 110 -> BX = 111
+    67                                          ; ... 
+    68 00000087 E2F7                        loop loop1
+    69                                      
+    70 00000089 6621D8                      and AX, BX
+    71                                      
+    72 0000008C 6699                        cwd
+    73                                      
+    74 0000008E 50                          push EAX
+    75 0000008F 68[0E000000]                push msg2
+    76 00000094 FF15[00000000]              call [printf]
+    77 0000009A 83C408                      add ESP, 4*2
+    78                                      
+    79                                      
+    80                                      ; 148 = 1001 0100 
+    81                                      
+    82                                      
+    83                                      
+    84                                      
+    85                                      
+    86                                      
+    87 0000009D 6A00                        push dword 0 
+    88 0000009F FF15[00000000]              call [exit]

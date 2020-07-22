@@ -1,0 +1,28 @@
+     1                                  bits 32
+     2                                  global start
+     3                                  
+     4                                  extern exit, printf
+     5                                  import exit msvcrt.dll
+     6                                  import printf msvcrt.dll
+     7                                  
+     8                                  segment data use32 class=data
+     9 00000000 617364617369686A69-         a db "asdasihjihf"
+     9 00000009 6866               
+    10                                      
+    11                                  segment code use32 class=data
+    12                                      start:
+    13 00000000 BE[00000000]                mov ESI, a
+    14 00000005 BF[00000000]                mov EDI, a
+    15                                      loopZERO:
+    16 0000000A AC                              lodsb
+    17 0000000B 3C00                            cmp AL, 0
+    18 0000000D 7405                            je endLoopZERO
+    19 0000000F B000                            mov AL, 0
+    20 00000011 AA                              stosb
+    21 00000012 EBF6                            jmp loopZERO
+    22                                      endLoopZERO:
+    23                                      
+    24                                      
+    25 00000014 6A00                        push dword 0
+    26 00000016 FF15[00000000]              call [exit]
+    27                                      

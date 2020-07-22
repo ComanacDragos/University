@@ -1,0 +1,60 @@
+     1                                  bits 32
+     2                                  global start
+     3                                  
+     4                                  extern exit
+     5                                  import exit msvcrt.dll
+     6                                  
+     7                                  segment data use32 class=data
+     8                                      
+     9 00000000 07563412153C2B1A             s DD 12345607h, 1A2B3C15h
+    10                                       l equ $-s
+    11 00000008 00<rept>                     d times l db 0
+    12                                       
+    13                                  segment code use32 class=code
+    14                                      ;Given an array S of doublewords, build the array of bytes D formed from bytes of doublewords sorted as unsigned numbers in descending order.
+    15                                  
+    16                                      start:
+    17                                      
+    18 00000000 BE[00000000]                mov ESI, s
+    19 00000005 BF[08000000]                mov EDI, d
+    20 0000000A B908000000                  mov ECX, l
+    21                                      
+    22                                      
+    23 0000000F B908000000                  mov ECX, l
+    24 00000014 E333                        JECXZ theend
+    25                                      loop1:
+    26 00000016 AC                              LODSB
+    27 00000017 AA                              STOSB
+    28 00000018 E2FC                        loop loop1 ; d retains the string of bytes from s
+    29                                      
+    30                                      ; sort the bytes from d using bubble sort
+    31 0000001A 66BA0100                    mov DX, 1
+    32                                      
+    33                                      loop2:
+    34 0000001E 6683FA00                        cmp DX, 0
+    35 00000022 7425                            je theend
+    36 00000024 66BA0000                        mov DX, 0
+    37                                          
+    38 00000028 BE[08000000]                    mov ESI, d
+    39 0000002D B907000000                      mov ECX, l-1
+    40                                          
+    41                                          loop3:
+    42 00000032 8A06                                mov AL, byte [ESI]
+    43 00000034 8A6601                              mov AH, byte [ESI+1]
+    44                                              
+    45 00000037 38E0                                cmp AL, AH
+    46 00000039 7F09                                jg next
+    47                                              
+    48 0000003B 8826                                mov byte [ESI], AH
+    49 0000003D 884601                              mov byte [ESI+1], AL
+    50 00000040 66BA0100                            mov DX, 1
+    51                                              
+    52                                              next:
+    53 00000044 46                                      inc ESI
+    54 00000045 E2EB                                    loop loop3
+    55 00000047 EBD5                                    jmp loop2
+    56                                      
+    57                                      theend:
+    58                                      
+    59 00000049 6A00                        push dword 0
+    60 0000004B FF15[00000000]              call [exit]

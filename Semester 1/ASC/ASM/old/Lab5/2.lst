@@ -1,0 +1,21 @@
+     1                                  bits 32
+     2                                  global start
+     3                                  
+     4                                  
+     5                                  extern exit
+     6                                  import exit msvcrt.dll
+     7                                  
+     8                                  segment data
+     9                                  
+    10                                  segment code
+    11                                  
+    12                                     start:
+    13 00000000 B801000000                 mov EAX, 1
+    14 00000005 F7D8                       neg EAX
+    15                                     
+    16 00000007 BB01000000                 mov EBX, 1
+    17 0000000C F7D3                       not EBX
+    18                                     
+    19                                     
+    20 0000000E 6A00                       push dword 0
+    21 00000010 FF15[00000000]             call [exit]

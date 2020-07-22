@@ -1,0 +1,37 @@
+     1                                  bits 32
+     2                                  global start 
+     3                                  extern exit 
+     4                                  import exit msvcrt.dll
+     5                                  
+     6                                  segment data use32 class=data
+     7 00000000 B3                          a db 10110011b
+     8 00000001 71                          b db 01110001b
+     9 00000002 00                          c db 0
+    10                                      
+    11                                  
+    12                                  segment code use32 class=code
+    13                                      start:
+    14                                      
+    15 00000000 A0[01000000]                mov AL,[b]
+    16 00000005 24E0                        and AL,11100000b 
+    17 00000007 C0E805                      shr AL, 5
+    18 0000000A A2[02000000]                mov [c],AL ; c = 00000011
+    19                                      
+    20 0000000F 8025[02000000]07            and byte [c], 00000111b ; c = 00000011
+    21                                      
+    22 00000016 800D[02000000]40            or byte [c], 01000000b ; c = 01000011
+    23                                      
+    24 0000001D A0[01000000]                mov AL,[b]
+    25 00000022 F6D0                        not AL 
+    26 00000024 2408                        and AL, 00001000b 
+    27 00000026 C0E804                      shr AL,4
+    28 00000029 0805[02000000]              or byte [c],AL
+    29                                      
+    30                                      
+    31                                      
+    32                                      
+    33                                      
+    34 0000002F 668B15[02000000]            mov DX,[c]
+    35                                      
+    36 00000036 6A00                        push dword 0
+    37 00000038 FF15[00000000]              call [exit]

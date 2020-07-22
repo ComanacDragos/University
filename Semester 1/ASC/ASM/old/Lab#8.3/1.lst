@@ -1,0 +1,45 @@
+     1                                  bits 32
+     2                                  global start
+     3                                  
+     4                                  extern exit, fopen, fprintf
+     5                                  import exit msvcrt.dll
+     6                                  import fopen msvcrt.dll
+     7                                  import fprintf msvcrt.dll
+     8                                  
+     9                                  segment data use32 class=data:
+    10                                      
+    11 00000000 616E61202573206172-         fmt db "ana %s are %d mere", 0
+    11 00000009 65202564206D657265-
+    11 00000012 00                 
+    12 00000013 616E612E74787400            f db "ana.txt", 0
+    13 0000001B 7700                        m db "w", 0
+    14 0000001D 506F6F7000                  n db "Poop", 0
+    15 00000022 FFFFFFFF                    d_f dd -1
+    16                                     
+    17                                     
+    18                                     
+    19                                  segment code use32 class=code:
+    20                                      start:
+    21                                      
+    22 00000000 68[1B000000]                push m
+    23 00000005 68[13000000]                push f
+    24 0000000A FF15[00000000]              call [fopen]
+    25                                      
+    26 00000010 83F800                      cmp EAX, 0
+    27 00000013 7423                        jz end
+    28                                      
+    29 00000015 A3[22000000]                mov [d_f], EAX
+    30 0000001A 83C408                      add ESP, 4*2
+    31                                      
+    32 0000001D 6A03                        push 3
+    33 0000001F 68[1D000000]                push n
+    34 00000024 68[00000000]                push fmt
+    35 00000029 FF35[22000000]              push dword [d_f]
+    36                                      
+    37 0000002F FF15[00000000]              call [fprintf]
+    38 00000035 83C410                      add ESP, 4*4
+    39                                      
+    40                                      end:
+    41                                      
+    42 00000038 6A00                        push dword 0
+    43 0000003A FF15[00000000]              call [exit]

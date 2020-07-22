@@ -1,0 +1,68 @@
+     1                                  bits 32
+     2                                  global start
+     3                                  
+     4                                  extern exit
+     5                                  import exit msvcrt.dll
+     6                                  
+     7                                  segment data use32 class=data
+     8                                  
+     9 00000000 2B34326138345835            s1 db '+', '4', '2', 'a', '8', '4', 'X', '5'
+    10                                      len1 equ $-s1
+    11 00000008 613435                      s2 db 'a', '4', '5'
+    12                                      len2 equ $-s2
+    13 0000000B 00<rept>                    s3 times len1 db 0
+    14                                  
+    15                                  segment code use32 class=code
+    16                                  ;Two character strings S1 and S2 are given.
+    17                                  ;Obtain the string D by concatenating the elements found on the positions multiple of 3 from S1 and the elements of S2 in reverse order.
+    18                                      start:
+    19                                      
+    20 00000000 66B80800                    mov AX, len1
+    21 00000004 66BA0000                    mov DX, 0
+    22 00000008 66BB0300                    mov BX, 3
+    23 0000000C 66F7F3                      div BX ; DX = len1%3
+    24                                      
+    25 0000000F 6689C1                      mov CX, AX
+    26 00000012 6641                        inc CX
+    27                                      
+    28 00000014 BE[00000000]                mov ESI, s1
+    29 00000019 BF[0B000000]                mov EDI, s3
+    30                                      
+    31                                      loop1:
+    32 0000001E 8A06                            mov AL, [ESI]
+    33 00000020 8807                            mov [EDI], AL
+    34 00000022 47                              inc EDI
+    35                                          
+    36 00000023 B303                            mov BL, 3
+    37                                          loop2:
+    38 00000025 46                                  inc ESI
+    39 00000026 FECB                                dec Bl
+    40 00000028 80FB00                              cmp BL, 0
+    41 0000002B 77F8                                ja loop2
+    42                                          
+    43 0000002D 6649                            dec CX
+    44 0000002F 6683F900                        cmp CX, 0
+    45 00000033 77E9                            ja loop1
+    46                                          
+    47 00000035 B903000000                  mov ECX, len2
+    48                                      
+    49 0000003A BE[08000000]                mov ESI, s2
+    50 0000003F 01CE                        add ESI, ECX
+    51 00000041 4E                          dec ESI
+    52                                      
+    53                                      loop3:
+    54 00000042 8A06                            mov AL, [ESI]
+    55 00000044 8807                            mov [EDI], AL
+    56 00000046 47                              inc EDI
+    57                                          
+    58 00000047 4E                              dec ESI
+    59 00000048 49                              dec ECX
+    60                                          
+    61 00000049 83F900                          cmp ECX,0
+    62 0000004C 77F4                            ja loop3
+    63                                          
+    64                                              
+    65                                      
+    66                                     
+    67 0000004E 6A00                        push dword 0
+    68 00000050 FF15[00000000]              call [exit]

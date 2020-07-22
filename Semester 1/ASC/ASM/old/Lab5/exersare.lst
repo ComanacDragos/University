@@ -1,0 +1,96 @@
+     1                                  bits 32
+     2                                  global vancea
+     3                                  
+     4                                  extern exit
+     5                                  import exit msvcrt.dll
+     6                                   
+     7                                  segment data use32 class=data
+     8                                  
+     9 00000000 32147586BCAD                s dw 1432h, 8675h, 0ADBCh 
+    10                                      len equ ($-s)/2
+    11 00000006 <res 00000004>              aux resb 4
+    12 0000000A <res 0000000C>              d resd len
+    13                                      
+    14                                      
+    15                                      ;1432h --> 01, 02, 30, 04
+    16                                      
+    17                                      
+    18                                      ;AL = 32
+    19                                      ;BL = F0
+    20                                      ;and= 30 (03)
+    21                                      
+    22                                      ;01020304 --- 04 03 02 01
+    23                                  
+    24                                  segment code use32 class=code
+    25                                      vancea:
+    26                                      
+    27 00000000 B903000000                  mov ECX, len
+    28 00000005 BF[0A000000]                mov EDI, d
+    29 0000000A BE[00000000]                mov ESI, s
+    30                                      
+    31                                      loop1:
+    32 0000000F 66AD                            lodsw
+    33                                        
+    34 00000011 B30F                            mov BL, 0Fh ; 0000 1111
+    35 00000013 20C3                            and BL, AL ; BL = 0000 nibble inf din al
+    36                                          
+    37 00000015 881D[06000000]                  mov [aux], BL
+    38                                          
+    39 0000001B B3F0                            mov BL, 0F0h
+    40 0000001D 20C3                            and BL, AL
+    41 0000001F C0EB04                          shr BL, 4
+    42                                          
+    43 00000022 881D[07000000]                  mov [aux+1], BL
+    44                                          
+    45 00000028 B30F                            mov BL, 0Fh
+    46 0000002A 20E3                            and BL, AH
+    47                                          
+    48 0000002C 881D[08000000]                  mov [aux+2], BL
+    49                                          
+    50 00000032 B3F0                            mov BL, 0F0h
+    51 00000034 20E3                            and BL, AH
+    52 00000036 C0EB04                          shr BL, 4
+    53                                          
+    54 00000039 881D[09000000]                  mov [aux+3], BL
+    55                                          
+    56 0000003F B800000000                      mov EAX, 0 ; i = 0
+    57                                          loop2:
+    58 00000044 83F803                              cmp EAX, 3
+    59 00000047 7429                                je endLoop2
+    60                                              
+    61 00000049 89C3                                mov EBX, EAX
+    62                                              loop3:
+    63 0000004B 43                                  inc EBX ; j = i+1
+    64                                              
+    65 0000004C 83FB04                              cmp EBX, 4
+    66 0000004F 741E                                je endLoop3
+    67                                              
+    68 00000051 8A90[06000000]                      mov DL, [aux+EAX] ; aux[i]
+    69 00000057 8AB3[06000000]                      mov DH, [aux+EBX] ; aux[j]
+    70                                              
+    71 0000005D 38F2                                cmp DL, DH
+    72 0000005F 770C                                ja endCMP
+    73                                              
+    74 00000061 88B0[06000000]                      mov [aux+EAX], DH
+    75 00000067 8893[06000000]                      mov [aux+EBX], DL
+    76                                              endCMP:
+    77                                              
+    78 0000006D EBDC                                jmp loop3
+    79                                              endLoop3:
+    80                                              
+    81 0000006F 40                              inc EAX
+    82 00000070 EBD2                            jmp loop2
+    83                                          endLoop2:
+    84                                          
+    85 00000072 89F3                        mov EBX, ESI
+    86 00000074 BE[06000000]                mov ESI, aux
+    87 00000079 AD                          lodsd
+    88 0000007A AB                          stosd
+    89 0000007B 89DE                        mov ESI, EBX
+    90                                      
+    91 0000007D E290                        loop loop1
+    92                                          
+    93                                          
+    94                                      
+    95 0000007F 6A00                        push dword 0
+    96 00000081 FF15[00000000]              call [exit]

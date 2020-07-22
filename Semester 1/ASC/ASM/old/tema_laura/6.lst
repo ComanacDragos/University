@@ -1,0 +1,49 @@
+     1                                  bits 32
+     2                                  global start
+     3                                  
+     4                                  extern exit, fread, scanf, fopen
+     5                                  import fread msvcrt.dll
+     6                                  import exit msvcrt.dll
+     7                                  import scanf msvcrt.dll
+     8                                  import fopen msvcrt.dll
+     9                                  
+    10                                  segment data use32 class=data
+    11                                  
+    12 00000000 66696C652E74787400          file db "file.txt", 0
+    13 00000009 0000                        l dw $-l
+    14 0000000B 256300                      f_c db "%c", 0
+    15 0000000E 7200                        mode db "r", 0
+    16 00000010 <res 00000004>              f_d resd 1
+    17 00000014 <res 000003E8>              char resb 1000
+    18                                      
+    19                                      
+    20                                  segment code use32 class=code
+    21                                  
+    22                                      start:
+    23 00000000 83F801                      cMp EaX,1
+    24                                      
+    25                                      
+    26 00000003 68[0E000000]                    push mode
+    27 00000008 68[00000000]                    push file
+    28 0000000D FF15[00000000]                  call [fopen]
+    29 00000013 83C408                          add ESP, 4*2
+    30                                          
+    31 00000016 A3[10000000]                    mov [f_d], EAX
+    32                                      
+    33                                      
+    34 0000001B FF35[10000000]                  push dword [f_d]
+    35 00000021 68E8030000                      push 1000
+    36 00000026 6A01                            push 1
+    37 00000028 68[14000000]                    push char
+    38 0000002D FF15[00000000]                  call [fread]
+    39 00000033 83C410                          add ESP, 4*4
+    40                                          
+    41                                          
+    42                                          
+    43                                          
+    44                                          
+    45                                          
+    46                                          
+    47 00000036 6A00                        push dword 0
+    48 00000038 FF15[00000000]              call [exit]
+    49                                      

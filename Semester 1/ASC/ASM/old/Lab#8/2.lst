@@ -1,0 +1,20 @@
+     1                                  bits 32
+     2                                  global start
+     3                                  
+     4                                  extern exit, scanf
+     5                                  import exit msvcrt.dll
+     6                                  import scanf msvcrt.dll
+     7                                  
+     8                                  segment data use32 class=data:
+     9 00000000 <res 00000004>              n resd 1
+    10 00000004 256400                      f db "%d", 0
+    11                                  
+    12                                  segment code use32 class=code:
+    13                                      start:
+    14 00000000 68[00000000]                push n
+    15 00000005 68[04000000]                push f
+    16                                      ;call [scanf]
+    17                                      
+    18                                      
+    19 0000000A 6A00                        push dword 0
+    20 0000000C FF15[00000000]              call [exit]

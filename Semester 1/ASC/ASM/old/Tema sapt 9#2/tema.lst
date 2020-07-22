@@ -1,0 +1,70 @@
+     1                                  bits 32
+     2                                  global start
+     3                                  
+     4                                  extern exit, fopen ,fprintf, scanf, printf
+     5                                  
+     6                                  import exit msvcrt.dll
+     7                                  import fopen msvcrt.dll
+     8                                  import fprintf msvcrt.dll
+     9                                  import scanf msvcrt.dll
+    10                                  import printf msvcrt.dll
+    11                                  
+    12                                  segment data use32 class=data:
+    13                                  
+    14 00000000 47697665206E616D65-         m1 db "Give name: ", 0
+    14 00000009 3A2000             
+    15 0000000C 47697665206E756D62-         m2 db "Give number: ", 0
+    15 00000015 65723A2000         
+    16                                  
+    17 0000001A 616E61202573206172-         fmt db "ana %s are %d mere", 0
+    17 00000023 65202564206D657265-
+    17 0000002C 00                 
+    18 0000002D 66696C652E74787400          file db "file.txt", 0
+    19 00000036 7700                        m db "w", 0
+    20 00000038 <res 0000000A>              n resb 10
+    21 00000042 FFFFFFFF                    d_f dd -1
+    22 00000046 <res 00000004>              mere resd 1
+    23 0000004A 257300                      f_str db "%s", 0
+    24 0000004D 256400                      f_d db "%d", 0
+    25                                    
+    26                                  segment code use32 class=code:
+    27                                      start:
+    28                                      
+    29 00000000 68[36000000]                push m
+    30 00000005 68[2D000000]                push file
+    31 0000000A FF15[00000000]              call [fopen]
+    32 00000010 83C408                      add ESP, 4*2
+    33                                      
+    34 00000013 83F800                      cmp EAX, 0
+    35 00000016 7466                        jz end
+    36 00000018 A3[42000000]                mov [d_f], EAX
+    37                                      
+    38 0000001D 68[00000000]                push m1
+    39 00000022 FF15[00000000]              call [printf]
+    40 00000028 83C404                      add ESP, 4*1
+    41                                      
+    42 0000002B 68[38000000]                push n
+    43 00000030 68[4A000000]                push f_str
+    44 00000035 FF15[00000000]              call [scanf]
+    45 0000003B 83C408                      add ESP, 4*2
+    46                                      
+    47 0000003E 68[0C000000]                push m2
+    48 00000043 FF15[00000000]              call [printf]
+    49 00000049 83C404                      add ESP, 4*1
+    50                                      
+    51 0000004C 68[46000000]                push mere
+    52 00000051 68[4D000000]                push f_d
+    53 00000056 FF15[00000000]              call [scanf]
+    54 0000005C 83C408                      add ESP, 4*2
+    55                                      
+    56 0000005F FF35[46000000]              push dword [mere]
+    57 00000065 68[38000000]                push n
+    58 0000006A 68[1A000000]                push fmt
+    59 0000006F FF35[42000000]              push dword [d_f]
+    60 00000075 FF15[00000000]              call [fprintf]
+    61 0000007B 83C410                      add ESP, 4*4
+    62                                      
+    63                                      
+    64                                      end:
+    65 0000007E 6A00                        push dword 0
+    66 00000080 FF15[00000000]              call [exit]

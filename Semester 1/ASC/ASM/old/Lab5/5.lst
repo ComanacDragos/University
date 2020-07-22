@@ -1,0 +1,55 @@
+     1                                  bits 32
+     2                                  global start
+     3                                  
+     4                                  extern exit
+     5                                  import exit msvcrt.dll
+     6                                  
+     7                                  segment data use32 class=data
+     8 00000000 785634124D3C2C1A76-         s dd 12345678h, 1A2C3C4Dh, 98FCDD76h, 12783B2Bh
+     8 00000009 DDFC982B3B7812     
+     9                                      len equ ($-s)/4
+    10 00000010 <res 00000004>              d resd 1
+    11                                  
+    12                                  
+    13                                  segment code use32 class=code
+    14                                      start:
+    15 00000000 BE[00000000]                mov ESI, s
+    16 00000005 BF[10000000]                mov EDI, d
+    17 0000000A B904000000                  mov ECX, len
+    18 0000000F BA00000000                  mov EDX, 0 ; contor pt nr de octeti inserati in d
+    19                                      
+    20                                      loop1:
+    21 00000014 AD                              lodsd
+    22                                          ;shr AX, 8
+    23                                          ;mov AH, 0
+    24                                          ;mov BL, AL
+    25                                          
+    26                                          ;mov BH, 2
+    27                                          ;div BH ; AL = AX/2 ; AH = AX%2
+    28                                          
+    29                                          ;cmp AH, 0
+    30                                          
+    31 00000015 F6C401                          test AH, 01h ; --> 01 daca nr este impar ; 00 daca este par ; test <=> and fictiv
+    32 00000018 7504                            jnz endLoop1
+    33                                          
+    34 0000001A 88E0                            mov AL, AH
+    35 0000001C AA                              stosb
+    36 0000001D 42                              inc EDX
+    37                                          
+    38                                      endLoop1:
+    39 0000001E E2F4                        loop loop1
+    40                                      
+    41                                      loop2:
+    42 00000020 83FA04                          cmp EDX, 4
+    43 00000023 7406                            je endLoop2
+    44                                          
+    45 00000025 B0FF                            mov AL, 0FFh
+    46 00000027 AA                              stosb
+    47 00000028 42                              inc EDX
+    48                                          
+    49 00000029 EBF5                        jmp loop2
+    50                                      endLoop2:
+    51                                      
+    52                                      
+    53 0000002B 6A00                        push dword 0
+    54 0000002D FF15[00000000]              call [exit]

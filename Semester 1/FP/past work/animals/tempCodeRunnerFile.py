@@ -1,0 +1,2 @@
+
+        choice = input(">").strip(" ")

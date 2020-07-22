@@ -1,0 +1,80 @@
+     1                                  bits 32
+     2                                  global start
+     3                                  
+     4                                  extern exit, fprintf, scanf, fopen
+     5                                  import exit msvcrt.dll
+     6                                  import fprintf msvcrt.dll
+     7                                  import scanf msvcrt.dll
+     8                                  import fopen msvcrt.dll
+     9                                  
+    10                                  
+    11                                  
+    12                                  ;f(a,b,c) ; push c
+    13                                  ;push b
+    14                                  ;push a
+    15                                  
+    16                                  ;pop a
+    17                                  ;pop b
+    18                                  ;pop c
+    19                                  
+    20                                  segment data use32 class=data
+    21                                     
+    22 00000000 66696C652E74787400         file db "file.txt", 0
+    23 00000009 7700                       f_m db "w", 0 ; modul de scriere
+    24 0000000B 257300                     f_s db "%s", 0 
+    25 0000000E 25730A00                   f_s_fprintf db "%s", 10, 0
+    26 00000012 <res 00000004>             d_f resd 1 ; descriptor de fisier
+    27                                     
+    28 00000016 <res 00000064>             s resb 100
+    29                                     
+    30                                     ; fopen(nume_fisier, mod_fisier)
+    31                                     
+    32                                  segment code use32 class=code
+    33                                      start:  
+    34                                      
+    35 00000000 68[09000000]                push f_m
+    36 00000005 68[00000000]                push file
+    37 0000000A FF15[00000000]              call [fopen]
+    38 00000010 83C408                      add ESP, 4*2
+    39                                      
+    40 00000013 A3[12000000]                mov [d_f], EAX
+    41                                      
+    42                                      loop1:
+    43 00000018 68[16000000]                    push s
+    44 0000001D 68[0B000000]                    push f_s
+    45 00000022 FF15[00000000]                  call [scanf]
+    46 00000028 83C408                          add ESP, 4*2
+    47                                          
+    48 0000002B 66A1[16000000]                  mov AX, [s]
+    49 00000031 6683F824                        cmp AX, '$'
+    50 00000035 7431                            je endLoop1
+    51                                          
+    52 00000037 BE[16000000]                    mov ESI, s
+    53                                          loop2:
+    54 0000003C AC                                  lodsb
+    55 0000003D 3C00                                cmp AL, 0
+    56 0000003F 7425                                je endLoop2
+    57                                          
+    58 00000041 3C30                                cmp AL, '0'
+    59 00000043 721F                                jb notDigit
+    60                                              
+    61 00000045 3C39                                cmp AL, '9'
+    62 00000047 771B                                ja notDigit
+    63                                          
+    64 00000049 68[16000000]                        push s
+    65 0000004E 68[0E000000]                        push f_s_fprintf
+    66 00000053 FF35[12000000]                      push dword [d_f] ; push d_f
+    67 00000059 FF15[00000000]                      call [fprintf]
+    68 0000005F 83C40C                              add ESP, 4*3
+    69 00000062 EB02                                jmp endLoop2
+    70                                              
+    71                                          notDigit:
+    72 00000064 EBD6                            jmp loop2
+    73                                          endLoop2:
+    74                                          
+    75 00000066 EBB0                        jmp loop1
+    76                                      endLoop1:
+    77                                          
+    78                                       
+    79 00000068 6A00                        push dword 0 
+    80 0000006A FF15[00000000]              call [exit]

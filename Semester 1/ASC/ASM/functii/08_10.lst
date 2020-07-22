@@ -1,0 +1,83 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit, scanf, fopen, fprintf, printf, gets               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    10                                  import scanf msvcrt.dll
+    11                                  import gets msvcrt.dll
+    12                                  import fopen msvcrt.dll
+    13                                  import fprintf msvcrt.dll
+    14                                  import printf msvcrt.dll
+    15                                  
+    16                                  ; 10. Sa se citeasca de la tastatura un nume de fisier si un text. Sa se creeze un fisier cu numele dat in directorul
+    17                                  ; curent si sa se scrie textul in acel fisier. Observatii: Numele de fisier este de maxim 30 de caractere. Textul este
+    18                                  ; de maxim 120 de caractere.
+    19                                  segment data use32 class=data
+    20                                      
+    21 00000000 257300                          format db "%s", 0
+    22 00000003 00000000                        descriptor dd 0
+    23 00000007 7700                            mod_scriere db "w", 0
+    24                                          
+    25 00000009 6E756D652066697369-             msg1 db "nume fisier: ", 0
+    25 00000012 65723A2000         
+    26 00000017 746578743A2000                  msg2 db "text: ", 0
+    27                                          
+    28                                          max_len_f equ 30
+    29 0000001E 00<rept>                        nume_fisier times max_len_f db 0
+    30                                          ;nume_fisier resd 1
+    31                                          max_len_t equ 120
+    32 0000003C 00<rept>                        text times max_len_t db 0
+    33                                  
+    34                                  ; our code starts here
+    35                                  segment code use32 class=code
+    36                                      start:
+    37                                      
+    38                                          ; printf
+    39 00000000 68[09000000]                    push msg1
+    40 00000005 FF15[00000000]                  call [printf]
+    41 0000000B 83C404                          add esp, 4
+    42                                          
+    43                                          ; scanf(format1,nume_fisier)
+    44 0000000E 68[1E000000]                    push nume_fisier
+    45 00000013 FF15[00000000]                  call [gets]
+    46 00000019 83C408                          add esp, 8
+    47                                          
+    48                                          ; printf
+    49 0000001C 68[17000000]                    push msg2
+    50 00000021 FF15[00000000]                  call [printf]
+    51 00000027 83C404                          add esp, 4
+    52                                          
+    53                                          ; scanf(format2,text)
+    54 0000002A 68[3C000000]                    push text
+    55 0000002F FF15[00000000]                  call [gets]
+    56 00000035 83C404                          add esp, 4
+    57                                          
+    58                                          ; fopen(nume_fisier,mod_scriere)
+    59 00000038 68[07000000]                    push mod_scriere
+    60 0000003D 68[1E000000]                    push nume_fisier
+    61 00000042 FF15[00000000]                  call [fopen]
+    62 00000048 83C408                          add esp, 8
+    63                                          
+    64 0000004B A3[03000000]                    mov [descriptor], eax
+    65                                          
+    66 00000050 BE[3C000000]                    mov esi, text
+    67                                          
+    68                                          
+    69                                          ; fprintf(descriptor,format,text)
+    70 00000055 68[3C000000]                    push text
+    71 0000005A 68[00000000]                    push format
+    72 0000005F FF35[03000000]                  push dword [descriptor]
+    73 00000065 FF15[00000000]                  call [fprintf]
+    74 0000006B 83C40C                          add esp, 12
+    75                                              
+    76                                              
+    77                                          
+    78                                          
+    79                                      
+    80                                          ; exit(0)
+    81 0000006E 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    82 00000070 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

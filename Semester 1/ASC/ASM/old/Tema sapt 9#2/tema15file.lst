@@ -1,0 +1,92 @@
+     1                                  bits 32
+     2                                  global start
+     3                                  
+     4                                  extern exit, fprintf, fopen
+     5                                  
+     6                                  import exit msvcrt.dll
+     7                                  import fprintf msvcrt.dll
+     8                                  import fopen msvcrt.dll
+     9                                  
+    10                                  segment data use32 class=data:
+    11                                  
+    12 00000000 66696C652E74787400          file db "file.txt", 0
+    13 00000009 413848617E61612A31-         string db "A8Ha~aa*122+=aaaaaaaaa", 0
+    13 00000012 32322B3D6161616161-
+    13 0000001B 6161616100         
+    14                                      len equ $-string
+    15 00000020 00<rept>                    newString times len+1 db 0
+    16 00000038 58                          X db 'X'
+    17 00000039 7700000000000000            m dd "w", 0
+    18 00000041 257300                      fmt db "%s", 0
+    19 00000044 <res 00000004>              d_file resd 1
+    20                                      
+    21                                  segment code use32 class=code:
+    22                                      start:
+    23                                      
+    24                                      
+    25 00000000 B917000000                  mov ECX, len
+    26 00000005 83F900                      cmp ECX, 0
+    27 00000008 7465                        jz end
+    28                                      
+    29 0000000A BE[09000000]                mov ESI, string
+    30 0000000F BF[20000000]                mov EDI, newString
+    31                                      loop1:
+    32 00000014 AC                              lodsb 
+    33                                          
+    34 00000015 3C30                            cmp AL, '0'
+    35 00000017 7C07                            jl checkUppercase
+    36                                          
+    37 00000019 3C39                            cmp AL, '9'
+    38 0000001B 7F03                            jg checkUppercase
+    39                                          
+    40 0000001D AA                              stosb 
+    41 0000001E EB1C                            jmp endLoop
+    42                                          
+    43                                          checkUppercase:
+    44 00000020 3C41                            cmp AL, 'A'
+    45 00000022 7C07                            jl checkLowerCase
+    46                                          
+    47 00000024 3C5A                            cmp AL, 'Z'
+    48 00000026 7F03                            jg checkLowerCase
+    49                                          
+    50 00000028 AA                              stosb 
+    51 00000029 EB11                            jmp endLoop
+    52                                          
+    53                                          checkLowerCase:
+    54 0000002B 3C61                            cmp AL, 'a'
+    55 0000002D 7C07                            jl xLabel
+    56                                          
+    57 0000002F 3C7A                            cmp AL, 'z'
+    58 00000031 7F03                            jg xLabel
+    59                                      
+    60 00000033 AA                              stosb 
+    61 00000034 EB06                            jmp endLoop
+    62                                      
+    63                                          xLabel:
+    64 00000036 A0[38000000]                       mov AL, [X]
+    65 0000003B AA                                 stosb
+    66                                          
+    67                                          endLoop:
+    68 0000003C E2D6                        loop loop1
+    69                                      
+    70 0000003E 68[39000000]                push m
+    71 00000043 68[00000000]                push file
+    72 00000048 FF15[00000000]              call [fopen]
+    73 0000004E 83C408                      add ESP, 4*2
+    74                                      
+    75 00000051 A3[44000000]                mov [d_file], EAX
+    76                                      
+    77 00000056 68[20000000]                push newString
+    78 0000005B 68[41000000]                push fmt
+    79 00000060 FF35[44000000]              push dword [d_file]
+    80 00000066 FF15[00000000]              call [fprintf]
+    81 0000006C 83C40C                      add ESP, 4*3
+    82                                      
+    83                                      
+    84                                      
+    85                                      
+    86                                      end:
+    87 0000006F 6A00                        push dword 0 
+    88 00000071 FF15[00000000]              call [exit]
+    89                                  
+    90                                      

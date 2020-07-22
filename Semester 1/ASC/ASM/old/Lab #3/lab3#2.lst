@@ -1,0 +1,36 @@
+     1                                  bits 32
+     2                                  global start
+     3                                  extern exit
+     4                                  import exit msvcrt.dll
+     5                                  
+     6                                  segment data use32 class=data
+     7                                  
+     8 00000000 03000000                    a dd 3
+     9 00000004 08                          b db 8 
+    10 00000005 0400                        c dw 4
+    11 00000007 01                          d db 1
+    12 00000008 0500000000000000            e dq 5
+    13                                     
+    14                                  segment code use32 class=code
+    15                                      ; a+b/c-d*2-e signed
+    16                                      start:
+    17 00000000 A0[04000000]                mov AL,[b]
+    18 00000005 6698                        cbw ; AX=b
+    19 00000007 6699                        cwd ; DX:AX=b
+    20 00000009 66F73D[05000000]            idiv word [c] ; AX=b/c DX=a%c
+    21 00000010 6689C3                      mov BX,AX ; BX=AX
+    22 00000013 B002                        mov AL,2 ; AL=2
+    23 00000015 F62D[07000000]              imul byte [d] ; AX=2*d
+    24 0000001B 6629C3                      sub BX,AX ; BX=b/c-2*d
+    25 0000001E 6689D8                      mov AX,BX
+    26 00000021 6699                        cwd ; DX:AX=b/c-2*d
+    27 00000023 660305[00000000]            add AX, word [a]
+    28 0000002A 661315[02000000]            adc DX, word [a+2]
+    29 00000031 6652                        push DX 
+    30 00000033 6650                        push AX
+    31 00000035 58                          pop EAX
+    32 00000036 99                          cdq
+    33 00000037 2B05[08000000]              sub EAX, dword [e]
+    34 0000003D 1B15[0C000000]              sbb EDX, dword [e+4] 
+    35 00000043 6A00                        push dword 0
+    36 00000045 FF15[00000000]              call [exit]

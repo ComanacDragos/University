@@ -1,0 +1,75 @@
+     1                                  bits 32
+     2                                  global start
+     3                                  
+     4                                  extern exit
+     5                                  import exit msvcrt.dll
+     6                                  
+     7                                  segment data use32 class=data
+     8                                      
+     9 00000000 310000003200000033-         s1 dd '1', '2', '3'
+     9 00000009 000000             
+    10                                      len1 equ ($-s1)/4
+    11 0000000C 390000003300000034-         s2 dd '9', '3', '4', '5', '6'
+    11 00000015 000000350000003600-
+    11 0000001E 0000               
+    12                                      len2 equ ($-s2)/4
+    13 00000020 00000000                    d dd 0 ; adresa sirului cel mai mare
+    14 00000024 00000000                    rem dd 0
+    15 00000028 00<rept>                    r times len2+len1 db 0 
+    16                                      
+    17                                  segment code use32 class=code
+    18                                      
+    19                                      start:
+    20 00000000 B903000000                  mov ECX, len1
+    21 00000005 BA[1C000000]                mov EDX, s2 + len2*4-4
+    22 0000000A 8915[20000000]              mov [d], EDX
+    23                                      
+    24 00000010 C605[24000000]02            mov byte [rem], len2 - len1
+    25                                     
+    26 00000017 83F905                      cmp ECX, len2
+    27 0000001A 7217                        jb l 
+    28 0000001C B905000000                  mov ECX, len2
+    29 00000021 BA[08000000]                mov EDX, s1 + (len1-1)*4
+    30 00000026 8915[20000000]              mov [d], EDX 
+    31 0000002C C605[24000000]FE            mov byte [rem], len1 - len2
+    32                                     
+    33                                      l:
+    34 00000033 BE00000000                  mov ESI, 0
+    35 00000038 BF[28000000]                mov EDI, r
+    36                                      loop1:
+    37 0000003D 8B86[00000000]                  mov EAX, [ESI+s1]
+    38 00000043 8B9E[0C000000]                  mov EBX, [ESI+s2]
+    39 00000049 39D8                            cmp EAX, EBX
+    40 0000004B 7702                            ja label1
+    41 0000004D 89D8                                mov EAX, EBX
+    42                                          label1:
+    43 0000004F 83E830                          sub EAX, '0'
+    44 00000052 B200                            mov DL, 0
+    45                                          biti:
+    46 00000054 A901000000                      test eax, 1
+    47 00000059 7402                            jz par
+    48 0000005B FEC2                            inc DL
+    49                                          par:
+    50 0000005D D1E8                            shr EAX,1
+    51 0000005F 83F800                          cmp EAX, 0 
+    52 00000062 75F0                            jne biti
+    53                                          
+    54 00000064 83C604                          add ESI,4
+    55 00000067 88D0                            mov AL,DL
+    56 00000069 AA                              stosb
+    57 0000006A E2D1                            loop loop1
+    58                                      
+    59 0000006C 8B35[20000000]              mov ESI, [d]
+    60 00000072 8B0D[24000000]              mov ECX, [rem]
+    61                                   
+    62                                      loop2:
+    63 00000078 FD                              std
+    64 00000079 AD                              lodsd 
+    65 0000007A 2C30                            sub AL, '0'
+    66 0000007C FC                              cld
+    67 0000007D AA                              stosb
+    68 0000007E E2F8                        loop loop2
+    69                                      
+    70                                      
+    71 00000080 6A00                        push dword 0
+    72 00000082 FF15[00000000]              call [exit]

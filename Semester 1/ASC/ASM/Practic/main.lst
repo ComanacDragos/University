@@ -1,0 +1,82 @@
+     1                                  bits 32
+     2                                  global start
+     3                                  
+     4                                  extern exit, fprintf, scanf, fopen, fclose
+     5                                  import exit msvcrt.dll
+     6                                  import fprintf msvcrt.dll
+     7                                  import scanf msvcrt.dll
+     8                                  import fopen msvcrt.dll
+     9                                  import fclose msvcrt.dll
+    10                                  
+    11                                  segment data use32 class=data
+    12 00000000 66696C652E74787400          file db "file.txt", 0
+    13 00000009 00000000                    desc dd 0
+    14 0000000D 7700                        mode db "w", 0
+    15 0000000F 02000000                    doi dd 2
+    16                                      
+    17                                      
+    18 00000013 256400                      format db "%d", 0
+    19 00000016 00000000                    nr dd 0
+    20 0000001A 25642000                    f_format db "%d ", 0
+    21                                  
+    22                                  segment code use32 class=code
+    23                                  ;R1. Sa se citeasca de la tastatura mai multe numere (naturale)intregi pana la citirea valorii 0.
+    24                                  ; Sa se scrie intr-un fisier, separate de spatii, doar acele 
+    25                                  ;numere negative care au numar impar de biti (cu valoarea 1).
+    26                                      start:
+    27                                      
+    28 00000000 68[0D000000]                push mode
+    29 00000005 68[00000000]                push file
+    30 0000000A FF15[00000000]              call [fopen]
+    31 00000010 83C408                      add esp, 8
+    32 00000013 A3[09000000]                mov [desc], EAX
+    33                                      
+    34                                      loop1:
+    35 00000018 68[16000000]                    push nr
+    36 0000001D 68[13000000]                    push format
+    37 00000022 FF15[00000000]                  call [scanf]
+    38 00000028 83C408                          add esp, 8
+    39                                          
+    40 0000002B A1[16000000]                    mov EAX, [nr]
+    41 00000030 83F800                          cmp EAX, 0
+    42 00000033 7444                            je endLoop1
+    43                                          
+    44 00000035 83F800                          cmp EAX, 0
+    45 00000038 7F3D                            jg endLoop
+    46                                          
+    47 0000003A BB00000000                      mov EBX, 0
+    48                                          loop2:
+    49 0000003F 83F800                              cmp EAX, 0
+    50 00000042 7407                                je endLoop2
+    51                                              
+    52 00000044 D1E8                                shr EAX, 1
+    53 00000046 83D300                              adc EBX, 0
+    54                                          
+    55 00000049 EBF4                            jmp loop2
+    56                                          endLoop2:
+    57                                          
+    58 0000004B 89D8                            mov EAX, EBX
+    59 0000004D BA00000000                      mov EDX, 0
+    60                                          
+    61 00000052 F735[0F000000]                  div dword [doi]
+    62                                          
+    63 00000058 83FA00                          cmp EDX, 0
+    64 0000005B 741A                            je endLoop
+    65                                          
+    66 0000005D FF35[16000000]                  push dword [nr]
+    67 00000063 68[1A000000]                    push f_format
+    68 00000068 FF35[09000000]                  push dword [desc]
+    69 0000006E FF15[00000000]                  call [fprintf]
+    70 00000074 83C40C                          add esp,12
+    71                                          
+    72                                      endLoop:
+    73 00000077 EB9F                        jmp loop1
+    74                                      endLoop1:
+    75                                  
+    76 00000079 FF35[09000000]              push dword [desc]
+    77 0000007F FF15[00000000]              call [fclose]
+    78 00000085 83C404                      add esp,4
+    79                                      
+    80                                      
+    81 00000088 6A00                        push dword 0
+    82 0000008A FF15[00000000]              call [exit]

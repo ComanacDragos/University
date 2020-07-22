@@ -1,0 +1,54 @@
+     1                                  bits 32
+     2                                  global start
+     3                                  
+     4                                  extern exit
+     5                                  import exit msvcrt.dll
+     6                                  
+     7                                  segment data use32 class=data
+     8                                  
+     9 00000000 616261636164                s1 db 'abacad'
+    10                                      lens1 equ $-s1
+    11 00000006 636166656764                s2 db 'cafegd'
+    12                                      lens2 equ $-s2
+    13 0000000C 00<rept>                    result times lens1+lens2 db 0
+    14                                  
+    15                                  segment code use32 class=code
+    16                                  ;1. se dau 2 stringuri. sa se obtina caracterele comune ale celor 2 stringuri
+    17                                      start:
+    18 00000000 FC                              cld
+    19 00000001 BB00000000                      mov EBX, 0; the lenght of string result
+    20                                          
+    21 00000006 BE[00000000]                    mov ESI, s1
+    22 0000000B B906000000                      mov ECX, lens1
+    23                                          
+    24                                          repeat:
+    25 00000010 BF[06000000]                        mov EDI, s2
+    26 00000015 51                                  push ECX
+    27 00000016 B906000000                          mov ECX, lens2
+    28 0000001B AC                                  lodsb
+    29 0000001C F2AE                                repne scasb ; executa scasb cat timp al diferit de byte ul de la offset ul edi, de max ecx ori
+    30                                              
+    31 0000001E 7517                                jnz not_found ; nu am gasit pe al in sirul s2
+    32                                              
+    33                                              ; verificam sa nu fie dublura in result
+    34                                              
+    35 00000020 83FB00                              cmp EBX, 0
+    36 00000023 740B                                je add_to_string
+    37 00000025 BF[0C000000]                        mov EDI, result
+    38 0000002A 89D9                                mov ECX, EBX
+    39 0000002C F2AE                                repne scasb
+    40                                              
+    41 0000002E 7407                                jz no_add
+    42                                              ; adaugam pe al in result
+    43                                              add_to_string:
+    44 00000030 8883[0C000000]                      mov [result+EBX], AL
+    45 00000036 43                                  inc EBX
+    46                                              
+    47                                              not_found:
+    48                                              no_add:
+    49 00000037 59                                  pop ECX
+    50 00000038 E2D6                                loop repeat
+    51                                              
+    52                                              
+    53 0000003A 6A00                        push dword 0
+    54 0000003C FF15[00000000]              call [exit]

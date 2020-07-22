@@ -1,0 +1,133 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    10                                  
+    11                                  ; 8. Se da un sir de dublucuvinte. Sa se obtina sirul format din octetii inferiori ai 
+    12                                  ; cuvintelor superioare din elementele sirului de dublucuvinte care sunt palindrom in scrierea in baza 10.
+    13                                  ; Exemplu:
+    14                                  
+    15                                  ; Se da sirul de dublucuvinte:
+    16                                  ; s DD 12345678h, 1A2C3C4Dh, 98FCDC76h
+    17                                  ; Sa se obtina sirul
+    18                                  ; d DB 2Ch, FCh.
+    19                                  segment data use32 class=data
+    20                                      
+    21 00000000 91D5120076DCFC98CB-         s dd 12D591h, 98FCDC76h, 69201CBh
+    21 00000009 019206             
+    22                                      len equ ($-s)/4
+    23 0000000C 0A000000                    zece dd 10
+    24 00000010 02000000                    doi dd 2
+    25                                      
+    26 00000014 <res 00000003>              d resb len
+    27 00000017 <res 0000000A>              aux resb 10
+    28                                  
+    29                                  ; our code starts here
+    30                                  segment code use32 class=code
+    31                                      start:
+    32                                          
+    33 00000000 BE[00000000]                    mov esi, s
+    34 00000005 BF[14000000]                    mov edi, d
+    35 0000000A B903000000                      mov ecx, len
+    36                                          
+    37                                          loop1:
+    38                                          
+    39 0000000F AD                                  lodsd ; eax = esi; esi+4
+    40                                          
+    41 00000010 56                                  push esi
+    42 00000011 51                                  push ecx
+    43 00000012 57                                  push edi 
+    44 00000013 50                                  push eax 
+    45                                              
+    46 00000014 B900000000                          mov ecx, 0
+    47                                              
+    48                                              loop2: ; obtinem dublucuvantul in baza 10
+    49 00000019 83F800                               cmp eax, 0 ; eax = esi = dublucuvantul din sir
+    50 0000001C 7414                                 je endloop2
+    51                                               
+    52 0000001E BA00000000                           mov edx, 0 ; edx:eax = esi = dublucuvantul din sir
+    53                                               
+    54 00000023 F735[0C000000]                       div dword[zece] ; eax = esi/10 , edx = esi % 10
+    55 00000029 8991[17000000]                       mov [aux+ecx], edx ; aux = edx = esi % 10
+    56 0000002F 41                                   inc ecx
+    57                                               
+    58 00000030 EBE7                                 jmp loop2
+    59                                               
+    60                                              ; aux contine cifrele in baza 10 a dublucuvantului din sir
+    61                                              
+    62                                              endloop2:
+    63                                              
+    64                                              ; initializam registrii pentru parcurgerea dublucuvantului
+    65                                              
+    66 00000032 89C8                                mov eax, ecx ; eax = lungime dublucuvant (in baza 10)
+    67 00000034 BA00000000                          mov edx, 0 ; edx:eax = lungime dublucuvant
+    68                                              
+    69 00000039 F735[10000000]                      div dword [doi] ; eax = edx:eax / 2 si edx = edx:eax % 2
+    70                                              ; eax = lungime dublucuvant (in baza 10) / 2
+    71                                              
+    72 0000003F 89CA                                mov edx, ecx ; edx = lungime dublucuvant (in baza 10)
+    73                                              
+    74 00000041 89C1                                mov ecx, eax ; ecx = lungime dublucuvant (in baza 10) / 2
+    75                                              
+    76 00000043 49                                  dec ecx ; ecx = lungime / 2 - 1 
+    77 00000044 4A                                  dec edx ; edx = lungime - 1
+    78                                              
+    79 00000045 BB00000000                          mov ebx, 0 ; contor
+    80                                              
+    81                                              
+    82                                              loop3: ; verificam daca dublucuvantul este palindrom
+    83                                                  
+    84 0000004A 39CB                                    cmp ebx, ecx ; ebx <= ecx
+    85 0000004C 7F17                                    jg endloop3
+    86                                                  
+    87 0000004E 8A83[17000000]                          mov al, [aux+ebx]
+    88 00000054 52                                      push edx
+    89 00000055 29DA                                    sub edx, ebx
+    90 00000057 8AA2[17000000]                          mov ah, [aux+edx]
+    91 0000005D 5A                                      pop edx
+    92                                                  
+    93 0000005E 38E0                                    cmp al, ah
+    94 00000060 750F                                    jne not_palindrom ; nu e palindrom
+    95                                                  
+    96 00000062 43                                      inc ebx
+    97                                                  
+    98 00000063 EBE5                                jmp loop3
+    99                                              
+   100                                              
+   101                                              endloop3: ; este palindrom
+   102                                              
+   103 00000065 58                                  pop eax ; eax = dublucuvant
+   104                                              
+   105 00000066 C1E810                              shr eax, 16
+   106 00000069 6625FF00                            and ax, 00FFh ; al
+   107                                              
+   108                                              
+   109 0000006D 5F                                  pop edi
+   110                                              
+   111 0000006E AA                                  stosb ; edi = al , edi+=1
+   112                                              
+   113 0000006F 57                                  push edi
+   114 00000070 50                                  push eax
+   115                                              
+   116                                              ;jmp pal
+   117                                  
+   118                                              not_palindrom:
+   119                                              
+   120                                              ;inc edi
+   121                                              
+   122                                              ;pal:
+   123 00000071 58                                  pop eax
+   124 00000072 5F                                  pop edi
+   125 00000073 59                                  pop ecx
+   126 00000074 5E                                  pop esi
+   127                                  
+   128 00000075 E298                            loop loop1
+   129                                      
+   130                                          ; exit(0)
+   131 00000077 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+   132 00000079 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

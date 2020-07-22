@@ -1,0 +1,52 @@
+     1                                  bits 32
+     2                                  global start
+     3                                  
+     4                                  
+     5                                  extern exit
+     6                                  import exit msvcrt.dll
+     7                                  
+     8                                  segment data use32 class=data
+     9 00000000 785634124D3C2C1A76-         s DD 12345678h, 1A2C3C4Dh, 98FCDC76h
+     9 00000009 DCFC98             
+    10                                      len equ ($-s)/4
+    11 0000000C 0A000000                    ten dd 10
+    12 00000010 <res 0000000A>              aux resb 10 
+    13 0000001A <res 00000003>              d resb len
+    14                                      
+    15                                      
+    16                                  segment class use32 class=class
+    17                                  
+    18                                      start:
+    19 00000000 BE[00000000]                mov ESI, s
+    20 00000005 BF[1A000000]                mov EDI, d
+    21 0000000A B903000000                  mov ECX, len
+    22                                      
+    23                                      loop1:
+    24 0000000F AD                              lodsd
+    25                                          
+    26 00000010 56                              push ESI
+    27 00000011 57                              push EDI
+    28 00000012 51                              push ECX
+    29 00000013 50                              push EAX
+    30                                          
+    31                                       
+    32 00000014 B900000000                      mov ECX, 0
+    33                                          
+    34                                          loop2:
+    35 00000019 83F800                             cmp EAX, 0
+    36 0000001C 7414                               je endLoop2
+    37                                            
+    38 0000001E BA00000000                         mov EDX, 0
+    39 00000023 F735[0C000000]                     div dword [ten]
+    40 00000029 8991[10000000]                     mov [aux+ECX], EDX ; aux[i] = n%10  
+    41                                             
+    42 0000002F 41                                 inc ECX
+    43                                          
+    44 00000030 EBE7                            jmp loop2
+    45                                          endLoop2:
+    46                                          
+    47                                      endLoop1:
+    48                                      
+    49                                      
+    50 00000032 6A00                        push dword 0
+    51 00000034 FF15[00000000]              call [exit]

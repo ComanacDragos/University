@@ -1,0 +1,26 @@
+     1                                  bits 32
+     2                                  global start
+     3                                  
+     4                                  extern exit, printf
+     5                                  import exit msvcrt.dll
+     6                                  import printf msvcrt.dll
+     7                                  
+     8                                  segment data use32 class=data
+     9 00000000 616E61202573206172-         f db "ana %s are %d mere", 0
+     9 00000009 65202564206D657265-
+     9 00000012 00                 
+    10 00000013 506F7000                    n db "Pop", 0
+    11                                      
+    12                                  
+    13                                  segment code use32 class=code
+    14                                  
+    15                                      start:
+    16                                      
+    17 00000000 6A07                        push 7
+    18 00000002 68[13000000]                push n
+    19 00000007 68[00000000]                push f
+    20 0000000C FF15[00000000]              call [printf]
+    21 00000012 83C40C                      add ESP, 4*3
+    22                                      
+    23 00000015 6A00                        push dword 0
+    24 00000017 FF15[00000000]              call [exit]

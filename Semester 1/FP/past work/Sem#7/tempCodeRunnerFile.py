@@ -1,0 +1,1 @@
+car1 := Car(1,"CJ01ERE", "Dacia", "Lodgy", "Red")

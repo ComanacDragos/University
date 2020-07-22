@@ -1,0 +1,64 @@
+     1                                  bits 32
+     2                                  global start
+     3                                  
+     4                                  extern exit
+     5                                  import exit msvcrt.dll
+     6                                  
+     7                                  
+     8                                  
+     9                                  segment data
+    10                                  
+    11 00000000 2E6472612061626320-         s1 db ".dra abc ddd." 
+    11 00000009 6464642E           
+    12                                      len1 equ $-s1
+    13 0000000D 647261                      s2 db "dra"
+    14                                      len2 equ $-s2
+    15                                      
+    16                                      ;aux resb len2
+    17 00000010 <res 0000000D>              dest resb len1
+    18                                      
+    19                                      
+    20                                  segment code
+    21                                  
+    22                                      start:
+    23 00000000 B90D000000                  mov ECX, len1
+    24 00000005 BE[00000000]                mov ESI, s1
+    25 0000000A BF[10000000]                mov EDI, dest
+    26                                      
+    27                                      loop1:
+    28 0000000F 51                              push ECX
+    29 00000010 56                              push ESI
+    30                                          
+    31 00000011 B903000000                      mov ECX, len2
+    32 00000016 BB[0D000000]                    mov EBX, s2
+    33 0000001B BA00000000                      mov EDX, 0
+    34                                          loop2:
+    35 00000020 AC                                  lodsb ; AL = s1[i]
+    36 00000021 42                                  inc EDX
+    37 00000022 3A03                                cmp AL, [EBX]
+    38 00000024 750C                                jne notEqual
+    39 00000026 43                                  inc EBX
+    40                                              
+    41 00000027 E2F7                            loop loop2
+    42 00000029 83C404                          add ESP, 4
+    43 0000002C 59                              pop ECX
+    44 0000002D 83E902                          sub ECX, len2-1
+    45 00000030 EB05                            jmp endLoop1
+    46                                          
+    47                                          
+    48                                          ; repz cmpsb
+    49                                          
+    50                                          notEqual:
+    51 00000032 5E                              pop ESI
+    52 00000033 AC                              lodsb
+    53 00000034 AA                              stosb
+    54 00000035 46                              inc ESI
+    55 00000036 59                              pop ECX
+    56                                          
+    57                                      endLoop1:
+    58                                      
+    59 00000037 E2D6                        loop loop1
+    60                                          
+    61                                          
+    62 00000039 6A00                        push dword 0
+    63 0000003B FF15[00000000]              call [exit]

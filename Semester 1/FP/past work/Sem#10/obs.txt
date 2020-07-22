@@ -1,0 +1,11 @@
+inheritance
+what is it?
+write some code that is useful
+
+important in oop (only when using classes)
+have it everywhere you have classes
+
+
+what is it good
+allows us to reuse code
+helps make modules interchangeable

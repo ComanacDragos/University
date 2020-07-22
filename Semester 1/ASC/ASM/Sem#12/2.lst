@@ -1,0 +1,114 @@
+     1                                  bits 32
+     2                                  global start
+     3                                  
+     4                                  extern exit, printf
+     5                                  import exit msvcrt.dll
+     6                                  import printf msvcrt.dll
+     7                                  
+     8                                  segment data use32 class=data
+     9 00000000 33EAAFFCCA120000            x dq 012CAFCAFEA33h
+    10 00000008 0000<rept>                  s times 16 db 0, 0
+    11 00000028 303132333435363738-         digits db '0123456789ABCDEF'
+    11 00000031 39414243444546     
+    12 00000038 10000000                    hexa dd 16
+    13 0000003C 4341464541                  substring db 'CAFEA'
+    14                                      len equ $-substring
+    15 00000041 7965730A00                  mesYes db 'yes', 10, 0
+    16 00000046 4E6F0A00                    mesNo db 'No', 10, 0
+    17                                      
+    18                                  
+    19                                  segment code use32 class=code
+    20                                      ; sa se caute string ul cafea in reprezentarea hexa a quadwordului (se da)
+    21                                      searchString:
+    22                                          ; functia cauta substringul cu offset in edi in stringul cu offset in esi
+    23                                          ; substringul are lungimea in eax iar stringul este sir ASCIIZ
+    24 00000000 FC                              cld
+    25 00000001 57                              push EDI
+    26 00000002 89C3                            mov EBX, EAX
+    27 00000004 B000                            mov AL, 0 ; functia intoarce in AL valoarea 0 daca nu a gasit substringuri
+    28                                          
+    29                                          repeat:
+    30 00000006 5F                                  pop EDI
+    31 00000007 57                                  push EDI
+    32 00000008 56                                  push ESI ; save current offset in string
+    33 00000009 89D9                                mov ECX, EBX
+    34 0000000B F3A6                                repe cmpsb ; repeat cmpsb while equal ([ESI] == [EDI]) or ECX times
+    35                                              
+    36 0000000D 7506                                jne next
+    37 0000000F B001                                mov al,1 ; am gasit substringul
+    38 00000011 5E                                  pop ESI ; nu mai avem nevoie de ESI
+    39 00000012 5F                                  pop EDI
+    40                                              
+    41 00000013 EB0A                                jmp endFunction
+    42                                              next:
+    43 00000015 5E                                      pop ESI
+    44 00000016 5F                                      pop EDI
+    45 00000017 46                                      inc ESI
+    46 00000018 57                                      push EDI
+    47 00000019 803E00                                  cmp byte [ESI], 0
+    48 0000001C 75E8                                    jne repeat
+    49                                         
+    50 0000001E 5F                                      pop EDI
+    51                                                  endFunction:
+    52 0000001F C3                                      ret
+    53                                      
+    54                                      
+    55                                      start:
+    56 00000020 FD                              std
+    57 00000021 BF[17000000]                    mov EDI, s+15
+    58                                          ; obtinem intai cifrele hexa ale dwordului low al lui x
+    59 00000026 A1[00000000]                    mov EAX, [x]
+    60                                          repeat1:
+    61 0000002B BA00000000                          mov EDX, 0
+    62 00000030 F735[38000000]                      div dword [hexa]
+    63                                              ; restul e in EDX (mai exact in DL)
+    64                                              ; obtinem codul ascii al cifrei
+    65 00000036 89C1                                mov ECX, EAX; save EAX
+    66 00000038 88D0                                mov AL, DL
+    67 0000003A BB[28000000]                        mov EBX, digits
+    68 0000003F D7                                  xlat ; codul ascii al cifrei este in al
+    69 00000040 AA                                  stosb
+    70 00000041 89C8                                mov EAX, ECX ; restore EAX
+    71                                              
+    72 00000043 83F800                              cmp EAX, 0
+    73 00000046 77E3                                ja repeat1
+    74                                              
+    75                                          ; obtinem cifrele hexa ale dwordului high
+    76 00000048 A1[04000000]                    mov EAX, [x+4]
+    77                                          repeat2:
+    78 0000004D BA00000000                          mov EDX, 0
+    79 00000052 F735[38000000]                      div dword [hexa]
+    80                                              ; restul e in EDX (mai exact in DL)
+    81                                              ; obtinem codul ascii al cifrei
+    82 00000058 89C1                                mov ECX, EAX; save EAX
+    83 0000005A 88D0                                mov AL, DL
+    84 0000005C BB[28000000]                        mov EBX, digits
+    85 00000061 D7                                  xlat ; codul ascii al cifrei este in al
+    86 00000062 AA                                  stosb
+    87 00000063 89C8                                mov EAX, ECX ; restore EAX
+    88                                              
+    89 00000065 83F800                              cmp EAX, 0
+    90 00000068 77E3                                ja repeat2
+    91                                          
+    92                                          ; apelam functia searchString
+    93 0000006A BE[08000000]                    mov ESI, s
+    94 0000006F BF[3C000000]                    mov EDI, substring
+    95 00000074 B805000000                      mov EAX, len
+    96 00000079 E882FFFFFF                      call searchString
+    97 0000007E 3C01                            cmp AL, 1
+    98 00000080 7410                            je found
+    99                                          ; not found
+   100 00000082 68[46000000]                    push mesNo
+   101 00000087 FF15[00000000]                  call [printf]
+   102 0000008D 83C404                          add ESP, 1*4
+   103 00000090 EB0E                            jmp theend
+   104                                          
+   105                                          found:
+   106 00000092 68[41000000]                        push mesYes
+   107 00000097 FF15[00000000]                      call [printf]
+   108 0000009D 83C404                              add ESP, 1*4
+   109                                          
+   110                                      theend:
+   111                                          
+   112 000000A0 6A00                        push dword 0
+   113 000000A2 FF15[00000000]              call [exit]

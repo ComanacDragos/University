@@ -1,0 +1,64 @@
+     1                                  bits 32
+     2                                  global start
+     3                                  extern exit
+     4                                  import exit msvcrt.dll
+     5                                  
+     6                                  segment data use32 class=data
+     7                                          
+     8 00000000 BE9B5777                    a dd 01110111010101111001101110111110b
+     9 00000004 5777BE9B                    b dd 10011011101111100111011101010111b
+    10 00000008 0000000000000000            c dq 0
+    11                                  
+    12                                  segment code use32 class=code   
+    13                                  
+    14                                  ;Given the doublewords A and B, obtain the quadword C as follows:
+    15                                  ;the bits 0-7 of C are the same as the bits 21-28 of A
+    16                                  ;the bits 8-15 of C are the same as the bits 23-30 of B complemented
+    17                                  ;the bits 16-21 of C have the value 101010 ; c[16-31] = [c+2] = 0000000000101010
+    18                                  ;the bits 22-31 of C have the value 0
+    19                                  ;the bits 32-42 of C are the same as the bits 21-31 of B
+    20                                  ;the bits 43-55 of C are the same as the bits 1-13 of A  0001 1111 1111 1110
+    21                                  ;the bits 56-63 of C are the same as the bits 24-31 of the result A XOR 0ABh
+    22                                  ;    28-31  24-27  20-23  16-19   12-15  8-11   4-7    0-3                                  
+    23                                  ; a = 0111   0111   0101   0111    1001  1011  1011   1110
+    24                                  ;       7      7       5     7       9     B     B      E
+    25                                  ; b = 1001   1011   1011   1110    0111  0111  0101   0111
+    26                                  ;       9      B      B      E       7     7     5      7   
+    27                                  
+    28                                      start:
+    29 00000000 A1[00000000]                mov EAX, [a]
+    30 00000005 C1E815                      shr EAX, 21
+    31 00000008 A2[08000000]                mov [c], AL ; c[0-7] = a[21-28]
+    32                                      
+    33 0000000D A1[04000000]                mov EAX, [b]
+    34 00000012 F7D0                        not EAX
+    35 00000014 C1E817                      shr EAX, 23
+    36 00000017 A2[09000000]                mov [c+1], AL ; c[8-15] = b[23-30].complemented
+    37                                      
+    38 0000001C 66B82A00                    mov AX, 101010b
+    39 00000020 66A3[0A000000]              mov [c+2], AX
+    40                                      
+    41 00000026 A1[04000000]                mov EAX, [b]
+    42 0000002B C1E815                      shr EAX, 21
+    43 0000002E 66A3[0C000000]              mov [c+4], AX
+    44                                      
+    45 00000034 A1[00000000]                mov EAX, [a]
+    46 00000039 BBFE3F0000                  mov EBX, 0011_1111_1111_1110b
+    47 0000003E 21D8                        and EAX, EBX
+    48 00000040 C1E00A                      shl EAX, 10
+    49                                      
+    50 00000043 0905[0C000000]              or [c+4], EAX ; bitii 11-23 din dword sup sunt ocupati
+    51                                      
+    52 00000049 A1[00000000]                mov EAX, [a]
+    53 0000004E 35AB000000                  xor EAX, 0ABh
+    54 00000053 C1E818                      shr EAX, 24
+    55 00000056 A2[0F000000]                mov [c+7], AL
+    56                                      
+    57 0000005B 6A00                        push dword 0
+    58 0000005D FF15[00000000]              call [exit]
+    59                                      
+    60                                      
+    61                                      
+    62                                      
+    63                                  
+    64                                      

@@ -1,0 +1,6 @@
+%ld - long d
+%hd
+
+
+little endian - smallest address <=> least significant byte
+

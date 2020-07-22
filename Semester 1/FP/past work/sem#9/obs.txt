@@ -1,0 +1,14 @@
+
+'''
+how do we implement undo/redo?
+    1. Remember what we need to do for undo/redo
+    (remember = what function to call and which parameters)
+    
+    2. Remember the order in which operations were made
+    (remember = keep a list of program operations)
+
+    3. Carry out the operations when user requests undo() redo()
+    (call the right function with the right parameters)
+
+
+'''

@@ -1,0 +1,63 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    10                                  
+    11                                  ; Se da un sir de dublucuvinte. Sa se obtina sirul format din octetii superiori ai 
+    12                                  ; cuvitelor superioare din elementele sirului de dublucuvinte care sunt divizibili cu 3.
+    13                                  ; Exemplu:
+    14                                  
+    15                                  ; Se da sirul de dublucuvinte:
+    16                                  ; s DD 12345678h, 1A2B3C4Dh, FE98DC76h
+    17                                  ; Sa se obtina sirul
+    18                                  ; d DB 12h.
+    19                                  segment data use32 class=data
+    20                                      
+    21 00000000 785634124D3C2B1A76-             S dd 12345678h, 1A2B3C4Dh, 0FE98DC76h
+    21 00000009 DC98FE             
+    22                                          len equ ($-S)/4
+    23 0000000C 03000000                        trei dd 3
+    24 00000010 <res 00000003>                  D resb len
+    25                                  
+    26                                  ; our code starts here
+    27                                  segment code use32 class=code
+    28                                      start:
+    29                                          
+    30 00000000 B903000000                      mov ecx, len
+    31 00000005 BE[00000000]                    mov esi, S
+    32 0000000A BF[10000000]                    mov edi, D
+    33                                          
+    34                                          loop1:
+    35                                          
+    36 0000000F AD                              lodsd ; eax = esi, esi+=4
+    37 00000010 99                              cdq ; edx:eax = esi
+    38                                           
+    39 00000011 89C3                            mov ebx, eax ; ebx = eax
+    40                                          
+    41 00000013 F73D[0C000000]                  idiv dword [trei] ; edx = edx:eax % 3
+    42                                          
+    43 00000019 83FA00                          cmp edx, 0
+    44 0000001C 7506                            jne endloop
+    45                                          
+    46 0000001E C1EB18                          shr ebx, 24
+    47 00000021 89D8                            mov eax, ebx
+    48 00000023 AA                              stosb ; edi = al, edi+=1
+    49                                          
+    50                                          endloop:
+    51 00000024 E2E9                            loop loop1
+    52                                          
+    53                                          
+    54                                          
+    55                                          
+    56                                          
+    57                                           
+    58                                          
+    59                                      
+    60                                          ; exit(0)
+    61 00000026 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    62 00000028 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

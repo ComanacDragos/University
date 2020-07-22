@@ -1,0 +1,5 @@
+1,theodor mihali,0,0
+2000,dorobantilor,50,100
+14,titulescu,30,40
+15,pacea,10,20
+16,eminescu,50,60

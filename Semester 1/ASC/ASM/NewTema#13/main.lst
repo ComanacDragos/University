@@ -1,0 +1,75 @@
+     1                                  bits 32
+     2                                  global start
+     3                                  
+     4                                  extern exit, printf, string_to_number
+     5                                  import exit msvcrt.dll
+     6                                  import printf msvcrt.dll
+     7                                  
+     8                                  
+     9                                  segment data use32 class=data public
+    10                                  
+    11 00000000 313031303031313162-         string db '10100111b', '01100011b', '110b', '101011b', 0
+    11 00000009 303131303030313162-
+    11 00000012 313130623130313031-
+    11 0000001B 316200             
+    12 0000001E 25580A00                    f db "%X", 10, 0
+    13 00000022 <res 00000064>              new_string resb 100
+    14                                      
+    15                                  segment code use32 class=code public
+    16                                  
+    17                                      start:
+    18                                  
+    19 00000000 BE[00000000]                mov ESI, string
+    20 00000005 BF[22000000]                mov EDI, new_string
+    21                                      
+    22                                      loop1:
+    23                                  
+    24 0000000A 803E00                          cmp byte [ESI], 0
+    25 0000000D 741B                            je endLoop1
+    26                                          
+    27 0000000F 89F2                            mov EDX, ESI
+    28                                          
+    29                                          loop2:
+    30 00000011 AC                                  lodsb
+    31 00000012 3C62                                cmp AL, 'b'
+    32 00000014 7402                                je endLoop2
+    33 00000016 EBF9                            jmp loop2
+    34                                          endLoop2:
+    35                                          
+    36 00000018 89F1                            mov ECX, ESI
+    37 0000001A 29D1                            sub ECX, EDX
+    38 0000001C 49                              dec ECX
+    39                                          
+    40 0000001D 51                              push ECX
+    41 0000001E 52                              push EDX
+    42 0000001F E8(00000000)                    call string_to_number
+    43 00000024 83C408                          add ESP, 4*2
+    44                                          
+    45 00000027 AA                              stosb
+    46                                          
+    47 00000028 EBE0                            jmp loop1
+    48                                          endLoop1:
+    49                                          
+    50                                        
+    51                                              
+    52 0000002A BE[22000000]                    mov ESI, new_string
+    53                                          
+    54                                          loop3:
+    55 0000002F 803E00                              cmp byte [ESI], 0
+    56 00000032 7417                                je theEnd
+    57 00000034 B800000000                          mov EAX, 0
+    58 00000039 AC                                  lodsb
+    59                                              
+    60 0000003A 50                                  push EAX
+    61 0000003B 68[1E000000]                        push f
+    62 00000040 FF15[00000000]                      call [printf]
+    63 00000046 83C408                              add ESP, 4*2
+    64 00000049 EBE4                                jmp loop3
+    65                                      
+    66                                      theEnd:
+    67 0000004B EBFE                        jmp $
+    68 0000004D 6A00                        push dword 0
+    69 0000004F FF15[00000000]              call [exit]
+    70                                  
+    71                                              
+    72                                    
