@@ -1,0 +1,7 @@
+1. lab rules, attendance list
+2. jdk download https://www.oracle.com/java/technologies/javase-downloads.html   javac +java
+3. install it
+4. jetbrains account  https://account.jetbrains.com/login
+5. download and install IntelliJ
+6. create a simple program
+7. create a problem statement
