@@ -2,7 +2,7 @@ public abstract class ComplexExpression {
     public enum Operation
     {
         ADDITION,
-        SUBSTRACTION,
+        SUBTRACTION,
         MULTIPLICATION,
         DIVISION
     }

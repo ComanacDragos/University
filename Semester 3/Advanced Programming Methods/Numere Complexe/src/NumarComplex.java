@@ -35,6 +35,6 @@ public class NumarComplex {
 
     @Override
     public String toString() {
-        return Double.toString(this.re) + ", " + Double.toString(this.im) ;
+        return Double.toString(this.re) + ", " + Double.toString(this.im);
     }
 }

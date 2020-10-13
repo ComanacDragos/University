@@ -1,7 +1,7 @@
 public class Addition extends ComplexExpression {
-    Addition(Operation operation, NumarComplex[] args)
+    Addition(NumarComplex[] args)
     {
-        super(operation, args);
+        super(Operation.ADDITION, args);
     }
 
     @Override

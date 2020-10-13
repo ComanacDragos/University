@@ -1,5 +1,7 @@
 package mvc;
 
+import mvc.Model.Model;
+
 public class DynamicVector {
     int size, capacity;
     Model items[];

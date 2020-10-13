@@ -1,5 +1,7 @@
 package mvc;
 
+import mvc.Model.Model;
+
 public class Repository {
     DynamicVector items;
 

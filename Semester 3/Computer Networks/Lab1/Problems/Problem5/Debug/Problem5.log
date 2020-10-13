@@ -1,0 +1,4 @@
+﻿  client.cpp
+E:\University\Semester 3\Computer Networks\Lab1\Problems\Problem5\client.cpp(32,1): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+E:\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(1274): message : see declaration of 'scanf'
+  Problem5.vcxproj -> E:\University\Semester 3\Computer Networks\Lab1\Problems\Debug\Problem5.exe

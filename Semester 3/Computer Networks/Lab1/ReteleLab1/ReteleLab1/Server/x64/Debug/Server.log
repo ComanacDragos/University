@@ -1,0 +1,3 @@
+﻿  server.cpp
+C:\Users\diana\Downloads\ReteleLab1\ReteleLab1\Server\server.cpp(91,19): warning C4244: '=': conversion from 'SOCKET' to 'int', possible loss of data
+  Server.vcxproj -> C:\Users\diana\Downloads\ReteleLab1\ReteleLab1\x64\Debug\Server.exe

@@ -1,0 +1,13 @@
+father(X, Y).
+mother(X, Y).
+
+parent(X,Y):-father(X, Y).
+parent(X,Y):-mother(X, Y).
+sibling(X, Y):- parent(X, Z),
+                parent(Y, Z),
+                X\=Y.
+mother(a, b).
+mother(e, b).
+father(c, d).
+father(a, d).
+

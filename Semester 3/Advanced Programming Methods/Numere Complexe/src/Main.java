@@ -4,10 +4,9 @@ public class Main {
         {
             ExpressionParser.validate(args);
         }
-        catch (Exception e)
+        catch (NumberFormatException e)
         {
             System.out.println(e.getMessage());
         }
-
     }
 }

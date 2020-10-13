@@ -1,0 +1,1 @@
+capital letter = variable, universal quantifier

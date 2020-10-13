@@ -6,34 +6,47 @@ CREATE TABLE Regions
 
 CREATE TABLE Cities
 (
-	CityId INT PRIMARY KEY,
+	CityId INT PRIMARY KEY IDENTITY(1,1),
 	RegionId INT REFERENCES Regions(RegionId),
-	Name VARCHAR(50),
-	Population INT
+	CityName VARCHAR(50),
+	CityPopulation INT
 );
 
 CREATE TABLE Libraries
 (
-	LibraryId INT PRIMARY KEY,
+	LibraryId INT PRIMARY KEY IDENTITY(1, 1),
 	CityId INT REFERENCES Cities(CityId),
 	LibraryAddress VARCHAR(100),
 	LibraryName VARCHAR(50),
-	ConstructionData DATE
+	FoundationDate DATE
 );
+
+ALTER TABLE Libraries
+DROP COLUMN FoundationDate;
+
+ALTER TABLE Libraries
+ADD FoundationYear INT;
 
 CREATE TABLE Books
 (
-	BookId INT PRIMARY KEY,
+	BookId INT PRIMARY KEY IDENTITY(1, 1),
 	LibraryId INT REFERENCES Libraries(LibraryId),
-	Title VARCHAR(50),
+	Title VARCHAR(100),
 	Pages INT,
-	IBSN VARCHAR(20)
+	IBSN VARCHAR(20),
+	PublicationDate DATE,
+	PublishingHouse VARCHAR(50)
 );
+
+ALTER TABLE Books
+DROP COLUMN PublicationDate
+
+ALTER TABLE Books
+ADD PublicationYear INT
 
 CREATE TABLE Characters
 (
 	CharacterId INT PRIMARY KEY,
-	BookId INT REFERENCES Books(BookId),
 	FullName VARCHAR(50),
 	CharacterRole VARCHAR(50)
 );
@@ -41,15 +54,14 @@ CREATE TABLE Characters
 CREATE TABLE Authors
 (
 	AuthorId INT PRIMARY KEY,
-	CityId INT REFERENCES Cities(CityId),
 	FirstName VARCHAR(50), 
 	LastName VARCHAR(50),
-	Age INT
+	DOB DATE
 );
 
 CREATE TABLE Topics
 (
-	TopicId INT PRIMARY KEY,
+	TopicId INT PRIMARY KEY IDENTITY (1,1),
 	TopicName Varchar(50)
 );
 
@@ -77,11 +89,37 @@ CREATE TABLE Topics_Books
 	PRIMARY KEY (TopicId, BookId)
 );
 
-CREATE TABLE Borrower_Books
+CREATE TABLE Borrowers_Books
 (
+	BorrowerBookId INT PRIMARY KEY,
 	BookId INT REFERENCES Books(BookId),
 	BorrowerId INT REFERENCES Borrowers(BorrowerId),
-	PRIMARY KEY (BookId, BorrowerId),
 	StartDate DATE NOT NULL,
 	EndDate DATE
 );
+
+CREATE TABLE Characters_Books
+(
+	CharacterId INT REFERENCES Characters(CharacterId),
+	BookId INT REFERENCES Books(BookId),
+	PRIMARY KEY (CharacterId, BookId)
+)
+
+/*
+DROP TABLE Topics_Books;
+DROP TABLE Borrowers_Books;
+DROP TABLE Authors_Books;
+DROP TABLE Characters_Books
+
+DROP TABLE Topics;
+DROP TABLE Characters;
+DROP TABLE Books;
+DROP TABLE Libraries;
+
+DROP TABLE Borrowers;
+DROP TABLE Authors;
+
+DROP TABLE Cities;
+
+DROP TABLE Regions;
+*/

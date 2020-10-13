@@ -1,0 +1,13 @@
+S1
+
+CREATE DATABASE name
+go
+USE Name
+go
+
+DROP DATABASE
+
+
+AdventureWorks, NorthWind, pubs
+
+sabinacsen@gmail.com
