@@ -1,4 +1,4 @@
-Windows IP: 192.168.0.115 
++Windows IP: 192.168.0.115 
 Ubuntu IP: 192.168.0.157
 
 Circuit swithced - fixed path noboy else can reserve it

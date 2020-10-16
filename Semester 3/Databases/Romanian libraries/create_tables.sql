@@ -14,39 +14,34 @@ CREATE TABLE Cities
 
 CREATE TABLE Libraries
 (
-	LibraryId INT PRIMARY KEY IDENTITY(1, 1),
+	LibraryId INT PRIMARY KEY,
 	CityId INT REFERENCES Cities(CityId),
 	LibraryAddress VARCHAR(100),
 	LibraryName VARCHAR(50),
-	FoundationDate DATE
+	FoundationYear INT
 );
 
-ALTER TABLE Libraries
-DROP COLUMN FoundationDate;
-
-ALTER TABLE Libraries
-ADD FoundationYear INT;
+CREATE TABLE Titles
+(
+	TitleId INT PRIMARY KEY,
+	Title VARCHAR(100)
+);
 
 CREATE TABLE Books
 (
-	BookId INT PRIMARY KEY IDENTITY(1, 1),
+	BookId INT PRIMARY KEY,
 	LibraryId INT REFERENCES Libraries(LibraryId),
-	Title VARCHAR(100),
+	TitleId INT REFERENCES Titles(TitleId),
 	Pages INT,
 	IBSN VARCHAR(20),
-	PublicationDate DATE,
+	PublicationYear INT,
 	PublishingHouse VARCHAR(50)
 );
-
-ALTER TABLE Books
-DROP COLUMN PublicationDate
-
-ALTER TABLE Books
-ADD PublicationYear INT
 
 CREATE TABLE Characters
 (
 	CharacterId INT PRIMARY KEY,
+	TitleId INT REFERENCES Titles(TitleId),
 	FullName VARCHAR(50),
 	CharacterRole VARCHAR(50)
 );
@@ -61,7 +56,7 @@ CREATE TABLE Authors
 
 CREATE TABLE Topics
 (
-	TopicId INT PRIMARY KEY IDENTITY (1,1),
+	TopicId INT PRIMARY KEY,
 	TopicName Varchar(50)
 );
 
@@ -72,21 +67,24 @@ CREATE TABLE Borrowers
 	FirstName VARCHAR(50),
 	LastName VARCHAR(50),
 	DateOfBirth DATE,
-	Gender VARCHAR(6)
+	Gender CHAR
 );
 
-CREATE TABLE Authors_Books
+CREATE TABLE Authors_Titles
 (
 	AuthorId INT REFERENCES Authors(AuthorId),
-	BookId INT REFERENCES Books(BookId),
-	PRIMARY KEY (AuthorId, BookId)
+	TitleId INT REFERENCES Titles(TitleId),
+	ContributionPercentage INT CHECK(ContributionPercentage > 0 AND ContributionPercentage <= 100),
+	PRIMARY KEY (AuthorId, TitleId)
+
 );
 
-CREATE TABLE Topics_Books
+CREATE TABLE Topics_Titles
 (
 	TopicId INT REFERENCES Topics(TopicId),
-	BookId INT REFERENCES Books(BookId),
-	PRIMARY KEY (TopicId, BookId)
+	TitleId INT REFERENCES Titles(TitleId),
+	TopicPercentage INT CHECK(TopicPercentage > 0 AND TopicPercentage <= 100),
+	PRIMARY KEY (TopicId, TitleId)
 );
 
 CREATE TABLE Borrowers_Books
@@ -95,25 +93,19 @@ CREATE TABLE Borrowers_Books
 	BookId INT REFERENCES Books(BookId),
 	BorrowerId INT REFERENCES Borrowers(BorrowerId),
 	StartDate DATE NOT NULL,
-	EndDate DATE
+	EndDate DATE, CHECK(EndDate >= StartDate)
 );
 
-CREATE TABLE Characters_Books
-(
-	CharacterId INT REFERENCES Characters(CharacterId),
-	BookId INT REFERENCES Books(BookId),
-	PRIMARY KEY (CharacterId, BookId)
-)
-
 /*
-DROP TABLE Topics_Books;
+DROP TABLE Topics_Titles;
 DROP TABLE Borrowers_Books;
-DROP TABLE Authors_Books;
-DROP TABLE Characters_Books
+DROP TABLE Authors_Titles;
+
 
 DROP TABLE Topics;
 DROP TABLE Characters;
 DROP TABLE Books;
+DROP TABLE Titles;
 DROP TABLE Libraries;
 
 DROP TABLE Borrowers;
@@ -123,3 +115,5 @@ DROP TABLE Cities;
 
 DROP TABLE Regions;
 */
+
+SELECT * FROM Borrowers
