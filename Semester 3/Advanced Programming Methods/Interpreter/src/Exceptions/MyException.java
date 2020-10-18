@@ -3,9 +3,9 @@ package Exceptions;
 public class MyException extends Exception{
     protected String message;
 
-    MyException(){}
+    public MyException(){}
 
-    MyException(String message){
+    public MyException(String message){
         super(message);
     }
 

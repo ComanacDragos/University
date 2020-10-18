@@ -5,6 +5,8 @@ import Exceptions.MyException;
 public interface MyIList<T> {
     void add(T element);
 
+    T pop();
+
     T get(int position) throws MyException;
 
     void set(int position, T element) throws MyException;
