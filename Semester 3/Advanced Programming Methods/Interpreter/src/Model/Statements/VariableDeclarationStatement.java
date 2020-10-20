@@ -14,7 +14,7 @@ public class VariableDeclarationStatement implements IStatement{
     String name;
     IType type;
 
-    VariableDeclarationStatement(String name, IType type){
+    public VariableDeclarationStatement(String name, IType type){
         this.name = name;
         this.type = type;
     }
@@ -51,6 +51,6 @@ public class VariableDeclarationStatement implements IStatement{
 
     @Override
     public String toString() {
-        return this.type.toString() + " = " + this.name + ';';
+        return this.type.toString() + " = " + this.name;
     }
 }

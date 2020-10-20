@@ -13,7 +13,7 @@ public class MyStack<T> implements MyIStack<T>{
     }
 
     @Override
-    public T pop() throws MyException, EmptyCollection {
+    public T pop() throws EmptyCollection {
         if(this.stack.isEmpty())
             throw new EmptyCollection("Empty stack");
         return this.stack.pop();
@@ -38,6 +38,16 @@ public class MyStack<T> implements MyIStack<T>{
 
     @Override
     public String toString() {
-        return this.stack.toString();
+        if(this.stack.isEmpty())
+            return "|";
+
+        StringBuilder contents = new StringBuilder();
+
+        Stack<T> clone = (Stack<T>) this.stack.clone();
+
+        while (!clone.isEmpty()){
+            contents.append(clone.pop().toString()).append(" | ");
+        }
+        return contents.toString();
     }
 }

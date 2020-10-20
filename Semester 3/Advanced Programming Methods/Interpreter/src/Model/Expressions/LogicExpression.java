@@ -1,5 +1,6 @@
 package Model.Expressions;
 
+import Exceptions.DivisionByZero;
 import Exceptions.MyException;
 import Model.ADTs.MyIDictionary;
 import Model.Types.BoolType;
@@ -47,7 +48,7 @@ public class LogicExpression implements IExpression{
     }
 
     @Override
-    public IValue eval(MyIDictionary<String, IValue> symbolsTable) throws MyException {
+    public IValue eval(MyIDictionary<String, IValue> symbolsTable) throws MyException, DivisionByZero {
         IValue value1, value2;
 
         value1 = this.expression1.eval(symbolsTable);

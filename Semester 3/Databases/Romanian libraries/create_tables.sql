@@ -1,3 +1,5 @@
+USE RomanianLibrariesDB
+
 CREATE TABLE Regions
 (
 	RegionId INT PRIMARY KEY,
@@ -6,11 +8,14 @@ CREATE TABLE Regions
 
 CREATE TABLE Cities
 (
-	CityId INT PRIMARY KEY IDENTITY(1,1),
+	CityId INT PRIMARY KEY,
 	RegionId INT REFERENCES Regions(RegionId),
 	CityName VARCHAR(50),
 	CityPopulation INT
 );
+
+ALTER TABLE Cities
+ADD BorrowingPopularity VARCHAR(6) DEFAULT 'Medium' WITH VALUES
 
 CREATE TABLE Libraries
 (

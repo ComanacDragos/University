@@ -12,6 +12,13 @@ public class ProgramState {
     MyIList<IValue> out;
     IStatement originalProgram;
 
+    public ProgramState(MyIStack<IStatement> executionStack, MyIDictionary<String, IValue> symbolsTable, MyIList<IValue> out, IStatement originalProgram){
+        this.executionStack = executionStack;
+        this.symbolsTable = symbolsTable;
+        this.out = out;
+        this.originalProgram = originalProgram;
+    }
+
     public IStatement getOriginalProgram() {
         return originalProgram;
     }
@@ -42,6 +49,15 @@ public class ProgramState {
 
     public void setSymbolsTable(MyIDictionary<String, IValue> symbolsTable) {
         this.symbolsTable = symbolsTable;
+    }
+
+    @Override
+    public String toString() {
+        return this.executionStack.toString() +
+                "\n" + this.symbolsTable.toString() +
+                "\n" + this.out.toString() +
+                //"\n" + this.originalProgram.toString() +
+                "\n\n";
     }
 }
 

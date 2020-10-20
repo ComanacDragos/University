@@ -6,7 +6,7 @@ import socket
 import struct
 
 try:
-    clientSocket = socket.create_connection(('192.168.0.115', 1234))
+    clientSocket = socket.create_connection(('192.168.0.101', 1234))
 except socket.error as msg:
     print('Error ', msg.strerror)
     exit(1)

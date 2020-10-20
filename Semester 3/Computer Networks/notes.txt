@@ -1,5 +1,8 @@
-+Windows IP: 192.168.0.115 
-Ubuntu IP: 192.168.0.157
+Windows IP: 192.168.0.115 
+Ubuntu IP : 192.168.0.101 - virtual box
+
+Ubuntu IP: 192.168.0.157 - vmware
+
 
 Circuit swithced - fixed path noboy else can reserve it
 Packet -swithced - any route

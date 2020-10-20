@@ -1,0 +1,5 @@
+--go
+--CREATE DATABASE Seminar2
+--go
+USE Seminar2
+

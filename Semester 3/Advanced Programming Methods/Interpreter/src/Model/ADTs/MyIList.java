@@ -1,19 +1,15 @@
 package Model.ADTs;
 
-import Exceptions.MyException;
+import Exceptions.EmptyCollection;
 
 public interface MyIList<T> {
     void add(T element);
 
-    T pop();
-
-    T get(int position) throws MyException;
-
-    void set(int position, T element) throws MyException;
-
-    void remove(int position) throws MyException;
+    T pop() throws EmptyCollection;
 
     void clear();
 
     int size();
+
+    boolean isEmpty();
 }

@@ -67,7 +67,7 @@ def main():
     global clientCount, serverSocket
     try:
         serverSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        serverSocket.bind(('192.168.0.157', 1234))
+        serverSocket.bind(('192.168.0.115', 1234))
         serverSocket.listen(5)
     except socket.error as msg:
         print("Error", msg.strerror)

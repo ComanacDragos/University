@@ -1,4 +1,4 @@
 ﻿  server.cpp
-E:\University\Semester 3\Computer Networks\Lab1\Problems\Problem6\server.cpp(86,21): warning C4018: '<': signed/unsigned mismatch
-E:\University\Semester 3\Computer Networks\Lab1\Problems\Problem6\server.cpp(96,21): warning C4018: '<': signed/unsigned mismatch
+E:\University\Semester 3\Computer Networks\Lab1\Problems\Problem6\server.cpp(87,21): warning C4018: '<': signed/unsigned mismatch
+E:\University\Semester 3\Computer Networks\Lab1\Problems\Problem6\server.cpp(97,21): warning C4018: '<': signed/unsigned mismatch
   Problem6.vcxproj -> E:\University\Semester 3\Computer Networks\Lab1\Problems\Debug\Problem6.exe

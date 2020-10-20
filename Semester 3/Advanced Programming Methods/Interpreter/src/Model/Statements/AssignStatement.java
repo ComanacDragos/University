@@ -1,5 +1,6 @@
 package Model.Statements;
 
+import Exceptions.DivisionByZero;
 import Exceptions.MyException;
 import Model.ADTs.MyIDictionary;
 import Model.ADTs.MyIStack;
@@ -34,7 +35,7 @@ public class AssignStatement implements IStatement{
     }
 
     @Override
-    public ProgramState execute(ProgramState state) throws MyException {
+    public ProgramState execute(ProgramState state) throws MyException, DivisionByZero {
         MyIDictionary<String, IValue> symbolsTable = state.getSymbolsTable();
 
         if(symbolsTable.isDefined(this.id)){
@@ -43,10 +44,10 @@ public class AssignStatement implements IStatement{
 
             if(value.getType().equals(typeId))
                 symbolsTable.update(this.id, value);
-            else throw  new MyException("declared type of variable " + id + " and type of the assigned expression do not match");
+            else throw  new MyException("Declared type of variable " + id + " and type of the assigned expression do not match");
         }
         else
-            throw new MyException("the used variable " + id + "was not declared before");
+            throw new MyException("The used variable " + id + " was not declared before");
 
         return state;
     }
