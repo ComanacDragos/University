@@ -16,7 +16,7 @@ public class Repository implements IRepository{
     public ProgramState getCurrentProgram() throws EmptyCollection {
         if(this.programs.isEmpty())
             throw new EmptyCollection("Empty repository");
-        return this.programs.get(this.programs.size() - 1);
+        return this.programs.remove(this.programs.size() - 1);
     }
 
     @Override

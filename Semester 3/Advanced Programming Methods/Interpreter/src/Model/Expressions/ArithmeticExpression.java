@@ -8,13 +8,13 @@ import Model.Values.IValue;
 import Model.Values.IntValue;
 
 public class ArithmeticExpression implements IExpression{
-    IExpression expression1;
-    IExpression expression2;
+    IExpression lhs;
+    IExpression rhs;
     char operand;
 
-    public ArithmeticExpression(IExpression expression1, IExpression expression2, char operand){
-        this.expression1 = expression1;
-        this.expression2 = expression2;
+    public ArithmeticExpression(IExpression lhs, IExpression rhs, char operand){
+        this.lhs = lhs;
+        this.rhs = rhs;
         this.operand = operand;
     }
 
@@ -22,20 +22,20 @@ public class ArithmeticExpression implements IExpression{
         return operand;
     }
 
-    public IExpression getExpression1() {
-        return expression1;
+    public IExpression getLhs() {
+        return lhs;
     }
 
-    public IExpression getExpression2() {
-        return expression2;
+    public IExpression getRhs() {
+        return rhs;
     }
 
     public void setExpression1(IExpression expression1) {
-        this.expression1 = expression1;
+        this.lhs = expression1;
     }
 
     public void setExpression2(IExpression expression2) {
-        this.expression2 = expression2;
+        this.rhs = expression2;
     }
 
     public void setOperand(char operand) {
@@ -48,15 +48,15 @@ public class ArithmeticExpression implements IExpression{
 
     @Override
     public IValue eval(MyIDictionary<String, IValue> symbolsTable) throws MyException, DivisionByZero {
-        IValue value1, value2;
+        IValue firstValue, secondValue;
 
-        value1 = this.expression1.eval(symbolsTable);
+        firstValue = this.lhs.eval(symbolsTable);
 
-        if(value1.getType().equals(new IntType())){
-            value2 = this.expression2.eval(symbolsTable);
-            if(value2.getType().equals(new IntType())){
-                IntValue first = (IntValue)value1;
-                IntValue second = (IntValue) value2;
+        if(firstValue.getType().equals(new IntType())){
+            secondValue = this.rhs.eval(symbolsTable);
+            if(secondValue.getType().equals(new IntType())){
+                IntValue first = (IntValue)firstValue;
+                IntValue second = (IntValue) secondValue;
 
                 switch (this.operand){
                     case '+':
@@ -83,6 +83,6 @@ public class ArithmeticExpression implements IExpression{
 
     @Override
     public String toString() {
-        return "(" + expression1.toString() + ' ' + this.operand + ' ' + this.expression2.toString() + ')';
+        return "(" + lhs.toString() + ' ' + this.operand + ' ' + this.rhs.toString() + ')';
     }
 }

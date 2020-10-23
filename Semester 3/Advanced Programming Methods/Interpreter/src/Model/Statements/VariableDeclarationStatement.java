@@ -46,6 +46,8 @@ public class VariableDeclarationStatement implements IStatement{
                 symbolsTable.put(this.name, new IntValue());
             else if(this.type instanceof BoolType)
                 symbolsTable.put(this.name, new BoolValue());
+            else
+                throw new MyException("Type not defined");
         return state;
     }
 

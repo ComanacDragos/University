@@ -62,19 +62,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
@@ -96,6 +83,9 @@
       <workItem from="1603099440134" duration="3836000" />
       <workItem from="1603131994626" duration="2192000" />
       <workItem from="1603203960308" duration="14032000" />
+      <workItem from="1603357628458" duration="3173000" />
+      <workItem from="1603366994406" duration="1555000" />
+      <workItem from="1603450717478" duration="5697000" />
     </task>
     <servers />
   </component>
@@ -115,26 +105,26 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="1245" y="230" key="#com.intellij.ide.util.MemberChooser" timestamp="1603219427336">
+    <state x="1245" y="230" key="#com.intellij.ide.util.MemberChooser" timestamp="1603361166325">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1245" y="230" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1603219427336" />
-    <state width="1877" height="148" key="GridCell.Tab.0.bottom" timestamp="1603222004985">
+    <state x="1245" y="230" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1603361166325" />
+    <state width="575" height="912" key="GridCell.Tab.0.bottom" timestamp="1603468271765">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="148" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1603222004985" />
-    <state width="1877" height="148" key="GridCell.Tab.0.center" timestamp="1603222004984">
+    <state width="575" height="912" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1603468271765" />
+    <state width="575" height="912" key="GridCell.Tab.0.center" timestamp="1603468271765">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="148" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1603222004984" />
-    <state width="1877" height="148" key="GridCell.Tab.0.left" timestamp="1603222004984">
+    <state width="575" height="912" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1603468271765" />
+    <state width="575" height="912" key="GridCell.Tab.0.left" timestamp="1603468271762">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="148" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1603222004984" />
-    <state width="1877" height="148" key="GridCell.Tab.0.right" timestamp="1603222004985">
+    <state width="575" height="912" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1603468271762" />
+    <state width="575" height="912" key="GridCell.Tab.0.right" timestamp="1603468271765">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="148" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1603222004985" />
+    <state width="575" height="912" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1603468271765" />
     <state width="1877" height="148" key="GridCell.Tab.1.bottom" timestamp="1603222004985">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -163,16 +153,5 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1103" y="230" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1603214603117" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Controller/Controller.java</url>
-          <line>47</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

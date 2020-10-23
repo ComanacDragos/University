@@ -128,6 +128,12 @@ INSERT INTO Authors(AuthorId, FirstName, LastName, DOB) VALUES
 (10, 'Cristian', 'Ionescu', '9-23-1965'),
 (11, 'Ion', 'Ionescu', '10-23-1977');
 
+INSERT INTO Authors(AuthorId, FirstName, LastName, DOB) VALUES
+(12, 'Matei', 'Florin', '1-1-2001');
+
+INSERT INTO Authors(AuthorId, FirstName, LastName, DOB) VALUES
+(13, 'Paul', 'Goma', '10-2-1935');
+
 SELECT * FROM Authors 
 
 INSERT INTO Borrowers(BorrowerId, CityId, FirstName, LastName, DateOfBirth, Gender) VALUES
@@ -173,6 +179,9 @@ INSERT INTO Authors_Titles(AuthorId, TitleId, ContributionPercentage) VALUES
 (9, 13, 25),
 (10, 13, 20),
 (11, 13, 45);
+
+INSERT INTO Authors_Titles(AuthorId, TitleId, ContributionPercentage) VALUES
+(13, 10, 100);
 
 SELECT T.Title, A.FirstName + ' ' + A.LastName
 FROM Authors A, Authors_Titles A_T, Titles T
@@ -226,6 +235,11 @@ INSERT INTO Borrowers_Books(BorrowerBookId, BookId, BorrowerId, StartDate, EndDa
 (7, 13, 5, '11-9-2020', NULL),
 (8, 15, 7, '3-3-2020', NULL);
 
+INSERT INTO Borrowers_Books(BorrowerBookId, BookId, BorrowerId, StartDate, EndDate)VALUES
+(9, 1, 5, '1-1-2018', '2-1-2018'),
+(10, 17, 3, '10-10-2020', '10-20-2020'),
+(11, 6, 7, '5-5-2020', '5-5-2020');
+
 SELECT B.FirstName + ' ' + B.LastName, Bk.Title, BB.StartDate, BB.EndDate
 FROM Borrowers B, Borrowers_Books BB, (SELECT B.BookId, T.Title
 FROM Books B Right JOIN Titles T ON T.TitleId = B.TitleId) Bk
@@ -243,8 +257,8 @@ FROM Titles;
 SELECT TopicId, TopicName
 FROM Topics
 
-SELECT B.BookId, T.Title
-FROM Books B Right JOIN Titles T ON T.TitleId = B.TitleId
+SELECT B.BookId, T.Title, B.LibraryId
+FROM Books B JOIN Titles T ON T.TitleId = B.TitleId
 
 
 --Referential Integrity constraint

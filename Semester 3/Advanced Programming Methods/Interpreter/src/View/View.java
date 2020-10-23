@@ -186,6 +186,5 @@ public class View {
                 )
         );
         this.programs.add(ex5);
-
     }
 }

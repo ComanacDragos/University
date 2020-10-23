@@ -1,6 +1,6 @@
 package Exceptions;
 
-public class MyException extends Exception{
+public class MyException extends RuntimeException{
     protected String message;
 
     public MyException(){}

@@ -3,7 +3,6 @@ import Repository.IRepository;
 import Repository.Repository;
 import  View.View;
 
-
 public class Main {
     public static void main(String[] args) {
         IRepository repository = new Repository();
