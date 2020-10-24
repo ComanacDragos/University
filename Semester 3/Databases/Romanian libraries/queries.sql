@@ -261,21 +261,50 @@ HAVING COUNT(T.Title) > (
 )
 ORDER BY A.FirstName + ' ' + A.LastName
 
--- Get the oldest book from each city
+-- Get the cities in witch the oldest book from the city is older than the average of the region
+-- Transilvania avg: 1980, Moldova avg: 1968, Tara Romaneasca avg: 1967
 
-SELECT *
+SELECT BC.CityName, MIN(BC.PublicationYear) AS 'Earliest year'
 FROM (
-	SELECT *
-	FROM Books
+	SELECT T.Title, C.CityName, B.PublicationYear, C.RegionId
+	FROM Books B
+	INNER JOIN Titles T ON B.TitleId = T.TitleId
 	INNER JOIN Libraries L ON B.LibraryId = L.LibraryId
-	INNER JOIN Cities C ON C.CityId = L.LibraryId
-
-
-SELECT B.FirstName + ' ' + B.LastName, 25 - DATEDIFF(YEAR, B.DateOfBirth, GETDATE()) AS 'Age'
-FROM Borrowers B
-WHERE DATEDIFF(YEAR, B.DateOfBirth, GETDATE()) < 25
+	INNER JOIN Cities C ON C.CityId = L.CityId
+) BC
+GROUP BY BC.CityName, BC.RegionId
+HAVING MIN(BC.PublicationYear) < (
+	SELECT AVG(B.PublicationYear)
+	FROM Books B
+	INNER JOIN Titles T ON B.TitleId = T.TitleId
+	INNER JOIN Libraries L ON B.LibraryId = L.LibraryId
+	INNER JOIN Cities C ON C.CityId = L.CityId
+	WHERE C.RegionId = BC.RegionId
+)
+ORDER BY BC.RegionId
 
  
 -- i. 4 queries using ANY and ALL to introduce a subquery in the WHERE clause (2 queries per operator);
 -- rewrite 2 of them with aggregation operators, and the other 2 with IN / [NOT] IN.
 
+-- Get the books together with the publishing house which have the same number of pages as Nunta in cer from any publishing house
+
+SELECT DISTINCT T.Title, B.PublishingHouse, B.Pages
+FROM Books B 
+INNER JOIN Titles T ON B.TitleId = T.TitleId 
+WHERE B.Pages = ANY(
+	SELECT B1.Pages
+	FROM Books B1 
+	INNER JOIN Titles T1 ON B1.TitleId = T1.TitleId 
+	WHERE T1.Title = 'Nunta in cer'
+)
+
+
+
+SELECT B.FirstName + ' ' + B.LastName, 65 - DATEDIFF(YEAR, B.DateOfBirth, GETDATE()) AS 'YearsUntilRetirement'
+FROM Borrowers B
+WHERE  65 - DATEDIFF(YEAR, B.DateOfBirth, GETDATE()) = ANY(
+	
+
+--  x   1
+--1000  y
