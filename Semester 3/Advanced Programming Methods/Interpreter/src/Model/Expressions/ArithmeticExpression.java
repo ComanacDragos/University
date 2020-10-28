@@ -7,71 +7,55 @@ import Model.Types.IntType;
 import Model.Values.IValue;
 import Model.Values.IntValue;
 
-public class ArithmeticExpression implements IExpression{
-    IExpression lhs;
-    IExpression rhs;
-    char operand;
+public class ArithmeticExpression extends BinaryExpression{
+   public enum ArithmeticOperation{
+       ADDITION,
+       SUBTRACTION,
+       MULTIPLICATION,
+       DIVISION
+   }
 
-    public ArithmeticExpression(IExpression lhs, IExpression rhs, char operand){
-        this.lhs = lhs;
-        this.rhs = rhs;
+    ArithmeticOperation operand;
+
+    public ArithmeticExpression(IExpression lhs, IExpression rhs, ArithmeticOperation operand){
+        super(lhs, rhs);
         this.operand = operand;
     }
 
-    public char getOperand() {
+    public ArithmeticOperation getOperand() {
         return operand;
     }
 
-    public IExpression getLhs() {
-        return lhs;
-    }
-
-    public IExpression getRhs() {
-        return rhs;
-    }
-
-    public void setExpression1(IExpression expression1) {
-        this.lhs = expression1;
-    }
-
-    public void setExpression2(IExpression expression2) {
-        this.rhs = expression2;
-    }
-
-    public void setOperand(char operand) {
+    public void setOperand(ArithmeticOperation operand) {
         this.operand = operand;
-    }
-
-    public IntType getType(){
-        return new IntType();
     }
 
     @Override
     public IValue eval(MyIDictionary<String, IValue> symbolsTable) throws MyException, DivisionByZero {
         IValue firstValue, secondValue;
 
-        firstValue = this.lhs.eval(symbolsTable);
+        firstValue = this.leftSide.eval(symbolsTable);
 
         if(firstValue.getType().equals(new IntType())){
-            secondValue = this.rhs.eval(symbolsTable);
+            secondValue = this.rightSide.eval(symbolsTable);
             if(secondValue.getType().equals(new IntType())){
                 IntValue first = (IntValue)firstValue;
                 IntValue second = (IntValue) secondValue;
 
                 switch (this.operand){
-                    case '+':
+                    case ADDITION:
                         return new IntValue(first.getValue() + second.getValue());
-                    case '-':
+                    case SUBTRACTION:
                         return new IntValue(first.getValue() - second.getValue());
-                    case '*':
+                    case MULTIPLICATION:
                         return new IntValue(first.getValue() * second.getValue());
-                    case '/':
+                    case DIVISION:
                         if(second.getValue() == 0)
                             throw new DivisionByZero();
                         else
                             return new IntValue(first.getValue() / second.getValue());
                     default:
-                        throw new MyException("Bad operand");
+                        throw new MyException("Invalid operation");
                 }
             }
             else
@@ -83,6 +67,13 @@ public class ArithmeticExpression implements IExpression{
 
     @Override
     public String toString() {
-        return "(" + lhs.toString() + ' ' + this.operand + ' ' + this.rhs.toString() + ')';
+        char operandSymbol = switch (this.operand){
+            case ADDITION -> '+';
+            case DIVISION -> '/';
+            case SUBTRACTION -> '-';
+            case MULTIPLICATION -> '*';
+        };
+
+        return "(" + this.leftSide.toString() + ' ' + operandSymbol + ' ' + this.rightSide.toString() + ')';
     }
 }

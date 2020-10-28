@@ -29,7 +29,6 @@ INNER JOIN Titles T3 ON T1.TitleId = T3.TitleId
 WHERE T2.TopicName = 'Biography' OR T2.TopicName = 'Philosophy'
 ORDER BY T3.Title
 
-/*
 SELECT DISTINCT T3.Title
 FROM Topics_Titles T1
 INNER JOIN Topics T2 ON T1.TopicId = T2.TopicId
@@ -42,7 +41,7 @@ INNER JOIN Topics T2 ON T1.TopicId = T2.TopicId
 INNER JOIN Titles T3 ON T1.TitleId = T3.TitleId
 WHERE T2.TopicName = 'Philosophy'
 ORDER BY T3.Title
-*/
+
 
 -- b. 2 queries with the intersection operation; use INTERSECT and IN;
 
@@ -61,29 +60,14 @@ INNER JOIN Titles T3 ON T1.TitleId = T3.TitleId
 WHERE T2.TopicName = 'Philosophy' 
 
 -- Find all the distinct titles which are both in 'Biblioteca Centrala Universitara Lucian Blaga' and in 'Biblioteca Judeteana Mihai Eminescu' ordered descending by title
-
-SELECT T.Title
-FROM Books B 
-INNER JOIN Titles T ON T.TitleID = B.TitleId
-INNER JOIN Libraries L ON B.LibraryId = L.LibraryId
-WHERE L.LibraryName = 'Biblioteca Centrala Universitara Lucian Blaga' AND T.Title IN
-(
-	SELECT T.Title
-	FROM Books B 
-	INNER JOIN Titles T ON T.TitleID = B.TitleId
-	INNER JOIN Libraries L ON B.LibraryId = L.LibraryId
-	WHERE L.LibraryName = 'Biblioteca Judeteana Mihai Eminescu'
-)
-ORDER BY T.Title DESC
-
-/*
+-- and which are published by Humanitas or Rao
 SELECT T.Title
 FROM Books B INNER JOIN Titles T ON T.TitleID = B.TitleId
 WHERE B.LibraryId =
 (SELECT LibraryId
 FROM Libraries
 WHERE LibraryName = 'Biblioteca Judeteana Mihai Eminescu'
-) 
+) AND B.PublishingHouse IN ('Humanitas', 'Rao')
 INTERSECT 
 SELECT DISTINCT T.Title
 FROM Books B INNER JOIN Titles T ON T.TitleID = B.TitleId
@@ -91,10 +75,8 @@ WHERE B.LibraryId =
 (SELECT LibraryId
 FROM Libraries
 WHERE LibraryName = 'Biblioteca Centrala Universitara Lucian Blaga'
-) 
+) AND B.PublishingHouse IN ('Humanitas', 'Rao')
 ORDER BY T.Title DESC
-*/
-
 
 -- c. 2 queries with the difference operation; use EXCEPT and NOT IN;
 

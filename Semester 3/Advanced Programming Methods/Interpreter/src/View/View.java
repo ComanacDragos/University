@@ -6,6 +6,7 @@ import Exceptions.EmptyCollection;
 import Exceptions.MyException;
 import Model.ADTs.*;
 import Model.Expressions.ArithmeticExpression;
+import Model.Expressions.LogicExpression;
 import Model.Expressions.ValueExpression;
 import Model.Expressions.VariableExpression;
 import Model.ProgramState;
@@ -120,16 +121,16 @@ public class View {
                                         new ArithmeticExpression(
                                                 new ValueExpression(new IntValue(3)),
                                                 new ValueExpression(new IntValue(5)),
-                                                '*'
+                                                ArithmeticExpression.ArithmeticOperation.MULTIPLICATION
                                         ),
-                                        '+'
+                                        ArithmeticExpression.ArithmeticOperation.ADDITION
                                 ))
                                 ),
                         new CompoundStatement(
                                 new AssignStatement("b", new ArithmeticExpression(
                                         new VariableExpression("a"),
                                         new ValueExpression(new IntValue(1)),
-                                        '+'
+                                        ArithmeticExpression.ArithmeticOperation.ADDITION
                                 )),
                                 new PrintStatement(new VariableExpression("b"))
                         )
@@ -165,7 +166,7 @@ public class View {
                         new AssignStatement("a", new ArithmeticExpression(
                                 new ValueExpression(new IntValue(10)),
                                 new ValueExpression(new IntValue(0)),
-                                '/'
+                                ArithmeticExpression.ArithmeticOperation.DIVISION
                         )),
                         new PrintStatement(new VariableExpression("a"))
                 )
@@ -180,11 +181,40 @@ public class View {
                         new AssignStatement("a", new ArithmeticExpression(
                                 new ValueExpression(new IntValue(10)),
                                 new ValueExpression(new IntValue(2)),
-                                '/'
+                                ArithmeticExpression.ArithmeticOperation.DIVISION
                         )),
                         new PrintStatement(new VariableExpression("b"))
                 )
         );
         this.programs.add(ex5);
+
+        this.programsMenu += "6. bool a; a = true; bool b; Print(a && b); Print(a || b)\n";
+
+        IStatement ex6 = new CompoundStatement(
+                new CompoundStatement(
+                        new CompoundStatement(
+                                new VariableDeclarationStatement("a", new BoolType()),
+                                new AssignStatement("a", new ValueExpression(new BoolValue(true)))
+                        ),
+                        new VariableDeclarationStatement("b", new BoolType())
+                ),
+                new CompoundStatement(
+                        new PrintStatement(
+                                new LogicExpression(
+                                        new VariableExpression("a"),
+                                        new VariableExpression("b"),
+                                        LogicExpression.LogicOperand.AND
+                                )
+                        ),
+                        new PrintStatement(
+                                new LogicExpression(
+                                        new VariableExpression("a"),
+                                        new VariableExpression("b"),
+                                        LogicExpression.LogicOperand.OR
+                                )
+                        )
+                )
+        );
+        this.programs.add(ex6);
     }
 }

@@ -1,6 +1,5 @@
 package Model.Expressions;
 
-import Exceptions.MyException;
 import Exceptions.VariableNotDefined;
 import Model.ADTs.MyIDictionary;
 import Model.Values.IValue;

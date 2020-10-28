@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="970b1b94-469f-4726-9004-31c3ae908338" name="Default Changelist" comment="" />
+    <list default="true" id="d61a07a1-6c42-4009-9b43-3cb9194f92a8" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,15 +18,15 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
   </component>
-  <component name="ProjectId" id="1j5tU04MVQsAN2hKjpmFAgs6uv0" />
+  <component name="ProjectId" id="1jPnjRgQzHZuR4QSVV3iW4EQjJt" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../python" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\University\Semester 3\Computer Networks\Lab1\Lab1-python\problem9" />
+      <recent name="E:\University\Semester 3\Computer Networks\python\Lab3" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -41,20 +41,41 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.server_9">
-    <configuration name="server_8" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="Lab1" />
+  <component name="RunManager" selected="Python.application">
+    <configuration name="application" type="PythonConfigurationType" factoryName="Python" singleton="false" temporary="true">
+      <module name="python" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Lab1-python/problem8" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Lab3/problem4" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Lab1-python/problem8/server_8.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Lab3/problem4/application.py" />
+      <option name="PARAMETERS" value="192.168.0.115" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="receiver" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="python" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Lab3/problem4/testUdpBroadcast" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Lab3/problem4/testUdpBroadcast/receiver.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -63,19 +84,19 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="server_9" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="Lab1" />
+    <configuration name="sender" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="python" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Lab1-python/problem9" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Lab3/problem4/testUdpBroadcast" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Lab1-python/problem9/server_9.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Lab3/problem4/testUdpBroadcast/sender.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -84,10 +105,16 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Python.application" />
+      <item itemvalue="Python.sender" />
+      <item itemvalue="Python.receiver" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.server_9" />
-        <item itemvalue="Python.server_8" />
+        <item itemvalue="Python.application" />
+        <item itemvalue="Python.receiver" />
+        <item itemvalue="Python.sender" />
       </list>
     </recent_temporary>
   </component>
@@ -96,11 +123,11 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="970b1b94-469f-4726-9004-31c3ae908338" name="Default Changelist" comment="" />
-      <created>1603105791982</created>
+      <changelist id="d61a07a1-6c42-4009-9b43-3cb9194f92a8" name="Default Changelist" comment="" />
+      <created>1603714728842</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1603105791982</updated>
+      <updated>1603714728842</updated>
     </task>
     <servers />
   </component>

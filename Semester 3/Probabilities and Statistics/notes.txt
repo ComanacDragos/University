@@ -3,3 +3,10 @@ mutually exclusive = m.e.
 
 
 measure noted by miu
+
+
+at most at least (with equality)
+
+less than more than (without equality)
+
+suma prob evenimentelor dintr-o paritie e 1 --> formule

@@ -7,28 +7,17 @@ import Model.Types.BoolType;
 import Model.Values.BoolValue;
 import Model.Values.IValue;
 
-public class LogicExpression implements IExpression{
+public class LogicExpression extends BinaryExpression{
     public enum LogicOperand{
         AND,
         OR
     }
 
-    IExpression expression1;
-    IExpression expression2;
     LogicOperand operand;
 
-    public LogicExpression(IExpression expression1, IExpression expression2, LogicOperand operand) {
-        this.expression1 = expression1;
-        this.expression2 = expression2;
+    public LogicExpression(IExpression lhs, IExpression rhs, LogicOperand operand) {
+        super(lhs, rhs);
         this.operand = operand;
-    }
-
-    public IExpression getExpression2() {
-        return expression2;
-    }
-
-    public IExpression getExpression1() {
-        return expression1;
     }
 
     public LogicOperand getOperand() {
@@ -39,24 +28,16 @@ public class LogicExpression implements IExpression{
         this.operand = operand;
     }
 
-    public void setExpression2(IExpression expression2) {
-        this.expression2 = expression2;
-    }
-
-    public void setExpression1(IExpression expression1) {
-        this.expression1 = expression1;
-    }
-
     @Override
     public IValue eval(MyIDictionary<String, IValue> symbolsTable) throws MyException, DivisionByZero {
-        IValue value1, value2;
+        IValue firstValue, secondValue;
 
-        value1 = this.expression1.eval(symbolsTable);
-        if(value1.getType().equals(new BoolType())){
-            value2 = this.expression2.eval(symbolsTable);
-            if(value2.getType().equals(new BoolType())){
-                BoolValue first = (BoolValue)value1;
-                BoolValue second = (BoolValue)value2;
+        firstValue = this.leftSide.eval(symbolsTable);
+        if(firstValue.getType().equals(new BoolType())){
+            secondValue = this.rightSide.eval(symbolsTable);
+            if(secondValue.getType().equals(new BoolType())){
+                BoolValue first = (BoolValue)firstValue;
+                BoolValue second = (BoolValue)secondValue;
 
                 return switch (this.operand) {
                     case OR -> new BoolValue(first.getValue() || second.getValue());
@@ -72,6 +53,6 @@ public class LogicExpression implements IExpression{
 
     @Override
     public String toString() {
-        return '(' + this.expression1.toString() + ' ' + this.operand + ' ' + this.expression2.toString() + ')';
+        return '(' + this.leftSide.toString() + ' ' + this.operand + ' ' + this.rightSide.toString() + ')';
     }
 }
