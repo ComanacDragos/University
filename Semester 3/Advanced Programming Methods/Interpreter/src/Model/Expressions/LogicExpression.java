@@ -1,6 +1,7 @@
 package Model.Expressions;
 
 import Exceptions.DivisionByZero;
+import Exceptions.FullCollection;
 import Exceptions.MyException;
 import Model.ADTs.MyIDictionary;
 import Model.Types.BoolType;
@@ -29,9 +30,8 @@ public class LogicExpression extends BinaryExpression{
     }
 
     @Override
-    public IValue eval(MyIDictionary<String, IValue> symbolsTable) throws MyException, DivisionByZero {
+    public IValue eval(MyIDictionary<String, IValue> symbolsTable) throws DivisionByZero {
         IValue firstValue, secondValue;
-
         firstValue = this.leftSide.eval(symbolsTable);
         if(firstValue.getType().equals(new BoolType())){
             secondValue = this.rightSide.eval(symbolsTable);

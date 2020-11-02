@@ -6,13 +6,14 @@ import Model.Types.IType;
 public class BoolValue implements IValue{
     boolean value;
 
-    public BoolValue(){
-        this.value = false;
-    }
-
     public BoolValue(boolean value){
         this.value = value;
     }
+
+    public BoolValue(){
+        this.value = (new BoolType()).getDefaultValue().getValue();
+    }
+
 
     public boolean getValue(){
         return this.value;

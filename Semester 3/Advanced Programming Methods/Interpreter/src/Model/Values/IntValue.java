@@ -7,7 +7,7 @@ public class IntValue implements IValue{
     int value;
 
     public IntValue(){
-        this.value = 0;
+        this.value = (new IntType()).getDefaultValue().getValue();
     }
 
     public IntValue(int value){

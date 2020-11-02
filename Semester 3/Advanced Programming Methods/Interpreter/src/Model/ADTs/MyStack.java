@@ -1,15 +1,17 @@
 package Model.ADTs;
 
 import Exceptions.EmptyCollection;
-import Exceptions.MyException;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.Stack;
 
 public class MyStack<T> implements MyIStack<T>{
-    Stack<T> stack;
+    Deque<T> stack;
 
     public MyStack(){
-        this.stack = new Stack<>();
+        this.stack = new ArrayDeque<>() {
+        };
     }
 
     @Override
@@ -42,12 +44,9 @@ public class MyStack<T> implements MyIStack<T>{
             return "|";
 
         StringBuilder contents = new StringBuilder();
+        for(T element : this.stack)
+            contents.append(element.toString()).append(" | ");
 
-        Stack<T> clone = (Stack<T>) this.stack.clone();
-
-        while (!clone.isEmpty()){
-            contents.append(clone.pop().toString()).append(" | ");
-        }
         return contents.toString();
     }
 }

@@ -16,9 +16,7 @@ import Model.Types.IntType;
 import Model.Values.BoolValue;
 import Model.Values.IValue;
 import Model.Values.IntValue;
-
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 
 public class View {
     Controller controller;
@@ -95,6 +93,16 @@ public class View {
         this.controller.setPrintFlag(false);
     }
 
+    IStatement assembleStatement(IStatement... statements){
+        if(statements.length == 0)
+            return new NopStatement();
+        if(statements.length == 1)
+            return statements[0];
+        if(statements.length == 2)
+            return new CompoundStatement(statements[0], statements[1]);
+        return new CompoundStatement(statements[0], assembleStatement(Arrays.copyOfRange(statements, 1, statements.length)));
+    }
+
     void setupPrograms(){
         this.programs = new ArrayList<>();
         this.programsMenu = "";
@@ -140,22 +148,18 @@ public class View {
 
         this.programsMenu += "3. bool a; int v; a=true; (If a Then v=2 Else v=3); Print(v)\n";
 
-        IStatement ex3 = new CompoundStatement(
+        IStatement ex3 = this.assembleStatement(
                 new VariableDeclarationStatement("a", new BoolType()),
-                new CompoundStatement(
-                        new CompoundStatement(
-                                new VariableDeclarationStatement("v", new IntType()),
-                                new AssignStatement("a", new ValueExpression(new BoolValue(true)))
-                                ),
-                        new CompoundStatement(
-                                new IfStatement(
-                                        new VariableExpression("a"),
-                                        new AssignStatement("v", new ValueExpression(new IntValue(2))),
-                                        new AssignStatement("v", new ValueExpression(new IntValue(3)))
-                                ),
-                                new PrintStatement(new VariableExpression("v"))
-                                ))
+                new VariableDeclarationStatement("v", new IntType()),
+                new AssignStatement("a", new ValueExpression(new BoolValue(true))),
+                new IfStatement(
+                        new VariableExpression("a"),
+                        new AssignStatement("v", new ValueExpression(new IntValue(2))),
+                        new AssignStatement("v", new ValueExpression(new IntValue(3)))
+                ),
+                new PrintStatement(new VariableExpression("v"))
         );
+
         this.programs.add(ex3);
 
         this.programsMenu += "4. int a; a=10/0; Print(a)\n";
