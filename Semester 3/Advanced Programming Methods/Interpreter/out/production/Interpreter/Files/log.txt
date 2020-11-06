@@ -1,0 +1,7 @@
+Execution stack
+Symbols table
+a -> true
+v -> 2
+Out
+2
+

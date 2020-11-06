@@ -1,6 +1,6 @@
 package Exceptions;
 
-public class EmptyCollection extends Exception{
+public class EmptyCollection extends MyException{
     public EmptyCollection(){}
 
     public EmptyCollection(String message){

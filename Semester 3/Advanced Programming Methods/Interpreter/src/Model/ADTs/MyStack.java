@@ -41,11 +41,11 @@ public class MyStack<T> implements MyIStack<T>{
     @Override
     public String toString() {
         if(this.stack.isEmpty())
-            return "|";
+            return "";
 
         StringBuilder contents = new StringBuilder();
         for(T element : this.stack)
-            contents.append(element.toString()).append(" | ");
+            contents.append(element.toString()).append('\n');
 
         return contents.toString();
     }

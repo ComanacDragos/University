@@ -44,20 +44,17 @@ public class Controller {
         return currentStatement.execute(programState);
     }
 
-    public void executeAllSteps() throws EmptyCollection, DivisionByZero, MyException {
+    public void executeAllSteps() throws MyException {
         ProgramState programState = this.repository.getCurrentProgram();
-        int step = 0;
-        if(this.printFlag)
-            System.out.println(String.valueOf(++step) + ". " + programState);
 
+        if(this.printFlag)
+            this.repository.logProgramStateExec();
         while(!programState.getExecutionStack().isEmpty()){
             this.executeOneStep(programState);
 
             if(this.printFlag)
-                System.out.println(++step + ". " + programState);
+                this.repository.logProgramStateExec();
         }
-
-        System.out.println(programState.getOut());
     }
 
     @Override

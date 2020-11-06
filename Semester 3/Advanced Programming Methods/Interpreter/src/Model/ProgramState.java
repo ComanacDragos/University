@@ -6,11 +6,14 @@ import Model.ADTs.MyIStack;
 import Model.Statements.IStatement;
 import Model.Values.IValue;
 
+import java.io.BufferedReader;
+
 public class ProgramState {
     MyIStack<IStatement> executionStack;
     MyIDictionary<String, IValue> symbolsTable;
     MyIList<IValue> out;
     IStatement originalProgram;
+    MyIDictionary<String, BufferedReader> fileTable;
 
     public ProgramState(MyIStack<IStatement> executionStack, MyIDictionary<String, IValue> symbolsTable, MyIList<IValue> out, IStatement originalProgram){
         this.executionStack = executionStack;
@@ -51,13 +54,13 @@ public class ProgramState {
         this.symbolsTable = symbolsTable;
     }
 
+
     @Override
     public String toString() {
-        return this.executionStack.toString() +
-                "\n" + this.symbolsTable.toString() +
-                "\n" + this.out.toString() +
+        return "Execution stack\n" +this.executionStack.toString() +
+                "Symbols table\n" + this.symbolsTable.toString() +
+                "Out\n" + this.out.toString();
                 //"\n" + this.originalProgram.toString() +
-                "\n\n";
     }
 }
 

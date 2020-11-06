@@ -59,8 +59,8 @@ removeSortSublists(l1,...,ln)={
 
 %tree(integer, tree, tree), nil
 
-% insert(E: element, tree(Root: element, Left: tree, Right: tree), Res:
-% tree) (i,i,o)
+% insert(E: element, tree(Root: element, Left: tree, Right: tree), Res:tree)
+%(i,i,o)
 insert(E, nil, tree(E, nil, nil)):-!.
 insert(E, tree(Root, Left, Right), tree(Root, Res, Right)):-E=<Root,!,
                                                             insert(E, Left, Res).

@@ -54,10 +54,26 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Console Colors" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\University\Semester 3\Advanced Programming Methods\Interpreter\src" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="Interpreter" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -88,6 +104,7 @@
       <workItem from="1603450717478" duration="5697000" />
       <workItem from="1603702772476" duration="2885000" />
       <workItem from="1604079609151" duration="6796000" />
+      <workItem from="1604587326792" duration="7970000" />
     </task>
     <servers />
   </component>
@@ -107,26 +124,26 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="1245" y="230" key="#com.intellij.ide.util.MemberChooser" timestamp="1604085218517">
+    <state x="1245" y="230" key="#com.intellij.ide.util.MemberChooser" timestamp="1604587569937">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1245" y="230" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1604085218517" />
-    <state width="1877" height="208" key="GridCell.Tab.0.bottom" timestamp="1604149625717">
+    <state x="1245" y="230" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1604587569937" />
+    <state width="57" height="911" key="GridCell.Tab.0.bottom" timestamp="1604594272363">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="208" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1604149625717" />
-    <state width="1877" height="208" key="GridCell.Tab.0.center" timestamp="1604149625717">
+    <state width="57" height="911" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1604594272363" />
+    <state width="57" height="911" key="GridCell.Tab.0.center" timestamp="1604594272363">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="208" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1604149625717" />
-    <state width="1877" height="208" key="GridCell.Tab.0.left" timestamp="1604149625717">
+    <state width="57" height="911" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1604594272363" />
+    <state width="57" height="911" key="GridCell.Tab.0.left" timestamp="1604594272363">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="208" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1604149625717" />
-    <state width="1877" height="208" key="GridCell.Tab.0.right" timestamp="1604149625717">
+    <state width="57" height="911" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1604594272363" />
+    <state width="57" height="911" key="GridCell.Tab.0.right" timestamp="1604594272363">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="208" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1604149625717" />
+    <state width="57" height="911" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1604594272363" />
     <state width="1877" height="208" key="GridCell.Tab.1.bottom" timestamp="1604149625718">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

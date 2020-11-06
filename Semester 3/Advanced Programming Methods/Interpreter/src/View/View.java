@@ -47,7 +47,10 @@ public class View {
 
             switch (choice) {
                 case '1' -> this.inputProgram();
-                case '2' -> this.completeExecution();
+                case '2' -> {
+                    this.completeExecution();
+                    return;
+                }
                 case '3' -> this.printMode();
                 case '4' -> this.normalMode();
                 case 'x' -> {
@@ -80,7 +83,7 @@ public class View {
     void completeExecution(){
         try{
             this.controller.executeAllSteps();
-        } catch (MyException | EmptyCollection | DivisionByZero exception) {
+        } catch (MyException exception) {
             System.out.println(exception.getMessage() + '\n');
         }
     }

@@ -40,11 +40,11 @@ public class MyList<T> implements MyIList<T>{
     @Override
     public String toString() {
         if(this.list.isEmpty())
-            return "|";
+            return "";
 
         StringBuilder builder = new StringBuilder();
         for(T item : this.list){
-            builder.append(item.toString()).append(" | ");
+            builder.append(item.toString()).append('\n');
         }
         return builder.toString();
     }

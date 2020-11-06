@@ -56,12 +56,12 @@ public class MyDictionary<Key, Value> implements MyIDictionary<Key, Value>{
     @Override
     public String toString() {
         if(this.dictionary.isEmpty())
-            return "|";
+            return "";
 
         StringBuilder builder = new StringBuilder();
 
         for(Key key : this.dictionary.keySet())
-            builder.append(key.toString()).append(" -> ").append(this.dictionary.get(key)).append(" | ");
+            builder.append(key.toString()).append(" -> ").append(this.dictionary.get(key)).append('\n');
         return builder.toString();
     }
 }
