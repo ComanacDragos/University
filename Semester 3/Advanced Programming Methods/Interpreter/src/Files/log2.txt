@@ -1,0 +1,124 @@
+Execution stack
+(
+int = a;
+int = b;
+a = (2 + (3 * 5));
+b = (a + 1);
+print(b);
+)
+Symbols table
+Out
+File table
+
+Execution stack
+(
+int = a;
+)
+(
+int = b;
+a = (2 + (3 * 5));
+b = (a + 1);
+print(b);
+)
+Symbols table
+Out
+File table
+
+Execution stack
+(
+int = b;
+a = (2 + (3 * 5));
+b = (a + 1);
+print(b);
+)
+Symbols table
+a -> 0
+Out
+File table
+
+Execution stack
+(
+int = b;
+a = (2 + (3 * 5));
+)
+(
+b = (a + 1);
+print(b);
+)
+Symbols table
+a -> 0
+Out
+File table
+
+Execution stack
+(
+int = b;
+)
+(
+a = (2 + (3 * 5));
+)
+(
+b = (a + 1);
+print(b);
+)
+Symbols table
+a -> 0
+Out
+File table
+
+Execution stack
+(
+a = (2 + (3 * 5));
+)
+(
+b = (a + 1);
+print(b);
+)
+Symbols table
+a -> 0
+b -> 0
+Out
+File table
+
+Execution stack
+(
+b = (a + 1);
+print(b);
+)
+Symbols table
+a -> 17
+b -> 0
+Out
+File table
+
+Execution stack
+(
+b = (a + 1);
+)
+(
+print(b);
+)
+Symbols table
+a -> 17
+b -> 0
+Out
+File table
+
+Execution stack
+(
+print(b);
+)
+Symbols table
+a -> 17
+b -> 18
+Out
+File table
+
+Execution stack
+Symbols table
+a -> 17
+b -> 18
+Out
+18
+File table
+

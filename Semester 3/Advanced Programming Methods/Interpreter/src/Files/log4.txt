@@ -1,0 +1,44 @@
+Execution stack
+(
+int = a;
+a = (10 / 0);
+print(a);
+)
+Symbols table
+Out
+File table
+
+Execution stack
+(
+int = a;
+)
+(
+a = (10 / 0);
+print(a);
+)
+Symbols table
+Out
+File table
+
+Execution stack
+(
+a = (10 / 0);
+print(a);
+)
+Symbols table
+a -> 0
+Out
+File table
+
+Execution stack
+(
+a = (10 / 0);
+)
+(
+print(a);
+)
+Symbols table
+a -> 0
+Out
+File table
+

@@ -9,5 +9,7 @@ public interface IRepository {
 
     void addProgram(ProgramState newProgram);
 
-    void logProgramStateExec() throws MyException;
+    void logProgramStateExec(ProgramState programState) throws MyException;
+
+    void emptyLogFile() throws MyException;
 }

@@ -6,16 +6,18 @@ import Model.ProgramState;
 import Model.Types.BoolType;
 import Model.Types.IType;
 import Model.Types.IntType;
+import Model.Types.StringType;
 import Model.Values.BoolValue;
 import Model.Values.IValue;
 import Model.Values.IntValue;
+import Model.Values.StringValue;
 
 public class VariableDeclarationStatement implements IStatement{
-    String name;
+    String variable_name;
     IType type;
 
-    public VariableDeclarationStatement(String name, IType type){
-        this.name = name;
+    public VariableDeclarationStatement(String variable_name, IType type){
+        this.variable_name = variable_name;
         this.type = type;
     }
 
@@ -23,12 +25,12 @@ public class VariableDeclarationStatement implements IStatement{
         return type;
     }
 
-    public String getName() {
-        return name;
+    public String getVariable_name() {
+        return variable_name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setVariable_name(String variable_name) {
+        this.variable_name = variable_name;
     }
 
     public void setType(IType type) {
@@ -39,20 +41,27 @@ public class VariableDeclarationStatement implements IStatement{
     public ProgramState execute(ProgramState state) throws MyException {
         MyIDictionary<String, IValue> symbolsTable = state.getSymbolsTable();
 
-        if(symbolsTable.isDefined(this.name))
+        if(symbolsTable.isDefined(this.variable_name))
             throw new MyException("Variable is already declared");
         else
             if(this.type instanceof IntType)
-                symbolsTable.put(this.name, new IntValue());
+                symbolsTable.put(this.variable_name, new IntValue());
             else if(this.type instanceof BoolType)
-                symbolsTable.put(this.name, new BoolValue());
+                symbolsTable.put(this.variable_name, new BoolValue());
+            else if(this.type instanceof StringType)
+                symbolsTable.put(this.variable_name, new StringValue());
             else
                 throw new MyException("Type not defined");
         return state;
     }
 
     @Override
+    public VariableDeclarationStatement deepCopy() {
+        return new VariableDeclarationStatement(this.variable_name, this.type);
+    }
+
+    @Override
     public String toString() {
-        return this.type.toString() + " = " + this.name;
+        return this.type.toString() + " = " + this.variable_name + ';';
     }
 }

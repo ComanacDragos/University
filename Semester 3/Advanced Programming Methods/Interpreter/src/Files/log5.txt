@@ -1,7 +1,6 @@
 Execution stack
 Symbols table
-a -> true
-v -> 2
+a -> 5
 Out
-2
+File table
 

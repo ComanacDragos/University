@@ -1,6 +1,5 @@
 package Repository;
 
-import Exceptions.DivisionByZero;
 import Exceptions.EmptyCollection;
 import Exceptions.MyException;
 import Model.ProgramState;
@@ -24,7 +23,7 @@ public class Repository implements IRepository{
     public ProgramState getCurrentProgram() throws EmptyCollection {
         if(this.programs.isEmpty())
             throw new EmptyCollection("Empty repository");
-        return this.programs.get(0);
+        return this.programs.get(0).deepCopy();
     }
 
     @Override
@@ -33,18 +32,20 @@ public class Repository implements IRepository{
     }
 
     @Override
-    public void logProgramStateExec() throws MyException {
-        PrintWriter logFile = null;
-        try {
-            logFile = new PrintWriter(new BufferedWriter(new FileWriter(this.logFilePath, true)));
-            logFile.println(this.getCurrentProgram().toString());
-        }
-        catch (IOException e) {
+    public void logProgramStateExec(ProgramState programState) throws MyException {
+        try (PrintWriter logFile = new PrintWriter(new BufferedWriter(new FileWriter(this.logFilePath, true)))) {
+            logFile.println(programState.toString());
+        } catch (IOException e) {
             throw new MyException("ERROR: " + e.getMessage());
         }
-        finally {
-            if(logFile != null)
-                logFile.close();
+    }
+
+    @Override
+    public void emptyLogFile() throws MyException {
+        try (PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(this.logFilePath)))) {
+            writer.print("");
+        } catch (IOException e) {
+            throw new MyException("ERROR: " + e.getMessage());
         }
     }
 

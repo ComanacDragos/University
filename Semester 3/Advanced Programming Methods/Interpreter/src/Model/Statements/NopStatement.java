@@ -10,6 +10,11 @@ public class NopStatement implements IStatement{
     }
 
     @Override
+    public NopStatement deepCopy() {
+        return new NopStatement();
+    }
+
+    @Override
     public String toString() {
         return "NOP;";
     }

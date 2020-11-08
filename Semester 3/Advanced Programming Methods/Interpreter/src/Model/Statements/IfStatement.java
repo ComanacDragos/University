@@ -1,6 +1,5 @@
 package Model.Statements;
 
-import Exceptions.DivisionByZero;
 import Exceptions.MyException;
 import Model.ADTs.MyIDictionary;
 import Model.ADTs.MyIStack;
@@ -47,7 +46,7 @@ public class IfStatement implements IStatement{
     }
 
     @Override
-    public ProgramState execute(ProgramState state) throws MyException, DivisionByZero {
+    public ProgramState execute(ProgramState state) throws MyException {
         MyIStack<IStatement> executionStack = state.getExecutionStack();
         MyIDictionary<String, IValue> symbolsTable = state.getSymbolsTable();
 
@@ -67,7 +66,12 @@ public class IfStatement implements IStatement{
     }
 
     @Override
+    public IfStatement deepCopy() {
+        return new IfStatement(this.expression.deepCopy(), this.thenStatement.deepCopy(), this.elseStatement.deepCopy());
+    }
+
+    @Override
     public String toString() {
-        return "IF (" + this.expression.toString() + ") THEN (" + this.thenStatement.toString() + ") ELSE (" + this.elseStatement.toString() + "))";
+        return "IF (" + this.expression.toString() + ") THEN (" + this.thenStatement.toString() + ") ELSE (" + this.elseStatement.toString() + "));";
     }
 }

@@ -1,15 +1,22 @@
 package Model.ADTs;
 
-import Exceptions.EmptyCollection;
+import Exceptions.MyException;
 
-public interface MyIList<T> {
+import java.util.Iterator;
+import java.util.stream.Stream;
+
+public interface MyIList<T> extends Iterable<T>{
     void add(T element);
 
-    T pop() throws EmptyCollection;
+    T pop() throws MyException;
 
     void clear();
 
     int size();
 
     boolean isEmpty();
+
+    Iterator<T> iterator();
+
+    Stream<T> stream();
 }

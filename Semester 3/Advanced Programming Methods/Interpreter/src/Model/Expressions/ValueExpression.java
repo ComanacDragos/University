@@ -25,6 +25,11 @@ public class ValueExpression implements IExpression{
     }
 
     @Override
+    public ValueExpression deepCopy() {
+        return new ValueExpression(this.value.deepCopy());
+    }
+
+    @Override
     public String toString() {
         return this.value.toString();
     }

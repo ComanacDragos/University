@@ -1,14 +1,20 @@
 package Model.ADTs;
 
-import Exceptions.EmptyCollection;
 import Exceptions.MyException;
 
-public interface MyIStack<T> {
-    T pop() throws MyException, EmptyCollection;
+import java.util.Iterator;
+import java.util.stream.Stream;
+
+public interface MyIStack<T> extends Iterable<T>{
+    T pop() throws MyException;
 
     void push(T element);
 
-    T peek() throws EmptyCollection;
+    T peek() throws MyException;
 
     Boolean isEmpty();
+
+    Iterator<T> iterator();
+
+    Stream<T> stream();
 }

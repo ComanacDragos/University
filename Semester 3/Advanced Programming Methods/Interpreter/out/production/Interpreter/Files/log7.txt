@@ -1,0 +1,297 @@
+Execution stack
+(
+string = varf;
+varf = "src/Files/test.in";
+openReadFile("src/Files/test.in");
+int = varc;
+readFile("src/Files/test.in", varc);
+print(varc);
+readFile("src/Files/test.in", varc);
+print(varc);
+closeReadFile("src/Files/test.in");
+)
+Symbols table
+Out
+File table
+
+Execution stack
+(
+string = varf;
+varf = "src/Files/test.in";
+openReadFile("src/Files/test.in");
+int = varc;
+)
+(
+readFile("src/Files/test.in", varc);
+print(varc);
+readFile("src/Files/test.in", varc);
+print(varc);
+closeReadFile("src/Files/test.in");
+)
+Symbols table
+Out
+File table
+
+Execution stack
+(
+string = varf;
+)
+(
+varf = "src/Files/test.in";
+openReadFile("src/Files/test.in");
+int = varc;
+)
+(
+readFile("src/Files/test.in", varc);
+print(varc);
+readFile("src/Files/test.in", varc);
+print(varc);
+closeReadFile("src/Files/test.in");
+)
+Symbols table
+Out
+File table
+
+Execution stack
+(
+varf = "src/Files/test.in";
+openReadFile("src/Files/test.in");
+int = varc;
+)
+(
+readFile("src/Files/test.in", varc);
+print(varc);
+readFile("src/Files/test.in", varc);
+print(varc);
+closeReadFile("src/Files/test.in");
+)
+Symbols table
+varf -> ""
+Out
+File table
+
+Execution stack
+(
+varf = "src/Files/test.in";
+)
+(
+openReadFile("src/Files/test.in");
+int = varc;
+)
+(
+readFile("src/Files/test.in", varc);
+print(varc);
+readFile("src/Files/test.in", varc);
+print(varc);
+closeReadFile("src/Files/test.in");
+)
+Symbols table
+varf -> ""
+Out
+File table
+
+Execution stack
+(
+openReadFile("src/Files/test.in");
+int = varc;
+)
+(
+readFile("src/Files/test.in", varc);
+print(varc);
+readFile("src/Files/test.in", varc);
+print(varc);
+closeReadFile("src/Files/test.in");
+)
+Symbols table
+varf -> "src/Files/test.in"
+Out
+File table
+
+Execution stack
+(
+openReadFile("src/Files/test.in");
+)
+(
+int = varc;
+)
+(
+readFile("src/Files/test.in", varc);
+print(varc);
+readFile("src/Files/test.in", varc);
+print(varc);
+closeReadFile("src/Files/test.in");
+)
+Symbols table
+varf -> "src/Files/test.in"
+Out
+File table
+
+Execution stack
+(
+int = varc;
+)
+(
+readFile("src/Files/test.in", varc);
+print(varc);
+readFile("src/Files/test.in", varc);
+print(varc);
+closeReadFile("src/Files/test.in");
+)
+Symbols table
+varf -> "src/Files/test.in"
+Out
+File table
+src/Files/test.in -> java.io.BufferedReader@497470ed
+
+Execution stack
+(
+readFile("src/Files/test.in", varc);
+print(varc);
+readFile("src/Files/test.in", varc);
+print(varc);
+closeReadFile("src/Files/test.in");
+)
+Symbols table
+varf -> "src/Files/test.in"
+varc -> 0
+Out
+File table
+src/Files/test.in -> java.io.BufferedReader@497470ed
+
+Execution stack
+(
+readFile("src/Files/test.in", varc);
+print(varc);
+)
+(
+readFile("src/Files/test.in", varc);
+print(varc);
+closeReadFile("src/Files/test.in");
+)
+Symbols table
+varf -> "src/Files/test.in"
+varc -> 0
+Out
+File table
+src/Files/test.in -> java.io.BufferedReader@497470ed
+
+Execution stack
+(
+readFile("src/Files/test.in", varc);
+)
+(
+print(varc);
+)
+(
+readFile("src/Files/test.in", varc);
+print(varc);
+closeReadFile("src/Files/test.in");
+)
+Symbols table
+varf -> "src/Files/test.in"
+varc -> 0
+Out
+File table
+src/Files/test.in -> java.io.BufferedReader@497470ed
+
+Execution stack
+(
+print(varc);
+)
+(
+readFile("src/Files/test.in", varc);
+print(varc);
+closeReadFile("src/Files/test.in");
+)
+Symbols table
+varf -> "src/Files/test.in"
+varc -> 50
+Out
+File table
+src/Files/test.in -> java.io.BufferedReader@497470ed
+
+Execution stack
+(
+readFile("src/Files/test.in", varc);
+print(varc);
+closeReadFile("src/Files/test.in");
+)
+Symbols table
+varf -> "src/Files/test.in"
+varc -> 50
+Out
+50
+File table
+src/Files/test.in -> java.io.BufferedReader@497470ed
+
+Execution stack
+(
+readFile("src/Files/test.in", varc);
+print(varc);
+)
+(
+closeReadFile("src/Files/test.in");
+)
+Symbols table
+varf -> "src/Files/test.in"
+varc -> 50
+Out
+50
+File table
+src/Files/test.in -> java.io.BufferedReader@497470ed
+
+Execution stack
+(
+readFile("src/Files/test.in", varc);
+)
+(
+print(varc);
+)
+(
+closeReadFile("src/Files/test.in");
+)
+Symbols table
+varf -> "src/Files/test.in"
+varc -> 50
+Out
+50
+File table
+src/Files/test.in -> java.io.BufferedReader@497470ed
+
+Execution stack
+(
+print(varc);
+)
+(
+closeReadFile("src/Files/test.in");
+)
+Symbols table
+varf -> "src/Files/test.in"
+varc -> 0
+Out
+50
+File table
+src/Files/test.in -> java.io.BufferedReader@497470ed
+
+Execution stack
+(
+closeReadFile("src/Files/test.in");
+)
+Symbols table
+varf -> "src/Files/test.in"
+varc -> 0
+Out
+50
+0
+File table
+src/Files/test.in -> java.io.BufferedReader@497470ed
+
+Execution stack
+Symbols table
+varf -> "src/Files/test.in"
+varc -> 0
+Out
+50
+0
+File table
+

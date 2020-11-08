@@ -29,6 +29,18 @@ public class BoolValue implements IValue{
     }
 
     @Override
+    public BoolValue deepCopy() {
+        return new BoolValue(this.value);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(!(obj instanceof BoolValue))
+            return false;
+        return this.value == ((BoolValue) obj).getValue();
+    }
+
+    @Override
     public String toString() {
         return String.valueOf(this.value);
     }

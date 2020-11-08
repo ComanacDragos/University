@@ -39,7 +39,12 @@ public class CompoundStatement implements IStatement{
     }
 
     @Override
+    public CompoundStatement deepCopy() {
+        return new CompoundStatement(this.first.deepCopy(), this.second.deepCopy());
+    }
+
+    @Override
     public String toString() {
-        return '(' + this.first.toString() + ';' + this.second.toString() + ')';
+        return this.first.toString() + "\n" + this.second.toString();
     }
 }

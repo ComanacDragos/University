@@ -1,6 +1,5 @@
 package Model.Types;
 
-import Model.Values.IValue;
 import Model.Values.IntValue;
 
 public class IntType implements IType{

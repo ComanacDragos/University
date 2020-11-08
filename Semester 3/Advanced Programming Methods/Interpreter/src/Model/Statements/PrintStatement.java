@@ -1,6 +1,5 @@
 package Model.Statements;
 
-import Exceptions.DivisionByZero;
 import Exceptions.MyException;
 import Model.ADTs.MyIDictionary;
 import Model.ADTs.MyIList;
@@ -24,7 +23,7 @@ public class PrintStatement implements IStatement{
     }
 
     @Override
-    public ProgramState execute(ProgramState state) throws MyException, DivisionByZero {
+    public ProgramState execute(ProgramState state) throws MyException {
         MyIList<IValue> out = state.getOut();
         MyIDictionary<String, IValue> symbolsTable = state.getSymbolsTable();
 
@@ -34,7 +33,12 @@ public class PrintStatement implements IStatement{
     }
 
     @Override
+    public PrintStatement deepCopy() {
+        return new PrintStatement(this.expression.deepCopy());
+    }
+
+    @Override
     public String toString() {
-        return "print(" + this.expression.toString() + ")";
+        return "print(" + this.expression.toString() + ");";
     }
 }

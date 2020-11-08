@@ -5,6 +5,9 @@ import Exceptions.InexistentKey;
 
 
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Stream;
 
 public class MyDictionary<Key, Value> implements MyIDictionary<Key, Value>{
     HashMap<Key, Value> dictionary;
@@ -51,6 +54,16 @@ public class MyDictionary<Key, Value> implements MyIDictionary<Key, Value>{
             this.dictionary.put(key, value);
         else
             throw new InexistentKey(key.toString() + " key does not exist");
+    }
+
+    @Override
+    public Set<Key> keySet() {
+        return this.dictionary.keySet();
+    }
+
+    @Override
+    public Stream<Map.Entry<Key, Value>> stream() {
+        return this.dictionary.entrySet().stream();
     }
 
     @Override

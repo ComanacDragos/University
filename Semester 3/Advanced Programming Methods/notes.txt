@@ -8,3 +8,55 @@
 
 
 GitHub id: 46956225
+
+4
+
+filtering 1
+filtering 2
+mapping 2  
+filtering 3
+filtering 4
+mapping 4
+
+
+
+
+
+
+map d2
+filter D2
+map a2
+filter A2
+forEach A2
+map b1
+filterB1
+map b3
+filter B3
+map c
+filter C
+
+
+filter d2
+filter a2
+map a2
+foreach A2
+filter b1
+filter b3
+filter c
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

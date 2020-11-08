@@ -27,6 +27,11 @@ public class VariableExpression implements IExpression{
     }
 
     @Override
+    public VariableExpression deepCopy() {
+        return new VariableExpression(this.id);
+    }
+
+    @Override
     public String toString() {
         return this.id;
     }

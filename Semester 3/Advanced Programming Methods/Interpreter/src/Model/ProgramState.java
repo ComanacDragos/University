@@ -1,12 +1,14 @@
 package Model;
 
-import Model.ADTs.MyIDictionary;
-import Model.ADTs.MyIList;
-import Model.ADTs.MyIStack;
+import Model.ADTs.*;
 import Model.Statements.IStatement;
 import Model.Values.IValue;
 
 import java.io.BufferedReader;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class ProgramState {
     MyIStack<IStatement> executionStack;
@@ -15,11 +17,12 @@ public class ProgramState {
     IStatement originalProgram;
     MyIDictionary<String, BufferedReader> fileTable;
 
-    public ProgramState(MyIStack<IStatement> executionStack, MyIDictionary<String, IValue> symbolsTable, MyIList<IValue> out, IStatement originalProgram){
+    public ProgramState(MyIStack<IStatement> executionStack, MyIDictionary<String, IValue> symbolsTable, MyIList<IValue> out, MyIDictionary<String, BufferedReader> fileTable, IStatement originalProgram){
         this.executionStack = executionStack;
         this.symbolsTable = symbolsTable;
         this.out = out;
         this.originalProgram = originalProgram;
+        this.fileTable = fileTable;
     }
 
     public IStatement getOriginalProgram() {
@@ -54,13 +57,47 @@ public class ProgramState {
         this.symbolsTable = symbolsTable;
     }
 
+    public MyIDictionary<String, BufferedReader> getFileTable() {
+        return fileTable;
+    }
+
+    public void setFileTable(MyIDictionary<String, BufferedReader> fileTable) {
+        this.fileTable = fileTable;
+    }
+
+    public ProgramState deepCopy(){
+        MyIStack<IStatement> newExecutionStack = new MyStack<>();
+        MyIDictionary<String, IValue> newSymbolsTable = new MyDictionary<>();
+        MyIList<IValue> newOut = new MyList<>();
+        MyIDictionary<String, BufferedReader> newFileTable = new MyDictionary<>();
+
+        this.executionStack.stream().map(
+                IStatement::deepCopy
+        ).forEach(newExecutionStack::push);
+
+        this.symbolsTable.stream().collect(
+                Collectors.toMap(Map.Entry::getKey, e -> e.getValue().deepCopy())
+        ).entrySet().stream().forEach(
+                e -> newSymbolsTable.put(e.getKey(), e.getValue())
+        );
+
+        this.out.stream().map(
+                IValue::deepCopy
+        ).forEach(newOut::add);
+
+        this.fileTable.stream().forEach(
+                e -> newFileTable.put(e.getKey(), e.getValue())
+        );
+
+        return new ProgramState(newExecutionStack, newSymbolsTable, newOut, newFileTable, this.originalProgram.deepCopy());
+    }
 
     @Override
     public String toString() {
         return "Execution stack\n" +this.executionStack.toString() +
                 "Symbols table\n" + this.symbolsTable.toString() +
-                "Out\n" + this.out.toString();
-                //"\n" + this.originalProgram.toString() +
+                "Out\n" + this.out.toString() +
+                "File table\n" + this.fileTable.toString();
     }
 }
 

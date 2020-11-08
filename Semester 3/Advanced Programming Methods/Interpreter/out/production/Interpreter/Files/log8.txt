@@ -1,0 +1,255 @@
+Execution stack
+(
+int = a;
+int = b;
+a = 5;
+b = 10;
+print(a != b);
+print(a < b);
+print(a == b);
+print(a >= b);
+)
+Symbols table
+Out
+File table
+
+Execution stack
+(
+int = a;
+int = b;
+a = 5;
+b = 10;
+)
+(
+print(a != b);
+print(a < b);
+print(a == b);
+print(a >= b);
+)
+Symbols table
+Out
+File table
+
+Execution stack
+(
+int = a;
+int = b;
+)
+(
+a = 5;
+b = 10;
+)
+(
+print(a != b);
+print(a < b);
+print(a == b);
+print(a >= b);
+)
+Symbols table
+Out
+File table
+
+Execution stack
+(
+int = a;
+)
+(
+int = b;
+)
+(
+a = 5;
+b = 10;
+)
+(
+print(a != b);
+print(a < b);
+print(a == b);
+print(a >= b);
+)
+Symbols table
+Out
+File table
+
+Execution stack
+(
+int = b;
+)
+(
+a = 5;
+b = 10;
+)
+(
+print(a != b);
+print(a < b);
+print(a == b);
+print(a >= b);
+)
+Symbols table
+a -> 0
+Out
+File table
+
+Execution stack
+(
+a = 5;
+b = 10;
+)
+(
+print(a != b);
+print(a < b);
+print(a == b);
+print(a >= b);
+)
+Symbols table
+a -> 0
+b -> 0
+Out
+File table
+
+Execution stack
+(
+a = 5;
+)
+(
+b = 10;
+)
+(
+print(a != b);
+print(a < b);
+print(a == b);
+print(a >= b);
+)
+Symbols table
+a -> 0
+b -> 0
+Out
+File table
+
+Execution stack
+(
+b = 10;
+)
+(
+print(a != b);
+print(a < b);
+print(a == b);
+print(a >= b);
+)
+Symbols table
+a -> 5
+b -> 0
+Out
+File table
+
+Execution stack
+(
+print(a != b);
+print(a < b);
+print(a == b);
+print(a >= b);
+)
+Symbols table
+a -> 5
+b -> 10
+Out
+File table
+
+Execution stack
+(
+print(a != b);
+print(a < b);
+)
+(
+print(a == b);
+print(a >= b);
+)
+Symbols table
+a -> 5
+b -> 10
+Out
+File table
+
+Execution stack
+(
+print(a != b);
+)
+(
+print(a < b);
+)
+(
+print(a == b);
+print(a >= b);
+)
+Symbols table
+a -> 5
+b -> 10
+Out
+File table
+
+Execution stack
+(
+print(a < b);
+)
+(
+print(a == b);
+print(a >= b);
+)
+Symbols table
+a -> 5
+b -> 10
+Out
+true
+File table
+
+Execution stack
+(
+print(a == b);
+print(a >= b);
+)
+Symbols table
+a -> 5
+b -> 10
+Out
+true
+true
+File table
+
+Execution stack
+(
+print(a == b);
+)
+(
+print(a >= b);
+)
+Symbols table
+a -> 5
+b -> 10
+Out
+true
+true
+File table
+
+Execution stack
+(
+print(a >= b);
+)
+Symbols table
+a -> 5
+b -> 10
+Out
+true
+true
+false
+File table
+
+Execution stack
+Symbols table
+a -> 5
+b -> 10
+Out
+true
+true
+false
+false
+File table
+

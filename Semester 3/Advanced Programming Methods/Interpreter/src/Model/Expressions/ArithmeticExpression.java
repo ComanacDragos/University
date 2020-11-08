@@ -31,7 +31,7 @@ public class ArithmeticExpression extends BinaryExpression{
     }
 
     @Override
-    public IValue eval(MyIDictionary<String, IValue> symbolsTable) throws MyException, DivisionByZero {
+    public IValue eval(MyIDictionary<String, IValue> symbolsTable) throws MyException {
         IValue firstValue, secondValue;
 
         firstValue = this.leftSide.eval(symbolsTable);
@@ -63,6 +63,11 @@ public class ArithmeticExpression extends BinaryExpression{
         }
         else
             throw new MyException("First operand is not an integer");
+    }
+
+    @Override
+    public ArithmeticExpression deepCopy() {
+        return new ArithmeticExpression(this.leftSide.deepCopy(), this.rightSide.deepCopy(), this.operand);
     }
 
     @Override

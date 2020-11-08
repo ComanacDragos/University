@@ -1,0 +1,133 @@
+Execution stack
+(
+bool = a;
+a = true;
+bool = b;
+print((a AND b));
+print((a OR b));
+)
+Symbols table
+Out
+File table
+
+Execution stack
+(
+bool = a;
+a = true;
+bool = b;
+)
+(
+print((a AND b));
+print((a OR b));
+)
+Symbols table
+Out
+File table
+
+Execution stack
+(
+bool = a;
+a = true;
+)
+(
+bool = b;
+)
+(
+print((a AND b));
+print((a OR b));
+)
+Symbols table
+Out
+File table
+
+Execution stack
+(
+bool = a;
+)
+(
+a = true;
+)
+(
+bool = b;
+)
+(
+print((a AND b));
+print((a OR b));
+)
+Symbols table
+Out
+File table
+
+Execution stack
+(
+a = true;
+)
+(
+bool = b;
+)
+(
+print((a AND b));
+print((a OR b));
+)
+Symbols table
+a -> false
+Out
+File table
+
+Execution stack
+(
+bool = b;
+)
+(
+print((a AND b));
+print((a OR b));
+)
+Symbols table
+a -> true
+Out
+File table
+
+Execution stack
+(
+print((a AND b));
+print((a OR b));
+)
+Symbols table
+a -> true
+b -> false
+Out
+File table
+
+Execution stack
+(
+print((a AND b));
+)
+(
+print((a OR b));
+)
+Symbols table
+a -> true
+b -> false
+Out
+File table
+
+Execution stack
+(
+print((a OR b));
+)
+Symbols table
+a -> true
+b -> false
+Out
+false
+File table
+
+Execution stack
+Symbols table
+a -> true
+b -> false
+Out
+false
+true
+File table
+
