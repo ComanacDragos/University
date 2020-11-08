@@ -28,7 +28,7 @@ candidate(N, Res):-N>1,
 %decompositions_rec(N: integer, Res:list, Col: list, ColSum: integer)
 %(i,o,i,i)
 
-decompositions_rec(N, [H1, H2|Col], [H1, H2|Col], N).
+decompositions_rec(N, [H|Col], [H|Col], N).
 decompositions_rec(N, Res, [H|Col], ColSum):-candidate(N, E),
                                              E is H-1,
                                              ColSum1 is E + ColSum,
