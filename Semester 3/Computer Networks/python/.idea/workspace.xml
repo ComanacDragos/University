@@ -41,7 +41,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.server_select">
+  <component name="RunManager" selected="Python.application">
     <configuration name="application" type="PythonConfigurationType" factoryName="Python" singleton="false" temporary="true">
       <module name="python" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -178,9 +178,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.application" />
         <item itemvalue="Python.server_select" />
         <item itemvalue="Python.client_select" />
-        <item itemvalue="Python.application" />
         <item itemvalue="Python.client_2" />
         <item itemvalue="Python.server_2" />
       </list>

@@ -6,3 +6,6 @@ WITH f(n, i) AS(
 )
 SELECT TOP 5 n FROM f
 s
+
+
+-- for a given library find the gaps
