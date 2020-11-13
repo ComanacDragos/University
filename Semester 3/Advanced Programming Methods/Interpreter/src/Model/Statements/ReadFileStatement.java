@@ -47,7 +47,7 @@ public class ReadFileStatement implements IStatement{
             IValue variableValue = symbolsTable.lookup(this.variable_name);
 
             if(variableValue.getType().equals(new IntType())){
-                IValue stringValue = this.expression.eval(symbolsTable);
+                IValue stringValue = this.expression.eval(symbolsTable, state.getHeap());
 
                 if(stringValue.getType().equals(new StringType())){
                     StringValue fileName = (StringValue) stringValue;

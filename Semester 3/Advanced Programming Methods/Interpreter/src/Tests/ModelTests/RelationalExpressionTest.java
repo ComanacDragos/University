@@ -2,6 +2,7 @@ package Tests.ModelTests;
 
 import Exceptions.MyException;
 import Model.ADTs.MyDictionary;
+import Model.ADTs.MyHeap;
 import Model.ADTs.MyIDictionary;
 import Model.Expressions.IExpression;
 import Model.Expressions.RelationalExpression;
@@ -18,6 +19,7 @@ public class RelationalExpressionTest {
     IExpression left, right, invalid;
     RelationalExpression expression;
     MyIDictionary<String, IValue> symbolsTable;
+    MyHeap heap;
 
     @BeforeEach
     void setUp() {
@@ -25,18 +27,19 @@ public class RelationalExpressionTest {
         this.right = new ValueExpression(new IntValue(10));
         this.invalid = new ValueExpression(new StringValue("invalid"));
 
+        this.heap = new MyHeap();
         this.symbolsTable = new MyDictionary<>();
     }
 
     void ExpressionShouldBeTrue(){
-        IValue value = this.expression.eval(this.symbolsTable);
+        IValue value = this.expression.eval(this.symbolsTable, this.heap);
 
         Assertions.assertTrue(value instanceof BoolValue);
         Assertions.assertTrue(((BoolValue) value).getValue());
     }
 
     void ExpressionShouldBeFalse(){
-        IValue value = this.expression.eval(this.symbolsTable);
+        IValue value = this.expression.eval(this.symbolsTable, this.heap);
 
         Assertions.assertTrue(value instanceof BoolValue);
         Assertions.assertFalse(((BoolValue) value).getValue());
@@ -118,7 +121,7 @@ public class RelationalExpressionTest {
     void EvalShouldThrowMyExceptionWithMessageFirstOperandIsNotAnInteger(){
         this.expression = new RelationalExpression(this.invalid, this.right, RelationalExpression.RelationalOperation.LESS_THAN);
 
-        Exception exception = Assertions.assertThrows(MyException.class, ()->{this.expression.eval(this.symbolsTable);});
+        Exception exception = Assertions.assertThrows(MyException.class, ()->{this.expression.eval(this.symbolsTable, this.heap);});
 
         Assertions.assertEquals(exception.getMessage(), "First operand is not an integer");
     }
@@ -127,7 +130,7 @@ public class RelationalExpressionTest {
     void EvalShouldThrowMyExceptionWithMessageSecondOperandIsNotAnInteger(){
         this.expression = new RelationalExpression(this.left, this.invalid, RelationalExpression.RelationalOperation.LESS_THAN);
 
-        Exception exception = Assertions.assertThrows(MyException.class, ()->{this.expression.eval(this.symbolsTable);});
+        Exception exception = Assertions.assertThrows(MyException.class, ()->{this.expression.eval(this.symbolsTable, this.heap);});
 
         Assertions.assertEquals(exception.getMessage(), "Second operand is not an integer");
     }

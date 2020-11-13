@@ -1,7 +1,7 @@
 Execution stack
 (
-int = a;
-int = b;
+int a;
+int b;
 a = 5;
 b = 10;
 print(a != b);
@@ -12,30 +12,14 @@ print(a >= b);
 Symbols table
 Out
 File table
+Heap
+
+
 
 Execution stack
 (
-int = a;
-int = b;
-a = 5;
-b = 10;
-)
-(
-print(a != b);
-print(a < b);
-print(a == b);
-print(a >= b);
-)
-Symbols table
-Out
-File table
-
-Execution stack
-(
-int = a;
-int = b;
-)
-(
+int a;
+int b;
 a = 5;
 b = 10;
 )
@@ -48,13 +32,14 @@ print(a >= b);
 Symbols table
 Out
 File table
+Heap
+
+
 
 Execution stack
 (
-int = a;
-)
-(
-int = b;
+int a;
+int b;
 )
 (
 a = 5;
@@ -69,10 +54,16 @@ print(a >= b);
 Symbols table
 Out
 File table
+Heap
+
+
 
 Execution stack
 (
-int = b;
+int a;
+)
+(
+int b;
 )
 (
 a = 5;
@@ -85,11 +76,16 @@ print(a == b);
 print(a >= b);
 )
 Symbols table
-a -> 0
 Out
 File table
+Heap
+
+
 
 Execution stack
+(
+int b;
+)
 (
 a = 5;
 b = 10;
@@ -102,15 +98,15 @@ print(a >= b);
 )
 Symbols table
 a -> 0
-b -> 0
 Out
 File table
+Heap
+
+
 
 Execution stack
 (
 a = 5;
-)
-(
 b = 10;
 )
 (
@@ -124,6 +120,31 @@ a -> 0
 b -> 0
 Out
 File table
+Heap
+
+
+
+Execution stack
+(
+a = 5;
+)
+(
+b = 10;
+)
+(
+print(a != b);
+print(a < b);
+print(a == b);
+print(a >= b);
+)
+Symbols table
+a -> 0
+b -> 0
+Out
+File table
+Heap
+
+
 
 Execution stack
 (
@@ -140,6 +161,9 @@ a -> 5
 b -> 0
 Out
 File table
+Heap
+
+
 
 Execution stack
 (
@@ -153,6 +177,9 @@ a -> 5
 b -> 10
 Out
 File table
+Heap
+
+
 
 Execution stack
 (
@@ -168,6 +195,9 @@ a -> 5
 b -> 10
 Out
 File table
+Heap
+
+
 
 Execution stack
 (
@@ -185,6 +215,9 @@ a -> 5
 b -> 10
 Out
 File table
+Heap
+
+
 
 Execution stack
 (
@@ -200,6 +233,9 @@ b -> 10
 Out
 true
 File table
+Heap
+
+
 
 Execution stack
 (
@@ -213,6 +249,9 @@ Out
 true
 true
 File table
+Heap
+
+
 
 Execution stack
 (
@@ -228,6 +267,9 @@ Out
 true
 true
 File table
+Heap
+
+
 
 Execution stack
 (
@@ -241,6 +283,9 @@ true
 true
 false
 File table
+Heap
+
+
 
 Execution stack
 Symbols table
@@ -252,4 +297,7 @@ true
 false
 false
 File table
+Heap
+
+
 

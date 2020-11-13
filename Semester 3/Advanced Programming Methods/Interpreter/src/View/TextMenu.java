@@ -1,14 +1,14 @@
 package View;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.TreeMap;
 
 public class TextMenu {
-    private Map<String, Command> commands;
+    private final Map<String, Command> commands;
 
     public TextMenu(){
-        this.commands = new HashMap<>();
+        this.commands = new TreeMap<>();
     }
 
     public void addCommand(Command command){

@@ -1,11 +1,4 @@
-WITH f(n, i) AS(
-	SELECT 1, 1
-	UNION ALL
-	SELECT n * i, i + 1
-	FROM f
-)
-SELECT TOP 5 n FROM f
-s
-
-
--- for a given library find the gaps
+SELECT * 
+FROM Borrowers_Books
+WHERE EndDate IS NOT NULL
+ORDER BY StartDate

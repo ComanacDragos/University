@@ -50,7 +50,7 @@ public class IfStatement implements IStatement{
         MyIStack<IStatement> executionStack = state.getExecutionStack();
         MyIDictionary<String, IValue> symbolsTable = state.getSymbolsTable();
 
-        IValue condition = this.expression.eval(symbolsTable);
+        IValue condition = this.expression.eval(symbolsTable, state.getHeap());
 
         if(condition.getType().equals(new BoolType())){
             BoolValue condition1 = (BoolValue) condition;

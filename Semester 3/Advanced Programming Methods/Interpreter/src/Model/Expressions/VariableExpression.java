@@ -1,6 +1,7 @@
 package Model.Expressions;
 
 import Exceptions.VariableNotDefined;
+import Model.ADTs.MyHeap;
 import Model.ADTs.MyIDictionary;
 import Model.Values.IValue;
 
@@ -20,7 +21,7 @@ public class VariableExpression implements IExpression{
     }
 
     @Override
-    public IValue eval(MyIDictionary<String, IValue> symbolsTable) throws VariableNotDefined {
+    public IValue eval(MyIDictionary<String, IValue> symbolsTable, MyHeap heap) throws VariableNotDefined {
         if(!symbolsTable.isDefined(id))
             throw new VariableNotDefined("Variable " + id + " not defined");
         return symbolsTable.lookup(id);

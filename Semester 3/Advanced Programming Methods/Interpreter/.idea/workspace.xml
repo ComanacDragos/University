@@ -19,7 +19,36 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a28febb5-0634-448c-a29f-8e73463e0d72" name="Default Changelist" comment="" />
+    <list default="true" id="a28febb5-0634-448c-a29f-8e73463e0d72" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Interpreter/Files/log7.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Interpreter/Files/log7.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Interpreter/Files/test.in" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Interpreter/Files/test.in" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Interpreter/Model/ProgramState.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Interpreter/Model/ProgramState.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Files/log4.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Files/log4.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Files/log7.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Files/log7.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Files/log8.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Files/log8.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Files/test.in" beforeDir="false" afterPath="$PROJECT_DIR$/src/Files/test.in" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Expressions/ArithmeticExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Expressions/ArithmeticExpression.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Expressions/BinaryExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Expressions/BinaryExpression.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Expressions/IExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Expressions/IExpression.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Expressions/LogicExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Expressions/LogicExpression.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Expressions/RelationalExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Expressions/RelationalExpression.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Expressions/ValueExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Expressions/ValueExpression.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Expressions/VariableExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Expressions/VariableExpression.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/ProgramState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/ProgramState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Statements/AssignStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Statements/AssignStatement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Statements/CloseReadFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Statements/CloseReadFile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Statements/IfStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Statements/IfStatement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Statements/OpenReadFileStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Statements/OpenReadFileStatement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Statements/PrintStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Statements/PrintStatement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Statements/ReadFileStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Statements/ReadFileStatement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Statements/VariableDeclarationStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Statements/VariableDeclarationStatement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Types/StringType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Types/StringType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tests/ModelTests/RelationalExpressionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tests/ModelTests/RelationalExpressionTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Command.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/TextMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/TextMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/View.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -43,7 +72,9 @@
     <option name="version" value="1" />
   </component>
   <component name="ProjectId" id="1ixsDdtOOxFWuKLMS0QzSCqKBDW" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -59,7 +90,7 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="create.test.in.the.same.root" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="coverage" />
   </component>
   <component name="RecentsManager">
@@ -74,26 +105,6 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.Main">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="Interpreter" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Interpreter" />
       <useClassPathOnly />
@@ -112,6 +123,24 @@
         <value defaultName="wholeProject" />
       </option>
       <dir value="$PROJECT_DIR$/src" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="Interpreter" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -171,17 +200,15 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.Whole project" />
+      <item itemvalue="Application.Main" />
       <item itemvalue="JUnit.RelationalExpressionTest.EvalShouldThrowMyExceptionWithMessageSecondOperandIsNotAnInteger" />
       <item itemvalue="JUnit.RelationalExpressionTest.LessThanExpressionShouldReturnFalse" />
       <item itemvalue="JUnit.RelationalExpressionTest" />
-      <item itemvalue="Application.Main" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.RelationalExpressionTest" />
-        <item itemvalue="JUnit.Whole project" />
         <item itemvalue="JUnit.RelationalExpressionTest.EvalShouldThrowMyExceptionWithMessageSecondOperandIsNotAnInteger" />
         <item itemvalue="JUnit.RelationalExpressionTest.LessThanExpressionShouldReturnFalse" />
       </list>
@@ -209,6 +236,8 @@
       <workItem from="1604079609151" duration="6796000" />
       <workItem from="1604587326792" duration="21701000" />
       <workItem from="1604762876451" duration="21952000" />
+      <workItem from="1605197504026" duration="3683000" />
+      <workItem from="1605262158275" duration="12996000" />
     </task>
     <servers />
   </component>
@@ -236,10 +265,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="729" y="322" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1604835523878" />
-    <state x="1245" y="230" key="#com.intellij.ide.util.MemberChooser" timestamp="1604843091615">
+    <state x="1245" y="230" key="#com.intellij.ide.util.MemberChooser" timestamp="1605286232849">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1245" y="230" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1604843091615" />
+    <state x="1245" y="230" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1605286232849" />
     <state x="1170" y="300" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1604836906481">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -248,30 +277,30 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1086" y="327" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1604840083835" />
-    <state x="810" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1604688814761">
+    <state x="810" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1605285511193">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="810" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1604688814761" />
+    <state x="810" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1605285511193" />
     <state x="740" y="287" key="FileChooserDialogImpl" timestamp="1604839668957">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="287" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1604839668957" />
-    <state width="1130" height="912" key="GridCell.Tab.0.bottom" timestamp="1604849388858">
+    <state width="371" height="912" key="GridCell.Tab.0.bottom" timestamp="1605288791604">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1130" height="912" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1604849388858" />
-    <state width="1130" height="912" key="GridCell.Tab.0.center" timestamp="1604849388858">
+    <state width="371" height="912" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1605288791604" />
+    <state width="371" height="912" key="GridCell.Tab.0.center" timestamp="1605288791604">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1130" height="912" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1604849388858" />
-    <state width="1130" height="912" key="GridCell.Tab.0.left" timestamp="1604849388858">
+    <state width="371" height="912" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1605288791604" />
+    <state width="371" height="912" key="GridCell.Tab.0.left" timestamp="1605288791604">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1130" height="912" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1604849388858" />
-    <state width="1130" height="912" key="GridCell.Tab.0.right" timestamp="1604849388858">
+    <state width="371" height="912" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1605288791604" />
+    <state width="371" height="912" key="GridCell.Tab.0.right" timestamp="1605288791604">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1130" height="912" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1604849388858" />
+    <state width="371" height="912" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1605288791604" />
     <state width="1877" height="34" key="GridCell.Tab.1.bottom" timestamp="1604849089675">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -300,14 +329,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1211" y="318" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1604836941445" />
+    <state x="342" y="140" key="new project wizard" timestamp="1605209047409">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="342" y="140" key="new project wizard/0.0.1920.1040@0.0.1920.1040" timestamp="1605209047409" />
+    <state x="1216" y="272" key="refactoring.ChangeSignatureDialog" timestamp="1605284817563">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1216" y="272" key="refactoring.ChangeSignatureDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1605284817563" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1603212562680">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1603212562680" />
-    <state x="1103" y="230" width="672" height="678" key="search.everywhere.popup" timestamp="1604080583720">
+    <state x="1103" y="230" width="672" height="678" key="search.everywhere.popup" timestamp="1605287363117">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1103" y="230" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1604080583720" />
+    <state x="1103" y="230" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1605287363117" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Interpreter$src_in_Interpreter.ic" NAME="src in Interpreter Coverage Results" MODIFIED="1604839641785" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

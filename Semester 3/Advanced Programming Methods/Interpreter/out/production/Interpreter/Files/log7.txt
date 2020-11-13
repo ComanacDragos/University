@@ -14,6 +14,8 @@ Symbols table
 Out
 File table
 
+
+
 Execution stack
 (
 string = varf;
@@ -31,6 +33,8 @@ closeReadFile("src/Files/test.in");
 Symbols table
 Out
 File table
+
+
 
 Execution stack
 (
@@ -51,6 +55,8 @@ closeReadFile("src/Files/test.in");
 Symbols table
 Out
 File table
+
+
 
 Execution stack
 (
@@ -70,6 +76,8 @@ varf -> ""
 Out
 File table
 
+
+
 Execution stack
 (
 varf = "src/Files/test.in";
@@ -90,26 +98,30 @@ varf -> ""
 Out
 File table
 
-Execution stack
-(
-openReadFile("src/Files/test.in");
-int = varc;
-)
-(
-readFile("src/Files/test.in", varc);
-print(varc);
-readFile("src/Files/test.in", varc);
-print(varc);
-closeReadFile("src/Files/test.in");
-)
-Symbols table
-varf -> "src/Files/test.in"
-Out
-File table
+
 
 Execution stack
 (
 openReadFile("src/Files/test.in");
+int = varc;
+)
+(
+readFile("src/Files/test.in", varc);
+print(varc);
+readFile("src/Files/test.in", varc);
+print(varc);
+closeReadFile("src/Files/test.in");
+)
+Symbols table
+varf -> "src/Files/test.in"
+Out
+File table
+
+
+
+Execution stack
+(
+openReadFile("src/Files/test.in");
 )
 (
 int = varc;
@@ -126,6 +138,8 @@ varf -> "src/Files/test.in"
 Out
 File table
 
+
+
 Execution stack
 (
 int = varc;
@@ -141,7 +155,8 @@ Symbols table
 varf -> "src/Files/test.in"
 Out
 File table
-src/Files/test.in -> java.io.BufferedReader@497470ed
+src/Files/test.in
+
 
 Execution stack
 (
@@ -156,7 +171,8 @@ varf -> "src/Files/test.in"
 varc -> 0
 Out
 File table
-src/Files/test.in -> java.io.BufferedReader@497470ed
+src/Files/test.in
+
 
 Execution stack
 (
@@ -173,7 +189,8 @@ varf -> "src/Files/test.in"
 varc -> 0
 Out
 File table
-src/Files/test.in -> java.io.BufferedReader@497470ed
+src/Files/test.in
+
 
 Execution stack
 (
@@ -192,7 +209,8 @@ varf -> "src/Files/test.in"
 varc -> 0
 Out
 File table
-src/Files/test.in -> java.io.BufferedReader@497470ed
+src/Files/test.in
+
 
 Execution stack
 (
@@ -208,7 +226,8 @@ varf -> "src/Files/test.in"
 varc -> 50
 Out
 File table
-src/Files/test.in -> java.io.BufferedReader@497470ed
+src/Files/test.in
+
 
 Execution stack
 (
@@ -222,7 +241,8 @@ varc -> 50
 Out
 50
 File table
-src/Files/test.in -> java.io.BufferedReader@497470ed
+src/Files/test.in
+
 
 Execution stack
 (
@@ -238,7 +258,8 @@ varc -> 50
 Out
 50
 File table
-src/Files/test.in -> java.io.BufferedReader@497470ed
+src/Files/test.in
+
 
 Execution stack
 (
@@ -256,7 +277,8 @@ varc -> 50
 Out
 50
 File table
-src/Files/test.in -> java.io.BufferedReader@497470ed
+src/Files/test.in
+
 
 Execution stack
 (
@@ -267,11 +289,12 @@ closeReadFile("src/Files/test.in");
 )
 Symbols table
 varf -> "src/Files/test.in"
-varc -> 0
+varc -> 15
 Out
 50
 File table
-src/Files/test.in -> java.io.BufferedReader@497470ed
+src/Files/test.in
+
 
 Execution stack
 (
@@ -279,19 +302,22 @@ closeReadFile("src/Files/test.in");
 )
 Symbols table
 varf -> "src/Files/test.in"
-varc -> 0
+varc -> 15
 Out
 50
-0
+15
 File table
-src/Files/test.in -> java.io.BufferedReader@497470ed
+src/Files/test.in
+
 
 Execution stack
 Symbols table
 varf -> "src/Files/test.in"
-varc -> 0
+varc -> 15
 Out
 50
-0
+15
 File table
+
+
 

@@ -37,7 +37,7 @@ public class AssignStatement implements IStatement{
         MyIDictionary<String, IValue> symbolsTable = state.getSymbolsTable();
 
         if(symbolsTable.isDefined(this.variable_name)){
-            IValue value = this.expression.eval(symbolsTable);
+            IValue value = this.expression.eval(symbolsTable, state.getHeap());
             IType typeId = (symbolsTable.lookup(this.variable_name)).getType();
 
             if(value.getType().equals(typeId))

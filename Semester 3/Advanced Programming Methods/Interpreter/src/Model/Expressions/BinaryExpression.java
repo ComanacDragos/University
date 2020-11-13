@@ -2,6 +2,7 @@ package Model.Expressions;
 
 import Exceptions.DivisionByZero;
 import Exceptions.MyException;
+import Model.ADTs.MyHeap;
 import Model.ADTs.MyIDictionary;
 import Model.Values.IValue;
 
@@ -31,5 +32,5 @@ public abstract class BinaryExpression implements IExpression{
     }
 
     @Override
-    public abstract IValue eval(MyIDictionary<String, IValue> symbolsTable) throws MyException, DivisionByZero;
+    public abstract IValue eval(MyIDictionary<String, IValue> symbolsTable, MyHeap heap) throws MyException, DivisionByZero;
 }

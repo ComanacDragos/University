@@ -2,6 +2,7 @@ package Model.Expressions;
 
 import Exceptions.DivisionByZero;
 import Exceptions.MyException;
+import Model.ADTs.MyHeap;
 import Model.ADTs.MyIDictionary;
 import Model.Types.IntType;
 import Model.Values.IValue;
@@ -31,13 +32,13 @@ public class ArithmeticExpression extends BinaryExpression{
     }
 
     @Override
-    public IValue eval(MyIDictionary<String, IValue> symbolsTable) throws MyException {
+    public IValue eval(MyIDictionary<String, IValue> symbolsTable, MyHeap heap) throws MyException {
         IValue firstValue, secondValue;
 
-        firstValue = this.leftSide.eval(symbolsTable);
+        firstValue = this.leftSide.eval(symbolsTable, heap);
 
         if(firstValue.getType().equals(new IntType())){
-            secondValue = this.rightSide.eval(symbolsTable);
+            secondValue = this.rightSide.eval(symbolsTable, heap);
             if(secondValue.getType().equals(new IntType())){
                 IntValue first = (IntValue)firstValue;
                 IntValue second = (IntValue) secondValue;

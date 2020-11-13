@@ -30,7 +30,7 @@ public class OpenReadFileStatement implements IStatement{
     @Override
     public ProgramState execute(ProgramState state) throws MyException {
         MyIDictionary<String, BufferedReader> fileTable = state.getFileTable();
-        IValue expressionValue = this.expression.eval(state.getSymbolsTable());
+        IValue expressionValue = this.expression.eval(state.getSymbolsTable(), state.getHeap());
 
         if(expressionValue.getType().equals(new StringType())){
             StringValue fileName = (StringValue) expressionValue;

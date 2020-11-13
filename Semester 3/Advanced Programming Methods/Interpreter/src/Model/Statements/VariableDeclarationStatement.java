@@ -3,14 +3,8 @@ package Model.Statements;
 import Exceptions.MyException;
 import Model.ADTs.MyIDictionary;
 import Model.ProgramState;
-import Model.Types.BoolType;
-import Model.Types.IType;
-import Model.Types.IntType;
-import Model.Types.StringType;
-import Model.Values.BoolValue;
-import Model.Values.IValue;
-import Model.Values.IntValue;
-import Model.Values.StringValue;
+import Model.Types.*;
+import Model.Values.*;
 
 public class VariableDeclarationStatement implements IStatement{
     String variable_name;
@@ -50,6 +44,8 @@ public class VariableDeclarationStatement implements IStatement{
                 symbolsTable.put(this.variable_name, new BoolValue());
             else if(this.type instanceof StringType)
                 symbolsTable.put(this.variable_name, new StringValue());
+            else if(this.type instanceof ReferenceType)
+                symbolsTable.put(this.variable_name, new ReferenceValue(((ReferenceType) this.type).getInnerType()));
             else
                 throw new MyException("Type not defined");
         return state;
@@ -62,6 +58,6 @@ public class VariableDeclarationStatement implements IStatement{
 
     @Override
     public String toString() {
-        return this.type.toString() + " = " + this.variable_name + ';';
+        return this.type.toString() + ' ' + this.variable_name + ';';
     }
 }

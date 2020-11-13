@@ -1,6 +1,7 @@
 package Model.Expressions;
 
 import Exceptions.MyException;
+import Model.ADTs.MyHeap;
 import Model.ADTs.MyIDictionary;
 import Model.Types.BoolType;
 import Model.Values.BoolValue;
@@ -28,11 +29,11 @@ public class LogicExpression extends BinaryExpression{
     }
 
     @Override
-    public IValue eval(MyIDictionary<String, IValue> symbolsTable) throws MyException {
+    public IValue eval(MyIDictionary<String, IValue> symbolsTable, MyHeap heap) throws MyException {
         IValue firstValue, secondValue;
-        firstValue = this.leftSide.eval(symbolsTable);
+        firstValue = this.leftSide.eval(symbolsTable, heap);
         if(firstValue.getType().equals(new BoolType())){
-            secondValue = this.rightSide.eval(symbolsTable);
+            secondValue = this.rightSide.eval(symbolsTable, heap);
             if(secondValue.getType().equals(new BoolType())){
                 BoolValue first = (BoolValue)firstValue;
                 BoolValue second = (BoolValue)secondValue;

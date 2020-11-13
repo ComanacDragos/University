@@ -7,6 +7,7 @@ import Model.ProgramState;
 import Model.Statements.*;
 import Model.Types.BoolType;
 import Model.Types.IntType;
+import Model.Types.ReferenceType;
 import Model.Types.StringType;
 import Model.Values.BoolValue;
 import Model.Values.IValue;
@@ -221,6 +222,32 @@ public class View {
         this.programsDescriptions.put(ex8, "int a;int b;a=5;b=10; print(a!=b);print(a<b);print(a==b);print(a>=b)");
 
 
+        IStatement ex9 = new CompoundStatement(
+                new CompoundStatement(
+                      new CompoundStatement(
+                              new VariableDeclarationStatement("v", new ReferenceType(new IntType())),
+                              new NewStatement("v", new ValueExpression(new IntValue(20)))
+                      ),
+                      new CompoundStatement(
+                            new VariableDeclarationStatement(
+                                    "a",
+                                    new ReferenceType(
+                                            new ReferenceType(
+                                                    new IntType()
+                                            )
+                                    )
+                            ),
+                              new NewStatement("a", new VariableExpression("v"))
+                      )
+                ),
+                new CompoundStatement(
+                        new PrintStatement(new VariableExpression("v")),
+                        new PrintStatement(new VariableExpression("a"))
+                )
+        );
+
+        this.programsDescriptions.put(ex9, "ref int v;new(v,20);Ref Ref int a; new(a,v);print(v);print(a)");
+
         AtomicInteger currentKey = new AtomicInteger(1);
         this.programsDescriptions.forEach(
                 (statement, description) ->{
@@ -229,8 +256,9 @@ public class View {
                     MyIDictionary<String, IValue> symbolsTable = new MyDictionary<>();
                     MyIList<IValue> out = new MyList<>();
                     MyIDictionary<String, BufferedReader> fileTable = new MyDictionary<>();
+                    MyHeap heap = new MyHeap();
 
-                    ProgramState newProgram = new ProgramState(executionStack, symbolsTable, out, fileTable, statement);
+                    ProgramState newProgram = new ProgramState(executionStack, symbolsTable, out, fileTable, heap, statement);
 
                     IRepository repository = new Repository("src/Files/log" + currentKey + ".txt");
                     Controller controller = new Controller(repository);

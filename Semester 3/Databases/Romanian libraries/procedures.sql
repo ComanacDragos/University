@@ -29,6 +29,12 @@ DECLARE @old_type VARCHAR(30);
 		);
 		SET @old_type = @old_type + '(' + CONVERT(varchar(10), @size) + ')' 
 	END
+
+	IF (SELECT IS_NULLABLE FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = @table_name AND COLUMN_NAME = @column_name) = 'NO'
+	BEGIN
+		SET @old_type = @old_type + ' NOT NULL'
+	END
+
 	RETURN @old_type
 END
 GO
@@ -561,7 +567,7 @@ EXEC sp_add_column 'TestAddRemoveTable', 'myThirdCol', 'VARCHAR(50)'
 
 EXEC sp_drop_table @table_name = 'TestAddRemoveTable';
 
-EXEC sp_bring_to_version 4
+EXEC sp_bring_to_version 3
 
 SELECT * FROM History
 SELECT * FROM CurrentVersion
@@ -738,7 +744,7 @@ BEGIN
 END
 GO
 
-EXEC sp_bring_to_version 3
+EXEC sp_bring_to_version 0
 
 EXEC sp_log_version 'PRINT(''update1'')', 'PRINT(''undo1'')'
 EXEC sp_log_version 'PRINT(''update2'')', 'PRINT(''undo2'')'
@@ -747,3 +753,40 @@ EXEC sp_log_version 'PRINT(''update3'')', 'PRINT(''undo3'')'
 SELECT * FROM History
 SELECT * FROM CurrentVersion
 
+--Final tests
+
+EXEC sp_create_table 'FinalTestTable', 'firstCol', 'INT';
+EXEC sp_create_table 'FinalSecondTestTable', 'secondCol', 'VARCHAR(30)';
+
+EXEC sp_add_column 'FinalTestTable', 'secondCol', 'INT NOT NULL'
+
+EXEC sp_modify_type 'FinalSecondTestTable', 'secondCol', 'INT NOT NULL'
+
+EXEC sp_add_default_constraint 'FinalTestTable', 'firstCol', 'firstCol_defaults_to_0', '0'
+
+EXEC sp_add_primary_key 'FinalTestTable', 'secondCol', 'pk_second_col'
+
+EXEC sp_add_candidate_key 'FinalTestTable', 'firstCol', 'uk_firstCol'
+
+EXEC sp_add_foreign_key 'FinalSecondTestTable', 'FinalTestTable', 'secondCol', 'secondCol', 'fk_secondCol_to_FinalTestTable'
+
+EXEC sp_remove_candidate_key 'FinalTestTable', 'firstCol', 'uk_firstCol'
+
+EXEC sp_remove_default_constraint 'FinalTestTable', 'firstCol', 'firstCol_defaults_to_0', '0'
+
+EXEC sp_drop_column 'FinalTestTable', 'firstCol'
+
+EXEC sp_remove_foreign_key 'FinalSecondTestTable', 'FinalTestTable', 'secondCol', 'secondCol', 'fk_secondCol_to_FinalTestTable'
+
+EXEC sp_remove_primary_key 'FinalTestTable', 'secondCol', 'pk_second_col'
+
+EXEC sp_add_column 'FinalTestTable', 'testCol', 'INT'
+
+EXEC sp_drop_table 'FinalTestTable'
+
+EXEC sp_bring_to_version 0
+
+SELECT * FROM History 
+SELECT * FROM CurrentVersion
+
+-- EXEC sp_empty_history

@@ -27,7 +27,7 @@ public class PrintStatement implements IStatement{
         MyIList<IValue> out = state.getOut();
         MyIDictionary<String, IValue> symbolsTable = state.getSymbolsTable();
 
-        out.add(this.expression.eval(symbolsTable));
+        out.add(this.expression.eval(symbolsTable, state.getHeap()));
 
         return state;
     }
