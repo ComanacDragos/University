@@ -39,6 +39,6 @@ public class ReadHeapExpression extends UnaryExpression {
 
     @Override
     public String toString() {
-        return "readHeap(" + this.expression.toString() + ");";
+        return "readHeap(" + this.expression.toString() + ")";
     }
 }

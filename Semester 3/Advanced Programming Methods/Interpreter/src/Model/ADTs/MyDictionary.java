@@ -4,6 +4,7 @@ import Exceptions.EmptyCollection;
 import Exceptions.InexistentKey;
 
 
+import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
@@ -59,6 +60,23 @@ public class MyDictionary<Key, Value> implements MyIDictionary<Key, Value>{
     @Override
     public Set<Key> keySet() {
         return this.dictionary.keySet();
+    }
+
+    @Override
+    public Collection<Value> values() {
+        return this.dictionary.values();
+    }
+
+    @Override
+    public void setContent(Map<Key, Value> newContent) {
+        this.dictionary.clear();
+
+        newContent.forEach(this.dictionary::put);
+    }
+
+    @Override
+    public Map<Key, Value> getContent() {
+        return this.dictionary;
     }
 
     @Override

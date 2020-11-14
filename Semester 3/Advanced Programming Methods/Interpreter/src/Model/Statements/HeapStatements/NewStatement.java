@@ -33,7 +33,7 @@ public class NewStatement implements IStatement {
                 IValue value = this.expression.eval(symbolsTable, heap);
 
                 if(referenceValue.getLocationType().equals(value.getType())){
-                    Integer address = heap.put(value);
+                    Integer address = heap.put(value.deepCopy());
                     referenceValue.setAddress(address);
                 }
                 else{

@@ -5,7 +5,13 @@ import Exceptions.MyException;
 import Model.ADTs.MyIStack;
 import Model.ProgramState;
 import Model.Statements.IStatement;
+import Model.Statements.VariableDeclarationStatement;
+import Model.Values.IValue;
 import Repository.IRepository;
+
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
 
 public class Controller {
     IRepository repository;

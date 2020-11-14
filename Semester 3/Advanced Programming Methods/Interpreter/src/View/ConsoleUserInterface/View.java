@@ -379,6 +379,56 @@ public class View {
 
         this.programsDescriptions.put(ex12, "ref int v;new(v,20);print(rH(v)); wH(v,30);print(rH(v)+5);");
 
+        IStatement ex13 = new CompoundStatement(
+                new CompoundStatement(
+                        new CompoundStatement(
+                                new VariableDeclarationStatement(
+                                        "v",
+                                        new ReferenceType(
+                                                new IntType()
+                                        )
+                                ),
+                                new NewStatement(
+                                        "v",
+                                        new ValueExpression(
+                                                new IntValue(20)
+                                        )
+                                )
+                        ),
+                        new CompoundStatement(
+                                new VariableDeclarationStatement(
+                                        "a",
+                                        new ReferenceType(
+                                                new ReferenceType(
+                                                        new IntType()
+                                                )
+                                        )
+                                ),
+                                new NewStatement(
+                                        "a",
+                                        new VariableExpression("v")
+                                )
+                        )
+                ),
+                new CompoundStatement(
+                        new NewStatement(
+                                "v",
+                                new ValueExpression(
+                                        new IntValue(30)
+                                )
+                        ),
+                        new PrintStatement(
+                                new ReadHeapExpression(
+                                        new ReadHeapExpression(
+                                                new VariableExpression("a")
+                                        )
+                                )
+                        )
+                )
+        );
+
+        this.programsDescriptions.put(ex13, "ref int v;new(v,20);ref ref int a; new(a,v); new(v,30);print(rH(rH(a)));");
+
         AtomicInteger currentKey = new AtomicInteger(1);
         this.programsDescriptions.forEach(
                 (statement, description) ->{
