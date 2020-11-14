@@ -21,45 +21,6 @@
   <component name="ChangeListManager">
     <list default="true" id="a28febb5-0634-448c-a29f-8e73463e0d72" name="Default Changelist" comment="added statement 10">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Interpreter/Files/log9.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Interpreter/Files/log9.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Interpreter/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Interpreter/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Interpreter/Model/Expressions/ArithmeticExpression$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Interpreter/Model/Expressions/ArithmeticExpression$ArithmeticOperation.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Interpreter/Model/Expressions/ArithmeticExpression.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Interpreter/Model/Expressions/BinaryExpression.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Interpreter/Model/Expressions/LogicExpression$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Interpreter/Model/Expressions/LogicExpression$LogicOperand.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Interpreter/Model/Expressions/LogicExpression.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Interpreter/Model/Expressions/RelationalExpression$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Interpreter/Model/Expressions/RelationalExpression$RelationalOperation.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Interpreter/Model/Expressions/RelationalExpression.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Interpreter/Model/Statements/CloseReadFile.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Interpreter/Model/Statements/NewStatement.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Interpreter/Model/Statements/OpenReadFileStatement.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Interpreter/Model/Statements/ReadFileStatement.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Interpreter/Tests/ModelTests/RelationalExpressionTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Interpreter/Tests/ModelTests/RelationalExpressionTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Interpreter/View/Command.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Interpreter/View/ExitCommand.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Interpreter/View/RunExample.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Interpreter/View/TextMenu.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Interpreter/View/View.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Expressions/ArithmeticExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Expressions/BinaryExpressions/ArithmeticExpression.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Expressions/BinaryExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Expressions/BinaryExpressions/BinaryExpression.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Expressions/LogicExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Expressions/BinaryExpressions/LogicExpression.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Expressions/RelationalExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Expressions/BinaryExpressions/RelationalExpression.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Statements/CloseReadFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Statements/FileStatements/CloseReadFile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Statements/IfStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Statements/ControlFlowStatements/IfStatement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Statements/NewStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Statements/HeapStatements/NewStatement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Statements/OpenReadFileStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Statements/FileStatements/OpenReadFileStatement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Statements/ReadFileStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Statements/FileStatements/ReadFileStatement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Tests/ModelTests/RelationalExpressionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tests/ModelTests/RelationalExpressionTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/BasicView/BasicView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/BasicView/BasicView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/ConsoleUserInterface/Command.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/ExitCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/ConsoleUserInterface/ExitCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/RunExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/ConsoleUserInterface/RunExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/TextMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/ConsoleUserInterface/TextMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/ConsoleUserInterface/View.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -253,7 +214,7 @@
       <workItem from="1604762876451" duration="21952000" />
       <workItem from="1605197504026" duration="3683000" />
       <workItem from="1605262158275" duration="14574000" />
-      <workItem from="1605341874418" duration="5522000" />
+      <workItem from="1605341874418" duration="6214000" />
     </task>
     <task id="LOCAL-00001" summary="added statement 10">
       <created>1605362656157</created>
@@ -313,22 +274,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="287" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1604839668957" />
-    <state width="597" height="912" key="GridCell.Tab.0.bottom" timestamp="1605373643471">
+    <state width="513" height="911" key="GridCell.Tab.0.bottom" timestamp="1605373990721">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="597" height="912" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1605373643471" />
-    <state width="597" height="912" key="GridCell.Tab.0.center" timestamp="1605373643470">
+    <state width="513" height="911" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1605373990721" />
+    <state width="513" height="911" key="GridCell.Tab.0.center" timestamp="1605373990720">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="597" height="912" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1605373643470" />
-    <state width="597" height="912" key="GridCell.Tab.0.left" timestamp="1605373643470">
+    <state width="513" height="911" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1605373990720" />
+    <state width="513" height="911" key="GridCell.Tab.0.left" timestamp="1605373990720">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="597" height="912" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1605373643470" />
-    <state width="597" height="912" key="GridCell.Tab.0.right" timestamp="1605373643470">
+    <state width="513" height="911" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1605373990720" />
+    <state width="513" height="911" key="GridCell.Tab.0.right" timestamp="1605373990720">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="597" height="912" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1605373643470" />
+    <state width="513" height="911" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1605373990720" />
     <state width="1877" height="34" key="GridCell.Tab.1.bottom" timestamp="1604849089675">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

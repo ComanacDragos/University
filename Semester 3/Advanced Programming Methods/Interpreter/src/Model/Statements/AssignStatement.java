@@ -8,11 +8,11 @@ import Model.Types.IType;
 import Model.Values.IValue;
 
 public class AssignStatement implements IStatement{
-    String variable_name;
+    String variableName;
     IExpression expression;
 
-    public AssignStatement(String variable_name, IExpression expression){
-        this.variable_name = variable_name;
+    public AssignStatement(String variableName, IExpression expression){
+        this.variableName = variableName;
         this.expression = expression;
     }
 
@@ -20,43 +20,43 @@ public class AssignStatement implements IStatement{
         return expression;
     }
 
-    public String getVariable_name() {
-        return variable_name;
+    public String getVariableName() {
+        return variableName;
     }
 
     public void setExpression(IExpression expression) {
         this.expression = expression;
     }
 
-    public void setVariable_name(String variable_name) {
-        this.variable_name = variable_name;
+    public void setVariableName(String variableName) {
+        this.variableName = variableName;
     }
 
     @Override
     public ProgramState execute(ProgramState state) throws MyException {
         MyIDictionary<String, IValue> symbolsTable = state.getSymbolsTable();
 
-        if(symbolsTable.isDefined(this.variable_name)){
+        if(symbolsTable.isDefined(this.variableName)){
             IValue value = this.expression.eval(symbolsTable, state.getHeap());
-            IType typeId = (symbolsTable.lookup(this.variable_name)).getType();
+            IType typeId = (symbolsTable.lookup(this.variableName)).getType();
 
             if(value.getType().equals(typeId))
-                symbolsTable.update(this.variable_name, value);
-            else throw  new MyException("Declared type of variable " + variable_name + " and type of the assigned expression do not match");
+                symbolsTable.update(this.variableName, value);
+            else throw  new MyException("Declared type of variable " + variableName + " and type of the assigned expression do not match");
         }
         else
-            throw new MyException("The used variable " + variable_name + " was not declared before");
+            throw new MyException("The used variable " + variableName + " was not declared before");
 
         return state;
     }
 
     @Override
     public AssignStatement deepCopy() {
-        return new AssignStatement(this.variable_name, this.expression.deepCopy());
+        return new AssignStatement(this.variableName, this.expression.deepCopy());
     }
 
     @Override
     public String toString() {
-        return this.variable_name + " = " + this.expression.toString() + ';';
+        return this.variableName + " = " + this.expression.toString() + ';';
     }
 }

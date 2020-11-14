@@ -16,11 +16,11 @@ import java.io.IOException;
 
 public class ReadFileStatement implements IStatement {
     IExpression expression;
-    String variable_name;
+    String variableName;
 
-    public ReadFileStatement(IExpression expression, String variable_name) {
+    public ReadFileStatement(IExpression expression, String variableName) {
         this.expression = expression;
-        this.variable_name = variable_name;
+        this.variableName = variableName;
     }
 
     public IExpression getExpression() {
@@ -31,12 +31,12 @@ public class ReadFileStatement implements IStatement {
         this.expression = expression;
     }
 
-    public String getVariable_name() {
-        return variable_name;
+    public String getVariableName() {
+        return variableName;
     }
 
-    public void setVariable_name(String variable_name) {
-        this.variable_name = variable_name;
+    public void setVariableName(String variableName) {
+        this.variableName = variableName;
     }
 
     @Override
@@ -44,8 +44,8 @@ public class ReadFileStatement implements IStatement {
         MyIDictionary<String, IValue> symbolsTable = state.getSymbolsTable();
         MyIDictionary<String, BufferedReader> fileTable = state.getFileTable();
 
-        if(symbolsTable.isDefined(this.variable_name)) {
-            IValue variableValue = symbolsTable.lookup(this.variable_name);
+        if(symbolsTable.isDefined(this.variableName)) {
+            IValue variableValue = symbolsTable.lookup(this.variableName);
 
             if(variableValue.getType().equals(new IntType())){
                 IValue stringValue = this.expression.eval(symbolsTable, state.getHeap());
@@ -63,7 +63,7 @@ public class ReadFileStatement implements IStatement {
                             if(line != null){
                                 value.setValue(Integer.parseInt(line));
                             }
-                            symbolsTable.put(this.variable_name, value);
+                            symbolsTable.put(this.variableName, value);
                         } catch (IOException e) {
                             throw new MyException(e.getMessage());
                         }
@@ -89,11 +89,11 @@ public class ReadFileStatement implements IStatement {
 
     @Override
     public ReadFileStatement deepCopy() {
-        return new ReadFileStatement(this.expression.deepCopy(), this.variable_name);
+        return new ReadFileStatement(this.expression.deepCopy(), this.variableName);
     }
 
     @Override
     public String toString() {
-        return "readFile(" + this.expression.toString() + ", " + this.variable_name + ");";
+        return "readFile(" + this.expression.toString() + ", " + this.variableName + ");";
     }
 }
