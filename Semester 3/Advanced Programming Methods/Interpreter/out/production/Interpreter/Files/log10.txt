@@ -141,8 +141,8 @@ print(v);
 print(a);
 )
 Symbols table
-a -> (0, ref(string))
 v -> (1, int)
+a -> (0, ref(string))
 Out
 File table
 Heap

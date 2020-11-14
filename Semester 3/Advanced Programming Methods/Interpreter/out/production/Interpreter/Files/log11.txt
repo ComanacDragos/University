@@ -141,8 +141,8 @@ print(readHeap(v););
 print((readHeap(readHeap(a);); + 5));
 )
 Symbols table
+v -> (1, int)
 a -> (0, ref(int))
-v -> (1, int)
 Out
 File table
 Heap
@@ -156,8 +156,8 @@ print(readHeap(v););
 print((readHeap(readHeap(a);); + 5));
 )
 Symbols table
-a -> (2, ref(int))
 v -> (1, int)
+a -> (2, ref(int))
 Out
 File table
 Heap
@@ -174,8 +174,8 @@ print(readHeap(v););
 print((readHeap(readHeap(a);); + 5));
 )
 Symbols table
-a -> (2, ref(int))
 v -> (1, int)
+a -> (2, ref(int))
 Out
 File table
 Heap
@@ -189,8 +189,8 @@ Execution stack
 print((readHeap(readHeap(a);); + 5));
 )
 Symbols table
-a -> (2, ref(int))
 v -> (1, int)
+a -> (2, ref(int))
 Out
 20
 File table
@@ -202,8 +202,8 @@ Heap
 
 Execution stack
 Symbols table
-a -> (2, ref(int))
 v -> (1, int)
+a -> (2, ref(int))
 Out
 20
 25

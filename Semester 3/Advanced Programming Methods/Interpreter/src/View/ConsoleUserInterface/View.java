@@ -14,6 +14,7 @@ import Model.Statements.FileStatements.CloseReadFile;
 import Model.Statements.FileStatements.OpenReadFileStatement;
 import Model.Statements.FileStatements.ReadFileStatement;
 import Model.Statements.HeapStatements.NewStatement;
+import Model.Statements.HeapStatements.WriteHeapStatement;
 import Model.Types.BoolType;
 import Model.Types.IntType;
 import Model.Types.ReferenceType;
@@ -331,7 +332,52 @@ public class View {
                 )
         );
 
-        this.programsDescriptions.put(ex11, "Ref int v;new(v,20);Ref Ref int a; new(a,v);print(rH(v));print(rH(rH(a))+5)");
+        this.programsDescriptions.put(ex11, "ref int v;new(v,20);Ref Ref int a; new(a,v);print(rH(v));print(rH(rH(a))+5)");
+
+        IStatement ex12 = new CompoundStatement(
+                new CompoundStatement(
+                        new CompoundStatement(
+                                new VariableDeclarationStatement(
+                                        "v",
+                                        new ReferenceType(
+                                                new IntType()
+                                        )
+                                ),
+                                new NewStatement(
+                                        "v",
+                                        new ValueExpression(
+                                                new IntValue(20)
+                                        )
+                                )
+                        ),
+                        new CompoundStatement(
+                                new PrintStatement(
+                                        new ReadHeapExpression(
+                                                new VariableExpression("v")
+                                        )
+                                ),
+                                new WriteHeapStatement(
+                                        "v",
+                                        new ValueExpression(
+                                                new IntValue(30)
+                                        )
+                                )
+                        )
+                ),
+                new PrintStatement(
+                        new ArithmeticExpression(
+                                new ReadHeapExpression(
+                                        new VariableExpression("v")
+                                ),
+                                new ValueExpression(
+                                        new IntValue(5)
+                                ),
+                                ArithmeticExpression.ArithmeticOperation.ADDITION
+                        )
+                )
+        );
+
+        this.programsDescriptions.put(ex12, "ref int v;new(v,20);print(rH(v)); wH(v,30);print(rH(v)+5);");
 
         AtomicInteger currentKey = new AtomicInteger(1);
         this.programsDescriptions.forEach(

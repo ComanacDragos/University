@@ -2,10 +2,9 @@ Execution stack
 (
 ref(int) v;
 new(v, 20);
-ref(ref(int)) a;
-new(a, v);
-print(v);
-print(a);
+print(readHeap(v););
+writeHeap(v, 30
+print((readHeap(v); + 5));
 )
 Symbols table
 Out
@@ -18,12 +17,11 @@ Execution stack
 (
 ref(int) v;
 new(v, 20);
-ref(ref(int)) a;
-new(a, v);
+print(readHeap(v););
+writeHeap(v, 30
 )
 (
-print(v);
-print(a);
+print((readHeap(v); + 5));
 )
 Symbols table
 Out
@@ -38,12 +36,11 @@ ref(int) v;
 new(v, 20);
 )
 (
-ref(ref(int)) a;
-new(a, v);
+print(readHeap(v););
+writeHeap(v, 30
 )
 (
-print(v);
-print(a);
+print((readHeap(v); + 5));
 )
 Symbols table
 Out
@@ -60,12 +57,11 @@ ref(int) v;
 new(v, 20);
 )
 (
-ref(ref(int)) a;
-new(a, v);
+print(readHeap(v););
+writeHeap(v, 30
 )
 (
-print(v);
-print(a);
+print((readHeap(v); + 5));
 )
 Symbols table
 Out
@@ -79,12 +75,11 @@ Execution stack
 new(v, 20);
 )
 (
-ref(ref(int)) a;
-new(a, v);
+print(readHeap(v););
+writeHeap(v, 30
 )
 (
-print(v);
-print(a);
+print((readHeap(v); + 5));
 )
 Symbols table
 v -> (0, int)
@@ -96,12 +91,11 @@ Heap
 
 Execution stack
 (
-ref(ref(int)) a;
-new(a, v);
+print(readHeap(v););
+writeHeap(v, 30
 )
 (
-print(v);
-print(a);
+print((readHeap(v); + 5));
 )
 Symbols table
 v -> (1, int)
@@ -114,14 +108,13 @@ Heap
 
 Execution stack
 (
-ref(ref(int)) a;
+print(readHeap(v););
 )
 (
-new(a, v);
+writeHeap(v, 30
 )
 (
-print(v);
-print(a);
+print((readHeap(v); + 5));
 )
 Symbols table
 v -> (1, int)
@@ -134,16 +127,15 @@ Heap
 
 Execution stack
 (
-new(a, v);
+writeHeap(v, 30
 )
 (
-print(v);
-print(a);
+print((readHeap(v); + 5));
 )
 Symbols table
 v -> (1, int)
-a -> (0, ref(int))
 Out
+20
 File table
 Heap
 1 -> 20
@@ -152,65 +144,27 @@ Heap
 
 Execution stack
 (
-print(v);
-print(a);
+print((readHeap(v); + 5));
 )
 Symbols table
 v -> (1, int)
-a -> (2, ref(int))
 Out
+20
 File table
 Heap
-1 -> 20
-2 -> (1, int)
-
-
-
-Execution stack
-(
-print(v);
-)
-(
-print(a);
-)
-Symbols table
-v -> (1, int)
-a -> (2, ref(int))
-Out
-File table
-Heap
-1 -> 20
-2 -> (1, int)
-
-
-
-Execution stack
-(
-print(a);
-)
-Symbols table
-v -> (1, int)
-a -> (2, ref(int))
-Out
-(1, int)
-File table
-Heap
-1 -> 20
-2 -> (1, int)
+1 -> 30
 
 
 
 Execution stack
 Symbols table
 v -> (1, int)
-a -> (2, ref(int))
 Out
-(1, int)
-(2, ref(int))
+20
+35
 File table
 Heap
-1 -> 20
-2 -> (1, int)
+1 -> 30
 
 
 

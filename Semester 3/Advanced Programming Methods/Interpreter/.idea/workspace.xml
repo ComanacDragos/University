@@ -21,6 +21,8 @@
   <component name="ChangeListManager">
     <list default="true" id="a28febb5-0634-448c-a29f-8e73463e0d72" name="Default Changelist" comment="added statement 10">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Statements/HeapStatements/WriteHeapStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Statements/HeapStatements/WriteHeapStatement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/ConsoleUserInterface/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/ConsoleUserInterface/View.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -214,7 +216,7 @@
       <workItem from="1604762876451" duration="21952000" />
       <workItem from="1605197504026" duration="3683000" />
       <workItem from="1605262158275" duration="14574000" />
-      <workItem from="1605341874418" duration="6214000" />
+      <workItem from="1605341874418" duration="8823000" />
     </task>
     <task id="LOCAL-00001" summary="added statement 10">
       <created>1605362656157</created>
@@ -254,10 +256,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="729" y="322" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1604835523878" />
-    <state x="1245" y="230" key="#com.intellij.ide.util.MemberChooser" timestamp="1605365275644">
+    <state x="1245" y="230" key="#com.intellij.ide.util.MemberChooser" timestamp="1605375390935">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1245" y="230" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1605365275644" />
+    <state x="1245" y="230" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1605375390935" />
     <state x="1170" y="300" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1604836906481">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -266,10 +268,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1086" y="327" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1604840083835" />
-    <state x="810" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1605285511193">
+    <state x="722" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1605374712500">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="810" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1605285511193" />
+    <state x="722" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1605374712500" />
     <state x="740" y="287" key="FileChooserDialogImpl" timestamp="1604839668957">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -334,10 +336,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1605363829889" />
-    <state x="1103" y="230" width="672" height="678" key="search.everywhere.popup" timestamp="1605287363117">
+    <state x="1103" y="230" width="672" height="678" key="search.everywhere.popup" timestamp="1605376353888">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1103" y="230" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1605287363117" />
+    <state x="1103" y="230" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1605376353888" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Interpreter$src_in_Interpreter.ic" NAME="src in Interpreter Coverage Results" MODIFIED="1604839641785" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
