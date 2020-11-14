@@ -5,13 +5,14 @@ import Exceptions.MyException;
 import Model.ADTs.MyIStack;
 import Model.ProgramState;
 import Model.Statements.IStatement;
-import Model.Statements.VariableDeclarationStatement;
 import Model.Values.IValue;
+import Model.Values.ReferenceValue;
 import Repository.IRepository;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Controller {
     IRepository repository;
@@ -32,6 +33,19 @@ public class Controller {
         this.repository.addProgram(newProgram);
     }
 
+    Map<Integer, IValue> garbageCollector(Set<Integer> validAddresses, Map<Integer, IValue> heap){
+        return heap.entrySet().stream()
+                .filter(e -> validAddresses.contains(e.getKey()))
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+    }
+
+    Set<Integer> getAddressesFromValues(Collection<IValue> values){
+        return values.stream()
+                .filter(v -> v instanceof ReferenceValue)
+                .map(v -> ((ReferenceValue)v).getAddress())
+                .collect(Collectors.toSet());
+    }
+
     public ProgramState executeOneStep(ProgramState programState) throws MyException {
         MyIStack<IStatement> executionStack = programState.getExecutionStack();
         if(executionStack.isEmpty())
@@ -48,6 +62,17 @@ public class Controller {
         this.repository.logProgramStateExec(programState);
         while(!programState.getExecutionStack().isEmpty()){
             this.executeOneStep(programState);
+            this.repository.logProgramStateExec(programState);
+
+            Set<Integer> validAddresses = this.getAddressesFromValues(programState.getSymbolsTable().values());
+            validAddresses.addAll(this.getAddressesFromValues(programState.getHeap().values()));
+
+            programState.getHeap().setContent(
+                    this.garbageCollector(
+                            validAddresses,
+                            programState.getHeap().getContent()
+                    )
+            );
             this.repository.logProgramStateExec(programState);
         }
     }
