@@ -5,7 +5,7 @@ import Model.ADTs.MyDictionary;
 import Model.ADTs.MyHeap;
 import Model.ADTs.MyIDictionary;
 import Model.Expressions.IExpression;
-import Model.Expressions.RelationalExpression;
+import Model.Expressions.BinaryExpressions.RelationalExpression;
 import Model.Expressions.ValueExpression;
 import Model.Values.BoolValue;
 import Model.Values.IValue;

@@ -4,16 +4,16 @@ import Exceptions.EmptyCollection;
 import Exceptions.InexistentKey;
 
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Stream;
 
 public class MyDictionary<Key, Value> implements MyIDictionary<Key, Value>{
-    HashMap<Key, Value> dictionary;
+    Map<Key, Value> dictionary;
 
     public MyDictionary(){
-        this.dictionary = new HashMap<>();
+        this.dictionary = new LinkedHashMap<>();
     }
 
     @Override

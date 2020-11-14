@@ -1,25 +1,5 @@
 package View.BasicView;
 
-import Controller.Controller;
-import Exceptions.MyException;
-import Model.ADTs.*;
-import Model.Expressions.ArithmeticExpression;
-import Model.Expressions.LogicExpression;
-import Model.Expressions.ValueExpression;
-import Model.Expressions.VariableExpression;
-import Model.ProgramState;
-import Model.Statements.*;
-import Model.Types.BoolType;
-import Model.Types.IntType;
-import Model.Types.StringType;
-import Model.Values.BoolValue;
-import Model.Values.IValue;
-import Model.Values.IntValue;
-import Model.Values.StringValue;
-
-import java.io.BufferedReader;
-import java.util.*;
-
 /*
 public class BasicView {
     Controller controller;

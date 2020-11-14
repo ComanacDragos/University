@@ -19,35 +19,47 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a28febb5-0634-448c-a29f-8e73463e0d72" name="Default Changelist" comment="">
+    <list default="true" id="a28febb5-0634-448c-a29f-8e73463e0d72" name="Default Changelist" comment="added statement 10">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Interpreter/Files/log7.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Interpreter/Files/log7.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Interpreter/Files/test.in" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Interpreter/Files/test.in" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Interpreter/Model/ProgramState.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Interpreter/Model/ProgramState.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Files/log4.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Files/log4.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Files/log7.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Files/log7.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Files/log8.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Files/log8.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Files/test.in" beforeDir="false" afterPath="$PROJECT_DIR$/src/Files/test.in" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Expressions/ArithmeticExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Expressions/ArithmeticExpression.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Expressions/BinaryExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Expressions/BinaryExpression.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Expressions/IExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Expressions/IExpression.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Expressions/LogicExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Expressions/LogicExpression.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Expressions/RelationalExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Expressions/RelationalExpression.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Expressions/ValueExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Expressions/ValueExpression.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Expressions/VariableExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Expressions/VariableExpression.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/ProgramState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/ProgramState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Statements/AssignStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Statements/AssignStatement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Statements/CloseReadFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Statements/CloseReadFile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Statements/IfStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Statements/IfStatement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Statements/OpenReadFileStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Statements/OpenReadFileStatement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Statements/PrintStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Statements/PrintStatement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Statements/ReadFileStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Statements/ReadFileStatement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Statements/VariableDeclarationStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Statements/VariableDeclarationStatement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Types/StringType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Types/StringType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Interpreter/Files/log9.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Interpreter/Files/log9.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Interpreter/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Interpreter/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Interpreter/Model/Expressions/ArithmeticExpression$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Interpreter/Model/Expressions/ArithmeticExpression$ArithmeticOperation.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Interpreter/Model/Expressions/ArithmeticExpression.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Interpreter/Model/Expressions/BinaryExpression.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Interpreter/Model/Expressions/LogicExpression$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Interpreter/Model/Expressions/LogicExpression$LogicOperand.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Interpreter/Model/Expressions/LogicExpression.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Interpreter/Model/Expressions/RelationalExpression$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Interpreter/Model/Expressions/RelationalExpression$RelationalOperation.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Interpreter/Model/Expressions/RelationalExpression.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Interpreter/Model/Statements/CloseReadFile.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Interpreter/Model/Statements/NewStatement.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Interpreter/Model/Statements/OpenReadFileStatement.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Interpreter/Model/Statements/ReadFileStatement.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Interpreter/Tests/ModelTests/RelationalExpressionTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Interpreter/Tests/ModelTests/RelationalExpressionTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Interpreter/View/Command.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Interpreter/View/ExitCommand.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Interpreter/View/RunExample.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Interpreter/View/TextMenu.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Interpreter/View/View.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Expressions/ArithmeticExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Expressions/BinaryExpressions/ArithmeticExpression.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Expressions/BinaryExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Expressions/BinaryExpressions/BinaryExpression.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Expressions/LogicExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Expressions/BinaryExpressions/LogicExpression.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Expressions/RelationalExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Expressions/BinaryExpressions/RelationalExpression.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Statements/CloseReadFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Statements/FileStatements/CloseReadFile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Statements/IfStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Statements/ControlFlowStatements/IfStatement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Statements/NewStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Statements/HeapStatements/NewStatement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Statements/OpenReadFileStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Statements/FileStatements/OpenReadFileStatement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Statements/ReadFileStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Statements/FileStatements/ReadFileStatement.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Tests/ModelTests/RelationalExpressionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tests/ModelTests/RelationalExpressionTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Command.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/TextMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/TextMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/View.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/BasicView/BasicView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/BasicView/BasicView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/ConsoleUserInterface/Command.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/ExitCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/ConsoleUserInterface/ExitCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/RunExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/ConsoleUserInterface/RunExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/TextMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/ConsoleUserInterface/TextMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/ConsoleUserInterface/View.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,6 +103,7 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="create.test.in.the.same.root" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="coverage" />
   </component>
   <component name="RecentsManager">
@@ -134,13 +147,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -154,7 +169,7 @@
           <option name="ENABLED" value="true" />
         </pattern>
         <pattern>
-          <option name="PATTERN" value="Model.Expressions.RelationalExpression" />
+          <option name="PATTERN" value="Model.Expressions.BinaryExpressions.RelationalExpression" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -237,8 +252,17 @@
       <workItem from="1604587326792" duration="21701000" />
       <workItem from="1604762876451" duration="21952000" />
       <workItem from="1605197504026" duration="3683000" />
-      <workItem from="1605262158275" duration="12996000" />
+      <workItem from="1605262158275" duration="14574000" />
+      <workItem from="1605341874418" duration="5522000" />
     </task>
+    <task id="LOCAL-00001" summary="added statement 10">
+      <created>1605362656157</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1605362656157</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -256,6 +280,10 @@
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="added statement 10" />
+    <option name="LAST_COMMIT_MESSAGE" value="added statement 10" />
+  </component>
   <component name="WindowStateProjectService">
     <state x="811" y="156" width="1092" height="762" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1604840087230">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -265,10 +293,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="729" y="322" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1604835523878" />
-    <state x="1245" y="230" key="#com.intellij.ide.util.MemberChooser" timestamp="1605286232849">
+    <state x="1245" y="230" key="#com.intellij.ide.util.MemberChooser" timestamp="1605365275644">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1245" y="230" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1605286232849" />
+    <state x="1245" y="230" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1605365275644" />
     <state x="1170" y="300" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1604836906481">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -285,22 +313,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="287" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1604839668957" />
-    <state width="371" height="912" key="GridCell.Tab.0.bottom" timestamp="1605288791604">
+    <state width="597" height="912" key="GridCell.Tab.0.bottom" timestamp="1605373643471">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="371" height="912" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1605288791604" />
-    <state width="371" height="912" key="GridCell.Tab.0.center" timestamp="1605288791604">
+    <state width="597" height="912" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1605373643471" />
+    <state width="597" height="912" key="GridCell.Tab.0.center" timestamp="1605373643470">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="371" height="912" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1605288791604" />
-    <state width="371" height="912" key="GridCell.Tab.0.left" timestamp="1605288791604">
+    <state width="597" height="912" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1605373643470" />
+    <state width="597" height="912" key="GridCell.Tab.0.left" timestamp="1605373643470">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="371" height="912" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1605288791604" />
-    <state width="371" height="912" key="GridCell.Tab.0.right" timestamp="1605288791604">
+    <state width="597" height="912" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1605373643470" />
+    <state width="597" height="912" key="GridCell.Tab.0.right" timestamp="1605373643470">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="371" height="912" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1605288791604" />
+    <state width="597" height="912" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1605373643470" />
     <state width="1877" height="34" key="GridCell.Tab.1.bottom" timestamp="1604849089675">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -321,6 +349,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="921" y="136" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1604839996154" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1605362805494">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1605362805494" />
     <state x="1145" y="415" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1604836888447">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -337,10 +369,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1216" y="272" key="refactoring.ChangeSignatureDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1605284817563" />
-    <state x="616" y="240" key="run.anything.popup" timestamp="1603212562680">
+    <state x="616" y="240" key="run.anything.popup" timestamp="1605363829889">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1603212562680" />
+    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1605363829889" />
     <state x="1103" y="230" width="672" height="678" key="search.everywhere.popup" timestamp="1605287363117">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
