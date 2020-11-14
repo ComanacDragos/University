@@ -18,11 +18,12 @@ import Repository.Repository;
 
 import java.io.BufferedReader;
 import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class View {
     TextMenu menu;
-    LinkedHashMap<IStatement, String> programsDescriptions;
+    Map<IStatement, String> programsDescriptions;
 
     public View(){
         this.menu = new TextMenu();
@@ -247,6 +248,32 @@ public class View {
         );
 
         this.programsDescriptions.put(ex9, "ref int v;new(v,20);Ref Ref int a; new(a,v);print(v);print(a)");
+
+        IStatement ex10 = new CompoundStatement(
+                new CompoundStatement(
+                        new CompoundStatement(
+                                new VariableDeclarationStatement("v", new ReferenceType(new IntType())),
+                                new NewStatement("v", new ValueExpression(new IntValue(20)))
+                        ),
+                        new CompoundStatement(
+                                new VariableDeclarationStatement(
+                                        "a",
+                                        new ReferenceType(
+                                                new ReferenceType(
+                                                        new StringType()
+                                                )
+                                        )
+                                ),
+                                new NewStatement("a", new VariableExpression("v"))
+                        )
+                ),
+                new CompoundStatement(
+                        new PrintStatement(new VariableExpression("v")),
+                        new PrintStatement(new VariableExpression("a"))
+                )
+        );
+
+        this.programsDescriptions.put(ex10, "ref int v;new(v,20);Ref Ref string a; new(a,v);print(v);print(a)");
 
         AtomicInteger currentKey = new AtomicInteger(1);
         this.programsDescriptions.forEach(
