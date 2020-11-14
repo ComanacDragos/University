@@ -10,6 +10,7 @@ import Model.Expressions.UnaryExpressions.ReadHeapExpression;
 import Model.ProgramState;
 import Model.Statements.*;
 import Model.Statements.ControlFlowStatements.IfStatement;
+import Model.Statements.ControlFlowStatements.WhileStatement;
 import Model.Statements.FileStatements.CloseReadFile;
 import Model.Statements.FileStatements.OpenReadFileStatement;
 import Model.Statements.FileStatements.ReadFileStatement;
@@ -428,6 +429,112 @@ public class View {
         );
 
         this.programsDescriptions.put(ex13, "ref int v;new(v,20);ref ref int a; new(a,v); new(v,30);print(rH(rH(a)));");
+
+        IStatement ex14 = new CompoundStatement(
+                new CompoundStatement(
+                        new CompoundStatement(
+                                new VariableDeclarationStatement(
+                                        "v",
+                                        new ReferenceType(
+                                                new IntType()
+                                        )
+                                ),
+                                new NewStatement(
+                                        "v",
+                                        new ValueExpression(
+                                                new IntValue(20)
+                                        )
+                                )
+                        ),
+                        new CompoundStatement(
+                                new VariableDeclarationStatement(
+                                        "a",
+                                        new ReferenceType(
+                                                new ReferenceType(
+                                                        new IntType()
+                                                )
+                                        )
+                                ),
+                                new NewStatement(
+                                        "a",
+                                        new VariableExpression("v")
+                                )
+                        )
+                ),
+                new CompoundStatement(
+                        new NewStatement(
+                                "v",
+                                new ValueExpression(
+                                        new IntValue(30)
+                                )
+                        ),
+                        new CompoundStatement(
+                                new PrintStatement(
+                                        new ReadHeapExpression(
+                                                new ReadHeapExpression(
+                                                        new VariableExpression("a")
+                                                )
+                                        )
+                                ),
+                                new CompoundStatement(
+                                        new NewStatement(
+                                                "a",
+                                                new VariableExpression("v")
+                                        ),
+                                        new PrintStatement(
+                                                new VariableExpression("a")
+                                        )
+                                )
+                        )
+                )
+        );
+
+        this.programsDescriptions.put(ex14, "ref int v;new(v,20);ref ref int a; new(a,v); new(v,30);print(rH(rH(a)));new(a,v);print(a)");
+
+        IStatement ex15 = new CompoundStatement(
+                new CompoundStatement(
+                        new VariableDeclarationStatement(
+                                "v",
+                                new IntType()),
+                        new AssignStatement(
+                                "v",
+                                new ValueExpression(
+                                        new IntValue(4)
+                                )
+                        )
+                ),
+                new CompoundStatement(
+                        new WhileStatement(
+                                new RelationalExpression(
+                                        new VariableExpression("v"),
+                                        new ValueExpression(
+                                                new IntValue(0)
+                                        ),
+                                        RelationalExpression.RelationalOperation.GREATER_THAN
+                                ),
+                                new CompoundStatement(
+                                        new PrintStatement(
+                                                new VariableExpression("v")
+                                        ),
+                                        new AssignStatement(
+                                                "v",
+                                                new ArithmeticExpression(
+                                                        new VariableExpression("v"),
+                                                        new ValueExpression(
+                                                                new IntValue(1)
+                                                        ),
+                                                        ArithmeticExpression.ArithmeticOperation.SUBTRACTION
+                                                )
+                                        )
+                                )
+                        ),
+                        new PrintStatement(
+                                new VariableExpression("v")
+                        )
+                )
+        );
+
+        this.programsDescriptions.put(ex15, "int v; v=4; (while (v>0) print(v);v=v-1);print(v)");
 
         AtomicInteger currentKey = new AtomicInteger(1);
         this.programsDescriptions.forEach(

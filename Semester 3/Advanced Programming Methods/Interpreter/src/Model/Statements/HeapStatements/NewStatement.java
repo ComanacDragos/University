@@ -33,8 +33,8 @@ public class NewStatement implements IStatement {
                 IValue value = this.expression.eval(symbolsTable, heap);
 
                 if(referenceValue.getLocationType().equals(value.getType())){
-                    Integer address = heap.put(value.deepCopy());
-                    referenceValue.setAddress(address);
+                    Integer address = heap.put(value);
+                    symbolsTable.put(this.variableName, new ReferenceValue(address, referenceValue.getLocationType()));
                 }
                 else{
                     throw new MyException(this.variableName + " is not a reference to " + value.getType().toString());
