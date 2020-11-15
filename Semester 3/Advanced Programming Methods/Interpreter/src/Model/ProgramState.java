@@ -99,7 +99,7 @@ public class ProgramState {
         );
 
         this.heap.stream().forEach(
-                e -> heap.put(e.getValue().deepCopy())
+                e -> heap.put(e.getKey(), e.getValue().deepCopy())
         );
 
         return new ProgramState(newExecutionStack, newSymbolsTable, newOut, newFileTable, heap, this.originalProgram.deepCopy());

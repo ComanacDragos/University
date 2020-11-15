@@ -21,11 +21,8 @@
   <component name="ChangeListManager">
     <list default="true" id="a28febb5-0634-448c-a29f-8e73463e0d72" name="Default Changelist" comment="added statement 10">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Interpreter/Files/log13.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Interpreter/Files/log13.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Interpreter/Model/Statements/HeapStatements/NewStatement.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Interpreter/Model/Statements/HeapStatements/NewStatement.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Interpreter/View/ConsoleUserInterface/View.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Interpreter/View/ConsoleUserInterface/View.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Statements/HeapStatements/NewStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Statements/HeapStatements/NewStatement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/ConsoleUserInterface/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/ConsoleUserInterface/View.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/ProgramState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/ProgramState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Statements/ControlFlowStatements/WhileStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Statements/ControlFlowStatements/WhileStatement.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -219,7 +216,7 @@
       <workItem from="1604762876451" duration="21952000" />
       <workItem from="1605197504026" duration="3683000" />
       <workItem from="1605262158275" duration="14574000" />
-      <workItem from="1605341874418" duration="17498000" />
+      <workItem from="1605341874418" duration="19678000" />
     </task>
     <task id="LOCAL-00001" summary="added statement 10">
       <created>1605362656157</created>
@@ -279,22 +276,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="287" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1604839668957" />
-    <state width="918" height="912" key="GridCell.Tab.0.bottom" timestamp="1605386463927">
+    <state width="607" height="912" key="GridCell.Tab.0.bottom" timestamp="1605445263557">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="918" height="912" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1605386463927" />
-    <state width="918" height="912" key="GridCell.Tab.0.center" timestamp="1605386463927">
+    <state width="607" height="912" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1605445263557" />
+    <state width="607" height="912" key="GridCell.Tab.0.center" timestamp="1605445263557">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="918" height="912" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1605386463927" />
-    <state width="918" height="912" key="GridCell.Tab.0.left" timestamp="1605386463926">
+    <state width="607" height="912" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1605445263557" />
+    <state width="607" height="912" key="GridCell.Tab.0.left" timestamp="1605445263557">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="918" height="912" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1605386463926" />
-    <state width="918" height="912" key="GridCell.Tab.0.right" timestamp="1605386463927">
+    <state width="607" height="912" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1605445263557" />
+    <state width="607" height="912" key="GridCell.Tab.0.right" timestamp="1605445263557">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="918" height="912" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1605386463927" />
+    <state width="607" height="912" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1605445263557" />
     <state width="1877" height="34" key="GridCell.Tab.1.bottom" timestamp="1604849089675">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

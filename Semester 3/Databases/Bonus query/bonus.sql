@@ -1,4 +1,41 @@
-SELECT * 
-FROM Borrowers_Books
-WHERE EndDate IS NOT NULL
-ORDER BY StartDate
+--DROP TABLE MyTable
+CREATE TABLE MyTable(
+	c1 VARCHAR(3),
+	c2 VARCHAR(3),
+	c3 VARCHAR(3),
+	c4 VARCHAR(3),
+	c5 VARCHAR(3),
+	c6 VARCHAR(3),
+	c7 VARCHAR(3),
+	c8 VARCHAR(3),
+	c9 VARCHAR(3),
+	c10 VARCHAR(3),
+	c11 VARCHAR(3),
+	c12 VARCHAR(3),
+	c13 VARCHAR(3),
+	c14 VARCHAR(3),
+	c15 VARCHAR(3)
+)
+
+-- DELETE FROM MyTable
+/*INSERT INTO MyTable VALUES
+(' ','_',' ',' ',' ','_',' ','_','_','_',' ','_','_','_',' '),
+('|',' ','|',' ','|',' ','|',' ','_',' ',')',' ','_',' ',')'),
+('|',' ','|',' ','|',' ','|',' ','_',' ','\',' ','_',' ','\'),
+(' ','\','_','_','_','/','|','_','_','_','/','_','_','_','/')
+*/
+
+
+-- DELETE FROM MyTable
+INSERT INTO MyTable 
+(  c1 ,  c2 ,  c3 ,  c4 ,  c5 ,  c6 ,  c7 ,  c8 ,  c9 , c10 , c11 , c12 , c13 , c14 , c15 )
+VALUES
+(' __','___','_  ','   ',' __','_  ',' __','___','___','___','   ',' __','___','___','   '),
+('|  ','   ',' | ','   ','|  ','  |','|  ','   ','___','   ',')  ','|  ','___','   ','  )'),
+('|  ','   ',' | ','   ','|  ','  |','|  ','   ','___','   ','\  ','|  ','___','   ','  \'),
+('\__','___','___','___','___','/  ','|  ','___','___','___','/  ','|  ','___','___','  /')
+SELECT c1,c3,c5,c6, c7,c9,c11, c12, c13,c15 FROM MyTable
+
+
+
+

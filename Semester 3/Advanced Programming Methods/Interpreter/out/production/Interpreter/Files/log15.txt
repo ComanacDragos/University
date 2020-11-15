@@ -2,8 +2,7 @@ Execution stack
 (
 int v;
 v = 4;
-while(v > 0)
-{
+while(v > 0){
 print(v);
 v = (v - 1);
 }
@@ -22,8 +21,7 @@ int v;
 v = 4;
 )
 (
-while(v > 0)
-{
+while(v > 0){
 print(v);
 v = (v - 1);
 }
@@ -42,8 +40,7 @@ int v;
 v = 4;
 )
 (
-while(v > 0)
-{
+while(v > 0){
 print(v);
 v = (v - 1);
 }
@@ -64,8 +61,7 @@ int v;
 v = 4;
 )
 (
-while(v > 0)
-{
+while(v > 0){
 print(v);
 v = (v - 1);
 }
@@ -86,8 +82,7 @@ int v;
 v = 4;
 )
 (
-while(v > 0)
-{
+while(v > 0){
 print(v);
 v = (v - 1);
 }
@@ -105,8 +100,7 @@ Execution stack
 v = 4;
 )
 (
-while(v > 0)
-{
+while(v > 0){
 print(v);
 v = (v - 1);
 }
@@ -125,8 +119,7 @@ Execution stack
 v = 4;
 )
 (
-while(v > 0)
-{
+while(v > 0){
 print(v);
 v = (v - 1);
 }
@@ -142,8 +135,7 @@ Heap
 
 Execution stack
 (
-while(v > 0)
-{
+while(v > 0){
 print(v);
 v = (v - 1);
 }
@@ -159,8 +151,7 @@ Heap
 
 Execution stack
 (
-while(v > 0)
-{
+while(v > 0){
 print(v);
 v = (v - 1);
 }
@@ -176,8 +167,7 @@ Heap
 
 Execution stack
 (
-while(v > 0)
-{
+while(v > 0){
 print(v);
 v = (v - 1);
 }
@@ -195,8 +185,7 @@ Heap
 
 Execution stack
 (
-while(v > 0)
-{
+while(v > 0){
 print(v);
 v = (v - 1);
 }
@@ -218,8 +207,7 @@ print(v);
 v = (v - 1);
 )
 (
-while(v > 0)
-{
+while(v > 0){
 print(v);
 v = (v - 1);
 }
@@ -241,8 +229,7 @@ print(v);
 v = (v - 1);
 )
 (
-while(v > 0)
-{
+while(v > 0){
 print(v);
 v = (v - 1);
 }
@@ -266,8 +253,7 @@ print(v);
 v = (v - 1);
 )
 (
-while(v > 0)
-{
+while(v > 0){
 print(v);
 v = (v - 1);
 }
@@ -291,8 +277,7 @@ print(v);
 v = (v - 1);
 )
 (
-while(v > 0)
-{
+while(v > 0){
 print(v);
 v = (v - 1);
 }
@@ -313,8 +298,7 @@ Execution stack
 v = (v - 1);
 )
 (
-while(v > 0)
-{
+while(v > 0){
 print(v);
 v = (v - 1);
 }
@@ -336,8 +320,7 @@ Execution stack
 v = (v - 1);
 )
 (
-while(v > 0)
-{
+while(v > 0){
 print(v);
 v = (v - 1);
 }
@@ -356,8 +339,7 @@ Heap
 
 Execution stack
 (
-while(v > 0)
-{
+while(v > 0){
 print(v);
 v = (v - 1);
 }
@@ -376,8 +358,7 @@ Heap
 
 Execution stack
 (
-while(v > 0)
-{
+while(v > 0){
 print(v);
 v = (v - 1);
 }
@@ -400,8 +381,7 @@ print(v);
 v = (v - 1);
 )
 (
-while(v > 0)
-{
+while(v > 0){
 print(v);
 v = (v - 1);
 }
@@ -424,8 +404,7 @@ print(v);
 v = (v - 1);
 )
 (
-while(v > 0)
-{
+while(v > 0){
 print(v);
 v = (v - 1);
 }
@@ -450,8 +429,7 @@ print(v);
 v = (v - 1);
 )
 (
-while(v > 0)
-{
+while(v > 0){
 print(v);
 v = (v - 1);
 }
@@ -476,8 +454,7 @@ print(v);
 v = (v - 1);
 )
 (
-while(v > 0)
-{
+while(v > 0){
 print(v);
 v = (v - 1);
 }
@@ -499,8 +476,7 @@ Execution stack
 v = (v - 1);
 )
 (
-while(v > 0)
-{
+while(v > 0){
 print(v);
 v = (v - 1);
 }
@@ -523,8 +499,7 @@ Execution stack
 v = (v - 1);
 )
 (
-while(v > 0)
-{
+while(v > 0){
 print(v);
 v = (v - 1);
 }
@@ -544,8 +519,7 @@ Heap
 
 Execution stack
 (
-while(v > 0)
-{
+while(v > 0){
 print(v);
 v = (v - 1);
 }
@@ -565,8 +539,7 @@ Heap
 
 Execution stack
 (
-while(v > 0)
-{
+while(v > 0){
 print(v);
 v = (v - 1);
 }
@@ -590,8 +563,7 @@ print(v);
 v = (v - 1);
 )
 (
-while(v > 0)
-{
+while(v > 0){
 print(v);
 v = (v - 1);
 }
@@ -615,8 +587,7 @@ print(v);
 v = (v - 1);
 )
 (
-while(v > 0)
-{
+while(v > 0){
 print(v);
 v = (v - 1);
 }
@@ -642,8 +613,7 @@ print(v);
 v = (v - 1);
 )
 (
-while(v > 0)
-{
+while(v > 0){
 print(v);
 v = (v - 1);
 }
@@ -669,8 +639,7 @@ print(v);
 v = (v - 1);
 )
 (
-while(v > 0)
-{
+while(v > 0){
 print(v);
 v = (v - 1);
 }
@@ -693,8 +662,7 @@ Execution stack
 v = (v - 1);
 )
 (
-while(v > 0)
-{
+while(v > 0){
 print(v);
 v = (v - 1);
 }
@@ -718,8 +686,7 @@ Execution stack
 v = (v - 1);
 )
 (
-while(v > 0)
-{
+while(v > 0){
 print(v);
 v = (v - 1);
 }
@@ -740,8 +707,7 @@ Heap
 
 Execution stack
 (
-while(v > 0)
-{
+while(v > 0){
 print(v);
 v = (v - 1);
 }
@@ -762,8 +728,7 @@ Heap
 
 Execution stack
 (
-while(v > 0)
-{
+while(v > 0){
 print(v);
 v = (v - 1);
 }
@@ -788,8 +753,7 @@ print(v);
 v = (v - 1);
 )
 (
-while(v > 0)
-{
+while(v > 0){
 print(v);
 v = (v - 1);
 }
@@ -814,8 +778,7 @@ print(v);
 v = (v - 1);
 )
 (
-while(v > 0)
-{
+while(v > 0){
 print(v);
 v = (v - 1);
 }
@@ -842,8 +805,7 @@ print(v);
 v = (v - 1);
 )
 (
-while(v > 0)
-{
+while(v > 0){
 print(v);
 v = (v - 1);
 }
@@ -870,8 +832,7 @@ print(v);
 v = (v - 1);
 )
 (
-while(v > 0)
-{
+while(v > 0){
 print(v);
 v = (v - 1);
 }
@@ -895,8 +856,7 @@ Execution stack
 v = (v - 1);
 )
 (
-while(v > 0)
-{
+while(v > 0){
 print(v);
 v = (v - 1);
 }
@@ -921,8 +881,7 @@ Execution stack
 v = (v - 1);
 )
 (
-while(v > 0)
-{
+while(v > 0){
 print(v);
 v = (v - 1);
 }
@@ -944,8 +903,7 @@ Heap
 
 Execution stack
 (
-while(v > 0)
-{
+while(v > 0){
 print(v);
 v = (v - 1);
 }
@@ -967,8 +925,7 @@ Heap
 
 Execution stack
 (
-while(v > 0)
-{
+while(v > 0){
 print(v);
 v = (v - 1);
 }
