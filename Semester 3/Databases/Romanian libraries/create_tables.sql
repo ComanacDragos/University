@@ -1,4 +1,4 @@
-USE RomanianLibrariesDB
+--USE RomanianLibrariesDB
 
 CREATE TABLE Regions
 (
@@ -120,5 +120,3 @@ DROP TABLE Cities;
 
 DROP TABLE Regions;
 */
-
-SELECT * FROM Borrowers

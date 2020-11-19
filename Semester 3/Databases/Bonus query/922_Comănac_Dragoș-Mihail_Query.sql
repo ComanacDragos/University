@@ -33,12 +33,15 @@ VALUES
 (3 ,'|  ','   ',' | ','   ','|  ','  |','|  ','   ','___','   ','\  ','|  ','___','   ','  \')
 
 --PUZZLE--
-SELECT * -- Primes and multiple of 5 matter
+SELECT * -- Primes and multiples of 5 matter
 FROM MyTable
 --Order matters x2
 
 
 --SCROLL FOR SOLUTION--
+
+
+
 
 
 
