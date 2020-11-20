@@ -1,11 +1,14 @@
 package Model;
 
+import Exceptions.EmptyCollection;
+import Exceptions.MyException;
 import Model.ADTs.*;
 import Model.Statements.IStatement;
 import Model.Values.IValue;
 
 import java.io.BufferedReader;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
 public class ProgramState {
@@ -15,6 +18,8 @@ public class ProgramState {
     IStatement originalProgram;
     MyIDictionary<String, BufferedReader> fileTable;
     MyHeap heap;
+    Integer programId;
+    static AtomicInteger currentId = new AtomicInteger(0);
 
     public ProgramState(MyIStack<IStatement> executionStack, MyIDictionary<String, IValue> symbolsTable, MyIList<IValue> out, MyIDictionary<String, BufferedReader> fileTable, MyHeap heap, IStatement originalProgram){
         this.executionStack = executionStack;
@@ -23,6 +28,7 @@ public class ProgramState {
         this.originalProgram = originalProgram;
         this.fileTable = fileTable;
         this.heap = heap;
+        this.programId = ProgramState.currentId.incrementAndGet();
     }
 
     public IStatement getOriginalProgram() {
@@ -73,41 +79,74 @@ public class ProgramState {
         this.heap = heap;
     }
 
-    public ProgramState deepCopy(){
+    public MyIStack<IStatement> executionStackDeepCopy(){
         MyIStack<IStatement> newExecutionStack = new MyStack<>();
-        MyIDictionary<String, IValue> newSymbolsTable = new MyDictionary<>();
-        MyIList<IValue> newOut = new MyList<>();
-        MyIDictionary<String, BufferedReader> newFileTable = new MyDictionary<>();
-        MyHeap heap = new MyHeap();
-
         this.executionStack.stream().map(
-                IStatement::deepCopy
-        ).forEach(newExecutionStack::push);
+                        IStatement::deepCopy
+                ).forEach(newExecutionStack::push);
+        return newExecutionStack;
+    }
 
+    public MyIDictionary<String, IValue> symbolsTableDeepCopy(){
+        MyIDictionary<String, IValue> newSymbolsTable = new MyDictionary<>();
         this.symbolsTable.stream().collect(
                 Collectors.toMap(Map.Entry::getKey, e -> e.getValue().deepCopy())
         ).entrySet().stream().forEach(
                 e -> newSymbolsTable.put(e.getKey(), e.getValue())
         );
+        return newSymbolsTable;
+    }
+
+    public MyIList<IValue> outDeepCopy(){
+        MyIList<IValue> newOut = new MyList<>();
 
         this.out.stream().map(
                 IValue::deepCopy
         ).forEach(newOut::add);
+        return newOut;
+    }
 
+    public MyIDictionary<String, BufferedReader> fileTableDeepCopy(){
+        MyIDictionary<String, BufferedReader> newFileTable = new MyDictionary<>();
         this.fileTable.stream().forEach(
                 e -> newFileTable.put(e.getKey(), e.getValue())
         );
+        return newFileTable;
+    }
+
+    public MyHeap heapDeepCopy(){
+        MyHeap newHeap = new MyHeap();
 
         this.heap.stream().forEach(
-                e -> heap.put(e.getKey(), e.getValue().deepCopy())
+                e -> newHeap.put(e.getKey(), e.getValue().deepCopy())
         );
+        return newHeap;
+    }
 
-        return new ProgramState(newExecutionStack, newSymbolsTable, newOut, newFileTable, heap, this.originalProgram.deepCopy());
+    public ProgramState deepCopy(){
+
+        return new ProgramState(this.executionStackDeepCopy(),
+                                this.symbolsTableDeepCopy(),
+                                this.outDeepCopy(),
+                                this.fileTableDeepCopy(),
+                                this.heapDeepCopy(),
+                                this.originalProgram.deepCopy());
+    }
+
+    public Boolean isNotCompleted(){
+        return !this.executionStack.isEmpty();
+    }
+
+    public ProgramState executeOneStep() throws MyException {
+        if(this.executionStack.isEmpty())
+            throw new EmptyCollection("Empty execution stack");
+        return this.executionStack.pop().execute(this);
     }
 
     @Override
     public String toString() {
-        return "Execution stack\n" +this.executionStack.toString() +
+        return  "Program: " + this.programId +
+                "Execution stack\n" +this.executionStack.toString() +
                 "Symbols table\n" + this.symbolsTable.toString() +
                 "Out\n" + this.out.toString() +
                 "File table\n" + this.fileTable.stream().map(Map.Entry::getKey).collect(Collectors.joining("\n")) +

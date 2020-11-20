@@ -1,11 +1,14 @@
 package Repository;
 
-import Exceptions.EmptyCollection;
 import Exceptions.MyException;
 import Model.ProgramState;
 
+import java.util.List;
+
 public interface IRepository {
-    ProgramState getCurrentProgram() throws EmptyCollection;
+    List<ProgramState> getPrograms();
+
+    void setPrograms(List<ProgramState> programs);
 
     void addProgram(ProgramState newProgram);
 

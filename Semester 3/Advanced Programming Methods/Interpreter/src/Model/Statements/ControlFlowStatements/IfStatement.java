@@ -63,7 +63,7 @@ public class IfStatement implements IStatement {
         else
             throw new MyException("Conditional expression is not a boolean");
 
-        return state;
+        return null;
     }
 
     @Override

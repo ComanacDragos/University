@@ -50,7 +50,7 @@ public class CloseReadFile implements IStatement {
         else{
             throw new MyException("Close requires a string");
         }
-        return state;
+        return null;
     }
 
     @Override

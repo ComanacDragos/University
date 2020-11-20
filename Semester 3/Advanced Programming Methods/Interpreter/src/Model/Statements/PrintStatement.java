@@ -29,7 +29,7 @@ public class PrintStatement implements IStatement{
 
         out.add(this.expression.eval(symbolsTable, state.getHeap()));
 
-        return state;
+        return null;
     }
 
     @Override

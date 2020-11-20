@@ -14,12 +14,9 @@ public class WhileStatement implements IStatement {
     IExpression expression;
     IStatement statement;
 
-    int maxNumberOfIterations;
-
     public WhileStatement(IExpression expression, IStatement statement) {
         this.expression = expression;
         this.statement = statement;
-        this.maxNumberOfIterations = 1000;
     }
 
     public IExpression getExpression() {
@@ -42,14 +39,9 @@ public class WhileStatement implements IStatement {
     public ProgramState execute(ProgramState state) throws MyException {
         MyIStack<IStatement> executionStack = state.getExecutionStack();
         IValue value = this.expression.eval(state.getSymbolsTable(), state.getHeap());
-
         if(value.getType().equals(new BoolType())){
             BoolValue boolValue = (BoolValue) value;
-            this.maxNumberOfIterations -= 1;
 
-            if(this.maxNumberOfIterations == 0){
-                throw new MyException("Maximum number of iterations: 1000 has been reached");
-            }
             if(boolValue.getValue()){
                    executionStack.push(this);
                    executionStack.push(this.statement);
@@ -59,7 +51,7 @@ public class WhileStatement implements IStatement {
             throw new MyException("Expression must be a boolean");
         }
 
-        return state;
+        return null;
     }
 
     @Override

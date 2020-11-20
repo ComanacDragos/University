@@ -106,11 +106,11 @@ public class Main {
                 .filter(s -> s.length() < 4)
                 .filter(s -> s.contains("e"));
 
-        filteredStrings.get().forEach(System.out::println);
+        filteredStrings.get().findFirst().ifPresent(System.out::println);
 
         System.out.println();
 
-        filteredStrings.get().filter(s -> s.contains("q")).forEach(System.out::println);
+        filteredStrings.get().filter(s -> s.contains("q")).findFirst().ifPresent(System.out::println);
 
         System.out.println();
     }

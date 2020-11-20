@@ -48,7 +48,7 @@ public class NewStatement implements IStatement {
             throw new MyException(this.variableName + " is not defined");
         }
 
-        return state;
+        return null;
     }
 
     @Override

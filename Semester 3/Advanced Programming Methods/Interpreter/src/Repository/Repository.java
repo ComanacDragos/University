@@ -1,6 +1,5 @@
 package Repository;
 
-import Exceptions.EmptyCollection;
 import Exceptions.MyException;
 import Model.ProgramState;
 
@@ -8,22 +7,24 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 public class Repository implements IRepository{
-    ArrayList<ProgramState> programs;
+    List<ProgramState> programs;
     String logFilePath;
 
     public Repository(String logFilePath){
-        this.programs = new ArrayList<>();
+        this.programs = new LinkedList<>();
         this.logFilePath = logFilePath;
     }
 
-    @Override
-    public ProgramState getCurrentProgram() throws EmptyCollection {
-        if(this.programs.isEmpty())
-            throw new EmptyCollection("Empty repository");
-        return this.programs.get(0).deepCopy();
+    public List<ProgramState> getPrograms() {
+        return programs;
+    }
+
+    public void setPrograms(List<ProgramState> programs) {
+        this.programs = programs;
     }
 
     @Override

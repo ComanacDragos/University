@@ -48,7 +48,7 @@ public class VariableDeclarationStatement implements IStatement{
                 symbolsTable.put(this.variableName, new ReferenceValue(((ReferenceType) this.type).getInnerType()));
             else
                 throw new MyException("Type not defined");
-        return state;
+        return null;
     }
 
     @Override

@@ -13,7 +13,8 @@ public class MyHeap extends MyDictionary<Integer, IValue>{
     }
 
     public Integer put(IValue value) {
-        super.put(this.address.incrementAndGet(), value);
-        return this.address.get();
+        int newAddress = this.address.incrementAndGet();
+        super.put(newAddress, value);
+        return newAddress;
     }
 }

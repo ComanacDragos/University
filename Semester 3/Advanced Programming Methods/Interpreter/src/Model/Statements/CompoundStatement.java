@@ -35,7 +35,7 @@ public class CompoundStatement implements IStatement{
         stack.push(this.second);
         stack.push(this.first);
 
-        return state;
+        return null;
     }
 
     @Override

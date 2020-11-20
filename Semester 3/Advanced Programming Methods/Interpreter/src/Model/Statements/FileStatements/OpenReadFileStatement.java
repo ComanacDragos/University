@@ -51,7 +51,7 @@ public class OpenReadFileStatement implements IStatement {
         else {
             throw new MyException("Open requires a string");
         }
-        return state;
+        return null;
     }
 
     @Override

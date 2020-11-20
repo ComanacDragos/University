@@ -47,7 +47,7 @@ public class AssignStatement implements IStatement{
         else
             throw new MyException("The used variable " + variableName + " was not declared before");
 
-        return state;
+        return null;
     }
 
     @Override

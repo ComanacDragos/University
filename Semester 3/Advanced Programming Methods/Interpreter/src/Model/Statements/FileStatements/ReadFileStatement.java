@@ -84,7 +84,7 @@ public class ReadFileStatement implements IStatement {
             throw new MyException("Variable is not defined");
         }
 
-        return state;
+        return null;
     }
 
     @Override
