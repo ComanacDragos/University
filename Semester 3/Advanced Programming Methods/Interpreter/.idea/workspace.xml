@@ -21,47 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="a28febb5-0634-448c-a29f-8e73463e0d72" name="Default Changelist" comment="added statement 10">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Interpreter/Controller/Controller.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Interpreter/Files/log10.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Interpreter/Files/log10.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Interpreter/Files/log9.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Interpreter/Files/log9.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Interpreter/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Interpreter/Model/ADTs/MyHeap.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Interpreter/Model/ADTs/MyHeap.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Interpreter/Model/ProgramState.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Interpreter/Model/Statements/AssignStatement.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Interpreter/Model/Statements/CompoundStatement.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Interpreter/Model/Statements/ControlFlowStatements/IfStatement.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Interpreter/Model/Statements/ControlFlowStatements/WhileStatement.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Interpreter/Model/Statements/FileStatements/CloseReadFile.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Interpreter/Model/Statements/FileStatements/OpenReadFileStatement.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Interpreter/Model/Statements/FileStatements/ReadFileStatement.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Interpreter/Model/Statements/HeapStatements/NewStatement.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Interpreter/Model/Statements/HeapStatements/WriteHeapStatement.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Interpreter/Model/Statements/NopStatement.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Interpreter/Model/Statements/PrintStatement.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Interpreter/Model/Statements/VariableDeclarationStatement.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Interpreter/Repository/IRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Interpreter/Repository/Repository.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Files/log9.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Files/log9.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/ADTs/MyHeap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/ADTs/MyHeap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/ProgramState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/ProgramState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Statements/AssignStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Statements/AssignStatement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Statements/CompoundStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Statements/CompoundStatement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Statements/ControlFlowStatements/IfStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Statements/ControlFlowStatements/IfStatement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Statements/ControlFlowStatements/WhileStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Statements/ControlFlowStatements/WhileStatement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Statements/FileStatements/CloseReadFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Statements/FileStatements/CloseReadFile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Statements/FileStatements/OpenReadFileStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Statements/FileStatements/OpenReadFileStatement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Statements/FileStatements/ReadFileStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Statements/FileStatements/ReadFileStatement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Statements/HeapStatements/NewStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Statements/HeapStatements/NewStatement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Statements/HeapStatements/WriteHeapStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Statements/HeapStatements/WriteHeapStatement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Statements/NopStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Statements/NopStatement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Statements/PrintStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Statements/PrintStatement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Statements/VariableDeclarationStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Statements/VariableDeclarationStatement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/IRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/IRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/Repository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/Repository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Seminar7/out/production/Seminar7/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Seminar7/out/production/Seminar7/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Seminar7/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Seminar7/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,17 +105,6 @@
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="Interpreter" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -256,7 +205,8 @@
       <workItem from="1605341874418" duration="19678000" />
       <workItem from="1605506315352" duration="4946000" />
       <workItem from="1605795990852" duration="4914000" />
-      <workItem from="1605873552525" duration="9640000" />
+      <workItem from="1605873552525" duration="10462000" />
+      <workItem from="1606117623847" duration="1171000" />
     </task>
     <task id="LOCAL-00001" summary="added statement 10">
       <created>1605362656157</created>
@@ -316,22 +266,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="287" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1605796146227" />
-    <state width="959" height="912" key="GridCell.Tab.0.bottom" timestamp="1605876968296">
+    <state width="697" height="912" key="GridCell.Tab.0.bottom" timestamp="1605903029361">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="959" height="912" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1605876968296" />
-    <state width="959" height="912" key="GridCell.Tab.0.center" timestamp="1605876968296">
+    <state width="697" height="912" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1605903029361" />
+    <state width="697" height="912" key="GridCell.Tab.0.center" timestamp="1605903029361">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="959" height="912" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1605876968296" />
-    <state width="959" height="912" key="GridCell.Tab.0.left" timestamp="1605876968295">
+    <state width="697" height="912" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1605903029361" />
+    <state width="697" height="912" key="GridCell.Tab.0.left" timestamp="1605903029357">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="959" height="912" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1605876968295" />
-    <state width="959" height="912" key="GridCell.Tab.0.right" timestamp="1605876968296">
+    <state width="697" height="912" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1605903029357" />
+    <state width="697" height="912" key="GridCell.Tab.0.right" timestamp="1605903029361">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="959" height="912" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1605876968296" />
+    <state width="697" height="912" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1605903029361" />
     <state width="1877" height="34" key="GridCell.Tab.1.bottom" timestamp="1604849089675">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
