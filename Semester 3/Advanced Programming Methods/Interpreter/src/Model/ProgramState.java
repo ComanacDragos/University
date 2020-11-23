@@ -145,7 +145,7 @@ public class ProgramState {
 
     @Override
     public String toString() {
-        return  "Program: " + this.programId +
+        return  "Program: " + this.programId + '\n' +
                 "Execution stack\n" +this.executionStack.toString() +
                 "Symbols table\n" + this.symbolsTable.toString() +
                 "Out\n" + this.out.toString() +

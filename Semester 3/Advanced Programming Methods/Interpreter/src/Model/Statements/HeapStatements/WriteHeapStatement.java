@@ -78,6 +78,6 @@ public class WriteHeapStatement implements IStatement {
 
     @Override
     public String toString() {
-        return "writeHeap(" + this.variableName + ", " + this.expression.toString();
+        return "writeHeap(" + this.variableName + ", " + this.expression.toString() + ");";
     }
 }

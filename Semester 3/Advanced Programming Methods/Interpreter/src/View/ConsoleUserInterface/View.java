@@ -481,15 +481,29 @@ public class View {
                                                 "a",
                                                 new VariableExpression("v")
                                         ),
-                                        new PrintStatement(
-                                                new VariableExpression("a")
+                                        new CompoundStatement(
+                                                new PrintStatement(
+                                                        new VariableExpression("a")
+                                                ),
+                                                new PrintStatement(
+                                                        new ReadHeapExpression(
+                                                                new VariableExpression("a")
+                                                        )
+                                                )
                                         )
                                 )
                         )
                 )
         );
 
-        this.programsDescriptions.put(ex14, "ref int v;new(v,20);ref ref int a; new(a,v); new(v,30);print(rH(rH(a)));new(a,v);print(a)");
+        this.programsDescriptions.put(ex14, "ref int v;" +
+                "new(v,20);" +
+                "ref ref int a; " +
+                "new(a,v); new(v,30);" +
+                "print(rH(rH(a)));" +
+                "new(a,v);" +
+                "print(a); " +
+                "print(rH(a))");
 
         IStatement ex15 = new CompoundStatement(
                 new CompoundStatement(

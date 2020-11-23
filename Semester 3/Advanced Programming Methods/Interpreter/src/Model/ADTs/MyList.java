@@ -4,10 +4,13 @@ import Exceptions.EmptyCollection;
 
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.concurrent.locks.ReadWriteLock;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 import java.util.stream.Stream;
 
 public class MyList<T> implements MyIList<T>{
     LinkedList<T> list;
+    ReadWriteLock readWriteLock = new ReentrantReadWriteLock();
 
     public MyList(){
         this.list = new LinkedList<>();
@@ -15,11 +18,14 @@ public class MyList<T> implements MyIList<T>{
 
     @Override
     public void add(T element) {
+        this.readWriteLock.writeLock().lock();
         this.list.addLast(element);
+        this.readWriteLock.writeLock().unlock();
     }
 
     @Override
     public T pop() throws EmptyCollection {
+
         if(this.list.isEmpty())
             throw new EmptyCollection("Empty list");
         return this.list.removeFirst();

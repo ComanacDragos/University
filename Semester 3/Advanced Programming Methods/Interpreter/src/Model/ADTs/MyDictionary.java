@@ -5,16 +5,16 @@ import Exceptions.InexistentKey;
 
 
 import java.util.Collection;
-import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Stream;
 
 public class MyDictionary<Key, Value> implements MyIDictionary<Key, Value>{
     Map<Key, Value> dictionary;
 
     public MyDictionary(){
-        this.dictionary = new LinkedHashMap<>();
+        this.dictionary = new ConcurrentHashMap<>();
     }
 
     @Override

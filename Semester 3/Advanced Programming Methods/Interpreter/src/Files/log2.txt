@@ -1,7 +1,8 @@
+Program: 2
 Execution stack
 (
-int = a;
-int = b;
+int a;
+int b;
 a = (2 + (3 * 5));
 b = (a + 1);
 print(b);
@@ -9,13 +10,17 @@ print(b);
 Symbols table
 Out
 File table
+Heap
 
+
+
+Program: 2
 Execution stack
 (
-int = a;
+int a;
 )
 (
-int = b;
+int b;
 a = (2 + (3 * 5));
 b = (a + 1);
 print(b);
@@ -23,10 +28,32 @@ print(b);
 Symbols table
 Out
 File table
+Heap
 
+
+
+Program: 2
 Execution stack
 (
-int = b;
+int a;
+)
+(
+int b;
+a = (2 + (3 * 5));
+b = (a + 1);
+print(b);
+)
+Symbols table
+Out
+File table
+Heap
+
+
+
+Program: 2
+Execution stack
+(
+int b;
 a = (2 + (3 * 5));
 b = (a + 1);
 print(b);
@@ -35,10 +62,30 @@ Symbols table
 a -> 0
 Out
 File table
+Heap
 
+
+
+Program: 2
 Execution stack
 (
-int = b;
+int b;
+a = (2 + (3 * 5));
+b = (a + 1);
+print(b);
+)
+Symbols table
+a -> 0
+Out
+File table
+Heap
+
+
+
+Program: 2
+Execution stack
+(
+int b;
 a = (2 + (3 * 5));
 )
 (
@@ -49,10 +96,32 @@ Symbols table
 a -> 0
 Out
 File table
+Heap
 
+
+
+Program: 2
 Execution stack
 (
-int = b;
+int b;
+a = (2 + (3 * 5));
+)
+(
+b = (a + 1);
+print(b);
+)
+Symbols table
+a -> 0
+Out
+File table
+Heap
+
+
+
+Program: 2
+Execution stack
+(
+int b;
 )
 (
 a = (2 + (3 * 5));
@@ -65,7 +134,31 @@ Symbols table
 a -> 0
 Out
 File table
+Heap
 
+
+
+Program: 2
+Execution stack
+(
+int b;
+)
+(
+a = (2 + (3 * 5));
+)
+(
+b = (a + 1);
+print(b);
+)
+Symbols table
+a -> 0
+Out
+File table
+Heap
+
+
+
+Program: 2
 Execution stack
 (
 a = (2 + (3 * 5));
@@ -79,7 +172,29 @@ a -> 0
 b -> 0
 Out
 File table
+Heap
 
+
+
+Program: 2
+Execution stack
+(
+a = (2 + (3 * 5));
+)
+(
+b = (a + 1);
+print(b);
+)
+Symbols table
+a -> 0
+b -> 0
+Out
+File table
+Heap
+
+
+
+Program: 2
 Execution stack
 (
 b = (a + 1);
@@ -90,7 +205,26 @@ a -> 17
 b -> 0
 Out
 File table
+Heap
 
+
+
+Program: 2
+Execution stack
+(
+b = (a + 1);
+print(b);
+)
+Symbols table
+a -> 17
+b -> 0
+Out
+File table
+Heap
+
+
+
+Program: 2
 Execution stack
 (
 b = (a + 1);
@@ -103,7 +237,28 @@ a -> 17
 b -> 0
 Out
 File table
+Heap
 
+
+
+Program: 2
+Execution stack
+(
+b = (a + 1);
+)
+(
+print(b);
+)
+Symbols table
+a -> 17
+b -> 0
+Out
+File table
+Heap
+
+
+
+Program: 2
 Execution stack
 (
 print(b);
@@ -113,7 +268,25 @@ a -> 17
 b -> 18
 Out
 File table
+Heap
 
+
+
+Program: 2
+Execution stack
+(
+print(b);
+)
+Symbols table
+a -> 17
+b -> 18
+Out
+File table
+Heap
+
+
+
+Program: 2
 Execution stack
 Symbols table
 a -> 17
@@ -121,4 +294,7 @@ b -> 18
 Out
 18
 File table
+Heap
+
+
 

@@ -51,21 +51,24 @@ public class Controller {
                 .map(v -> ((ReferenceValue)v).getAddress())
                 .collect(Collectors.toList());
     }
-//
-//    List<Integer> getValidAddresses(){
-//        List<Integer> validAddresses = this.getAddressesFromValues(
-//                this.repository
-//                        .getPrograms()
-//                        .get(0)
-//                        .getHeap()
-//                        .values()
-//        );
-//
-//        this.repository.getPrograms().stream()
-//                .map(ProgramState::getSymbolsTable)
-//                .map(MyIDictionary::values)
-//                .map()
-//    }
+
+    List<Integer> getValidAddresses(){
+        List<Integer> validAddresses = this.getAddressesFromValues(
+                this.repository
+                        .getPrograms()
+                        .get(0)
+                        .getHeap()
+                        .values()
+        );
+
+        this.repository.getPrograms().stream()
+            .map(ProgramState::getSymbolsTable)
+            .map(MyIDictionary::values)
+            .map(this::getAddressesFromValues)
+            .forEach(validAddresses::addAll);
+
+         return validAddresses;
+    }
 
     void oneStepForAllPrograms(List<ProgramState> programStates){
         programStates.forEach(program -> this.repository.logProgramStateExec(program));
@@ -104,30 +107,20 @@ public class Controller {
     }
 
     public void executeAllSteps() throws MyException {
-        /*ProgramState programState = this.repository.getCurrentProgram();
         this.repository.emptyLogFile();
-
-        this.repository.logProgramStateExec(programState);
-        while(!programState.getExecutionStack().isEmpty()){
-            this.executeOneStep(programState);
-            this.repository.logProgramStateExec(programState);
-
-            Set<Integer> validAddresses = this.getAddressesFromValues(programState.getSymbolsTable().values());
-            validAddresses.addAll(this.getAddressesFromValues(programState.getHeap().values()));
-
-            programState.getHeap().setContent(
-                    this.garbageCollector(
-                            validAddresses,
-                            programState.getHeap().getContent()
-                    )
-            );
-            this.repository.logProgramStateExec(programState);
-         */
 
         this.executorService = Executors.newFixedThreadPool(2);
         List<ProgramState> programStates = this.removeCompletedPrograms(this.repository.getPrograms());
 
         while(programStates.size() > 0){
+            MyIDictionary<Integer, IValue> heap = this.repository.getPrograms().get(0).getHeap();
+
+            heap.setContent(
+                    this.garbageCollector(
+                            this.getValidAddresses(),
+                            heap.getContent()
+                    )
+            );
             this.oneStepForAllPrograms(programStates);
             programStates = this.removeCompletedPrograms(this.repository.getPrograms());
         }
