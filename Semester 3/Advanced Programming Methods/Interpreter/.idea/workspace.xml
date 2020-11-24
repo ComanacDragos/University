@@ -22,15 +22,9 @@
     <list default="true" id="a28febb5-0634-448c-a29f-8e73463e0d72" name="Default Changelist" comment="added statement 10">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Files/log1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Files/log1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Files/log12.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Files/log12.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Files/log13.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Files/log13.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Files/log14.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Files/log14.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Files/log2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Files/log2.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Files/log9.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Files/log9.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Files/log4.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Files/log4.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Model/ADTs/MyDictionary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/ADTs/MyDictionary.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/ProgramState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/ProgramState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Statements/HeapStatements/WriteHeapStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Statements/HeapStatements/WriteHeapStatement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/ADTs/MyList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/ADTs/MyList.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/ConsoleUserInterface/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/ConsoleUserInterface/View.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Databases/Romanian libraries/testing_mechanism.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../../Databases/Romanian libraries/testing_mechanism.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../English/Week9 - hw/C7 Assistive technology.docx" beforeDir="false" afterPath="$PROJECT_DIR$/../../English/Week9 - hw/C7 Assistive technology.docx" afterDir="false" />
@@ -122,15 +116,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -232,7 +224,8 @@
       <workItem from="1605506315352" duration="4946000" />
       <workItem from="1605795990852" duration="4914000" />
       <workItem from="1605873552525" duration="10462000" />
-      <workItem from="1606117623847" duration="6970000" />
+      <workItem from="1606117623847" duration="7339000" />
+      <workItem from="1606214520642" duration="9073000" />
     </task>
     <task id="LOCAL-00001" summary="added statement 10">
       <created>1605362656157</created>
@@ -292,38 +285,38 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="287" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1605796146227" />
-    <state width="604" height="621" key="GridCell.Tab.0.bottom" timestamp="1606160327449">
+    <state width="771" height="912" key="GridCell.Tab.0.bottom" timestamp="1606239551154">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="604" height="621" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1606160327449" />
-    <state width="604" height="621" key="GridCell.Tab.0.center" timestamp="1606160327449">
+    <state width="771" height="912" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1606239551154" />
+    <state width="771" height="912" key="GridCell.Tab.0.center" timestamp="1606239551153">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="604" height="621" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1606160327449" />
-    <state width="604" height="621" key="GridCell.Tab.0.left" timestamp="1606160327449">
+    <state width="771" height="912" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1606239551153" />
+    <state width="771" height="912" key="GridCell.Tab.0.left" timestamp="1606239551153">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="604" height="621" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1606160327449" />
-    <state width="604" height="621" key="GridCell.Tab.0.right" timestamp="1606160327449">
+    <state width="771" height="912" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1606239551153" />
+    <state width="771" height="912" key="GridCell.Tab.0.right" timestamp="1606239551153">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="604" height="621" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1606160327449" />
-    <state width="629" height="912" key="GridCell.Tab.1.bottom" timestamp="1606159971609">
+    <state width="771" height="912" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1606239551153" />
+    <state width="629" height="912" key="GridCell.Tab.1.bottom" timestamp="1606224359110">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="629" height="912" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1606159971609" />
-    <state width="629" height="912" key="GridCell.Tab.1.center" timestamp="1606159971608">
+    <state width="629" height="912" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1606224359110" />
+    <state width="629" height="912" key="GridCell.Tab.1.center" timestamp="1606224359110">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="629" height="912" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1606159971608" />
-    <state width="629" height="912" key="GridCell.Tab.1.left" timestamp="1606159971608">
+    <state width="629" height="912" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1606224359110" />
+    <state width="629" height="912" key="GridCell.Tab.1.left" timestamp="1606224359110">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="629" height="912" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1606159971608" />
-    <state width="629" height="912" key="GridCell.Tab.1.right" timestamp="1606159971608">
+    <state width="629" height="912" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1606224359110" />
+    <state width="629" height="912" key="GridCell.Tab.1.right" timestamp="1606224359110">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="629" height="912" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1606159971608" />
+    <state width="629" height="912" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1606224359110" />
     <state x="921" y="136" key="SettingsEditor" timestamp="1605802793949">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -348,10 +341,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1216" y="272" key="refactoring.ChangeSignatureDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1605284817563" />
-    <state x="616" y="240" key="run.anything.popup" timestamp="1606160426482">
+    <state x="616" y="240" key="run.anything.popup" timestamp="1606224464655">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1606160426482" />
+    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1606224464655" />
     <state x="1103" y="230" width="672" height="678" key="search.everywhere.popup" timestamp="1605890191653">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

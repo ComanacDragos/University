@@ -9,6 +9,7 @@ import Model.Expressions.BinaryExpressions.RelationalExpression;
 import Model.Expressions.UnaryExpressions.ReadHeapExpression;
 import Model.ProgramState;
 import Model.Statements.*;
+import Model.Statements.ControlFlowStatements.ForkStatement;
 import Model.Statements.ControlFlowStatements.IfStatement;
 import Model.Statements.ControlFlowStatements.WhileStatement;
 import Model.Statements.FileStatements.CloseReadFile;
@@ -549,6 +550,206 @@ public class View {
         );
 
         this.programsDescriptions.put(ex15, "int v; v=4; (while (v>0) print(v);v=v-1);print(v)");
+
+        IStatement ex16 = new CompoundStatement(
+                new CompoundStatement(
+                        new CompoundStatement(
+                                new VariableDeclarationStatement(
+                                        "v",
+                                        new IntType()),
+                                new VariableDeclarationStatement(
+                                        "a",
+                                        new ReferenceType(
+                                                new IntType()
+                                        )
+                                )
+                        ),
+                        new CompoundStatement(
+                                new AssignStatement(
+                                        "v",
+                                        new ValueExpression(
+                                                new IntValue(10)
+                                        )
+                                ),
+                                new NewStatement(
+                                        "a",
+                                        new ValueExpression(
+                                                new IntValue(22)
+                                        )
+                                )
+                        )
+                ),
+                new CompoundStatement(
+                        new ForkStatement(
+                                new CompoundStatement(
+                                        new WriteHeapStatement(
+                                                "a",
+                                                new ValueExpression(
+                                                        new IntValue(30)
+                                                )
+                                        ),
+                                        new CompoundStatement(
+                                                new AssignStatement(
+                                                        "v",
+                                                        new ValueExpression(
+                                                                new IntValue(32)
+                                                        )
+                                                ),
+                                                new CompoundStatement(
+                                                        new PrintStatement(
+                                                                new VariableExpression("v")
+                                                        ),
+                                                        new PrintStatement(
+                                                                new ReadHeapExpression(
+                                                                        new VariableExpression("a")
+                                                                )
+                                                        )
+                                                )
+                                        )
+                                )
+                        ),
+                        new CompoundStatement(
+                                new PrintStatement(
+                                        new VariableExpression("v")
+                                ),
+                                new PrintStatement(
+                                        new ReadHeapExpression(
+                                                new VariableExpression("a")
+                                        )
+                                )
+                        )
+                )
+        );
+
+        this.programsDescriptions.put(ex16,
+                "int v;" +
+                "ref int a;" +
+                "v=10;" +
+                "new(a,22);" +
+                "fork(wH(a,30);" +
+                "v=32;print(v);" +
+                "print(rH(a)));" +
+                "print(v);" +
+                "print(rH(a));"
+        );
+
+        IStatement ex17 = new CompoundStatement(
+                new CompoundStatement(
+                        new CompoundStatement(
+                                new VariableDeclarationStatement(
+                                        "v",
+                                        new IntType()
+                                ),
+                                new VariableDeclarationStatement(
+                                        "a",
+                                        new ReferenceType(
+                                                new IntType()
+                                        )
+                                )
+                        ),
+                        new AssignStatement(
+                                "v",
+                                new ValueExpression(
+                                        new IntValue(1)
+                                )
+                        )
+                ),
+                new WhileStatement(
+                        new RelationalExpression(
+                                new VariableExpression("v"),
+                                new ValueExpression(
+                                        new IntValue(10)
+                                ),
+                                RelationalExpression.RelationalOperation.NOT_EQUAL
+                        ),
+                        new CompoundStatement(
+                                new ForkStatement(
+                                        new CompoundStatement(
+                                                new PrintStatement(
+                                                        new VariableExpression("v")
+                                                ),
+                                                new CompoundStatement(
+                                                        new NewStatement(
+                                                                "a",
+                                                                new VariableExpression("v")
+                                                        ),
+                                                        new CompoundStatement(
+                                                                new CompoundStatement(
+                                                                        new AssignStatement(
+                                                                                "v",
+                                                                                new ArithmeticExpression(
+                                                                                        new VariableExpression("v"),
+                                                                                        new ValueExpression(
+                                                                                                new IntValue(1)
+                                                                                        ),
+                                                                                        ArithmeticExpression.ArithmeticOperation.ADDITION
+                                                                                )
+                                                                        ),
+                                                                        new AssignStatement(
+                                                                                "v",
+                                                                                new ArithmeticExpression(
+                                                                                        new VariableExpression("v"),
+                                                                                        new ValueExpression(
+                                                                                                new IntValue(1)
+                                                                                        ),
+                                                                                        ArithmeticExpression.ArithmeticOperation.ADDITION
+                                                                                )
+                                                                        )
+                                                                ),
+                                                                new CompoundStatement(
+                                                                        new AssignStatement(
+                                                                                "v",
+                                                                                new ArithmeticExpression(
+                                                                                        new VariableExpression("v"),
+                                                                                        new ValueExpression(
+                                                                                                new IntValue(1)
+                                                                                        ),
+                                                                                        ArithmeticExpression.ArithmeticOperation.ADDITION
+                                                                                )
+                                                                        ),
+                                                                        new AssignStatement(
+                                                                                "v",
+                                                                                new ArithmeticExpression(
+                                                                                        new VariableExpression("v"),
+                                                                                        new ValueExpression(
+                                                                                                new IntValue(1)
+                                                                                        ),
+                                                                                        ArithmeticExpression.ArithmeticOperation.ADDITION
+                                                                                )
+                                                                        )
+                                                                )
+                                                        )
+                                                )
+                                        )
+                                ),
+                                new AssignStatement(
+                                        "v",
+                                        new ArithmeticExpression(
+                                                new VariableExpression("v"),
+                                                new ValueExpression(
+                                                        new IntValue(1)
+                                                ),
+                                                ArithmeticExpression.ArithmeticOperation.ADDITION
+                                        )
+                                )
+                        )
+                )
+        );
+
+        this.programsDescriptions.put(ex17,
+                "int v;" +
+                "ref int a;" +
+                "v=1;" +
+                "while(v!=10){" +
+                "fork(print(v);" +
+                "new(a, v);" +
+                "v=v+1;" +
+                "v=v+1;" +
+                "v=v+1;" +
+                "v=v+1;" +
+                ");" +
+                "v=v+1;}"
+        );
 
         AtomicInteger currentKey = new AtomicInteger(1);
         this.programsDescriptions.forEach(

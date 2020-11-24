@@ -11,7 +11,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Stream;
 
 public class MyDictionary<Key, Value> implements MyIDictionary<Key, Value>{
-    Map<Key, Value> dictionary;
+    final Map<Key, Value> dictionary;
 
     public MyDictionary(){
         this.dictionary = new ConcurrentHashMap<>();
@@ -29,9 +29,11 @@ public class MyDictionary<Key, Value> implements MyIDictionary<Key, Value>{
 
     @Override
     public Value remove(Key key) throws EmptyCollection {
-        if(this.dictionary.isEmpty())
-            throw new EmptyCollection("Empty dictionary");
-        return this.dictionary.remove(key);
+        synchronized(this.dictionary) {
+            if (this.dictionary.isEmpty())
+                throw new EmptyCollection("Empty dictionary");
+            return this.dictionary.remove(key);
+        }
     }
 
     @Override
@@ -51,10 +53,12 @@ public class MyDictionary<Key, Value> implements MyIDictionary<Key, Value>{
 
     @Override
     public void update(Key key, Value value) throws InexistentKey {
-        if(this.dictionary.containsKey(key))
-            this.dictionary.put(key, value);
-        else
-            throw new InexistentKey(key.toString() + " key does not exist");
+        synchronized (this.dictionary) {
+            if (this.dictionary.containsKey(key))
+                this.dictionary.put(key, value);
+            else
+                throw new InexistentKey(key.toString() + " key does not exist");
+        }
     }
 
     @Override
@@ -69,9 +73,11 @@ public class MyDictionary<Key, Value> implements MyIDictionary<Key, Value>{
 
     @Override
     public void setContent(Map<Key, Value> newContent) {
-        this.dictionary.clear();
+        synchronized (this.dictionary) {
+            this.dictionary.clear();
 
-        newContent.forEach(this.dictionary::put);
+            newContent.forEach(this.dictionary::put);
+        }
     }
 
     @Override
@@ -86,13 +92,16 @@ public class MyDictionary<Key, Value> implements MyIDictionary<Key, Value>{
 
     @Override
     public String toString() {
-        if(this.dictionary.isEmpty())
-            return "";
+        synchronized (this.dictionary) {
+            if (this.dictionary.isEmpty())
+                return "";
 
-        StringBuilder builder = new StringBuilder();
+            StringBuilder builder = new StringBuilder();
 
-        for(Key key : this.dictionary.keySet())
-            builder.append(key.toString()).append(" -> ").append(this.dictionary.get(key)).append('\n');
-        return builder.toString();
+            for (Key key : this.dictionary.keySet())
+                builder.append(key.toString()).append(" -> ").append(this.dictionary.get(key)).append('\n');
+            return builder.toString();
+        }
     }
+
 }

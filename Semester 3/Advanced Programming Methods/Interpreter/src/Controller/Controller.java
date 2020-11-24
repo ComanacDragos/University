@@ -9,6 +9,7 @@ import Repository.IRepository;
 
 import java.util.*;
 import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.stream.Collectors;
@@ -85,7 +86,7 @@ public class Controller {
                         try{
                             toReturn = future.get();
                         }
-                        catch (Exception exception){
+                        catch (MyException | InterruptedException | ExecutionException exception){
                             System.out.println(exception.getMessage());
                             System.exit(1);
                         }
