@@ -12,9 +12,9 @@ for i=1:N
 endfor
 
 x=1:n;
-
-U_X = unique(X);
-N_X = hist(X, length(U_X));
+X
+U_X = unique(X)
+N_X = hist(X, length(U_X))
 F_X = N_X/N;
 
 plot(x, binopdf(x,n,p), 'g*');

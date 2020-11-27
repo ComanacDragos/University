@@ -21,14 +21,13 @@
   <component name="ChangeListManager">
     <list default="true" id="a28febb5-0634-448c-a29f-8e73463e0d72" name="Default Changelist" comment="added statement 10">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Files/log4.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Files/log4.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/ADTs/MyDictionary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/ADTs/MyDictionary.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/ADTs/MyList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/ADTs/MyList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/ConsoleUserInterface/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/ConsoleUserInterface/View.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../notes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../notes.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Computer Networks/lab9/lab9.pkt" beforeDir="false" afterPath="$PROJECT_DIR$/../../Computer Networks/lab9/lab9.pkt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Databases/Romanian libraries/testing_mechanism.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../../Databases/Romanian libraries/testing_mechanism.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../English/Week9 - hw/C7 Assistive technology.docx" beforeDir="false" afterPath="$PROJECT_DIR$/../../English/Week9 - hw/C7 Assistive technology.docx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../English/Week9 - hw/~$ Assistive technology.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Probabilities and Statistics/Lab/Lab4/lab4.m" beforeDir="false" afterPath="$PROJECT_DIR$/../../Probabilities and Statistics/Lab/Lab4/lab4.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Probabilities and Statistics/Lab/Lab4/lab4_b.m" beforeDir="false" afterPath="$PROJECT_DIR$/../../Probabilities and Statistics/Lab/Lab4/lab4_b.m" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +70,7 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="create.test.in.the.same.root" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Seminar7" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../Universitate/ubb-map-repo-v2/Interpreter" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
@@ -112,17 +111,6 @@
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="Interpreter" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -225,7 +213,8 @@
       <workItem from="1605795990852" duration="4914000" />
       <workItem from="1605873552525" duration="10462000" />
       <workItem from="1606117623847" duration="7339000" />
-      <workItem from="1606214520642" duration="9073000" />
+      <workItem from="1606214520642" duration="9346000" />
+      <workItem from="1606401109156" duration="747000" />
     </task>
     <task id="LOCAL-00001" summary="added statement 10">
       <created>1605362656157</created>
@@ -281,26 +270,26 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="722" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1605374712500" />
-    <state x="740" y="287" key="FileChooserDialogImpl" timestamp="1605796146227">
+    <state x="740" y="287" key="FileChooserDialogImpl" timestamp="1606402082159">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="287" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1605796146227" />
-    <state width="771" height="912" key="GridCell.Tab.0.bottom" timestamp="1606239551154">
+    <state x="740" y="287" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1606402082159" />
+    <state width="413" height="384" key="GridCell.Tab.0.bottom" timestamp="1606240692942">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="771" height="912" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1606239551154" />
-    <state width="771" height="912" key="GridCell.Tab.0.center" timestamp="1606239551153">
+    <state width="413" height="384" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1606240692942" />
+    <state width="413" height="384" key="GridCell.Tab.0.center" timestamp="1606240692942">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="771" height="912" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1606239551153" />
-    <state width="771" height="912" key="GridCell.Tab.0.left" timestamp="1606239551153">
+    <state width="413" height="384" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1606240692942" />
+    <state width="413" height="384" key="GridCell.Tab.0.left" timestamp="1606240692942">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="771" height="912" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1606239551153" />
-    <state width="771" height="912" key="GridCell.Tab.0.right" timestamp="1606239551153">
+    <state width="413" height="384" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1606240692942" />
+    <state width="413" height="384" key="GridCell.Tab.0.right" timestamp="1606240692942">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="771" height="912" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1606239551153" />
+    <state width="413" height="384" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1606240692942" />
     <state width="629" height="912" key="GridCell.Tab.1.bottom" timestamp="1606224359110">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

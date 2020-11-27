@@ -1,0 +1,18 @@
+Does the website incorporate assistive technologies? If so what disabilities does it target?
+
+Is the website supported on both pc's and mobile devices or only one of them?
+
+Is the website keyboard friendly (is every link/control/feature operable only with the keyboard?)
+
+Does every image have a text alternative? (this would be required for a refreshable braille display
+
+The content of a website should be as accessible and as clear as possible
+
+
+
+
+
+
+
+
+Is the website responsive to zooming in and out? 

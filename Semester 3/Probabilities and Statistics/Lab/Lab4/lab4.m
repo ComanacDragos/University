@@ -15,6 +15,7 @@ for i = 1:n
    endif
 endfor
 
-U_X = unique(X);
-N_X = hist(X, length(U_X));
+U_X = unique(X)
+length(U_X)
+N_X = hist(X, length(U_X))
 F_X = N_X/n
