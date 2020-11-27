@@ -18,3 +18,5 @@ The content of a website should be as accessible and as clear as possible
 Is the website responsive to zooming in and out? 
 
 
+
+
