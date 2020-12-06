@@ -1,0 +1,1 @@
+(cd "E:\\University\\Semester 3\\Logical and Functional Programming\\Lab\\L2")

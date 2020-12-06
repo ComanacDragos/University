@@ -1,3 +1,24 @@
+JavaFX vm options
+
+--module-path "C:\Program Files\Java\javafx-sdk-15.0.1\lib"  --add-modules=javafx.controls,javafx.fxml
+
+
+Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information Dialog");
+            alert.setHeaderText("Look, an Information Dialog");
+            alert.setContentText(this.programIdsListView.getSelectionModel().getSelectedItem());
+
+            alert.showAndWait();
+
+Exam possible subjects:
+- lock table
+- cyclic barrier
+- semaphore
+- countdown latch
+
+
+
+
 1. lab rules, attendance list
 2. jdk download https://www.oracle.com/java/technologies/javase-downloads.html   javac +java
 3. install it

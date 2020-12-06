@@ -2,7 +2,7 @@
 1.
 a) Write a function to return the n-th element of a list, or NIL if such an element does not exist.
 
-find(l1,...,lm, n)={
+find_nth(l1,...,lm, n)={
 					nil, m=0
 					l1, n=1
 					find(l2,...,lm, n-1), otherwise
@@ -18,7 +18,7 @@ find(l1,...,lm, n)={
 				nil
 		)
 		(
-		(eq n 1)
+		(equal n 1)
 			(car l)
 		)
 		(
@@ -45,10 +45,10 @@ is_member(l, e)={
 (defun is_member(l e)
 	(cond
 		(
-			(and (atom l) (eq l e)) t
+			(and (atom l) (equal l e)) t
 		)
 		(
-			(and (atom l) (NOT (eq l e))) nil	
+			(and (atom l) (NOT (equal l e))) nil	
 		)
 		(
 			t (or (is_member (car l) e) (is_member (cdr l) e))

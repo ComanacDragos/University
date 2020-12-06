@@ -1,3 +1,5 @@
+W9
+
 Does the website incorporate assistive technologies? If so what disabilities does it target?
 
 Is the website supported on both pc's and mobile devices or only one of them?
@@ -16,6 +18,54 @@ The content of a website should be as accessible and as clear as possible
 
 
 Is the website responsive to zooming in and out? 
+
+W10
+
+better navigation practices
+
+- users want to do as little work as possible to find their stuff  
+
+1. clear text labels
+ 
+2. Structure matches user mental model
+
+ 
+3. Clear wayfinding give context and explanations 
+
+when users make mistakes don't force them to start over 
+
+
+
+The drivers's attention is drawn away from the circulation signs and the other participants in trafic 
+due to the use of mobile phones or navigation systems or other gadgets unrelated to driving which leads to more 
+accidents
+
+
+
+
+
+
+
+4. A website shouldn't make use of frames due to the fact that they can be misleading and because of the browsers
+which don't support them
+
+5. A website should't change the place or the availability of different navigation elements upon using them because
+such operations can be misleading.
+
+6. On a website it should take no more than around four cliks to get to a specific information, and if needed
+the website should be readjusted to meet this criterion because users don't want to spend too much time in finding
+what they want.
+
+
+
+
+
+
+
+
+
+
+
 
 
 

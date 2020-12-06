@@ -322,6 +322,8 @@ EXEC sp_connect_table_to_test 'Titles', 'test1', 2000, 4
 SELECT * FROM TestTables
 SELECT * FROM Tables
 
+SELECT * FROM Tests
+
 
 
 
