@@ -11,3 +11,7 @@ DROP DATABASE
 AdventureWorks, NorthWind, pubs
 
 sabinacsen@gmail.com
+
+
+you can check the estimated plan exec of a query by selecting the query and pressing ctrl l or go to query and display
+execution plan
