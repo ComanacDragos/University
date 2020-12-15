@@ -1,4 +1,4 @@
-Program: 14
+Program: 9
 Execution stack
 (
 ref(int) v;
@@ -18,29 +18,7 @@ Heap
 
 
 
-Program: 14
-Execution stack
-(
-ref(int) v;
-new(v, 20);
-ref(ref(int)) a;
-new(a, v);
-)
-(
-new(v, 30);
-print(readHeap(readHeap(a)));
-new(a, v);
-print(a);
-print(readHeap(a));
-)
-Symbols table
-Out
-File table
-Heap
-
-
-
-Program: 14
+Program: 9
 Execution stack
 (
 ref(int) v;
@@ -62,13 +40,11 @@ Heap
 
 
 
-Program: 14
+Program: 9
 Execution stack
 (
 ref(int) v;
 new(v, 20);
-)
-(
 ref(ref(int)) a;
 new(a, v);
 )
@@ -86,7 +62,7 @@ Heap
 
 
 
-Program: 14
+Program: 9
 Execution stack
 (
 ref(int) v;
@@ -110,12 +86,10 @@ Heap
 
 
 
-Program: 14
+Program: 9
 Execution stack
 (
 ref(int) v;
-)
-(
 new(v, 20);
 )
 (
@@ -136,7 +110,7 @@ Heap
 
 
 
-Program: 14
+Program: 9
 Execution stack
 (
 ref(int) v;
@@ -162,7 +136,33 @@ Heap
 
 
 
-Program: 14
+Program: 9
+Execution stack
+(
+ref(int) v;
+)
+(
+new(v, 20);
+)
+(
+ref(ref(int)) a;
+new(a, v);
+)
+(
+new(v, 30);
+print(readHeap(readHeap(a)));
+new(a, v);
+print(a);
+print(readHeap(a));
+)
+Symbols table
+Out
+File table
+Heap
+
+
+
+Program: 9
 Execution stack
 (
 new(v, 20);
@@ -186,7 +186,7 @@ Heap
 
 
 
-Program: 14
+Program: 9
 Execution stack
 (
 new(v, 20);
@@ -210,7 +210,7 @@ Heap
 
 
 
-Program: 14
+Program: 9
 Execution stack
 (
 ref(ref(int)) a;
@@ -232,7 +232,7 @@ Heap
 
 
 
-Program: 14
+Program: 9
 Execution stack
 (
 ref(ref(int)) a;
@@ -254,31 +254,7 @@ Heap
 
 
 
-Program: 14
-Execution stack
-(
-ref(ref(int)) a;
-)
-(
-new(a, v);
-)
-(
-new(v, 30);
-print(readHeap(readHeap(a)));
-new(a, v);
-print(a);
-print(readHeap(a));
-)
-Symbols table
-v -> (1, int)
-Out
-File table
-Heap
-1 -> 20
-
-
-
-Program: 14
+Program: 9
 Execution stack
 (
 ref(ref(int)) a;
@@ -302,8 +278,11 @@ Heap
 
 
 
-Program: 14
+Program: 9
 Execution stack
+(
+ref(ref(int)) a;
+)
 (
 new(a, v);
 )
@@ -316,7 +295,28 @@ print(readHeap(a));
 )
 Symbols table
 v -> (1, int)
+Out
+File table
+Heap
+1 -> 20
+
+
+
+Program: 9
+Execution stack
+(
+new(a, v);
+)
+(
+new(v, 30);
+print(readHeap(readHeap(a)));
+new(a, v);
+print(a);
+print(readHeap(a));
+)
+Symbols table
 a -> (0, ref(int))
+v -> (1, int)
 Out
 File table
 Heap
@@ -324,7 +324,7 @@ Heap
 
 
 
-Program: 14
+Program: 9
 Execution stack
 (
 new(a, v);
@@ -337,8 +337,8 @@ print(a);
 print(readHeap(a));
 )
 Symbols table
-v -> (1, int)
 a -> (0, ref(int))
+v -> (1, int)
 Out
 File table
 Heap
@@ -346,7 +346,7 @@ Heap
 
 
 
-Program: 14
+Program: 9
 Execution stack
 (
 new(v, 30);
@@ -356,8 +356,8 @@ print(a);
 print(readHeap(a));
 )
 Symbols table
-v -> (1, int)
 a -> (2, ref(int))
+v -> (1, int)
 Out
 File table
 Heap
@@ -366,7 +366,7 @@ Heap
 
 
 
-Program: 14
+Program: 9
 Execution stack
 (
 new(v, 30);
@@ -376,8 +376,8 @@ print(a);
 print(readHeap(a));
 )
 Symbols table
-v -> (1, int)
 a -> (2, ref(int))
+v -> (1, int)
 Out
 File table
 Heap
@@ -386,29 +386,7 @@ Heap
 
 
 
-Program: 14
-Execution stack
-(
-new(v, 30);
-)
-(
-print(readHeap(readHeap(a)));
-new(a, v);
-print(a);
-print(readHeap(a));
-)
-Symbols table
-v -> (1, int)
-a -> (2, ref(int))
-Out
-File table
-Heap
-1 -> 20
-2 -> (1, int)
-
-
-
-Program: 14
+Program: 9
 Execution stack
 (
 new(v, 30);
@@ -420,8 +398,8 @@ print(a);
 print(readHeap(a));
 )
 Symbols table
+a -> (2, ref(int))
 v -> (1, int)
-a -> (2, ref(int))
 Out
 File table
 Heap
@@ -430,7 +408,29 @@ Heap
 
 
 
-Program: 14
+Program: 9
+Execution stack
+(
+new(v, 30);
+)
+(
+print(readHeap(readHeap(a)));
+new(a, v);
+print(a);
+print(readHeap(a));
+)
+Symbols table
+a -> (2, ref(int))
+v -> (1, int)
+Out
+File table
+Heap
+1 -> 20
+2 -> (1, int)
+
+
+
+Program: 9
 Execution stack
 (
 print(readHeap(readHeap(a)));
@@ -439,8 +439,8 @@ print(a);
 print(readHeap(a));
 )
 Symbols table
-v -> (3, int)
 a -> (2, ref(int))
+v -> (3, int)
 Out
 File table
 Heap
@@ -450,7 +450,7 @@ Heap
 
 
 
-Program: 14
+Program: 9
 Execution stack
 (
 print(readHeap(readHeap(a)));
@@ -459,8 +459,8 @@ print(a);
 print(readHeap(a));
 )
 Symbols table
-v -> (3, int)
 a -> (2, ref(int))
+v -> (3, int)
 Out
 File table
 Heap
@@ -470,29 +470,7 @@ Heap
 
 
 
-Program: 14
-Execution stack
-(
-print(readHeap(readHeap(a)));
-)
-(
-new(a, v);
-print(a);
-print(readHeap(a));
-)
-Symbols table
-v -> (3, int)
-a -> (2, ref(int))
-Out
-File table
-Heap
-1 -> 20
-2 -> (1, int)
-3 -> 30
-
-
-
-Program: 14
+Program: 9
 Execution stack
 (
 print(readHeap(readHeap(a)));
@@ -503,8 +481,8 @@ print(a);
 print(readHeap(a));
 )
 Symbols table
-v -> (3, int)
 a -> (2, ref(int))
+v -> (3, int)
 Out
 File table
 Heap
@@ -514,7 +492,29 @@ Heap
 
 
 
-Program: 14
+Program: 9
+Execution stack
+(
+print(readHeap(readHeap(a)));
+)
+(
+new(a, v);
+print(a);
+print(readHeap(a));
+)
+Symbols table
+a -> (2, ref(int))
+v -> (3, int)
+Out
+File table
+Heap
+1 -> 20
+2 -> (1, int)
+3 -> 30
+
+
+
+Program: 9
 Execution stack
 (
 new(a, v);
@@ -522,8 +522,8 @@ print(a);
 print(readHeap(a));
 )
 Symbols table
-v -> (3, int)
 a -> (2, ref(int))
+v -> (3, int)
 Out
 20
 File table
@@ -534,7 +534,7 @@ Heap
 
 
 
-Program: 14
+Program: 9
 Execution stack
 (
 new(a, v);
@@ -542,8 +542,8 @@ print(a);
 print(readHeap(a));
 )
 Symbols table
-v -> (3, int)
 a -> (2, ref(int))
+v -> (3, int)
 Out
 20
 File table
@@ -554,7 +554,7 @@ Heap
 
 
 
-Program: 14
+Program: 9
 Execution stack
 (
 new(a, v);
@@ -564,8 +564,8 @@ print(a);
 print(readHeap(a));
 )
 Symbols table
-v -> (3, int)
 a -> (2, ref(int))
+v -> (3, int)
 Out
 20
 File table
@@ -576,7 +576,7 @@ Heap
 
 
 
-Program: 14
+Program: 9
 Execution stack
 (
 new(a, v);
@@ -586,8 +586,8 @@ print(a);
 print(readHeap(a));
 )
 Symbols table
-v -> (3, int)
 a -> (2, ref(int))
+v -> (3, int)
 Out
 20
 File table
@@ -598,15 +598,15 @@ Heap
 
 
 
-Program: 14
+Program: 9
 Execution stack
 (
 print(a);
 print(readHeap(a));
 )
 Symbols table
-v -> (3, int)
 a -> (4, ref(int))
+v -> (3, int)
 Out
 20
 File table
@@ -618,15 +618,15 @@ Heap
 
 
 
-Program: 14
+Program: 9
 Execution stack
 (
 print(a);
 print(readHeap(a));
 )
 Symbols table
-v -> (3, int)
 a -> (4, ref(int))
+v -> (3, int)
 Out
 20
 File table
@@ -637,7 +637,7 @@ Heap
 
 
 
-Program: 14
+Program: 9
 Execution stack
 (
 print(a);
@@ -646,8 +646,8 @@ print(a);
 print(readHeap(a));
 )
 Symbols table
-v -> (3, int)
 a -> (4, ref(int))
+v -> (3, int)
 Out
 20
 File table
@@ -658,7 +658,7 @@ Heap
 
 
 
-Program: 14
+Program: 9
 Execution stack
 (
 print(a);
@@ -667,8 +667,8 @@ print(a);
 print(readHeap(a));
 )
 Symbols table
-v -> (3, int)
 a -> (4, ref(int))
+v -> (3, int)
 Out
 20
 File table
@@ -678,14 +678,14 @@ Heap
 
 
 
-Program: 14
+Program: 9
 Execution stack
 (
 print(readHeap(a));
 )
 Symbols table
-v -> (3, int)
 a -> (4, ref(int))
+v -> (3, int)
 Out
 20
 (4, ref(int))
@@ -696,14 +696,14 @@ Heap
 
 
 
-Program: 14
+Program: 9
 Execution stack
 (
 print(readHeap(a));
 )
 Symbols table
-v -> (3, int)
 a -> (4, ref(int))
+v -> (3, int)
 Out
 20
 (4, ref(int))
@@ -714,11 +714,11 @@ Heap
 
 
 
-Program: 14
+Program: 9
 Execution stack
 Symbols table
-v -> (3, int)
 a -> (4, ref(int))
+v -> (3, int)
 Out
 20
 (4, ref(int))

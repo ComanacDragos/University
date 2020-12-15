@@ -1,11 +1,13 @@
 package Model.Statements.HeapStatements;
 
 import Exceptions.MyException;
+import Exceptions.VariableNotDefined;
 import Model.ADTs.MyHeap;
 import Model.ADTs.MyIDictionary;
 import Model.Expressions.IExpression;
 import Model.ProgramState;
 import Model.Statements.IStatement;
+import Model.Types.IType;
 import Model.Types.ReferenceType;
 import Model.Values.IValue;
 import Model.Values.ReferenceValue;
@@ -61,7 +63,7 @@ public class WriteHeapStatement implements IStatement {
                 }
             }
             else{
-                throw new MyException("Expression is not a reference value");
+                throw new MyException("Variable is not a reference value");
             }
         }
         else{
@@ -69,6 +71,27 @@ public class WriteHeapStatement implements IStatement {
         }
 
         return null;
+    }
+
+    @Override
+    public MyIDictionary<String, IType> typeCheck(MyIDictionary<String, IType> typeEnvironment) throws MyException {
+        IType variableType;
+
+        try {
+            variableType = typeEnvironment.lookup(this.variableName);
+        }
+        catch (MyException exception){
+            throw new VariableNotDefined(this.variableName);
+        }
+
+        IType expressionType = this.expression.typeCheck(typeEnvironment);
+
+        if(variableType.equals(new ReferenceType(expressionType))){
+            return typeEnvironment;
+        }
+        else{
+            throw new MyException("Write heap statement: variable is not a reference to expression type");
+        }
     }
 
     @Override

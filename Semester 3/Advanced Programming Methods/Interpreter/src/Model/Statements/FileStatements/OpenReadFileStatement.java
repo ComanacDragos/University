@@ -5,6 +5,7 @@ import Model.ADTs.MyIDictionary;
 import Model.Expressions.IExpression;
 import Model.ProgramState;
 import Model.Statements.IStatement;
+import Model.Types.IType;
 import Model.Types.StringType;
 import Model.Values.IValue;
 import Model.Values.StringValue;
@@ -52,6 +53,17 @@ public class OpenReadFileStatement implements IStatement {
             throw new MyException("Open requires a string");
         }
         return null;
+    }
+
+    @Override
+    public MyIDictionary<String, IType> typeCheck(MyIDictionary<String, IType> typeEnvironment) throws MyException {
+        IType expressionType = this.expression.typeCheck(typeEnvironment);
+        if(expressionType.equals(new StringType())){
+            return typeEnvironment;
+        }
+        else{
+            throw new MyException("Expression is not a string");
+        }
     }
 
     @Override

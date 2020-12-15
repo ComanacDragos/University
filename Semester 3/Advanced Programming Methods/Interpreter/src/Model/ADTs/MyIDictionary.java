@@ -32,4 +32,6 @@ public interface MyIDictionary<Key, Value> {
     Map<Key, Value> getContent();
 
     Stream<Map.Entry<Key, Value>> stream();
+
+    MyIDictionary<Key, Value> shallowCopy();
 }

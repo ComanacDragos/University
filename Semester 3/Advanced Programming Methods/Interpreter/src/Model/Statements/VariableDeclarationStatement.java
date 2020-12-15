@@ -52,6 +52,12 @@ public class VariableDeclarationStatement implements IStatement{
     }
 
     @Override
+    public MyIDictionary<String, IType> typeCheck(MyIDictionary<String, IType> typeEnvironment) throws MyException {
+        typeEnvironment.put(this.variableName, this.type);
+        return typeEnvironment;
+    }
+
+    @Override
     public VariableDeclarationStatement deepCopy() {
         return new VariableDeclarationStatement(this.variableName, this.type);
     }

@@ -4,6 +4,7 @@ import Exceptions.MyException;
 import Model.ADTs.MyHeap;
 import Model.ADTs.MyIDictionary;
 import Model.Values.IValue;
+import Model.Types.IType;
 
 public class ValueExpression implements IExpression{
     IValue value;
@@ -23,6 +24,11 @@ public class ValueExpression implements IExpression{
     @Override
     public IValue eval(MyIDictionary<String, IValue> symbolsTable, MyHeap heap) throws MyException {
         return this.value;
+    }
+
+    @Override
+    public IType typeCheck(MyIDictionary<String, IType> typeEnvironment) throws MyException {
+        return this.value.getType();
     }
 
     @Override

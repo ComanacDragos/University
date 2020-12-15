@@ -46,7 +46,7 @@ public class Repository implements IRepository{
         try (PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(this.logFilePath)))) {
             writer.print("");
         } catch (IOException e) {
-            throw new MyException("ERROR: " + e.getMessage());
+            throw new MyException("Invalid log file");
         }
     }
 

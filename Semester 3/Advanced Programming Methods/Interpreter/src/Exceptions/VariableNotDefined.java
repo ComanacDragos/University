@@ -5,7 +5,7 @@ public class VariableNotDefined extends MyException{
         super("Variable not defined");
     }
 
-    public VariableNotDefined(String message){
-        super(message);
+    public VariableNotDefined(String variable){
+        super("Variable " + variable + " is not defined");
     }
 }

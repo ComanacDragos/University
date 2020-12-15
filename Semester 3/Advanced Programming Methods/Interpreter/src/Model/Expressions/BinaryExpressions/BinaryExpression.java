@@ -10,7 +10,6 @@ import Model.Values.IValue;
 public abstract class BinaryExpression implements IExpression {
     IExpression leftSide;
     IExpression rightSide;
-
     public BinaryExpression(IExpression leftSide, IExpression rightSide){
         this.leftSide = leftSide;
         this.rightSide = rightSide;

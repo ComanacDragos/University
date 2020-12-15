@@ -1,10 +1,12 @@
 package Model.Statements.FileStatements;
 
 import Exceptions.MyException;
+import Exceptions.VariableNotDefined;
 import Model.ADTs.MyIDictionary;
 import Model.Expressions.IExpression;
 import Model.ProgramState;
 import Model.Statements.IStatement;
+import Model.Types.IType;
 import Model.Types.IntType;
 import Model.Types.StringType;
 import Model.Values.IValue;
@@ -85,6 +87,29 @@ public class ReadFileStatement implements IStatement {
         }
 
         return null;
+    }
+
+    @Override
+    public MyIDictionary<String, IType> typeCheck(MyIDictionary<String, IType> typeEnvironment) throws MyException {
+        IType expressionType = this.expression.typeCheck(typeEnvironment);
+        IType variableType;
+        try {
+            variableType = typeEnvironment.lookup(this.variableName);
+        }
+        catch (MyException exception){
+            throw new VariableNotDefined(this.variableName);
+        }
+
+        if(expressionType.equals(new StringType())){
+            if(variableType.equals(new IntType())) {
+                return typeEnvironment;
+            }else {
+                throw new MyException("Variable is not an integer");
+            }
+        }
+        else{
+            throw new MyException("Expression is not a string");
+        }
     }
 
     @Override

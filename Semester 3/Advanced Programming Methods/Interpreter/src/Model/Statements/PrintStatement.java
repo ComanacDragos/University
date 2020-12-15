@@ -5,6 +5,7 @@ import Model.ADTs.MyIDictionary;
 import Model.ADTs.MyIList;
 import Model.Expressions.IExpression;
 import Model.ProgramState;
+import Model.Types.IType;
 import Model.Values.IValue;
 
 public class PrintStatement implements IStatement{
@@ -30,6 +31,12 @@ public class PrintStatement implements IStatement{
         out.add(this.expression.eval(symbolsTable, state.getHeap()));
 
         return null;
+    }
+
+    @Override
+    public MyIDictionary<String, IType> typeCheck(MyIDictionary<String, IType> typeEnvironment) throws MyException {
+        this.expression.typeCheck(typeEnvironment);
+        return typeEnvironment;
     }
 
     @Override

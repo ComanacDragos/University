@@ -79,6 +79,10 @@ public class ProgramState {
         this.heap = heap;
     }
 
+    public Integer getProgramId() {
+        return programId;
+    }
+
     public MyIStack<IStatement> executionStackDeepCopy(){
         MyIStack<IStatement> newExecutionStack = new MyStack<>();
         this.executionStack.stream().map(

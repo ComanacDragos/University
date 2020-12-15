@@ -5,6 +5,7 @@ import Model.ADTs.MyIDictionary;
 import Model.Expressions.IExpression;
 import Model.ProgramState;
 import Model.Statements.IStatement;
+import Model.Types.IType;
 import Model.Types.StringType;
 import Model.Values.IValue;
 import Model.Values.StringValue;
@@ -12,10 +13,10 @@ import Model.Values.StringValue;
 import java.io.BufferedReader;
 import java.io.IOException;
 
-public class CloseReadFile implements IStatement {
+public class CloseReadFileStatement implements IStatement {
     IExpression expression;
 
-    public CloseReadFile(IExpression expression) {
+    public CloseReadFileStatement(IExpression expression) {
         this.expression = expression;
     }
 
@@ -54,8 +55,19 @@ public class CloseReadFile implements IStatement {
     }
 
     @Override
-    public CloseReadFile deepCopy() {
-        return new CloseReadFile(this.expression.deepCopy());
+    public MyIDictionary<String, IType> typeCheck(MyIDictionary<String, IType> typeEnvironment) throws MyException {
+        IType expressionType = this.expression.typeCheck(typeEnvironment);
+        if(expressionType.equals(new StringType())){
+            return typeEnvironment;
+        }
+        else{
+            throw new MyException("Expression is not a string");
+        }
+    }
+
+    @Override
+    public CloseReadFileStatement deepCopy() {
+        return new CloseReadFileStatement(this.expression.deepCopy());
     }
 
     @Override

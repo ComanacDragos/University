@@ -4,6 +4,7 @@ import Exceptions.MyException;
 import Model.ADTs.MyHeap;
 import Model.ADTs.MyIDictionary;
 import Model.Expressions.IExpression;
+import Model.Types.IType;
 import Model.Types.ReferenceType;
 import Model.Values.IValue;
 import Model.Values.ReferenceValue;
@@ -29,6 +30,18 @@ public class ReadHeapExpression extends UnaryExpression {
         }
         else{
             throw new MyException("Expression must be a reference value");
+        }
+    }
+
+    @Override
+    public IType typeCheck(MyIDictionary<String, IType> typeEnvironment) throws MyException {
+        IType type = this.expression.typeCheck(typeEnvironment);
+        if(type instanceof ReferenceType){
+            ReferenceType referenceType = (ReferenceType) type;
+            return referenceType.getInnerType();
+        }
+        else{
+            throw new MyException("The readHeap argument is not a reference type");
         }
     }
 

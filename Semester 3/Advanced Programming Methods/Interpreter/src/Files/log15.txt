@@ -1,3 +1,4 @@
+Program: 1
 Execution stack
 (
 int v;
@@ -15,25 +16,7 @@ Heap
 
 
 
-Execution stack
-(
-int v;
-v = 4;
-)
-(
-while(v > 0){
-print(v);
-v = (v - 1);
-}
-print(v);
-)
-Symbols table
-Out
-File table
-Heap
-
-
-
+Program: 1
 Execution stack
 (
 int v;
@@ -53,11 +36,10 @@ Heap
 
 
 
+Program: 1
 Execution stack
 (
 int v;
-)
-(
 v = 4;
 )
 (
@@ -74,6 +56,7 @@ Heap
 
 
 
+Program: 1
 Execution stack
 (
 int v;
@@ -95,6 +78,29 @@ Heap
 
 
 
+Program: 1
+Execution stack
+(
+int v;
+)
+(
+v = 4;
+)
+(
+while(v > 0){
+print(v);
+v = (v - 1);
+}
+print(v);
+)
+Symbols table
+Out
+File table
+Heap
+
+
+
+Program: 1
 Execution stack
 (
 v = 4;
@@ -114,6 +120,7 @@ Heap
 
 
 
+Program: 1
 Execution stack
 (
 v = 4;
@@ -133,6 +140,7 @@ Heap
 
 
 
+Program: 1
 Execution stack
 (
 while(v > 0){
@@ -149,6 +157,7 @@ Heap
 
 
 
+Program: 1
 Execution stack
 (
 while(v > 0){
@@ -165,24 +174,7 @@ Heap
 
 
 
-Execution stack
-(
-while(v > 0){
-print(v);
-v = (v - 1);
-}
-)
-(
-print(v);
-)
-Symbols table
-v -> 4
-Out
-File table
-Heap
-
-
-
+Program: 1
 Execution stack
 (
 while(v > 0){
@@ -201,11 +193,8 @@ Heap
 
 
 
+Program: 1
 Execution stack
-(
-print(v);
-v = (v - 1);
-)
 (
 while(v > 0){
 print(v);
@@ -223,6 +212,7 @@ Heap
 
 
 
+Program: 1
 Execution stack
 (
 print(v);
@@ -245,11 +235,10 @@ Heap
 
 
 
+Program: 1
 Execution stack
 (
 print(v);
-)
-(
 v = (v - 1);
 )
 (
@@ -269,6 +258,7 @@ Heap
 
 
 
+Program: 1
 Execution stack
 (
 print(v);
@@ -293,7 +283,11 @@ Heap
 
 
 
+Program: 1
 Execution stack
+(
+print(v);
+)
 (
 v = (v - 1);
 )
@@ -309,12 +303,12 @@ print(v);
 Symbols table
 v -> 4
 Out
-4
 File table
 Heap
 
 
 
+Program: 1
 Execution stack
 (
 v = (v - 1);
@@ -337,6 +331,30 @@ Heap
 
 
 
+Program: 1
+Execution stack
+(
+v = (v - 1);
+)
+(
+while(v > 0){
+print(v);
+v = (v - 1);
+}
+)
+(
+print(v);
+)
+Symbols table
+v -> 4
+Out
+4
+File table
+Heap
+
+
+
+Program: 1
 Execution stack
 (
 while(v > 0){
@@ -356,6 +374,7 @@ Heap
 
 
 
+Program: 1
 Execution stack
 (
 while(v > 0){
@@ -375,29 +394,7 @@ Heap
 
 
 
-Execution stack
-(
-print(v);
-v = (v - 1);
-)
-(
-while(v > 0){
-print(v);
-v = (v - 1);
-}
-)
-(
-print(v);
-)
-Symbols table
-v -> 3
-Out
-4
-File table
-Heap
-
-
-
+Program: 1
 Execution stack
 (
 print(v);
@@ -421,11 +418,10 @@ Heap
 
 
 
+Program: 1
 Execution stack
 (
 print(v);
-)
-(
 v = (v - 1);
 )
 (
@@ -446,6 +442,7 @@ Heap
 
 
 
+Program: 1
 Execution stack
 (
 print(v);
@@ -471,7 +468,11 @@ Heap
 
 
 
+Program: 1
 Execution stack
+(
+print(v);
+)
 (
 v = (v - 1);
 )
@@ -488,12 +489,12 @@ Symbols table
 v -> 3
 Out
 4
-3
 File table
 Heap
 
 
 
+Program: 1
 Execution stack
 (
 v = (v - 1);
@@ -517,6 +518,31 @@ Heap
 
 
 
+Program: 1
+Execution stack
+(
+v = (v - 1);
+)
+(
+while(v > 0){
+print(v);
+v = (v - 1);
+}
+)
+(
+print(v);
+)
+Symbols table
+v -> 3
+Out
+4
+3
+File table
+Heap
+
+
+
+Program: 1
 Execution stack
 (
 while(v > 0){
@@ -537,6 +563,7 @@ Heap
 
 
 
+Program: 1
 Execution stack
 (
 while(v > 0){
@@ -557,59 +584,10 @@ Heap
 
 
 
+Program: 1
 Execution stack
 (
 print(v);
-v = (v - 1);
-)
-(
-while(v > 0){
-print(v);
-v = (v - 1);
-}
-)
-(
-print(v);
-)
-Symbols table
-v -> 2
-Out
-4
-3
-File table
-Heap
-
-
-
-Execution stack
-(
-print(v);
-v = (v - 1);
-)
-(
-while(v > 0){
-print(v);
-v = (v - 1);
-}
-)
-(
-print(v);
-)
-Symbols table
-v -> 2
-Out
-4
-3
-File table
-Heap
-
-
-
-Execution stack
-(
-print(v);
-)
-(
 v = (v - 1);
 )
 (
@@ -631,6 +609,32 @@ Heap
 
 
 
+Program: 1
+Execution stack
+(
+print(v);
+v = (v - 1);
+)
+(
+while(v > 0){
+print(v);
+v = (v - 1);
+}
+)
+(
+print(v);
+)
+Symbols table
+v -> 2
+Out
+4
+3
+File table
+Heap
+
+
+
+Program: 1
 Execution stack
 (
 print(v);
@@ -657,6 +661,34 @@ Heap
 
 
 
+Program: 1
+Execution stack
+(
+print(v);
+)
+(
+v = (v - 1);
+)
+(
+while(v > 0){
+print(v);
+v = (v - 1);
+}
+)
+(
+print(v);
+)
+Symbols table
+v -> 2
+Out
+4
+3
+File table
+Heap
+
+
+
+Program: 1
 Execution stack
 (
 v = (v - 1);
@@ -681,6 +713,7 @@ Heap
 
 
 
+Program: 1
 Execution stack
 (
 v = (v - 1);
@@ -705,6 +738,7 @@ Heap
 
 
 
+Program: 1
 Execution stack
 (
 while(v > 0){
@@ -726,6 +760,7 @@ Heap
 
 
 
+Program: 1
 Execution stack
 (
 while(v > 0){
@@ -747,61 +782,10 @@ Heap
 
 
 
+Program: 1
 Execution stack
 (
 print(v);
-v = (v - 1);
-)
-(
-while(v > 0){
-print(v);
-v = (v - 1);
-}
-)
-(
-print(v);
-)
-Symbols table
-v -> 1
-Out
-4
-3
-2
-File table
-Heap
-
-
-
-Execution stack
-(
-print(v);
-v = (v - 1);
-)
-(
-while(v > 0){
-print(v);
-v = (v - 1);
-}
-)
-(
-print(v);
-)
-Symbols table
-v -> 1
-Out
-4
-3
-2
-File table
-Heap
-
-
-
-Execution stack
-(
-print(v);
-)
-(
 v = (v - 1);
 )
 (
@@ -824,6 +808,33 @@ Heap
 
 
 
+Program: 1
+Execution stack
+(
+print(v);
+v = (v - 1);
+)
+(
+while(v > 0){
+print(v);
+v = (v - 1);
+}
+)
+(
+print(v);
+)
+Symbols table
+v -> 1
+Out
+4
+3
+2
+File table
+Heap
+
+
+
+Program: 1
 Execution stack
 (
 print(v);
@@ -851,6 +862,35 @@ Heap
 
 
 
+Program: 1
+Execution stack
+(
+print(v);
+)
+(
+v = (v - 1);
+)
+(
+while(v > 0){
+print(v);
+v = (v - 1);
+}
+)
+(
+print(v);
+)
+Symbols table
+v -> 1
+Out
+4
+3
+2
+File table
+Heap
+
+
+
+Program: 1
 Execution stack
 (
 v = (v - 1);
@@ -876,6 +916,7 @@ Heap
 
 
 
+Program: 1
 Execution stack
 (
 v = (v - 1);
@@ -901,6 +942,7 @@ Heap
 
 
 
+Program: 1
 Execution stack
 (
 while(v > 0){
@@ -923,6 +965,7 @@ Heap
 
 
 
+Program: 1
 Execution stack
 (
 while(v > 0){
@@ -945,6 +988,7 @@ Heap
 
 
 
+Program: 1
 Execution stack
 (
 print(v);
@@ -961,6 +1005,7 @@ Heap
 
 
 
+Program: 1
 Execution stack
 (
 print(v);
@@ -977,20 +1022,7 @@ Heap
 
 
 
-Execution stack
-Symbols table
-v -> 0
-Out
-4
-3
-2
-1
-0
-File table
-Heap
-
-
-
+Program: 1
 Execution stack
 Symbols table
 v -> 0

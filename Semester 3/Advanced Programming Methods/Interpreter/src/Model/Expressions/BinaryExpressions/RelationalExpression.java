@@ -4,6 +4,8 @@ import Exceptions.MyException;
 import Model.ADTs.MyHeap;
 import Model.ADTs.MyIDictionary;
 import Model.Expressions.IExpression;
+import Model.Types.BoolType;
+import Model.Types.IType;
 import Model.Types.IntType;
 import Model.Values.BoolValue;
 import Model.Values.IValue;
@@ -60,6 +62,26 @@ public class RelationalExpression extends BinaryExpression{
         }
         else
             throw new MyException("First operand is not an integer");
+    }
+
+    @Override
+    public IType typeCheck(MyIDictionary<String, IType> typeEnvironment) throws MyException {
+        IType leftSideType, rightSideType;
+
+        leftSideType = this.leftSide.typeCheck(typeEnvironment);
+        rightSideType = this.rightSide.typeCheck(typeEnvironment);
+
+        if(leftSideType.equals(new IntType())){
+            if(rightSideType.equals(new IntType())){
+                return new BoolType();
+            }
+            else{
+                throw new MyException("Second operand is not an integer");
+            }
+        }
+        else{
+            throw new MyException("First operand is not an integer");
+        }
     }
 
     @Override

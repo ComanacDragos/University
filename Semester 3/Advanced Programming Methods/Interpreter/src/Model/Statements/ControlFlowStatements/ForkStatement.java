@@ -1,10 +1,12 @@
 package Model.Statements.ControlFlowStatements;
 
 import Exceptions.MyException;
+import Model.ADTs.MyIDictionary;
 import Model.ADTs.MyIStack;
 import Model.ADTs.MyStack;
 import Model.ProgramState;
 import Model.Statements.IStatement;
+import Model.Types.IType;
 
 public class ForkStatement implements IStatement {
     IStatement statement;
@@ -33,6 +35,12 @@ public class ForkStatement implements IStatement {
                 state.getHeap(),
                 statement.deepCopy()
         );
+    }
+
+    @Override
+    public MyIDictionary<String, IType> typeCheck(MyIDictionary<String, IType> typeEnvironment) throws MyException {
+        this.statement.typeCheck(typeEnvironment.shallowCopy());
+        return typeEnvironment;
     }
 
     @Override

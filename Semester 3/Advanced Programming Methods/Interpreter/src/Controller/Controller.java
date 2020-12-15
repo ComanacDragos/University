@@ -6,6 +6,7 @@ import Model.ProgramState;
 import Model.Values.IValue;
 import Model.Values.ReferenceValue;
 import Repository.IRepository;
+import Observer.MyObservable;
 
 import java.util.*;
 import java.util.concurrent.Callable;
@@ -14,7 +15,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.stream.Collectors;
 
-public class Controller {
+public class Controller extends MyObservable {
     IRepository repository;
     ExecutorService executorService;
 
@@ -26,15 +27,38 @@ public class Controller {
         return repository;
     }
 
+    public List<ProgramState> getPrograms(){
+        return this.repository.getPrograms();
+    }
+
+    public void setRepositoryPrograms(List<ProgramState> programs){
+        this.repository.setPrograms(programs);
+        this.notyfiObservers();
+    }
+
     public void setRepository(IRepository repository) {
         this.repository = repository;
+    }
+
+    public void setExecutorService(ExecutorService executorService) {
+        this.executorService = executorService;
+    }
+
+    public ExecutorService getExecutorService() {
+        return executorService;
     }
 
     public void addProgramState(ProgramState newProgram){
         this.repository.addProgram(newProgram);
     }
 
-    List<ProgramState> removeCompletedPrograms(List<ProgramState> inProgramsList){
+    public Optional<ProgramState> getProgram(Integer id){
+        return this.repository.getPrograms().stream()
+                .filter(p -> p.getProgramId().equals(id))
+                .findFirst();
+    }
+
+    public List<ProgramState> removeCompletedPrograms(List<ProgramState> inProgramsList){
         return inProgramsList.stream()
                 .filter(ProgramState::isNotCompleted)
                 .collect(Collectors.toList());
@@ -71,7 +95,7 @@ public class Controller {
          return validAddresses;
     }
 
-    void oneStepForAllPrograms(List<ProgramState> programStates){
+    public void oneStepForAllPrograms(List<ProgramState> programStates){
         programStates.forEach(program -> this.repository.logProgramStateExec(program));
 
         List<Callable<ProgramState>> callables = programStates.stream()
@@ -80,6 +104,7 @@ public class Controller {
 
         List<ProgramState> newProgramsList = new LinkedList<>();
         try {
+            List<String> exceptions = new LinkedList<>();
             newProgramsList = this.executorService.invokeAll(callables).stream()
                     .map(future ->{
                         ProgramState toReturn = null;
@@ -87,13 +112,20 @@ public class Controller {
                             toReturn = future.get();
                         }
                         catch (MyException | InterruptedException | ExecutionException exception){
-                            System.out.println(exception.getMessage());
-                            System.exit(1);
+                            //System.out.println(exception.getMessage());
+                            //System.exit(1);
+                            exceptions.add(exception.getMessage() + "\n");
                         }
                         return toReturn;
                     })
                     .filter(Objects::nonNull)
                     .collect(Collectors.toList());
+
+            if(!exceptions.isEmpty()) {
+                throw new MyException(
+                        String.join("\n", exceptions)
+                );
+            }
         }
         catch (InterruptedException exception){
             System.out.println(exception.getMessage());
@@ -105,6 +137,8 @@ public class Controller {
         programStates.forEach(program -> this.repository.logProgramStateExec(program));
 
         this.repository.setPrograms(programStates);
+
+        this.notyfiObservers();
     }
 
     public void executeAllSteps() throws MyException {
@@ -127,6 +161,23 @@ public class Controller {
         }
         this.executorService.shutdownNow();
         this.repository.setPrograms(programStates);
+    }
+
+    public void runGarbageCollector(){
+        MyIDictionary<Integer, IValue> heap = this.repository.getPrograms().get(0).getHeap();
+
+        heap.setContent(
+                this.garbageCollector(
+                        this.getValidAddresses(),
+                        heap.getContent()
+                )
+        );
+
+        this.notyfiObservers();
+    }
+
+    public void emptyLogFile(){
+        this.repository.emptyLogFile();
     }
 
     @Override

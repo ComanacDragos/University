@@ -1,0 +1,143 @@
+Program: 1
+Execution stack
+(
+int v;
+v = 2;
+print(v);
+)
+Symbols table
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+int v;
+)
+(
+v = 2;
+print(v);
+)
+Symbols table
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+int v;
+)
+(
+v = 2;
+print(v);
+)
+Symbols table
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+v = 2;
+print(v);
+)
+Symbols table
+v -> 0
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+v = 2;
+print(v);
+)
+Symbols table
+v -> 0
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+v = 2;
+)
+(
+print(v);
+)
+Symbols table
+v -> 0
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+v = 2;
+)
+(
+print(v);
+)
+Symbols table
+v -> 0
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+print(v);
+)
+Symbols table
+v -> 2
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+print(v);
+)
+Symbols table
+v -> 2
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+Symbols table
+v -> 2
+Out
+2
+File table
+Heap
+
+
+

@@ -1,6 +1,131 @@
+Program: 5
 Execution stack
+(
+int a;
+a = (10 / 2);
+print(b);
+)
+Symbols table
+Out
+File table
+Heap
+
+
+
+Program: 5
+Execution stack
+(
+int a;
+)
+(
+a = (10 / 2);
+print(b);
+)
+Symbols table
+Out
+File table
+Heap
+
+
+
+Program: 5
+Execution stack
+(
+int a;
+)
+(
+a = (10 / 2);
+print(b);
+)
+Symbols table
+Out
+File table
+Heap
+
+
+
+Program: 5
+Execution stack
+(
+a = (10 / 2);
+print(b);
+)
+Symbols table
+a -> 0
+Out
+File table
+Heap
+
+
+
+Program: 5
+Execution stack
+(
+a = (10 / 2);
+print(b);
+)
+Symbols table
+a -> 0
+Out
+File table
+Heap
+
+
+
+Program: 5
+Execution stack
+(
+a = (10 / 2);
+)
+(
+print(b);
+)
+Symbols table
+a -> 0
+Out
+File table
+Heap
+
+
+
+Program: 5
+Execution stack
+(
+a = (10 / 2);
+)
+(
+print(b);
+)
+Symbols table
+a -> 0
+Out
+File table
+Heap
+
+
+
+Program: 5
+Execution stack
+(
+print(b);
+)
 Symbols table
 a -> 5
 Out
 File table
+Heap
+
+
+
+Program: 5
+Execution stack
+(
+print(b);
+)
+Symbols table
+a -> 5
+Out
+File table
+Heap
+
 
