@@ -6,3 +6,9 @@ Ubuntu IP: 192.168.0.157 - vmware
 
 Circuit swithced - fixed path noboy else can reserve it
 Packet -swithced - any route
+
+
+ttl = number of routers allowed to pass
+
+	- decremented each time it's passes a routers
+	- packet is dropped when it reaches 0
