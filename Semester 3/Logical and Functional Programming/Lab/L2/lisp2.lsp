@@ -9,12 +9,12 @@ B   C
   D   E
 
 subTreesAux(l1,...,ln, nv, ne, col1,...,coln) = {
-	[col1,...,coln, l1,...,ln], nv = 1 + ne or n=0
+	[col, l], nv = 1 + ne or n=0
 	subTreesAux(l3,...,ln, nv + 1, ne + l2, col1,...,coln U l1 U l2), else 
 }
 |#
 
-;;subTreesAux(l:list, nv:integer, ne:integer, col: list)
+;;subTreesAux(l:list reprezenting the tree, nv:integer, ne:integer, col: list in which the left subtree is collected)
 (defun subTreesAux(l nv ne col)
 	(cond
 		(
@@ -42,10 +42,11 @@ subTreesAux(l1,...,ln, nv, ne, col1,...,coln) = {
 #|
 subTrees(l1,...,ln) = {
 					nil, n = 0
-					subTreesAux(l3,...,ln, 0, 0, ()), else
+					subTreesAux(l3,...,ln, 0, 0, []), else
+}
 
 |#
-;;subTrees(l: list)
+;;subTrees(l: list reprezenting the tree)
 (defun subTrees(l)
 	(cond
 		(
@@ -70,7 +71,7 @@ numberOfLevels(l1,..,ln)={
 		1 + max(numberOfLevels(left), numberOfLevels(right)), left, right = subTrees(l1,...,ln), else
 }
 |#
-
+;;numberOfLevels(l:list reprezenting the tree)
 (defun numberOfLevels(l)
 	(cond
 		(
