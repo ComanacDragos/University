@@ -1,3 +1,22 @@
+Practical: one statement
+switch, for, cond
+
+different output for while/fork
+
+
+Theoretical: 2 problems 1 with streams and second one with arrays
+wildcards bounded cards (generics)
+write what you know about a thread mechanism/ exception/diff abstract interface, polymorphism, override, overload
+
+
+Practical Exam possible subjects:
+- lock table
+- cyclic barrier
+- semaphore
+- countdown latch
+
+
+
 JavaFX vm options
 
 --module-path "C:\Program Files\Java\javafx-sdk-15.0.1\lib"  --add-modules=javafx.controls,javafx.fxml
@@ -9,14 +28,6 @@ Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setContentText(this.programIdsListView.getSelectionModel().getSelectedItem());
 
             alert.showAndWait();
-
-Exam possible subjects:
-- lock table
-- cyclic barrier
-- semaphore
-- countdown latch
-
-
 
 
 1. lab rules, attendance list

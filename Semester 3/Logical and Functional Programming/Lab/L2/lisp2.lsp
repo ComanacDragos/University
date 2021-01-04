@@ -7,7 +7,9 @@
 B   C
    / \
   D   E
-
+  	   \
+		f
+		
 subTreesAux(l1,...,ln, nv, ne, col1,...,coln) = {
 	[col, l], nv = 1 + ne or n=0
 	subTreesAux(l3,...,ln, nv + 1, ne + l2, col1,...,coln U l1 U l2), else 

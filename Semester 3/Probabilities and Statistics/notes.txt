@@ -1,3 +1,57 @@
+
+#{
+Detalii examen
+
+Exam name example:
+Comanac_Dragos-Mihail
+
+
+1. Salvati ca notepad si il trimitem codul
+Screenshot cu rezultatele
+
+Cat mai multe comentarii
+ce testeaza cine e h1 h0 explicat cat mai multe
+
+
+rez 
+
+2.a
+alpha = 0.05
+h0 nu este respinsa
+
+stat 0.2667 val crititca 0.0620
+
+0.244 U 4.2060
+
+
+
+b
+
+1 ipoteza este respinsa
+consum mai mare cu premium
+
+4.944 x 10^-7
+
+e-07 = 10^-7
+
+utilizam 3b din test.pdf
+
+#}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 C1
 mutually exclusive = m.e.
 
