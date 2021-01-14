@@ -1,0 +1,7 @@
+apare([H|_], H):-!.
+apare([_|T], El):-apare(T,El).
+
+elim1([],[]):-!.
+elim1([H|T], R):-apare(T,H),!,
+                 elim1(T,R).
+elim1([H|T], [H|R]):-elim1(T,R).

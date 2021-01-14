@@ -4,7 +4,7 @@ the same order. Eg.: (((A B) C) (D E)) --> (A B C D E)
 
 
 linearize(l) = {
-	l, l is atom
+	(l), l is atom
 	U i=1,n linearize(li), l = (l1,...,ln)
 }
 |#
@@ -16,7 +16,8 @@ linearize(l) = {
 		)
 		(
 			t
-			(apply #'append (mapcar #'linearize l))
+			;(apply #'append (mapcar #'linearize l))
+			(mapcan #'linearize l)
 		)
 	)
 

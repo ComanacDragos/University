@@ -1,0 +1,65 @@
+Mon Jan 11 17:31:00 2021: Starting Cisco Packet Tracer 7.3.1.0362
+Mon Jan 11 17:31:00 2021: e:\cygdrive\e\eng-jenkins\workspace\team_ca-csr-sm-le-sgme\m_sgme_pt731_win64\engine\ipc\ccep.cpp(349):WARN  - Forced an exapp to be MANDATORY at run-time.
+Mon Jan 11 17:31:00 2021: e:\cygdrive\e\eng-jenkins\workspace\team_ca-csr-sm-le-sgme\m_sgme_pt731_win64\engine\ipc\ccep.cpp(349):WARN  - Forced an exapp to be MANDATORY at run-time.
+Mon Jan 11 17:31:02 2021: Script Module starting: 
+Mon Jan 11 17:31:02 2021: Opening file: C:\Users\Dragos\Downloads\922-2_Comanac_Dragos-Mihail.pkt
+Mon Jan 11 17:31:03 2021: Changed device name:  to Power Distribution Device0
+Mon Jan 11 17:31:03 2021: Changed device name:  to Router1
+Mon Jan 11 17:31:03 2021: Changed device name:  to Router2
+Mon Jan 11 17:31:03 2021: Changed device name:  to Router3
+Mon Jan 11 17:31:03 2021: Changed device name:  to Router4
+Mon Jan 11 17:31:03 2021: Changed device name:  to Switch0
+Mon Jan 11 17:31:03 2021: Changed device name:  to Switch1
+Mon Jan 11 17:31:03 2021: Changed device name:  to Router5
+Mon Jan 11 17:31:03 2021: Changed device name:  to Switch2
+Mon Jan 11 17:31:03 2021: Changed device name:  to Switch3
+Mon Jan 11 17:31:03 2021: Changed device name:  to PC0
+Mon Jan 11 17:31:03 2021: Changed device name:  to PC1
+Mon Jan 11 17:31:03 2021: Changed device name:  to PC2
+Mon Jan 11 17:31:03 2021: Changed device name:  to PC3
+Mon Jan 11 17:31:03 2021: Changed device name:  to Switch4
+Mon Jan 11 17:31:03 2021: Changed device name:  to Switch5
+Mon Jan 11 17:31:03 2021: Changed device name:  to Wireless Router0
+Mon Jan 11 17:31:03 2021: Changed device name:  to Access Point0
+Mon Jan 11 17:31:03 2021: Changed device name:  to PC4
+Mon Jan 11 17:31:03 2021: Changed device name:  to PC5
+Mon Jan 11 17:31:03 2021: Changed device name:  to Server0
+Mon Jan 11 17:31:03 2021: Changed device name:  to PC6
+Mon Jan 11 17:31:03 2021: Changed device name:  to PC7
+Mon Jan 11 17:31:03 2021: Changed device name:  to Server1
+Mon Jan 11 17:31:03 2021: Changed device name:  to PC8
+Mon Jan 11 17:31:03 2021: Changed device name:  to Smartphone0
+Mon Jan 11 17:31:03 2021: Changed device name:  to Laptop0
+Mon Jan 11 17:31:03 2021: Changed device name:  to PC9
+Mon Jan 11 17:31:03 2021: Changed device name:  to PC10
+Mon Jan 11 17:31:03 2021: Changed device name:  to Server2
+Mon Jan 11 17:31:03 2021: Changed device name:  to Power Distribution Device1
+Mon Jan 11 17:31:03 2021: Script Module stopping: File
+Mon Jan 11 17:31:03 2021: Script Module starting: File
+Mon Jan 11 17:31:03 2021: File opened successfully.
+Mon Jan 11 17:31:04 2021: Script Module starting: net.netacad.cisco.ActivitySequenceEditor
+Mon Jan 11 17:31:04 2021: Script Module starting: net.netacad.cisco.ActivitySequencer
+Mon Jan 11 17:31:04 2021: Script Module starting: net.netacad.cisco.clearTerminalAgent
+Mon Jan 11 17:31:04 2021: Script Module starting: net.netacad.cisco.Marvel
+Mon Jan 11 17:31:04 2021: Script Module starting: net.netacad.cisco.PcSoftware
+Mon Jan 11 17:31:04 2021: Script Module starting: net.netacad.cisco.PTINTERNAL
+Mon Jan 11 17:31:04 2021: Script Module starting: net.netacad.cisco.resource
+Mon Jan 11 17:31:04 2021: e:\cygdrive\e\eng-jenkins\workspace\team_ca-csr-sm-le-sgme\m_sgme_pt731_win64\engine\ipc\ccep.cpp(349):WARN  - Forced an exapp to be MANDATORY at run-time.
+Mon Jan 11 17:31:19 2021: Link created: Smartphone0 Wireless0 to Wireless Router0 Wireless, 8109
+Mon Jan 11 17:31:19 2021: Link created: PC8 Wireless0 to Wireless Router0 Wireless, 8109
+Mon Jan 11 17:31:19 2021: Link created: Laptop0 Wireless0 to Access Point0 Port 1, 8109
+Mon Jan 11 17:36:16 2021: Saving to file: C:/Users/Dragos/Downloads/922-2_Comanac_Dragos-Mihail.pkt
+Mon Jan 11 17:36:17 2021: Saving options...
+Mon Jan 11 17:36:17 2021: Options saved.
+Mon Jan 11 17:36:17 2021: File saved successfully.
+Mon Jan 11 17:36:22 2021: Script Module stopping: File
+Mon Jan 11 17:36:22 2021: Exiting
+Mon Jan 11 17:36:22 2021: Saving options...
+Mon Jan 11 17:36:22 2021: Options saved.
+Mon Jan 11 17:36:22 2021: Script Module stopping: net.netacad.cisco.resource
+Mon Jan 11 17:36:22 2021: Script Module stopping: net.netacad.cisco.PTINTERNAL
+Mon Jan 11 17:36:22 2021: Script Module stopping: net.netacad.cisco.PcSoftware
+Mon Jan 11 17:36:22 2021: Script Module stopping: net.netacad.cisco.Marvel
+Mon Jan 11 17:36:22 2021: Script Module stopping: net.netacad.cisco.clearTerminalAgent
+Mon Jan 11 17:36:22 2021: Script Module stopping: net.netacad.cisco.ActivitySequencer
+Mon Jan 11 17:36:22 2021: Script Module stopping: net.netacad.cisco.ActivitySequenceEditor

@@ -12,3 +12,5 @@ ttl = number of routers allowed to pass
 
 	- decremented each time it's passes a routers
 	- packet is dropped when it reaches 0
+
+no ip access-list extended nat

@@ -3,6 +3,8 @@ GO
 USE Seminar6
 GO
 
+--a)
+
 CREATE TABLE TrainTypes(
 	typeId INT PRIMARY KEY,
 	typeName VARCHAR(50)
@@ -56,6 +58,8 @@ CREATE TABLE StationRoutes(
 	CONSTRAINT pk_stationRoutes PRIMARY KEY (routeId, stationId)
 );
 
+
+--b)
 --DROP PROCEDURE add_station_to_route
 GO
 CREATE PROCEDURE add_station_to_route(
@@ -99,6 +103,7 @@ add_station_to_route 'Cluj-Iasi-Bucuresti', 'Mures', '12:00:00', '12:10:00';
 add_station_to_route 'Cluj-Iasi-Bucuresti', 'Iasi', '16:00:00', '16:20:00';
 add_station_to_route 'Cluj-Iasi-Bucuresti', 'Bucuresti', '20:00:00', '20:30:00';
 
+--c)
 
 SELECT * FROM StationRoutes
 ORDER BY routeId, Arrival
@@ -111,6 +116,8 @@ CREATE VIEW RoutesNames AS
 
 SELECT * FROM RoutesNames
 
+
+--d)
 GO
 CREATE FUNCTION stationsWithRRooutes (@R INT)
 RETURNS TABLE
