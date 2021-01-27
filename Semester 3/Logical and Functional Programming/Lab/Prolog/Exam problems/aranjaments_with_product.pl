@@ -1,5 +1,5 @@
 candidat([H|_], H).
-candidat([_|T], R):-candidat(T,R).
+candidat([_,H2|T], R):-candidat([H2|T],R).
 
 bkt(_, K, P, Col, K, P, Col):-!.
 bkt(L, K, P, Col, LCol, PCol, R):- LCol < K,

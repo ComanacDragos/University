@@ -1,0 +1,685 @@
+Program: 4
+Execution stack
+(
+string varf;
+varf = "src/Files/test.in";
+openReadFile("src/Files/test.in");
+int varc;
+readFile("src/Files/test.in", varc);
+print(varc);
+readFile("src/Files/test.in", varc);
+print(varc);
+closeReadFile("src/Files/test.in");
+)
+Symbols table
+Out
+File table
+Heap
+
+
+
+Program: 4
+Execution stack
+(
+string varf;
+varf = "src/Files/test.in";
+openReadFile("src/Files/test.in");
+int varc;
+)
+(
+readFile("src/Files/test.in", varc);
+print(varc);
+readFile("src/Files/test.in", varc);
+print(varc);
+closeReadFile("src/Files/test.in");
+)
+Symbols table
+Out
+File table
+Heap
+
+
+
+Program: 4
+Execution stack
+(
+string varf;
+varf = "src/Files/test.in";
+openReadFile("src/Files/test.in");
+int varc;
+)
+(
+readFile("src/Files/test.in", varc);
+print(varc);
+readFile("src/Files/test.in", varc);
+print(varc);
+closeReadFile("src/Files/test.in");
+)
+Symbols table
+Out
+File table
+Heap
+
+
+
+Program: 4
+Execution stack
+(
+string varf;
+)
+(
+varf = "src/Files/test.in";
+openReadFile("src/Files/test.in");
+int varc;
+)
+(
+readFile("src/Files/test.in", varc);
+print(varc);
+readFile("src/Files/test.in", varc);
+print(varc);
+closeReadFile("src/Files/test.in");
+)
+Symbols table
+Out
+File table
+Heap
+
+
+
+Program: 4
+Execution stack
+(
+string varf;
+)
+(
+varf = "src/Files/test.in";
+openReadFile("src/Files/test.in");
+int varc;
+)
+(
+readFile("src/Files/test.in", varc);
+print(varc);
+readFile("src/Files/test.in", varc);
+print(varc);
+closeReadFile("src/Files/test.in");
+)
+Symbols table
+Out
+File table
+Heap
+
+
+
+Program: 4
+Execution stack
+(
+varf = "src/Files/test.in";
+openReadFile("src/Files/test.in");
+int varc;
+)
+(
+readFile("src/Files/test.in", varc);
+print(varc);
+readFile("src/Files/test.in", varc);
+print(varc);
+closeReadFile("src/Files/test.in");
+)
+Symbols table
+varf -> ""
+Out
+File table
+Heap
+
+
+
+Program: 4
+Execution stack
+(
+varf = "src/Files/test.in";
+openReadFile("src/Files/test.in");
+int varc;
+)
+(
+readFile("src/Files/test.in", varc);
+print(varc);
+readFile("src/Files/test.in", varc);
+print(varc);
+closeReadFile("src/Files/test.in");
+)
+Symbols table
+varf -> ""
+Out
+File table
+Heap
+
+
+
+Program: 4
+Execution stack
+(
+varf = "src/Files/test.in";
+)
+(
+openReadFile("src/Files/test.in");
+int varc;
+)
+(
+readFile("src/Files/test.in", varc);
+print(varc);
+readFile("src/Files/test.in", varc);
+print(varc);
+closeReadFile("src/Files/test.in");
+)
+Symbols table
+varf -> ""
+Out
+File table
+Heap
+
+
+
+Program: 4
+Execution stack
+(
+varf = "src/Files/test.in";
+)
+(
+openReadFile("src/Files/test.in");
+int varc;
+)
+(
+readFile("src/Files/test.in", varc);
+print(varc);
+readFile("src/Files/test.in", varc);
+print(varc);
+closeReadFile("src/Files/test.in");
+)
+Symbols table
+varf -> ""
+Out
+File table
+Heap
+
+
+
+Program: 4
+Execution stack
+(
+openReadFile("src/Files/test.in");
+int varc;
+)
+(
+readFile("src/Files/test.in", varc);
+print(varc);
+readFile("src/Files/test.in", varc);
+print(varc);
+closeReadFile("src/Files/test.in");
+)
+Symbols table
+varf -> "src/Files/test.in"
+Out
+File table
+Heap
+
+
+
+Program: 4
+Execution stack
+(
+openReadFile("src/Files/test.in");
+int varc;
+)
+(
+readFile("src/Files/test.in", varc);
+print(varc);
+readFile("src/Files/test.in", varc);
+print(varc);
+closeReadFile("src/Files/test.in");
+)
+Symbols table
+varf -> "src/Files/test.in"
+Out
+File table
+Heap
+
+
+
+Program: 4
+Execution stack
+(
+openReadFile("src/Files/test.in");
+)
+(
+int varc;
+)
+(
+readFile("src/Files/test.in", varc);
+print(varc);
+readFile("src/Files/test.in", varc);
+print(varc);
+closeReadFile("src/Files/test.in");
+)
+Symbols table
+varf -> "src/Files/test.in"
+Out
+File table
+Heap
+
+
+
+Program: 4
+Execution stack
+(
+openReadFile("src/Files/test.in");
+)
+(
+int varc;
+)
+(
+readFile("src/Files/test.in", varc);
+print(varc);
+readFile("src/Files/test.in", varc);
+print(varc);
+closeReadFile("src/Files/test.in");
+)
+Symbols table
+varf -> "src/Files/test.in"
+Out
+File table
+Heap
+
+
+
+Program: 4
+Execution stack
+(
+int varc;
+)
+(
+readFile("src/Files/test.in", varc);
+print(varc);
+readFile("src/Files/test.in", varc);
+print(varc);
+closeReadFile("src/Files/test.in");
+)
+Symbols table
+varf -> "src/Files/test.in"
+Out
+File table
+src/Files/test.inHeap
+
+
+
+Program: 4
+Execution stack
+(
+int varc;
+)
+(
+readFile("src/Files/test.in", varc);
+print(varc);
+readFile("src/Files/test.in", varc);
+print(varc);
+closeReadFile("src/Files/test.in");
+)
+Symbols table
+varf -> "src/Files/test.in"
+Out
+File table
+src/Files/test.inHeap
+
+
+
+Program: 4
+Execution stack
+(
+readFile("src/Files/test.in", varc);
+print(varc);
+readFile("src/Files/test.in", varc);
+print(varc);
+closeReadFile("src/Files/test.in");
+)
+Symbols table
+varf -> "src/Files/test.in"
+varc -> 0
+Out
+File table
+src/Files/test.inHeap
+
+
+
+Program: 4
+Execution stack
+(
+readFile("src/Files/test.in", varc);
+print(varc);
+readFile("src/Files/test.in", varc);
+print(varc);
+closeReadFile("src/Files/test.in");
+)
+Symbols table
+varf -> "src/Files/test.in"
+varc -> 0
+Out
+File table
+src/Files/test.inHeap
+
+
+
+Program: 4
+Execution stack
+(
+readFile("src/Files/test.in", varc);
+print(varc);
+)
+(
+readFile("src/Files/test.in", varc);
+print(varc);
+closeReadFile("src/Files/test.in");
+)
+Symbols table
+varf -> "src/Files/test.in"
+varc -> 0
+Out
+File table
+src/Files/test.inHeap
+
+
+
+Program: 4
+Execution stack
+(
+readFile("src/Files/test.in", varc);
+print(varc);
+)
+(
+readFile("src/Files/test.in", varc);
+print(varc);
+closeReadFile("src/Files/test.in");
+)
+Symbols table
+varf -> "src/Files/test.in"
+varc -> 0
+Out
+File table
+src/Files/test.inHeap
+
+
+
+Program: 4
+Execution stack
+(
+readFile("src/Files/test.in", varc);
+)
+(
+print(varc);
+)
+(
+readFile("src/Files/test.in", varc);
+print(varc);
+closeReadFile("src/Files/test.in");
+)
+Symbols table
+varf -> "src/Files/test.in"
+varc -> 0
+Out
+File table
+src/Files/test.inHeap
+
+
+
+Program: 4
+Execution stack
+(
+readFile("src/Files/test.in", varc);
+)
+(
+print(varc);
+)
+(
+readFile("src/Files/test.in", varc);
+print(varc);
+closeReadFile("src/Files/test.in");
+)
+Symbols table
+varf -> "src/Files/test.in"
+varc -> 0
+Out
+File table
+src/Files/test.inHeap
+
+
+
+Program: 4
+Execution stack
+(
+print(varc);
+)
+(
+readFile("src/Files/test.in", varc);
+print(varc);
+closeReadFile("src/Files/test.in");
+)
+Symbols table
+varf -> "src/Files/test.in"
+varc -> 50
+Out
+File table
+src/Files/test.inHeap
+
+
+
+Program: 4
+Execution stack
+(
+print(varc);
+)
+(
+readFile("src/Files/test.in", varc);
+print(varc);
+closeReadFile("src/Files/test.in");
+)
+Symbols table
+varf -> "src/Files/test.in"
+varc -> 50
+Out
+File table
+src/Files/test.inHeap
+
+
+
+Program: 4
+Execution stack
+(
+readFile("src/Files/test.in", varc);
+print(varc);
+closeReadFile("src/Files/test.in");
+)
+Symbols table
+varf -> "src/Files/test.in"
+varc -> 50
+Out
+50
+File table
+src/Files/test.inHeap
+
+
+
+Program: 4
+Execution stack
+(
+readFile("src/Files/test.in", varc);
+print(varc);
+closeReadFile("src/Files/test.in");
+)
+Symbols table
+varf -> "src/Files/test.in"
+varc -> 50
+Out
+50
+File table
+src/Files/test.inHeap
+
+
+
+Program: 4
+Execution stack
+(
+readFile("src/Files/test.in", varc);
+print(varc);
+)
+(
+closeReadFile("src/Files/test.in");
+)
+Symbols table
+varf -> "src/Files/test.in"
+varc -> 50
+Out
+50
+File table
+src/Files/test.inHeap
+
+
+
+Program: 4
+Execution stack
+(
+readFile("src/Files/test.in", varc);
+print(varc);
+)
+(
+closeReadFile("src/Files/test.in");
+)
+Symbols table
+varf -> "src/Files/test.in"
+varc -> 50
+Out
+50
+File table
+src/Files/test.inHeap
+
+
+
+Program: 4
+Execution stack
+(
+readFile("src/Files/test.in", varc);
+)
+(
+print(varc);
+)
+(
+closeReadFile("src/Files/test.in");
+)
+Symbols table
+varf -> "src/Files/test.in"
+varc -> 50
+Out
+50
+File table
+src/Files/test.inHeap
+
+
+
+Program: 4
+Execution stack
+(
+readFile("src/Files/test.in", varc);
+)
+(
+print(varc);
+)
+(
+closeReadFile("src/Files/test.in");
+)
+Symbols table
+varf -> "src/Files/test.in"
+varc -> 50
+Out
+50
+File table
+src/Files/test.inHeap
+
+
+
+Program: 4
+Execution stack
+(
+print(varc);
+)
+(
+closeReadFile("src/Files/test.in");
+)
+Symbols table
+varf -> "src/Files/test.in"
+varc -> 15
+Out
+50
+File table
+src/Files/test.inHeap
+
+
+
+Program: 4
+Execution stack
+(
+print(varc);
+)
+(
+closeReadFile("src/Files/test.in");
+)
+Symbols table
+varf -> "src/Files/test.in"
+varc -> 15
+Out
+50
+File table
+src/Files/test.inHeap
+
+
+
+Program: 4
+Execution stack
+(
+closeReadFile("src/Files/test.in");
+)
+Symbols table
+varf -> "src/Files/test.in"
+varc -> 15
+Out
+50
+15
+File table
+src/Files/test.inHeap
+
+
+
+Program: 4
+Execution stack
+(
+closeReadFile("src/Files/test.in");
+)
+Symbols table
+varf -> "src/Files/test.in"
+varc -> 15
+Out
+50
+15
+File table
+src/Files/test.inHeap
+
+
+
+Program: 4
+Execution stack
+Symbols table
+varf -> "src/Files/test.in"
+varc -> 15
+Out
+50
+15
+File table
+Heap
+
+
+

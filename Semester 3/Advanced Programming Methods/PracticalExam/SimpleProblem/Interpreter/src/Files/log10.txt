@@ -1,0 +1,288 @@
+Execution stack
+(
+ref(int) v;
+new(v, 20);
+ref(ref(string)) a;
+new(a, v);
+print(v);
+print(a);
+)
+Symbols table
+Out
+File table
+Heap
+
+
+
+Execution stack
+(
+ref(int) v;
+new(v, 20);
+ref(ref(string)) a;
+new(a, v);
+)
+(
+print(v);
+print(a);
+)
+Symbols table
+Out
+File table
+Heap
+
+
+
+Execution stack
+(
+ref(int) v;
+new(v, 20);
+ref(ref(string)) a;
+new(a, v);
+)
+(
+print(v);
+print(a);
+)
+Symbols table
+Out
+File table
+Heap
+
+
+
+Execution stack
+(
+ref(int) v;
+new(v, 20);
+)
+(
+ref(ref(string)) a;
+new(a, v);
+)
+(
+print(v);
+print(a);
+)
+Symbols table
+Out
+File table
+Heap
+
+
+
+Execution stack
+(
+ref(int) v;
+new(v, 20);
+)
+(
+ref(ref(string)) a;
+new(a, v);
+)
+(
+print(v);
+print(a);
+)
+Symbols table
+Out
+File table
+Heap
+
+
+
+Execution stack
+(
+ref(int) v;
+)
+(
+new(v, 20);
+)
+(
+ref(ref(string)) a;
+new(a, v);
+)
+(
+print(v);
+print(a);
+)
+Symbols table
+Out
+File table
+Heap
+
+
+
+Execution stack
+(
+ref(int) v;
+)
+(
+new(v, 20);
+)
+(
+ref(ref(string)) a;
+new(a, v);
+)
+(
+print(v);
+print(a);
+)
+Symbols table
+Out
+File table
+Heap
+
+
+
+Execution stack
+(
+new(v, 20);
+)
+(
+ref(ref(string)) a;
+new(a, v);
+)
+(
+print(v);
+print(a);
+)
+Symbols table
+v -> (0, int)
+Out
+File table
+Heap
+
+
+
+Execution stack
+(
+new(v, 20);
+)
+(
+ref(ref(string)) a;
+new(a, v);
+)
+(
+print(v);
+print(a);
+)
+Symbols table
+v -> (0, int)
+Out
+File table
+Heap
+
+
+
+Execution stack
+(
+ref(ref(string)) a;
+new(a, v);
+)
+(
+print(v);
+print(a);
+)
+Symbols table
+v -> (1, int)
+Out
+File table
+Heap
+1 -> 20
+
+
+
+Execution stack
+(
+ref(ref(string)) a;
+new(a, v);
+)
+(
+print(v);
+print(a);
+)
+Symbols table
+v -> (1, int)
+Out
+File table
+Heap
+1 -> 20
+
+
+
+Execution stack
+(
+ref(ref(string)) a;
+)
+(
+new(a, v);
+)
+(
+print(v);
+print(a);
+)
+Symbols table
+v -> (1, int)
+Out
+File table
+Heap
+1 -> 20
+
+
+
+Execution stack
+(
+ref(ref(string)) a;
+)
+(
+new(a, v);
+)
+(
+print(v);
+print(a);
+)
+Symbols table
+v -> (1, int)
+Out
+File table
+Heap
+1 -> 20
+
+
+
+Execution stack
+(
+new(a, v);
+)
+(
+print(v);
+print(a);
+)
+Symbols table
+v -> (1, int)
+a -> (0, ref(string))
+Out
+File table
+Heap
+1 -> 20
+
+
+
+Execution stack
+(
+new(a, v);
+)
+(
+print(v);
+print(a);
+)
+Symbols table
+v -> (1, int)
+a -> (0, ref(string))
+Out
+File table
+Heap
+1 -> 20
+
+
+

@@ -1,0 +1,424 @@
+Program: 11
+Execution stack
+(
+ref(int) v;
+new(v, 20);
+ref(ref(int)) a;
+new(a, v);
+print(readHeap(v));
+print((readHeap(readHeap(a)) + 5));
+)
+Symbols table
+Out
+File table
+Heap
+
+
+
+Program: 11
+Execution stack
+(
+ref(int) v;
+new(v, 20);
+ref(ref(int)) a;
+new(a, v);
+)
+(
+print(readHeap(v));
+print((readHeap(readHeap(a)) + 5));
+)
+Symbols table
+Out
+File table
+Heap
+
+
+
+Program: 11
+Execution stack
+(
+ref(int) v;
+new(v, 20);
+ref(ref(int)) a;
+new(a, v);
+)
+(
+print(readHeap(v));
+print((readHeap(readHeap(a)) + 5));
+)
+Symbols table
+Out
+File table
+Heap
+
+
+
+Program: 11
+Execution stack
+(
+ref(int) v;
+new(v, 20);
+)
+(
+ref(ref(int)) a;
+new(a, v);
+)
+(
+print(readHeap(v));
+print((readHeap(readHeap(a)) + 5));
+)
+Symbols table
+Out
+File table
+Heap
+
+
+
+Program: 11
+Execution stack
+(
+ref(int) v;
+new(v, 20);
+)
+(
+ref(ref(int)) a;
+new(a, v);
+)
+(
+print(readHeap(v));
+print((readHeap(readHeap(a)) + 5));
+)
+Symbols table
+Out
+File table
+Heap
+
+
+
+Program: 11
+Execution stack
+(
+ref(int) v;
+)
+(
+new(v, 20);
+)
+(
+ref(ref(int)) a;
+new(a, v);
+)
+(
+print(readHeap(v));
+print((readHeap(readHeap(a)) + 5));
+)
+Symbols table
+Out
+File table
+Heap
+
+
+
+Program: 11
+Execution stack
+(
+ref(int) v;
+)
+(
+new(v, 20);
+)
+(
+ref(ref(int)) a;
+new(a, v);
+)
+(
+print(readHeap(v));
+print((readHeap(readHeap(a)) + 5));
+)
+Symbols table
+Out
+File table
+Heap
+
+
+
+Program: 11
+Execution stack
+(
+new(v, 20);
+)
+(
+ref(ref(int)) a;
+new(a, v);
+)
+(
+print(readHeap(v));
+print((readHeap(readHeap(a)) + 5));
+)
+Symbols table
+v -> (0, int)
+Out
+File table
+Heap
+
+
+
+Program: 11
+Execution stack
+(
+new(v, 20);
+)
+(
+ref(ref(int)) a;
+new(a, v);
+)
+(
+print(readHeap(v));
+print((readHeap(readHeap(a)) + 5));
+)
+Symbols table
+v -> (0, int)
+Out
+File table
+Heap
+
+
+
+Program: 11
+Execution stack
+(
+ref(ref(int)) a;
+new(a, v);
+)
+(
+print(readHeap(v));
+print((readHeap(readHeap(a)) + 5));
+)
+Symbols table
+v -> (1, int)
+Out
+File table
+Heap
+1 -> 20
+
+
+
+Program: 11
+Execution stack
+(
+ref(ref(int)) a;
+new(a, v);
+)
+(
+print(readHeap(v));
+print((readHeap(readHeap(a)) + 5));
+)
+Symbols table
+v -> (1, int)
+Out
+File table
+Heap
+1 -> 20
+
+
+
+Program: 11
+Execution stack
+(
+ref(ref(int)) a;
+)
+(
+new(a, v);
+)
+(
+print(readHeap(v));
+print((readHeap(readHeap(a)) + 5));
+)
+Symbols table
+v -> (1, int)
+Out
+File table
+Heap
+1 -> 20
+
+
+
+Program: 11
+Execution stack
+(
+ref(ref(int)) a;
+)
+(
+new(a, v);
+)
+(
+print(readHeap(v));
+print((readHeap(readHeap(a)) + 5));
+)
+Symbols table
+v -> (1, int)
+Out
+File table
+Heap
+1 -> 20
+
+
+
+Program: 11
+Execution stack
+(
+new(a, v);
+)
+(
+print(readHeap(v));
+print((readHeap(readHeap(a)) + 5));
+)
+Symbols table
+a -> (0, ref(int))
+v -> (1, int)
+Out
+File table
+Heap
+1 -> 20
+
+
+
+Program: 11
+Execution stack
+(
+new(a, v);
+)
+(
+print(readHeap(v));
+print((readHeap(readHeap(a)) + 5));
+)
+Symbols table
+a -> (0, ref(int))
+v -> (1, int)
+Out
+File table
+Heap
+1 -> 20
+
+
+
+Program: 11
+Execution stack
+(
+print(readHeap(v));
+print((readHeap(readHeap(a)) + 5));
+)
+Symbols table
+a -> (2, ref(int))
+v -> (1, int)
+Out
+File table
+Heap
+1 -> 20
+2 -> (1, int)
+
+
+
+Program: 11
+Execution stack
+(
+print(readHeap(v));
+print((readHeap(readHeap(a)) + 5));
+)
+Symbols table
+a -> (2, ref(int))
+v -> (1, int)
+Out
+File table
+Heap
+1 -> 20
+2 -> (1, int)
+
+
+
+Program: 11
+Execution stack
+(
+print(readHeap(v));
+)
+(
+print((readHeap(readHeap(a)) + 5));
+)
+Symbols table
+a -> (2, ref(int))
+v -> (1, int)
+Out
+File table
+Heap
+1 -> 20
+2 -> (1, int)
+
+
+
+Program: 11
+Execution stack
+(
+print(readHeap(v));
+)
+(
+print((readHeap(readHeap(a)) + 5));
+)
+Symbols table
+a -> (2, ref(int))
+v -> (1, int)
+Out
+File table
+Heap
+1 -> 20
+2 -> (1, int)
+
+
+
+Program: 11
+Execution stack
+(
+print((readHeap(readHeap(a)) + 5));
+)
+Symbols table
+a -> (2, ref(int))
+v -> (1, int)
+Out
+20
+File table
+Heap
+1 -> 20
+2 -> (1, int)
+
+
+
+Program: 11
+Execution stack
+(
+print((readHeap(readHeap(a)) + 5));
+)
+Symbols table
+a -> (2, ref(int))
+v -> (1, int)
+Out
+20
+File table
+Heap
+1 -> 20
+2 -> (1, int)
+
+
+
+Program: 11
+Execution stack
+Symbols table
+a -> (2, ref(int))
+v -> (1, int)
+Out
+20
+25
+File table
+Heap
+1 -> 20
+2 -> (1, int)
+
+
+

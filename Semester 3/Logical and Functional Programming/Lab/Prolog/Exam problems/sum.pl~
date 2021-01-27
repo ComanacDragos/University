@@ -1,0 +1,1 @@
+sum(N, R):-R is 3*N*(N+1) div 2.

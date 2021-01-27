@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<GridPane hgap="5.0" vgap="5.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.GUI.GUIController.ControllerRunProgram">
+   <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="363.0" minWidth="10.0" prefWidth="211.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="219.0" minWidth="10.0" prefWidth="202.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="398.0" minWidth="10.0" prefWidth="315.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="410.0" minWidth="10.0" prefWidth="287.0" />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="217.0" minHeight="10.0" prefHeight="203.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="58.0" minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
+   </rowConstraints>
+   <children>
+      <Button fx:id="runAnotherProgramButton" mnemonicParsing="false" onAction="#handleRunAnotherProgram" prefHeight="25.0" prefWidth="631.0" text="Run another program" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+      <Button fx:id="runOneStepButton" mnemonicParsing="false" onAction="#handleRunOneStep" prefHeight="25.0" prefWidth="200.0" text="Run one step" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+      <TableView fx:id="heapTableView" prefHeight="398.0" prefWidth="189.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+         <columns>
+            <TableColumn fx:id="heapAddressColumn" prefWidth="52.0" text="Address" />
+            <TableColumn fx:id="heapValueColumn" prefWidth="143.0" text="Value" />
+         </columns>
+      </TableView>
+      <ListView fx:id="programIdsListView" onMouseClicked="#handleSelectProgram" prefHeight="200.0" prefWidth="200.0" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+      <ListView fx:id="executionStackListView" prefHeight="631.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.rowSpan="3" />
+      <Label prefHeight="17.0" prefWidth="86.0" text="Execution stack" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+      <ListView fx:id="outListView" prefHeight="631.0" prefWidth="397.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.rowSpan="3" />
+      <Label text="Out" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+      <Label text="Program states" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+      <Label text="Heap" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+      <ListView fx:id="fileTableListView" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+      <Label text="File table" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+      <TableView fx:id="symbolsTableView" prefHeight="398.0" prefWidth="170.0" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+         <columns>
+            <TableColumn fx:id="symbolsTableNameColumn" prefWidth="84.0" text="Name" />
+            <TableColumn fx:id="symbolsTableValueColumn" prefWidth="120.0" text="Value" />
+         </columns>
+      </TableView>
+      <Label text="Symbols table" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+      <Label fx:id="numberOfProgramStatesLabel" text="Number of program states: 0" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+      <Button fx:id="openNewWindowButton" mnemonicParsing="false" onAction="#handleOpenNewWindow" prefHeight="25.0" prefWidth="314.0" text="Open this program in new window" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+   </children>
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
+</GridPane>

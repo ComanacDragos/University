@@ -1,3 +1,4 @@
+import java.io.*;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Supplier;
@@ -5,6 +6,11 @@ import java.util.stream.Stream;
 
 public class Main {
     public static void main(String[] args) {
+
+
+    }
+
+    static void runExamples(){
         p1();
         p2();
         p3();
