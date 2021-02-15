@@ -1,0 +1,1146 @@
+Program: 1
+Execution stack
+(
+ref(int) a;
+ref(int) b;
+int v;
+new(a, 0);
+new(b, 0);
+writeHeap(a, 1);
+writeHeap(b, 2);
+v=(readHeap(a) < readHeap(b))?100:200
+print(v);
+v=((readHeap(b) - 2) > readHeap(a))?100:200
+print(v);
+)
+Symbols table
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+ref(int) a;
+ref(int) b;
+int v;
+new(a, 0);
+)
+(
+new(b, 0);
+writeHeap(a, 1);
+writeHeap(b, 2);
+v=(readHeap(a) < readHeap(b))?100:200
+print(v);
+v=((readHeap(b) - 2) > readHeap(a))?100:200
+print(v);
+)
+Symbols table
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+ref(int) a;
+ref(int) b;
+int v;
+new(a, 0);
+)
+(
+new(b, 0);
+writeHeap(a, 1);
+writeHeap(b, 2);
+v=(readHeap(a) < readHeap(b))?100:200
+print(v);
+v=((readHeap(b) - 2) > readHeap(a))?100:200
+print(v);
+)
+Symbols table
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+ref(int) a;
+ref(int) b;
+)
+(
+int v;
+new(a, 0);
+)
+(
+new(b, 0);
+writeHeap(a, 1);
+writeHeap(b, 2);
+v=(readHeap(a) < readHeap(b))?100:200
+print(v);
+v=((readHeap(b) - 2) > readHeap(a))?100:200
+print(v);
+)
+Symbols table
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+ref(int) a;
+ref(int) b;
+)
+(
+int v;
+new(a, 0);
+)
+(
+new(b, 0);
+writeHeap(a, 1);
+writeHeap(b, 2);
+v=(readHeap(a) < readHeap(b))?100:200
+print(v);
+v=((readHeap(b) - 2) > readHeap(a))?100:200
+print(v);
+)
+Symbols table
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+ref(int) a;
+)
+(
+ref(int) b;
+)
+(
+int v;
+new(a, 0);
+)
+(
+new(b, 0);
+writeHeap(a, 1);
+writeHeap(b, 2);
+v=(readHeap(a) < readHeap(b))?100:200
+print(v);
+v=((readHeap(b) - 2) > readHeap(a))?100:200
+print(v);
+)
+Symbols table
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+ref(int) a;
+)
+(
+ref(int) b;
+)
+(
+int v;
+new(a, 0);
+)
+(
+new(b, 0);
+writeHeap(a, 1);
+writeHeap(b, 2);
+v=(readHeap(a) < readHeap(b))?100:200
+print(v);
+v=((readHeap(b) - 2) > readHeap(a))?100:200
+print(v);
+)
+Symbols table
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+ref(int) b;
+)
+(
+int v;
+new(a, 0);
+)
+(
+new(b, 0);
+writeHeap(a, 1);
+writeHeap(b, 2);
+v=(readHeap(a) < readHeap(b))?100:200
+print(v);
+v=((readHeap(b) - 2) > readHeap(a))?100:200
+print(v);
+)
+Symbols table
+a -> (0, int)
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+ref(int) b;
+)
+(
+int v;
+new(a, 0);
+)
+(
+new(b, 0);
+writeHeap(a, 1);
+writeHeap(b, 2);
+v=(readHeap(a) < readHeap(b))?100:200
+print(v);
+v=((readHeap(b) - 2) > readHeap(a))?100:200
+print(v);
+)
+Symbols table
+a -> (0, int)
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+int v;
+new(a, 0);
+)
+(
+new(b, 0);
+writeHeap(a, 1);
+writeHeap(b, 2);
+v=(readHeap(a) < readHeap(b))?100:200
+print(v);
+v=((readHeap(b) - 2) > readHeap(a))?100:200
+print(v);
+)
+Symbols table
+a -> (0, int)
+b -> (0, int)
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+int v;
+new(a, 0);
+)
+(
+new(b, 0);
+writeHeap(a, 1);
+writeHeap(b, 2);
+v=(readHeap(a) < readHeap(b))?100:200
+print(v);
+v=((readHeap(b) - 2) > readHeap(a))?100:200
+print(v);
+)
+Symbols table
+a -> (0, int)
+b -> (0, int)
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+int v;
+)
+(
+new(a, 0);
+)
+(
+new(b, 0);
+writeHeap(a, 1);
+writeHeap(b, 2);
+v=(readHeap(a) < readHeap(b))?100:200
+print(v);
+v=((readHeap(b) - 2) > readHeap(a))?100:200
+print(v);
+)
+Symbols table
+a -> (0, int)
+b -> (0, int)
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+int v;
+)
+(
+new(a, 0);
+)
+(
+new(b, 0);
+writeHeap(a, 1);
+writeHeap(b, 2);
+v=(readHeap(a) < readHeap(b))?100:200
+print(v);
+v=((readHeap(b) - 2) > readHeap(a))?100:200
+print(v);
+)
+Symbols table
+a -> (0, int)
+b -> (0, int)
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+new(a, 0);
+)
+(
+new(b, 0);
+writeHeap(a, 1);
+writeHeap(b, 2);
+v=(readHeap(a) < readHeap(b))?100:200
+print(v);
+v=((readHeap(b) - 2) > readHeap(a))?100:200
+print(v);
+)
+Symbols table
+a -> (0, int)
+b -> (0, int)
+v -> 0
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+new(a, 0);
+)
+(
+new(b, 0);
+writeHeap(a, 1);
+writeHeap(b, 2);
+v=(readHeap(a) < readHeap(b))?100:200
+print(v);
+v=((readHeap(b) - 2) > readHeap(a))?100:200
+print(v);
+)
+Symbols table
+a -> (0, int)
+b -> (0, int)
+v -> 0
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+new(b, 0);
+writeHeap(a, 1);
+writeHeap(b, 2);
+v=(readHeap(a) < readHeap(b))?100:200
+print(v);
+v=((readHeap(b) - 2) > readHeap(a))?100:200
+print(v);
+)
+Symbols table
+a -> (1, int)
+b -> (0, int)
+v -> 0
+Out
+File table
+Heap
+1 -> 0
+
+
+
+Program: 1
+Execution stack
+(
+new(b, 0);
+writeHeap(a, 1);
+writeHeap(b, 2);
+v=(readHeap(a) < readHeap(b))?100:200
+print(v);
+v=((readHeap(b) - 2) > readHeap(a))?100:200
+print(v);
+)
+Symbols table
+a -> (1, int)
+b -> (0, int)
+v -> 0
+Out
+File table
+Heap
+1 -> 0
+
+
+
+Program: 1
+Execution stack
+(
+new(b, 0);
+)
+(
+writeHeap(a, 1);
+writeHeap(b, 2);
+v=(readHeap(a) < readHeap(b))?100:200
+print(v);
+v=((readHeap(b) - 2) > readHeap(a))?100:200
+print(v);
+)
+Symbols table
+a -> (1, int)
+b -> (0, int)
+v -> 0
+Out
+File table
+Heap
+1 -> 0
+
+
+
+Program: 1
+Execution stack
+(
+new(b, 0);
+)
+(
+writeHeap(a, 1);
+writeHeap(b, 2);
+v=(readHeap(a) < readHeap(b))?100:200
+print(v);
+v=((readHeap(b) - 2) > readHeap(a))?100:200
+print(v);
+)
+Symbols table
+a -> (1, int)
+b -> (0, int)
+v -> 0
+Out
+File table
+Heap
+1 -> 0
+
+
+
+Program: 1
+Execution stack
+(
+writeHeap(a, 1);
+writeHeap(b, 2);
+v=(readHeap(a) < readHeap(b))?100:200
+print(v);
+v=((readHeap(b) - 2) > readHeap(a))?100:200
+print(v);
+)
+Symbols table
+a -> (1, int)
+b -> (2, int)
+v -> 0
+Out
+File table
+Heap
+1 -> 0
+2 -> 0
+
+
+
+Program: 1
+Execution stack
+(
+writeHeap(a, 1);
+writeHeap(b, 2);
+v=(readHeap(a) < readHeap(b))?100:200
+print(v);
+v=((readHeap(b) - 2) > readHeap(a))?100:200
+print(v);
+)
+Symbols table
+a -> (1, int)
+b -> (2, int)
+v -> 0
+Out
+File table
+Heap
+1 -> 0
+2 -> 0
+
+
+
+Program: 1
+Execution stack
+(
+writeHeap(a, 1);
+writeHeap(b, 2);
+)
+(
+v=(readHeap(a) < readHeap(b))?100:200
+print(v);
+v=((readHeap(b) - 2) > readHeap(a))?100:200
+print(v);
+)
+Symbols table
+a -> (1, int)
+b -> (2, int)
+v -> 0
+Out
+File table
+Heap
+1 -> 0
+2 -> 0
+
+
+
+Program: 1
+Execution stack
+(
+writeHeap(a, 1);
+writeHeap(b, 2);
+)
+(
+v=(readHeap(a) < readHeap(b))?100:200
+print(v);
+v=((readHeap(b) - 2) > readHeap(a))?100:200
+print(v);
+)
+Symbols table
+a -> (1, int)
+b -> (2, int)
+v -> 0
+Out
+File table
+Heap
+1 -> 0
+2 -> 0
+
+
+
+Program: 1
+Execution stack
+(
+writeHeap(a, 1);
+)
+(
+writeHeap(b, 2);
+)
+(
+v=(readHeap(a) < readHeap(b))?100:200
+print(v);
+v=((readHeap(b) - 2) > readHeap(a))?100:200
+print(v);
+)
+Symbols table
+a -> (1, int)
+b -> (2, int)
+v -> 0
+Out
+File table
+Heap
+1 -> 0
+2 -> 0
+
+
+
+Program: 1
+Execution stack
+(
+writeHeap(a, 1);
+)
+(
+writeHeap(b, 2);
+)
+(
+v=(readHeap(a) < readHeap(b))?100:200
+print(v);
+v=((readHeap(b) - 2) > readHeap(a))?100:200
+print(v);
+)
+Symbols table
+a -> (1, int)
+b -> (2, int)
+v -> 0
+Out
+File table
+Heap
+1 -> 0
+2 -> 0
+
+
+
+Program: 1
+Execution stack
+(
+writeHeap(b, 2);
+)
+(
+v=(readHeap(a) < readHeap(b))?100:200
+print(v);
+v=((readHeap(b) - 2) > readHeap(a))?100:200
+print(v);
+)
+Symbols table
+a -> (1, int)
+b -> (2, int)
+v -> 0
+Out
+File table
+Heap
+1 -> 1
+2 -> 0
+
+
+
+Program: 1
+Execution stack
+(
+writeHeap(b, 2);
+)
+(
+v=(readHeap(a) < readHeap(b))?100:200
+print(v);
+v=((readHeap(b) - 2) > readHeap(a))?100:200
+print(v);
+)
+Symbols table
+a -> (1, int)
+b -> (2, int)
+v -> 0
+Out
+File table
+Heap
+1 -> 1
+2 -> 0
+
+
+
+Program: 1
+Execution stack
+(
+v=(readHeap(a) < readHeap(b))?100:200
+print(v);
+v=((readHeap(b) - 2) > readHeap(a))?100:200
+print(v);
+)
+Symbols table
+a -> (1, int)
+b -> (2, int)
+v -> 0
+Out
+File table
+Heap
+1 -> 1
+2 -> 2
+
+
+
+Program: 1
+Execution stack
+(
+v=(readHeap(a) < readHeap(b))?100:200
+print(v);
+v=((readHeap(b) - 2) > readHeap(a))?100:200
+print(v);
+)
+Symbols table
+a -> (1, int)
+b -> (2, int)
+v -> 0
+Out
+File table
+Heap
+1 -> 1
+2 -> 2
+
+
+
+Program: 1
+Execution stack
+(
+v=(readHeap(a) < readHeap(b))?100:200
+print(v);
+)
+(
+v=((readHeap(b) - 2) > readHeap(a))?100:200
+print(v);
+)
+Symbols table
+a -> (1, int)
+b -> (2, int)
+v -> 0
+Out
+File table
+Heap
+1 -> 1
+2 -> 2
+
+
+
+Program: 1
+Execution stack
+(
+v=(readHeap(a) < readHeap(b))?100:200
+print(v);
+)
+(
+v=((readHeap(b) - 2) > readHeap(a))?100:200
+print(v);
+)
+Symbols table
+a -> (1, int)
+b -> (2, int)
+v -> 0
+Out
+File table
+Heap
+1 -> 1
+2 -> 2
+
+
+
+Program: 1
+Execution stack
+(
+v=(readHeap(a) < readHeap(b))?100:200
+)
+(
+print(v);
+)
+(
+v=((readHeap(b) - 2) > readHeap(a))?100:200
+print(v);
+)
+Symbols table
+a -> (1, int)
+b -> (2, int)
+v -> 0
+Out
+File table
+Heap
+1 -> 1
+2 -> 2
+
+
+
+Program: 1
+Execution stack
+(
+v=(readHeap(a) < readHeap(b))?100:200
+)
+(
+print(v);
+)
+(
+v=((readHeap(b) - 2) > readHeap(a))?100:200
+print(v);
+)
+Symbols table
+a -> (1, int)
+b -> (2, int)
+v -> 0
+Out
+File table
+Heap
+1 -> 1
+2 -> 2
+
+
+
+Program: 1
+Execution stack
+(
+IF (readHeap(a) < readHeap(b)) THEN (v = 100;) ELSE (v = 200;));
+)
+(
+print(v);
+)
+(
+v=((readHeap(b) - 2) > readHeap(a))?100:200
+print(v);
+)
+Symbols table
+a -> (1, int)
+b -> (2, int)
+v -> 0
+Out
+File table
+Heap
+1 -> 1
+2 -> 2
+
+
+
+Program: 1
+Execution stack
+(
+IF (readHeap(a) < readHeap(b)) THEN (v = 100;) ELSE (v = 200;));
+)
+(
+print(v);
+)
+(
+v=((readHeap(b) - 2) > readHeap(a))?100:200
+print(v);
+)
+Symbols table
+a -> (1, int)
+b -> (2, int)
+v -> 0
+Out
+File table
+Heap
+1 -> 1
+2 -> 2
+
+
+
+Program: 1
+Execution stack
+(
+v = 100;
+)
+(
+print(v);
+)
+(
+v=((readHeap(b) - 2) > readHeap(a))?100:200
+print(v);
+)
+Symbols table
+a -> (1, int)
+b -> (2, int)
+v -> 0
+Out
+File table
+Heap
+1 -> 1
+2 -> 2
+
+
+
+Program: 1
+Execution stack
+(
+v = 100;
+)
+(
+print(v);
+)
+(
+v=((readHeap(b) - 2) > readHeap(a))?100:200
+print(v);
+)
+Symbols table
+a -> (1, int)
+b -> (2, int)
+v -> 0
+Out
+File table
+Heap
+1 -> 1
+2 -> 2
+
+
+
+Program: 1
+Execution stack
+(
+print(v);
+)
+(
+v=((readHeap(b) - 2) > readHeap(a))?100:200
+print(v);
+)
+Symbols table
+a -> (1, int)
+b -> (2, int)
+v -> 100
+Out
+File table
+Heap
+1 -> 1
+2 -> 2
+
+
+
+Program: 1
+Execution stack
+(
+print(v);
+)
+(
+v=((readHeap(b) - 2) > readHeap(a))?100:200
+print(v);
+)
+Symbols table
+a -> (1, int)
+b -> (2, int)
+v -> 100
+Out
+File table
+Heap
+1 -> 1
+2 -> 2
+
+
+
+Program: 1
+Execution stack
+(
+v=((readHeap(b) - 2) > readHeap(a))?100:200
+print(v);
+)
+Symbols table
+a -> (1, int)
+b -> (2, int)
+v -> 100
+Out
+100
+File table
+Heap
+1 -> 1
+2 -> 2
+
+
+
+Program: 1
+Execution stack
+(
+v=((readHeap(b) - 2) > readHeap(a))?100:200
+print(v);
+)
+Symbols table
+a -> (1, int)
+b -> (2, int)
+v -> 100
+Out
+100
+File table
+Heap
+1 -> 1
+2 -> 2
+
+
+
+Program: 1
+Execution stack
+(
+v=((readHeap(b) - 2) > readHeap(a))?100:200
+)
+(
+print(v);
+)
+Symbols table
+a -> (1, int)
+b -> (2, int)
+v -> 100
+Out
+100
+File table
+Heap
+1 -> 1
+2 -> 2
+
+
+
+Program: 1
+Execution stack
+(
+v=((readHeap(b) - 2) > readHeap(a))?100:200
+)
+(
+print(v);
+)
+Symbols table
+a -> (1, int)
+b -> (2, int)
+v -> 100
+Out
+100
+File table
+Heap
+1 -> 1
+2 -> 2
+
+
+
+Program: 1
+Execution stack
+(
+IF ((readHeap(b) - 2) > readHeap(a)) THEN (v = 100;) ELSE (v = 200;));
+)
+(
+print(v);
+)
+Symbols table
+a -> (1, int)
+b -> (2, int)
+v -> 100
+Out
+100
+File table
+Heap
+1 -> 1
+2 -> 2
+
+
+
+Program: 1
+Execution stack
+(
+IF ((readHeap(b) - 2) > readHeap(a)) THEN (v = 100;) ELSE (v = 200;));
+)
+(
+print(v);
+)
+Symbols table
+a -> (1, int)
+b -> (2, int)
+v -> 100
+Out
+100
+File table
+Heap
+1 -> 1
+2 -> 2
+
+
+
+Program: 1
+Execution stack
+(
+v = 200;
+)
+(
+print(v);
+)
+Symbols table
+a -> (1, int)
+b -> (2, int)
+v -> 100
+Out
+100
+File table
+Heap
+1 -> 1
+2 -> 2
+
+
+
+Program: 1
+Execution stack
+(
+v = 200;
+)
+(
+print(v);
+)
+Symbols table
+a -> (1, int)
+b -> (2, int)
+v -> 100
+Out
+100
+File table
+Heap
+1 -> 1
+2 -> 2
+
+
+
+Program: 1
+Execution stack
+(
+print(v);
+)
+Symbols table
+a -> (1, int)
+b -> (2, int)
+v -> 200
+Out
+100
+File table
+Heap
+1 -> 1
+2 -> 2
+
+
+
+Program: 1
+Execution stack
+(
+print(v);
+)
+Symbols table
+a -> (1, int)
+b -> (2, int)
+v -> 200
+Out
+100
+File table
+Heap
+1 -> 1
+2 -> 2
+
+
+
+Program: 1
+Execution stack
+Symbols table
+a -> (1, int)
+b -> (2, int)
+v -> 200
+Out
+100
+200
+File table
+Heap
+1 -> 1
+2 -> 2
+
+
+

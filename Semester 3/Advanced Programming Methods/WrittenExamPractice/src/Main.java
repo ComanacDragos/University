@@ -2,10 +2,14 @@ import java.util.*;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
+class NumarNatural{
+    int x;
+}
+
 public class Main {
+    static int x;
     public static void main(String[] args) {
-        //second();
-        third();
+        System.out.println(x);
     }
 
     static void first(){

@@ -1,0 +1,30 @@
+.root{
+    -fx-background-color: black;
+}
+
+.button{
+    -fx-text-fill: black;
+    -fx-background-color: rgb(128, 233, 210);
+}
+
+.button:hover{
+    -fx-background-color: rgb(0, 153, 120);
+    -fx-text-fill: black;
+}
+
+.label{
+    -fx-text-fill: rgb(128, 233, 210);
+}
+
+.list-view, .table-view{
+    -fx-background-color: black;
+    -fx-grid-lines-visible: true;
+    -fx-grid-lines-color: rgb(128, 233, 210);
+    -fx-border-color: rgb(128, 233, 210);
+}
+
+.list-cell, .table-cell, .column-header{
+    -fx-text-fill: rgb(128, 233, 210);
+    -fx-background-color: black;
+}
+

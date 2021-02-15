@@ -1,8 +1,9 @@
 package Third;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
-public class Amain {
+public class Amain{
     A method1(ArrayList<? extends A> list){
         if(list.isEmpty()) return null;
         else
