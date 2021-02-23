@@ -1,0 +1,25 @@
+candidate([H|_],H).
+candidate([_|T], R):-candidate(T,R).
+
+
+subsets(_,Col, SCol, Nrodd, Col):-SCol mod 2 =:=1,
+                                  Nrodd mod 2 =:=1.
+subsets(L,[H|T], Scol, Nrodd, R):-candidate(L,C),
+                                  C<H,
+                                  C mod 2 =:= 1,!,
+                                  Scol1 is Scol + C,
+                                  Nrodd1 is Nrodd + 1,
+                                  subsets(L,[C,H|T], Scol1, Nrodd1, R).
+
+subsets(L, [H|T], Scol, Nrodd, R):-candidate(L,C),
+                                   C<H,
+                                   Scol1 is Scol+C,
+                                   subsets(L, [C,H|T], Scol1, Nrodd, R).
+
+aux(L, C, R):-C mod 2 =:= 1,!,
+              subsets(L,[C], C, 1,R).
+aux(L,C,R):-subsets(L,[C],C,0,R).
+
+
+main(L,R):-candidate(L,C),!,
+           findall(X, aux(L,C,X),R).
