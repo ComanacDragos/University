@@ -1,7 +1,6 @@
-
 # import the pygame module, so you can use it
-import pickle ,pygame ,sys
-from time import sleep 
+import pickle, pygame, sys
+from time import sleep
 from pygame.locals import *
 from random import random, randint
 import numpy as np
@@ -105,6 +104,13 @@ class DMap():
             for j in range(self.__m):
                 self.surface[i][j] = -1
 
+    @property
+    def n(self):
+        return self.n
+
+    def m(self):
+        return self.m
+
     def markDetectedWalls(self, e, x, y):
         #   To DO
         # mark on this map the wals that you detect
@@ -164,28 +170,30 @@ class DMap():
         return imagine
 
 
-class Drone():
+class Drone:
     def __init__(self, x, y):
-        self.x = x
-        self.y = y
-        self.stack = [(x, y)]
-        self.visited = []
+        self.x = x  # 5
+        self.y = y  # 0
+        self.visited = {}
+        self.last = None
+        self.sleep_time = 0.5
+        self.strategy = self.least_visited_neighbors_strategy
 
     def move(self, detectedMap):
         pressed_keys = pygame.key.get_pressed()
         if self.x > 0:
             if pressed_keys[K_UP] and detectedMap.surface[self.x - 1][self.y] == 0:
-                self.x = self.x - 1
+                self.x -= 1
         if self.x < 19:
             if pressed_keys[K_DOWN] and detectedMap.surface[self.x + 1][self.y] == 0:
-                self.x = self.x + 1
+                self.x += 1
 
         if self.y > 0:
             if pressed_keys[K_LEFT] and detectedMap.surface[self.x][self.y - 1] == 0:
-                self.y = self.y - 1
+                self.y -= 1
         if self.y < 19:
             if pressed_keys[K_RIGHT] and detectedMap.surface[self.x][self.y + 1] == 0:
-                self.y = self.y + 1
+                self.y += 1
 
     def moveDSF(self, detectedMap):
         next_pos = []
@@ -203,27 +211,61 @@ class Drone():
             if detectedMap.surface[self.x][self.y + 1] == 0:
                 next_pos.append((self.x, self.y + 1))
 
-        """if next_pos in self.visited and next_pos != self.visited[-1]:
-            (i, j) = self.visited[-1]
+        if len(next_pos) == 1:
+            self.visit_node()
+            self.x, self.y = next_pos[0]
         else:
-            (i, j) = next_pos
-        print(next_pos)
-        """
-        if len(next_pos) == 1 and len(self.visited) > 0:
-            i, j = next_pos[0]
-            self.visited.append((i, j))
-        else:
-            next_pos = [x for x in next_pos if x not in self.visited]
+            filtered_pos = [p for p in next_pos if p not in self.visited]
 
-            if len(next_pos) == 0:
-                i, j = self.visited[-1]
+            if len(filtered_pos) == 0:
+                if self.last in next_pos:
+                    next_pos.remove(self.last)
+
+                self.visit_node()
+                self.x, self.y = self.strategy(next_pos)
             else:
-                i, j = next_pos[0]
-                self.visited.append((self.x, self.y))
+                self.visit_node()
+                self.x, self.y = self.strategy(filtered_pos)
 
-        #print(f"Prev: {self.x}, {self.y}  Next: {i}, {j}   \nVisited: {self.visited}\nStack: {self.stack}\n\n")
-        self.x, self.y = i, j
-        sleep(0.5)
+        sleep(self.sleep_time)
+
+    def visit_node(self):
+        self.last = (self.x, self.y)
+        if self.last in self.visited:
+            self.visited[self.last] += 1
+        else:
+            self.visited[self.last] = 1
+
+    def speed_up(self):
+        if self.sleep_time > 0.1:
+            self.sleep_time -= 0.1
+
+    def slow_down(self):
+        self.sleep_time += 0.1
+
+    def least_visited_neighbors_strategy(self, positions):
+        return min(positions, key=lambda x: self.visited[x] if x in self.visited else 0)
+
+    def least_visited_area_strategy(self, positions):
+        statistics = [0] * 4
+        for (x, y), freq in self.visited.items():
+            statistics[self.get_direction((x, y))] += freq
+
+        positions_stats = {pos: statistics[self.get_direction(pos)] for pos in positions}
+
+        return min(positions_stats.items(), key=lambda item: item[1])[0]
+
+    def get_direction(self, position):
+        x, y = position
+        if x < self.x:
+            return UP
+        elif x > self.x:
+            return DOWN
+        elif y < self.y:
+            return LEFT
+        else:
+            return RIGHT
+
 
 
 # define a main function
@@ -232,7 +274,7 @@ def main():
     e = Environment()
     e.loadEnvironment("test2.map")
     # print(str(e))
-    # e.randomMap()
+    #e.randomMap()
     # we create the map
     m = DMap()
 
@@ -267,7 +309,12 @@ def main():
             if event.type == pygame.QUIT:
                 # change the value to False, to exit the main loop
                 running = False
-            # if event.type == KEYDOWN:
+            if event.type == KEYDOWN:
+                if pygame.key.get_pressed()[K_LEFT]:
+                    d.slow_down()
+                if pygame.key.get_pressed()[K_RIGHT]:
+                    d.speed_up()
+
             # use this function instead of move
             # d.move(m)
         d.moveDSF(m)
