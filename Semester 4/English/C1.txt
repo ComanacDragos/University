@@ -1,0 +1,18 @@
+Banking&Business --> internet banking
+
+It cuts a lot of time on different payments such as bills. Also provides real time
+information about the bank account and a more secure environment for storing money
+
+
+Manufacturing
+
+3D printers help in creating a large variety of pieces from very specialized parts to 
+entire sysyems such as robots. Can also be used by home users or by industry users
+
+
+2. There are 2 cameras, with a well known distance between them. 
+The first camera detects the number plate of a car and the time it detects. Then it sends
+the information to the second camera which also records the time and number plates.
+
+So, for each number plate the second camera can deduce based on the distance and the 2
+recorded times the speed of the car, that is sent to the Police HQ

@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+    <appSettings>
+        <add key="Server" value="DESKTOP-E94DLUN\\SQLEXPRESS" />
+        <add key="Database" value="Libraries" />
+    </appSettings>
+</configuration>

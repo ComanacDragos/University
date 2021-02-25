@@ -1,0 +1,8 @@
+catalog.domain
+catalog.repository
+ro.ubb.catalog
+ro.ubb.catalog.domain
+ro.ubb.catalog.domain.validators
+ro.ubb.catalog.repository
+ro.ubb.catalog.service
+ro.ubb.catalog.ui
