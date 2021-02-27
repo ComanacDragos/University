@@ -18,7 +18,6 @@ namespace Lab1
 
             DataSet ds = new DataSet();
 
-
             SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM U", dbConn);
             SqlCommandBuilder cb = new SqlCommandBuilder(da);
 
@@ -30,18 +29,18 @@ namespace Lab1
             
             dbConn.Open();
             Console.WriteLine(command.ExecuteNonQuery());
-            
             dbConn.Close();
+
             ds.Clear();
             da.Update(ds, "U");
             da.Fill(ds, "U");
 
             foreach (DataRow dr in ds.Tables["U"].Rows)
             {
-                //Console.WriteLine($"{dr["id"]}. {dr["col1"]}​​");
-                int id = (int)dr["id"];
-                string col1 = (string)dr["col1"];
-                Console.WriteLine($"{id}. {col1}");
+                Console.WriteLine($"{dr["id"]}\t{dr["col1"]}​​");
+                //int id = (int)dr["id"];
+                //string col1 = (string)dr["col1"];
+                //Console.WriteLine($"{id}. {col1}");
             }
             
             DataRow drr = ds.Tables["U"].NewRow();
@@ -53,8 +52,9 @@ namespace Lab1
 
             Console.WriteLine("\n After first add");
             foreach (DataRow dr in ds.Tables["U"].Rows)
-                Console.WriteLine(dr["col1"].ToString());
-           
+                //Console.WriteLine(dr["col1"].ToString());
+                Console.WriteLine("{0}\t{1}",dr["id"], dr["col1"]);
+
         }
     }
 }

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Graph theory</title>
+</head>
+<body>
+    <head>
+        <svg width="300" height="200">
+            <polygon points="100,10 40,198 190,78 10,78 160,198"/>
+        </svg>
+    
+        <p>
+            <b>Graph theory presentation</b>
+        </p>
+        <hr>
+    </head>
+    <main>
+        <section>
+            <article>
+                <p>
+                    In mathematics, graph theory is the study of graphs, which are mathematical structures used to model pairwise relations between objects. 
+                    A graph in this context is made up of vertices (also called nodes or points) which are connected by edges (also called links or lines). 
+                    A distinction is made between:
+                </p>
+                    <ul> 
+                        <li>undirected graphs, where edges link two vertices symmetrically</li>
+                        <li>directed graphs, where edges link two vertices asymmetrically</li>
+                    </ul>
+            </article>
+            <article>
+                <p>
+                    See Graph (discrete mathematics) for more detailed definitions and for other variations in the types of graph that are commonly considered.
+                </p>
+                <p> 
+                    Graphs are one of the prime objects of study in discrete mathematics.
+                </p>
+            </article>
+        </section>
+        
+        <hr>
+
+        <section>
+            BFS
+            <article>
+                <video width="320" height="240" controls>
+                    <source src="BFS.mp4" type="video/mp4">
+                    Your browser does not supprt this
+                </video>
+                <a href="https://upload.wikimedia.org/wikipedia/commons/4/46/Animated_BFS.gif">Video reference</a>
+            </article>
+            <article>
+                <audio controls>
+                    <source src="How the Königsberg bridge problem changed mathematics - Dan Van der Vieren.mp3" type="audio/mpeg">
+                    Your browser does not support the audio tag.
+                </audio>
+                <a href="https://www.youtube.com/watch?v=nZwSo4vfw6c&ab_channel=TED-Ed">Audio reference</a>
+            </article>
+        </section>
+        
+       <hr>
+
+       <section>
+           Graph representaion
+           <article>
+                <figure>
+                    <img src="graph.png" width="300" height="200">
+                    <figcaption>Undirected graph<br><a href="https://en.wikipedia.org/wiki/Graph_theory">Source</a></figcaption>
+                </figure>
+           </article>
+           <br>
+           <article>
+               <div>
+                    Adjacency matrix
+                    <table border="1px solid black">
+                        <tr>
+                                <td></td>
+                                <td>1</td>
+                                <td>2</td>
+                                <td>3</td>
+                                <td>4</td>
+                                <td>5</td>
+                                <td>6</td>
+                        </tr>
+                        <tr>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>1</td>
+                                <td>0</td>
+                        </tr>
+                        <tr>
+                                <td>2</td>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>1</td>
+                                <td>0</td>
+                        </tr>
+                        <tr>
+                                <td>3</td>
+                                <td>0</td>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>0</td>
+                        </tr>
+                        <tr>
+                                <td>4</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>1</td>
+                                <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>0</td>
+                        </tr>
+                    </table>
+                    <aside>
+                        <a href="https://en.wikipedia.org/wiki/Adjacency_matrix">Source</a>
+                    </aside>
+               </div>
+               <br>
+               <div>
+                    Adjacency list
+                    <table border="1px solid black">
+                        <tr>    
+                        <td>Node</td>
+                        <td>Adjacency list</td>  
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>2, 5</td>
+                        </tr>
+                
+                        <tr>
+                            <td>2</td>
+                            <td>1, 3, 5</td>
+                            
+                        </tr>
+                
+                        <tr>
+                            <td>3</td>
+                            <td>2, 4</td>
+                        </tr>
+                
+                        <tr>
+                            <td>4</td>
+                            <td>3, 5</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>5</td>
+                            <td>1, 2, 4</td>
+                        </tr>
+
+                        <tr>
+                            <td>6</td>
+                            <td>4</td>
+                        </tr>
+                    </table>
+                    <aside>
+                        <a href="https://en.wikipedia.org/wiki/Adjacency_list">Source</a>
+                    </aside>
+               </div>
+           </article>
+        </section>
+    </main>
+    <footer>
+        <hr>
+        Comanac Dragos-Mihail group 922/2
+        <nav>
+            Links:
+            <a href="https://upload.wikimedia.org/wikipedia/commons/4/46/Animated_BFS.gif">BFS traversal</a>
+            <a href="https://www.youtube.com/watch?v=nZwSo4vfw6c&ab_channel=TED-Ed">Königsberg bridge problem</a>
+            <a href="https://en.wikipedia.org/wiki/Adjacency_list">Adjacency list</a>
+            <a href="https://en.wikipedia.org/wiki/Adjacency_matrix">Adjacency matrix</a>
+               
+        </nav>
+        <!--
+            Create a single HTML web page for a subject you like (e.g. personal home page, photo collection, movie stars, cars etc.).
+            You can NOT use any CSS or Javascript on your web page! Only basic HTML language. The web page should be HTML5 valid. 
+            You will have to use the following HTML tags in your web page: 
+            <img>,<a>,<table>,<br>,<hr>,<p>,<b>,<div>,<ul>, 
+            <li>,<section>,<article>,<footer>,<header>,<aside>,<nav>, 
+            <svg>,<audio>,<video>,<figure>,<figurecaption>,<main>.
+    
+            Also you should specify the type of document using <!Doctype>. 
+            The page must be at least one screen long and at most 2 screens long (using a resolution of 1024x768 pixels). 
+            The textual content of the page should be relevant to the chosen subject (not "lorem ipsum" text). 
+            <br/><br/> This single web page can be edited using any editor you want and can be presented on any browser you prefer.
+
+            VIDEO REF: https://upload.wikimedia.org/wikipedia/commons/4/46/Animated_BFS.gif
+            AUDIO REF https://www.youtube.com/watch?v=nZwSo4vfw6c&ab_channel=TED-Ed
+        -->
+    </footer>
+</body>
+</html>

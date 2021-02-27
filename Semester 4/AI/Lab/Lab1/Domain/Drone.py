@@ -1,29 +1,45 @@
 import pygame
 from pygame.locals import *
+from Domain.settings import *
 
-class Drone():
+
+class Drone:
     def __init__(self, x, y):
-        self.x = x
-        self.y = y
+        self._x = x  # 5
+        self._y = y  # 0
+        self._visited = {}
+        self._last = None
 
-    def move(self, detectedMap):
-        pressed_keys = pygame.key.get_pressed()
-        if self.x > 0:
-            if pressed_keys[K_UP] and detectedMap.surface[self.x - 1][self.y] == 0:
-                self.x -= 1
-        if self.x < 19:
-            if pressed_keys[K_DOWN] and detectedMap.surface[self.x + 1][self.y] == 0:
-                self.x += 1
+    @property
+    def position(self):
+        return self._x, self._y
 
-        if self.y > 0:
-            if pressed_keys[K_LEFT] and detectedMap.surface[self.x][self.y - 1] == 0:
-                self.y -= 1
-        if self.y < 19:
-            if pressed_keys[K_RIGHT] and detectedMap.surface[self.x][self.y + 1] == 0:
-                self.y += 1
+    @property
+    def visited(self):
+        return self._visited
 
-    def moveDSF(self, detectedMap):
-        pass
-        # TO DO!
-        # rewrite this function in such a way that you perform an automatic
-        # mapping with DFS
+    @property
+    def last(self):
+        return self._last
+
+    def move(self, position):
+        self.visit_node()
+        self._x, self._y = position
+
+    def visit_node(self):
+        self._last = (self._x, self._y)
+        if self.last in self.visited:
+            self.visited[self.last] += 1
+        else:
+            self.visited[self.last] = 1
+
+    def get_direction(self, position):
+        x, y = position
+        if x < self._x:
+            return UP
+        elif x > self._x:
+            return DOWN
+        elif y < self._y:
+            return LEFT
+        else:
+            return RIGHT
