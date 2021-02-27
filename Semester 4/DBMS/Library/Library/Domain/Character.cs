@@ -4,9 +4,18 @@ using System.Text;
 
 namespace Library.Domain
 {
-    class Character: Entity<int>
+    class Character: ChildEntity<int, int>
     {
-        public int TitleId { get; set; }
+        public int TitleId
+        { get
+            {
+                return ParentId;
+            }
+            set
+            {
+                ParentId = value;
+            }
+        }
         public string FullName { get; set; }
         public string CharacterRole { get; set; }
 

@@ -6,6 +6,6 @@ namespace Library.Exceptions
 {
     class MyException: ApplicationException
     {
-        MyException(string message) : base(message) { }
+        public MyException(string message) : base(message) { }
     }
 }

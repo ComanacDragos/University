@@ -11,14 +11,12 @@ namespace Library.Repository
     {
         public CharactersDBRepository(string dbServer, string db) : base(dbServer, db, "Characters") { }
       
-        protected override Character extractEntity(DataRow dataRow)
+        protected override Character ExtractEntity(DataRow dataRow)
         {
             return new Character((int)dataRow["CharacterId"], (int)dataRow["TitleId"], (string)dataRow["FullName"], (string)dataRow["CharacterRole"]);
         }
-        protected override DataRow createDataRow(Character entity)
+        protected override DataRow CreateDataRow(Character entity)
         {
-            DataSet dataSet = new DataSet();
-            SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT * FROM " + table, dbConnection);
             DataRow dataRow = dataSet.Tables[table].NewRow();
             dataRow["CharacterId"] = entity.Id;
             dataRow["TitleId"] = entity.TitleId;

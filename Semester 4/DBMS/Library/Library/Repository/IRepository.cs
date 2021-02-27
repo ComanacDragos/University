@@ -9,8 +9,8 @@ namespace Library.Repository
     {
         E FindOne(ID id);
         IEnumerable<E> FindAll();
-        E Add(E entity);
+        void Add(E entity);
         E Remove(ID id);
-        E Update(E entity);
+        void Update(E entity);
     }
 }
