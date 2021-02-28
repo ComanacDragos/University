@@ -1,5 +1,6 @@
 from Service.Service import *
 
+
 class UI:
     def __init__(self):
         self.service = Service()
@@ -28,11 +29,10 @@ class UI:
                     if pygame.key.get_pressed()[K_RIGHT]:
                         self.service.speed_up()
 
-            self.service.moveDSF()
+            self.service.moveDFS()
             self.service.markDetectableWalls()
 
             screen.blit(self.service.detectedMapImage, (400, 0))
             pygame.display.flip()
 
         pygame.quit()
-

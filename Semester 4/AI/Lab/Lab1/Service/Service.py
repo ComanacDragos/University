@@ -8,9 +8,9 @@ from random import randint
 class Service:
     def __init__(self):
         self._sleep_time = 0.5
-        self._strategy = self.least_visited_neighbors_strategy
+        self._strategy = self.stack_strategy
         self._environment = Environment()
-        # self.environment.randomMap()
+        #self._environment.randomMap()
 
         self._detectedMap = DMap()
 
@@ -40,7 +40,15 @@ class Service:
 
         return min(positions_stats.items(), key=lambda item: item[1])[0]
 
-    def moveDSF(self):
+    def stack_strategy(self, positions):
+        self._drone.stack += positions
+        pos = None
+        while pos not in self._drone.visited:
+            pass
+        return pos
+
+    """
+    def moveDFS(self):
         x, y = self._drone.position
         neighbors = [(x - 1, y), (x + 1, y), (x, y - 1), (x, y + 1)]
 
@@ -59,6 +67,24 @@ class Service:
                 self._drone.move(self._strategy(filtered_pos))
 
         sleep(self._sleep_time)
+    """
+
+    def moveDFS(self):
+        if len(self._drone.stack) != 0:
+            x, y = self._drone.stack.pop()
+            if (x, y) in self._drone.visited.keys() or self._detectedMap[x][y] == 1:
+                return
+
+            self._drone.move((x, y))
+
+            neighbors = [(x, y - 1), (x + 1, y),  (x, y + 1), (x - 1, y)]
+
+            next_pos = [(x, y) for x, y in neighbors if
+                        0 <= x < HEIGHT and 0 <= y < WIDTH and self._detectedMap[x][y] != 1]
+
+            self._drone.stack += next_pos
+
+            sleep(self._sleep_time)
 
     def saveEnvironment(self, numFile):
         with open(numFile, 'wb') as f:

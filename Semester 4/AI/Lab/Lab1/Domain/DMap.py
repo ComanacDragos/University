@@ -9,8 +9,6 @@ class DMap():
         self.surface.fill(-1)
 
     def markDetectedWalls(self, e, x, y):
-        #   To DO
-        # mark on this map the walls that you detect
         walls = e.readUDMSensors(x, y)
         i = x - 1
         if walls[UP] > 0:

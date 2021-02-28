@@ -4,7 +4,7 @@ from random import random
 import pickle, pygame
 
 
-class Environment():
+class Environment:
     def __init__(self):
         self.__n = HEIGHT
         self.__m = WIDTH
