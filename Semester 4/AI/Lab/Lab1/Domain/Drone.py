@@ -12,6 +12,7 @@ class Drone:
         self.stack = [(x, y)]
         self._path = []
         self.backtrack = False
+        self.decision_stack = []
 
     @property
     def path(self):
@@ -33,6 +34,10 @@ class Drone:
     def position(self):
         return self._x, self._y
 
+    @position.setter
+    def position(self, value):
+        self._x, self._y = value
+
     @property
     def visited(self):
         return self._visited
@@ -42,18 +47,19 @@ class Drone:
         return self._last
 
     def move(self, position):
-        if not self.backtrack:
+        if position is not None:
             self.visit_node()
             self._x, self._y = position
             self.path.append(position)
         else:
-            self._x, self._y = self.path.pop()
+            if len(self.path) != 0:
+                self._x, self._y = self.path.pop()
 
     def visit_node(self):
         if self.last is not None:
-            tx, ty = self._x - self.last[0], self._y - self.last[1]
+            dx, dy = self._x - self.last[0], self._y - self.last[1]
 
-            if tx not in [-1, 0, 1] or ty not in [-1, 0, 1]:
+            if (dx not in [-1, 0, 1] or dy not in [-1, 0, 1]) or (dx != 0 and dy != 0):
                 print("Teleportation!! from: " + str(self.last) + " to: " + str((self._x, self._y)))
 
         self._last = (self._x, self._y)

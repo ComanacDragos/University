@@ -10,7 +10,7 @@ class Service:
         self._sleep_time = 0.5
         self._strategy = self.stack_strategy
         self._environment = Environment()
-        #self._environment.randomMap()
+        # self._environment.randomMap()
 
         self._detectedMap = DMap()
 
@@ -18,7 +18,9 @@ class Service:
         while self._environment[x][y] != 0:
             x, y = randint(0, 19), randint(0, 19)
 
-        self._drone = Drone(x, y)
+        self._drone = Drone(x, y)  # 8, 17 -- 2, 18
+        self.initial_pos = (x, y)
+        print("Initial position: " + str(x) + ", " + str(y))
 
     def speed_up(self):
         if self._sleep_time > 0.1:
@@ -71,20 +73,37 @@ class Service:
 
     def moveDFS(self):
         if len(self._drone.stack) != 0:
-            x, y = self._drone.stack.pop()
-            if (x, y) in self._drone.visited.keys() or self._detectedMap[x][y] == 1:
-                return
+            if not self._drone.backtrack:
+                x, y = self._drone.stack.pop()
 
-            self._drone.move((x, y))
+                if (x, y) not in self.neighbors(*self._drone.position) and (x, y) != self._drone.position:
+                    print(f"Teleportation from: {self._drone.position} to {(x, y)}")
 
-            neighbors = [(x, y - 1), (x + 1, y),  (x, y + 1), (x - 1, y)]
+                self._drone.path.append((x, y))
+                self._drone.visited[(x, y)] = True
+                self._drone.position = (x, y)
+                self.markDetectableWalls()
 
-            next_pos = [(x, y) for x, y in neighbors if
-                        0 <= x < HEIGHT and 0 <= y < WIDTH and self._detectedMap[x][y] != 1]
+                next_pos = [(_x, _y) for _x, _y in self.neighbors(x, y) if
+                            0 <= _x < HEIGHT and 0 <= _y < WIDTH and
+                            self._detectedMap[_x][_y] != 1 and
+                            (_x, _y) not in self._drone.visited]
 
-            self._drone.stack += next_pos
+                if len(next_pos) == 0:
+                    self._drone.path.pop()
+                    if len(self._drone.path) == 0:
+                        self._drone.stack = []
+                        print(self._drone.position)
+                        return
+                    self._drone.stack.append(self._drone.path.pop())
+                else:
+                    self._drone.stack += next_pos
 
             sleep(self._sleep_time)
+
+    @staticmethod
+    def neighbors(x, y):
+        return [(x, y - 1), (x + 1, y), (x, y + 1), (x - 1, y)]
 
     def saveEnvironment(self, numFile):
         with open(numFile, 'wb') as f:

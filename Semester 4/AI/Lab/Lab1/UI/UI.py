@@ -30,7 +30,6 @@ class UI:
                         self.service.speed_up()
 
             self.service.moveDFS()
-            self.service.markDetectableWalls()
 
             screen.blit(self.service.detectedMapImage, (400, 0))
             pygame.display.flip()
