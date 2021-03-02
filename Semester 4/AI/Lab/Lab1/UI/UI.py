@@ -4,7 +4,7 @@ from Service.Service import *
 class UI:
     def __init__(self):
         self.service = Service()
-        self.service.loadEnvironment("Resources/test2.map")
+        # self.service.loadEnvironment("Resources/test2.map")
 
     def run(self):
         pygame.init()

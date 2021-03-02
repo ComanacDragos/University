@@ -1,7 +1,7 @@
 from Domain.Environment import *
 
 
-class DMap():
+class DMap:
     def __init__(self):
         self.__n = HEIGHT
         self.__m = WIDTH

@@ -5,14 +5,12 @@ from Domain.settings import *
 
 class Drone:
     def __init__(self, x, y):
-        self._x = x  # 5
-        self._y = y  # 0
+        self._x = x
+        self._y = y
         self._visited = {}
         self._last = None
         self.stack = [(x, y)]
         self._path = []
-        self.backtrack = False
-        self.decision_stack = []
 
     @property
     def path(self):
