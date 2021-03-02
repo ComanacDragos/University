@@ -14,20 +14,7 @@ namespace Libraries
 {
     public partial class Libraries : Form
     {
-        private OneToManyService<int, Title, int, Character> _MyService;
-        public OneToManyService<int, Title, int, Character> MyService { 
-            get
-            {
-                return _MyService;
-            }
-            set
-            {
-                _MyService = value;
-                titlesTable.DataSource = MyService.getParentTable();
-                titlesTable.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                titlesTable.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            }
-        }
+        public OneToManyService<int, Title, int, Character> MyService { get; set; }
 
         public Libraries()
         {
@@ -36,7 +23,9 @@ namespace Libraries
 
         private void Libraries_Load(object sender, EventArgs e)
         {
-
+            titlesTable.DataSource = MyService.getParentTable();
+            titlesTable.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            titlesTable.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
         private void addCharacterHandle(object sender, EventArgs e)
