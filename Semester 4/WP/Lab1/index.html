@@ -1,22 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Graph theory</title>
 </head>
 <body>
-    <head>
+    <header>
         <svg width="300" height="200">
             <polygon points="100,10 40,198 190,78 10,78 160,198"/>
         </svg>
     
-        <p>
+        <h1>
             <b>Graph theory presentation</b>
-        </p>
+        </h1>
         <hr>
-    </head>
+    </header>
     <main>
         <section>
+            <h2>Introduction</h2>
             <article>
+                <h3>Origin</h3>
                 <p>
                     In mathematics, graph theory is the study of graphs, which are mathematical structures used to model pairwise relations between objects. 
                     A graph in this context is made up of vertices (also called nodes or points) which are connected by edges (also called links or lines). 
@@ -28,6 +31,7 @@
                     </ul>
             </article>
             <article>
+                <h3>Other</h3>
                 <p>
                     See Graph (discrete mathematics) for more detailed definitions and for other variations in the types of graph that are commonly considered.
                 </p>
@@ -40,8 +44,9 @@
         <hr>
 
         <section>
-            BFS
+            <h2>BFS</h2>
             <article>
+                <h3>Traversal</h3>
                 <video width="320" height="240" controls>
                     <source src="BFS.mp4" type="video/mp4">
                     Your browser does not supprt this
@@ -49,8 +54,9 @@
                 <a href="https://upload.wikimedia.org/wikipedia/commons/4/46/Animated_BFS.gif">Video reference</a>
             </article>
             <article>
+                <h3>Königsberg bridge problem</h3>
                 <audio controls>
-                    <source src="How the Königsberg bridge problem changed mathematics - Dan Van der Vieren.mp3" type="audio/mpeg">
+                    <source src="How_the_Königsberg_bridge_problem_changed_mathematics-Dan_Van_der_Vieren.mp3" type="audio/mpeg">
                     Your browser does not support the audio tag.
                 </audio>
                 <a href="https://www.youtube.com/watch?v=nZwSo4vfw6c&ab_channel=TED-Ed">Audio reference</a>
@@ -60,8 +66,10 @@
        <hr>
 
        <section>
-           Graph representaion
+           <h2>Graph representaion</h2>
+
            <article>
+               <h3>Graphic representaion</h3>
                 <figure>
                     <img src="graph.png" width="300" height="200">
                     <figcaption>Undirected graph<br><a href="https://en.wikipedia.org/wiki/Graph_theory">Source</a></figcaption>
@@ -69,9 +77,10 @@
            </article>
            <br>
            <article>
+               <h3>Internal representaion</h3>
                <div>
                     Adjacency matrix
-                    <table border="1px solid black">
+                    <table>
                         <tr>
                                 <td></td>
                                 <td>1</td>
@@ -143,7 +152,7 @@
                <br>
                <div>
                     Adjacency list
-                    <table border="1px solid black">
+                    <table>
                         <tr>    
                         <td>Node</td>
                         <td>Adjacency list</td>  

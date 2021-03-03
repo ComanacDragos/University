@@ -57,7 +57,15 @@ namespace Libraries.Repository
             dataSet.Tables[table].Rows.Add(CreateDataRow(entity));
 
             builder.GetInsertCommand();
-            dataAdapter.Update(dataSet, table);
+            try
+            {
+                dataAdapter.Update(dataSet, table);
+            }
+            catch (SqlException exc)
+            {
+                throw new MyException(exc.Message);
+            }
+            
         }
         public E Remove(ID id)
         {
@@ -75,7 +83,14 @@ namespace Libraries.Repository
             dataRow.Delete();
 
             builder.GetDeleteCommand();
-            dataAdapter.Update(dataSet, table);
+            try
+            {
+                dataAdapter.Update(dataSet, table);
+            }
+            catch (SqlException exc)
+            {
+                throw new MyException(exc.Message);
+            }
             return entity;
         }
 
@@ -94,7 +109,14 @@ namespace Libraries.Repository
             dataRow.ItemArray = CreateDataRow(entity).ItemArray;
 
             builder.GetUpdateCommand();
-            dataAdapter.Update(dataSet, table);
+            try
+            {
+                dataAdapter.Update(dataSet, table);
+            }
+            catch (SqlException exc)
+            {
+                throw new MyException(exc.Message);
+            }
         }
 
         protected abstract E ExtractEntity(DataRow dataRow);

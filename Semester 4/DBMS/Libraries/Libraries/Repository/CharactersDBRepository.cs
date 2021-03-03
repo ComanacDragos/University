@@ -13,7 +13,7 @@ namespace Libraries.Repository
       
         protected override Character ExtractEntity(DataRow dataRow)
         {
-            return new Character((int)dataRow["CharacterId"], (int)dataRow["TitleId"], (string)dataRow["FullName"], (string)dataRow["CharacterRole"]);
+            return new Character((int)dataRow["CharacterId"], (int)dataRow["TitleId"], (string)dataRow["FullName"], Character.StringToRole((string)dataRow["CharacterRole"]));
         }
         protected override DataRow CreateDataRow(Character entity)
         {

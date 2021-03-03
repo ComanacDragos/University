@@ -53,5 +53,10 @@ namespace Libraries.Service
         {
             return parentRepository.getTable();
         }
+
+        public DataTable getChildTable()
+        {
+            return childRepository.getTable();
+        }
     }
 }
