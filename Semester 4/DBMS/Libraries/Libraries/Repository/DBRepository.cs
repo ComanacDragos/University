@@ -30,13 +30,13 @@ namespace Libraries.Repository
             dataAdapter.Fill(dataSet, table);
         }
 
-        public DataTable getTable()
+        public virtual DataTable getTable()
         {
             SetupData();
             return dataSet.Tables[table];
         }
 
-        public IEnumerable<E> FindAll()
+        public virtual IEnumerable<E> FindAll()
         {
             List<E> entities = new List<E>();
             SetupData();
@@ -44,12 +44,12 @@ namespace Libraries.Repository
             return from dataRow in dataSet.Tables[table].AsEnumerable() select ExtractEntity(dataRow);
         }
 
-        public E FindOne(ID id)
+        public virtual E FindOne(ID id)
         {
             SetupData();
             return (from dataRow in dataSet.Tables[table].AsEnumerable() where dataRow[0].Equals(id) select ExtractEntity(dataRow)).First();
         }
-        public void Add(E entity)
+        public virtual void Add(E entity)
         {
             SetupData();
             SqlCommandBuilder builder = new SqlCommandBuilder(dataAdapter);
@@ -67,7 +67,7 @@ namespace Libraries.Repository
             }
             
         }
-        public E Remove(ID id)
+        public virtual E Remove(ID id)
         {
             SetupData();
             SqlCommandBuilder builder = new SqlCommandBuilder(dataAdapter);
@@ -94,7 +94,7 @@ namespace Libraries.Repository
             return entity;
         }
 
-        public void Update(E entity)
+        public virtual void Update(E entity)
         {
             SetupData();
             SqlCommandBuilder builder = new SqlCommandBuilder(dataAdapter);

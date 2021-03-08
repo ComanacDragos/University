@@ -10,12 +10,14 @@ class Service:
     def __init__(self):
         self._map = Map()
         self.loadMap("Resources/test1.map")
+        # self._map.randomMap()
 
         position = randint(0, HEIGHT - 1), randint(0, WIDTH - 1)
         while self._map[position] != 0:
             position = randint(0, HEIGHT - 1), randint(0, WIDTH - 1)
 
         self._drone = Drone(position)
+        self.printFlag = True
 
     def saveMap(self, numFile):
         with open(numFile, 'wb') as f:
@@ -31,22 +33,42 @@ class Service:
         return self._map.image()
 
     def mapWithDrone(self):
-        drona = pygame.image.load("Resources/drona.png")
+        drone = pygame.image.load("Resources/drona.png")
         image = self._map.image()
-        image.blit(drona, (self._drone.position[1] * SQUARE_HEIGHT, self._drone.position[0] * SQUARE_WIDTH))
-
+        image.blit(drone, (self._drone.position[1] * SQUARE_HEIGHT, self._drone.position[0] * SQUARE_WIDTH))
         return image
 
-    def mapWithPath(self):
-        mark = pygame.Surface((SQUARE_HEIGHT, SQUARE_WIDTH))
-        mark.fill(GREEN)
+    def mapWithPath(self, finalPosition):
+        markCommon = pygame.Surface((SQUARE_HEIGHT, SQUARE_WIDTH))
+        markAStar = pygame.Surface((SQUARE_HEIGHT, SQUARE_WIDTH))
+        markGreedy = pygame.Surface((SQUARE_HEIGHT, SQUARE_WIDTH))
+
+        markCommon.fill(GREEN)
+        markAStar.fill(YELLOW)
+        markGreedy.fill(RED)
+
         image = self._map.image()
-        for move in self.path():
+        aStarPath = self.path(finalPosition, self.searchAStar)
+        greedyPath = self.path(finalPosition, self.searchGreedy)
+
+        for move in aStarPath:
+            if move in greedyPath:
+                mark = markCommon
+            else:
+                mark = markAStar
             image.blit(mark, (move[1] * SQUARE_HEIGHT, move[0] * SQUARE_WIDTH))
+
+        for move in [position for position in greedyPath if position not in aStarPath]:
+            image.blit(markGreedy, (move[1] * SQUARE_HEIGHT, move[0] * SQUARE_WIDTH))
+
+        drone = pygame.image.load("Resources/drona.png")
+        image.blit(drone, (self._drone.position[1] * SQUARE_HEIGHT, self._drone.position[0] * SQUARE_WIDTH))
         return image
 
-    def path(self):
-        return self.searchGreedy((5, 7), (6, 12))
+    def path(self, finalPosition, strategy):
+        if self._map[finalPosition] == WALL:
+            return []
+        return strategy(self._drone.position, finalPosition)
 
     def bestFirstSearch(self, initialPos, finalPos, costFunction):
         found = False
@@ -58,9 +80,11 @@ class Service:
         while not toVisit.empty() and not found:
             if toVisit.empty():
                 return False  # ??
-            _, node = toVisit.get()
-            visited.add(node)
+            _, node = toVisit.get_nowait()
 
+            if node in visited:
+                continue
+            visited.add(node)
             if node == finalPos:
                 found = True
             else:
@@ -71,16 +95,14 @@ class Service:
         return predecessors
 
     def searchAStar(self, initialPos, finalPos):
-        # TO DO
-        # implement the search function and put it in controller
-        # returns a list of moves as a list of pairs [x,y]
-
-        pass
+        return self.process_predecessors(
+            self.bestFirstSearch(initialPos, finalPos,
+                                 lambda position: self.euclidean_distance(initialPos, position) +
+                                                  self.euclidean_distance(position, finalPos)),
+            finalPos
+        )
 
     def searchGreedy(self, initialPos, finalPos):
-        # TO DO
-        # implement the search function and put it in controller
-        # returns a list of moves as a list of pairs [x,y]
         return self.process_predecessors(
             self.bestFirstSearch(initialPos, finalPos,
                                  lambda position: self.euclidean_distance(position, finalPos)),
@@ -94,10 +116,13 @@ class Service:
     @staticmethod
     def neighbors(position):
         x, y = position
-        return [(x, y - 1), (x + 1, y), (x, y + 1), (x - 1, y)]
+        return [(x, y) for x, y in [(x, y - 1), (x + 1, y), (x, y + 1), (x - 1, y)]
+                if 0 <= x < HEIGHT and 0 <= y < WIDTH]
 
     @staticmethod
     def process_predecessors(predecessors, destination):
+        if destination not in predecessors:
+            return []
         current_node = destination
         path = []
         while current_node != -1:

@@ -26,6 +26,7 @@ namespace Libraries
 
             OneToManyService<int, Title, int, Character> service = new OneToManyService<int, Title, int, Character>(repoTitles, repoCharacters, new CharacterValidator());
             libraries.MyService = service;
+            Console.WriteLine("bla");
             Application.Run(libraries);
         }
     }

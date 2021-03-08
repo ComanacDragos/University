@@ -1,0 +1,54 @@
+.row{
+    margin-left: auto;
+    margin-right: auto;
+    width: 900px;
+    height: 300px;
+}
+
+.bg-banner_copy {
+    background: url('banner_copy.jpg');
+}
+
+.bg-logo {
+    background: url('logo.jpg');
+}
+
+.bg-bridges {
+    background: url('bridges.jpg');
+}
+
+.thumbnail{
+    float: left;
+    width: 300px;
+    height: 300px;
+}
+
+.large{
+    margin-left: auto;
+    margin-right: auto;
+    background: url('elephant.jpg');
+    background-size: cover;
+
+    height: 600px;
+    width: 600px;
+    margin-top: 50px;
+    margin-bottom: 50px;  
+}
+
+
+.bg-logo:hover {
+    transition: 0s;
+    transform: translate(300px, -500px) scale(2,2);
+}
+
+.bg-banner_copy:hover{
+    transition: 0s;
+    transform: translate(0px, -500px) scale(2,2);
+}
+
+.bg-bridges:hover{
+    transition: 0s;
+    transform: translate(-300px, -500px) scale(2,2);
+}
+
+

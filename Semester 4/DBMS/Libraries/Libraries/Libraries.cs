@@ -143,9 +143,9 @@ namespace Libraries
                 {
                     MessageBox.Show("Title id must be an integer", "Error");
                 }
-
-                charactersTable_CellContentClick(null, null);
                 RefreshCharactersTable();
+                charactersTable_CellContentClick(null, null);
+               
             }
         }
 

@@ -1,0 +1,16 @@
+1. T F F
+2. T T F
+
+
+
+car parking cameras
+-form 360 view around the car
+- provide an top down view of the car and the surrroundings
+comfortability
+
+auto pilot system
+- it adjust the speed of the car based on the car in front
+- can adjust the direction based on the road markinghs
+- it does not replace the driver, it comes more as an auxiliary tool
+secure
+ 
