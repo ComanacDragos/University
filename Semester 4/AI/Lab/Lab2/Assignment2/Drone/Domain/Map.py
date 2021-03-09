@@ -10,7 +10,7 @@ class Map:
         self.m = m
         self.surface = np.zeros((self.n, self.m))
 
-    def randomMap(self, fill=0.2):
+    def randomMap(self, fill=FILL_FACTOR):
         for i in range(self.n):
             for j in range(self.m):
                 if random() <= fill:
@@ -27,8 +27,8 @@ class Map:
     def image(self, colour=BLUE, background=WHITE):
         imagine = pygame.Surface((SQUARE_WIDTH * WIDTH, SQUARE_HEIGHT * HEIGHT))
         brick = pygame.Surface((SQUARE_WIDTH, SQUARE_HEIGHT))
-        brick.fill(BLUE)
-        imagine.fill(WHITE)
+        brick.fill(colour)
+        imagine.fill(background)
         for i in range(self.n):
             for j in range(self.m):
                 if self.surface[i][j] == 1:

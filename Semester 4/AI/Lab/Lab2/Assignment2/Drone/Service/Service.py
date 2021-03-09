@@ -4,6 +4,7 @@ from queue import PriorityQueue
 from random import randint
 import pickle
 import numpy as np
+import time
 
 
 class Service:
@@ -17,7 +18,10 @@ class Service:
             position = randint(0, HEIGHT - 1), randint(0, WIDTH - 1)
 
         self._drone = Drone(position)
-        self.printFlag = True
+        self.positions = (None, None)
+        self._execution_times = {}
+
+        self.showTabu = False
 
     def saveMap(self, numFile):
         with open(numFile, 'wb') as f:
@@ -33,7 +37,7 @@ class Service:
         return self._map.image()
 
     def mapWithDrone(self):
-        drone = pygame.image.load("Resources/drona.png")
+        drone = pygame.transform.scale(pygame.image.load("Resources/drona.png"), (SQUARE_HEIGHT, SQUARE_WIDTH))
         image = self._map.image()
         image.blit(drone, (self._drone.position[1] * SQUARE_HEIGHT, self._drone.position[0] * SQUARE_WIDTH))
         return image
@@ -61,8 +65,19 @@ class Service:
         for move in [position for position in greedyPath if position not in aStarPath]:
             image.blit(markGreedy, (move[1] * SQUARE_HEIGHT, move[0] * SQUARE_WIDTH))
 
-        drone = pygame.image.load("Resources/drona.png")
+        if self.showTabu:
+            markTabu = pygame.Surface((SQUARE_HEIGHT, SQUARE_WIDTH))
+            markTabu.fill(PURPLE)
+            for move in self.path(finalPosition, self.searchTabu):
+                image.blit(markTabu, (move[1] * SQUARE_HEIGHT, move[0] * SQUARE_WIDTH))
+
+        drone = pygame.transform.scale(pygame.image.load("Resources/drona.png"), (SQUARE_HEIGHT, SQUARE_WIDTH))
         image.blit(drone, (self._drone.position[1] * SQUARE_HEIGHT, self._drone.position[0] * SQUARE_WIDTH))
+
+        if (self._drone.position, finalPosition) != self.positions:
+            self.positions = (self._drone.position, finalPosition)
+        else:
+            self._execution_times = {}
         return image
 
     def path(self, finalPosition, strategy):
@@ -95,23 +110,61 @@ class Service:
         return predecessors
 
     def searchAStar(self, initialPos, finalPos):
-        return self.process_predecessors(
+        start = time.time()
+        path = self.processPredecessors(
             self.bestFirstSearch(initialPos, finalPos,
-                                 lambda position: self.euclidean_distance(initialPos, position) +
-                                                  self.euclidean_distance(position, finalPos)),
+                                 lambda position: self.euclideanDistance(initialPos, position) +
+                                                  self.euclideanDistance(position, finalPos)),
             finalPos
         )
+        self._execution_times["A*"] = (time.time() - start, len(path))
+        return path
 
     def searchGreedy(self, initialPos, finalPos):
-        return self.process_predecessors(
+        start = time.time()
+        path = self.processPredecessors(
             self.bestFirstSearch(initialPos, finalPos,
-                                 lambda position: self.euclidean_distance(position, finalPos)),
+                                 lambda position: self.euclideanDistance(position, finalPos)),
             finalPos
         )
+        self._execution_times["Greedy"] = (time.time() - start, len(path))
+        return path
 
     def dummysearch(self, initialPos, finalPos):
         # example of some path in test1.map from [5,7] to [7,11]
         return [[5, 7], [5, 8], [5, 9], [5, 10], [5, 11], [6, 11], [6, 12]]
+
+    def searchTabu(self, initialPos, finalPos):
+        currentPosition = initialPos
+        path = []
+        visited = set()
+        visited.add(initialPos)
+
+        start = time.time()
+        while currentPosition != finalPos:
+            next_positions = [position for position in self.neighbors(currentPosition)
+                              if position not in visited and self._map[position] != WALL]
+            print(path, next_positions)
+            if len(next_positions) == 0:
+                if path:
+                    currentPosition = path.pop()
+                continue
+
+            cost = lambda position: self.euclideanDistance(position, finalPos)
+            candidate_position = min(next_positions, key=cost)
+            print(cost(candidate_position), cost(currentPosition))
+            if cost(candidate_position) < cost(currentPosition) or len(next_positions) == 1:
+                path.append(currentPosition)
+                currentPosition = candidate_position
+            visited.add(candidate_position)
+
+        path.append(finalPos)
+        self.executionTimes["Tabu"] = (time.time() - start, len(path))
+        return path
+
+    def setDronePosition(self, position):
+        if self._map[position] == EMPTY:
+            self._drone.position = position
 
     @staticmethod
     def neighbors(position):
@@ -120,7 +173,7 @@ class Service:
                 if 0 <= x < HEIGHT and 0 <= y < WIDTH]
 
     @staticmethod
-    def process_predecessors(predecessors, destination):
+    def processPredecessors(predecessors, destination):
         if destination not in predecessors:
             return []
         current_node = destination
@@ -131,5 +184,9 @@ class Service:
         return path
 
     @staticmethod
-    def euclidean_distance(leftPos, rightPos):
+    def euclideanDistance(leftPos, rightPos):
         return np.linalg.norm(np.array(leftPos) - np.array(rightPos))
+
+    @property
+    def executionTimes(self):
+        return self._execution_times
