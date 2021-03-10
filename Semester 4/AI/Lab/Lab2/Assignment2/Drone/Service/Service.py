@@ -2,6 +2,7 @@ from Drone.Domain.Drone import *
 from Drone.Domain.Map import *
 from queue import PriorityQueue
 from random import randint
+from random import choice
 import pickle
 import numpy as np
 import time
@@ -22,6 +23,10 @@ class Service:
         self._execution_times = {}
 
         self.showTabu = False
+        self.showSimulatedAnnealing = False
+        self.showGreedyAndAStar = False
+        self.computeSimulatedAnnealing = False
+        self.simulatedAnnealingPath = []
 
     def saveMap(self, numFile):
         with open(numFile, 'wb') as f:
@@ -55,15 +60,16 @@ class Service:
         aStarPath = self.path(finalPosition, self.searchAStar)
         greedyPath = self.path(finalPosition, self.searchGreedy)
 
-        for move in aStarPath:
-            if move in greedyPath:
-                mark = markCommon
-            else:
-                mark = markAStar
-            image.blit(mark, (move[1] * SQUARE_HEIGHT, move[0] * SQUARE_WIDTH))
+        if self.showGreedyAndAStar:
+            for move in aStarPath:
+                if move in greedyPath:
+                    mark = markCommon
+                else:
+                    mark = markAStar
+                image.blit(mark, (move[1] * SQUARE_HEIGHT, move[0] * SQUARE_WIDTH))
 
-        for move in [position for position in greedyPath if position not in aStarPath]:
-            image.blit(markGreedy, (move[1] * SQUARE_HEIGHT, move[0] * SQUARE_WIDTH))
+            for move in [position for position in greedyPath if position not in aStarPath]:
+                image.blit(markGreedy, (move[1] * SQUARE_HEIGHT, move[0] * SQUARE_WIDTH))
 
         if self.showTabu:
             markTabu = pygame.Surface((SQUARE_HEIGHT, SQUARE_WIDTH))
@@ -71,13 +77,24 @@ class Service:
             for move in self.path(finalPosition, self.searchTabu):
                 image.blit(markTabu, (move[1] * SQUARE_HEIGHT, move[0] * SQUARE_WIDTH))
 
+        if self.showSimulatedAnnealing and self.computeSimulatedAnnealing:
+            self.simulatedAnnealingPath = self.path(finalPosition, self.searchSimulatedAnnealing)
+            self.computeSimulatedAnnealing = False
+
+        if self.showSimulatedAnnealing:
+            markSimulated = pygame.Surface((SQUARE_HEIGHT, SQUARE_WIDTH))
+            markSimulated.fill(BRIGHT_BLUE)
+            for index, move in enumerate(self.simulatedAnnealingPath, start=50):
+                markSimulated.set_alpha(index)
+                image.blit(markSimulated, (move[1] * SQUARE_HEIGHT, move[0] * SQUARE_WIDTH))
+
         drone = pygame.transform.scale(pygame.image.load("Resources/drona.png"), (SQUARE_HEIGHT, SQUARE_WIDTH))
         image.blit(drone, (self._drone.position[1] * SQUARE_HEIGHT, self._drone.position[0] * SQUARE_WIDTH))
 
         if (self._drone.position, finalPosition) != self.positions:
             self.positions = (self._drone.position, finalPosition)
-        else:
-            self._execution_times = {}
+            self.computeSimulatedAnnealing = True
+
         return image
 
     def path(self, finalPosition, strategy):
@@ -144,23 +161,51 @@ class Service:
         while currentPosition != finalPos:
             next_positions = [position for position in self.neighbors(currentPosition)
                               if position not in visited and self._map[position] != WALL]
-            print(path, next_positions)
+
             if len(next_positions) == 0:
                 if path:
                     currentPosition = path.pop()
+                else:
+                    path = []
+                    break
                 continue
 
             cost = lambda position: self.euclideanDistance(position, finalPos)
             candidate_position = min(next_positions, key=cost)
-            print(cost(candidate_position), cost(currentPosition))
             if cost(candidate_position) < cost(currentPosition) or len(next_positions) == 1:
                 path.append(currentPosition)
                 currentPosition = candidate_position
             visited.add(candidate_position)
 
-        path.append(finalPos)
+        if path:
+            path.append(finalPos)
         self.executionTimes["Tabu"] = (time.time() - start, len(path))
         return path
+
+    def searchSimulatedAnnealing(self, initialPos, finalPos):
+        path = [initialPos]
+        k = 0
+        start = time.time()
+        while path[-1] != finalPos:
+            next_positions = [position for position in self.neighbors(path[-1])
+                              if self._map[position] != WALL]
+            candidate = choice(next_positions)
+            cost = lambda position: self.euclideanDistance(position, finalPos)
+            if cost(candidate) < cost(path[-1]):
+                path.append(candidate)
+                k += 1
+                if k == EARLY_STOP:
+                    path = []
+                    break
+            else:
+                if random() < KEEP_PROBABILITY:
+                    path.append(candidate)
+
+        if path:
+            path.append(finalPos)
+        self.executionTimes["SimulatedA"] = (time.time() - start, len(path))
+        return path
+
 
     def setDronePosition(self, position):
         if self._map[position] == EMPTY:

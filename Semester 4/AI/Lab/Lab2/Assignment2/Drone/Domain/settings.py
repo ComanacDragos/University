@@ -7,7 +7,7 @@ BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 YELLOW = (255, 255, 0)
 PURPLE = (255, 0, 255)
-
+BRIGHT_BLUE = (0, 255, 255)
 # define directions
 UP = 0
 DOWN = 2
@@ -24,3 +24,6 @@ WALL = 1
 EMPTY = 0
 
 FILL_FACTOR = 0.3
+
+KEEP_PROBABILITY = 0.5
+EARLY_STOP = 100
