@@ -1,0 +1,252 @@
+body{
+    margin: 0;
+}
+
+.arrow {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    padding: 3px;
+  }
+  
+  .right {
+    transform: rotate(-45deg);
+  }
+  
+  .left {
+    transform: rotate(135deg);
+  }
+  
+  .up {
+    transform: rotate(-135deg);
+  }
+  
+  .down {
+    transform: rotate(45deg);
+  }
+
+.navbar{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    column-gap: 0.5%;
+    margin-left: 10%;
+}
+
+div.navbar-item{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    column-gap: 3%;
+}
+
+.navbar-item img{
+    width: 15%;
+}
+
+.navbar-item .navbar-text{
+    font-size: 1.5em;
+}
+
+div.navbar-item{
+    width: 9%
+}
+
+#tazz, #eMAG{
+    width: 10em;
+    height: 5em;
+}
+
+#eMAG{
+    float: left;
+}
+
+form{
+    width: 35%;
+    border: 2px solid #69bafc;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+form button{
+    float: left;
+    width: 5%;
+    background: white;
+    border: none;
+    color: #69bafc;
+    font-size: 20px;
+}
+
+form button:focus{
+    outline: none;;
+}
+
+form input{
+    float:left;
+    width: 95%;
+    border: none;
+    font-size: 20px;
+}
+
+form input:focus{
+    outline: none;
+}
+
+#myAccount{
+    background-color: purple;
+    color: white;
+    border-radius: 50px;
+    font-size: 20px;
+    padding: 10px;
+}
+
+main{
+    background-color: #e9ebee;
+}
+
+.colored-navbar{
+    height: 45px;
+    background: linear-gradient(to right, rgb(255, 0, 0), rgb(49, 146, 236) 50%);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 1%;
+    font-size: 1.2rem;
+}
+
+.colored-navbar .navbar-text{
+    color: white;
+}
+
+#products-menu{
+    font-weight: bold;
+    margin-left: 10%;
+    background-color: white;
+    color: black;
+    padding: 5px 15px 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+     
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    column-gap: 10%;
+}
+
+.burger-menu{
+    float: left;
+    margin-right: 3px;
+}
+
+.burger-menu div{
+    width: 15px;
+    height: 3px;
+    background-color: black;
+    margin: 2px 0;
+}
+
+section{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#categories{
+    background-color: white;
+    width: 15%;
+    box-shadow: 0 2px 10px -2px rgb(0 0 0 / 15%);
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    row-gap: 15px;
+
+    font-size: 20px;
+    padding: 15px
+}
+
+#categories div i{
+    width: 7%;
+    height: 10%;
+}
+
+.row{
+    display: flex;
+    flex-direction: row;  
+}
+
+.row-alligned{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    column-gap: 2%;
+}
+
+#scroller{
+    width:85%; 
+    align-items: center;
+}
+
+#scroller .arrow{
+    border-color:rgb(0, 110, 255);
+}
+
+#scroller .arrow.left{
+    height: 10px;
+    width: 10px;
+    margin-left: 5%;
+}
+
+#scroller .arrow.right{
+    height: 10px;
+    width: 10px;
+}
+
+#scroller .row{
+    margin-left: 80%;
+    position:relative;
+    top: 40%;
+    width: 10%;
+    justify-content: center;
+    align-items: center;
+    column-gap: 10px;
+}
+
+.circle{    
+    background-color: #fff;
+    border: 3px solid #005596;
+    border-radius: 50%;
+    width: 0.8em;
+    height: 0.8em;
+}
+
+#options{
+    height: 100px;
+    margin-top: 50px;
+    background-color: white;
+    margin-left: 10%;
+
+    margin-right: none;
+    justify-content: left;
+}
+
+#options article{
+    width: 18%;
+    justify-content: left;
+}
+
+#options article img{
+    height: 4.5em;
+    width: 4.5em;
+    margin-left: 10%;
+}
+
+#options article span{
+    font-weight: bold;
+    font-size: 1.2em;
+}

@@ -1,0 +1,5 @@
+{
+  "noGen": 1000,
+  "popSize": 50,
+  "function": "modularityFitness"
+}
