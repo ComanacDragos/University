@@ -31,7 +31,8 @@ body{
     justify-content: left;
     align-items: center;
     column-gap: 0.5%;
-    margin-left: 10%;
+    margin-left: 10%; 
+    width: 80%; 
 }
 
 div.navbar-item{
@@ -43,7 +44,7 @@ div.navbar-item{
 }
 
 .navbar-item img{
-    width: 15%;
+    width: 20%;
 }
 
 .navbar-item .navbar-text{
@@ -51,16 +52,20 @@ div.navbar-item{
 }
 
 div.navbar-item{
-    width: 9%
+    width: 10%
 }
 
 #tazz, #eMAG{
     width: 10em;
-    height: 5em;
+    height: 5em; 
 }
 
 #eMAG{
     float: left;
+}
+
+#tazz{
+    justify-content: left;
 }
 
 form{
@@ -134,6 +139,9 @@ main{
     justify-content: center;
     align-items: center;
     column-gap: 10%;
+
+    box-shadow: 0px 15px 0px 0px rgb(255,255,255);
+    -webkit-box-shadow: 0px 15px 0px 0px rgb(255,255,255);
 }
 
 .burger-menu{
@@ -151,12 +159,12 @@ main{
 section{
     width: 80%;
     margin-left: auto;
-    margin-right: auto;
+    margin-right: auto; 
 }
 
 #categories{
     background-color: white;
-    width: 15%;
+    width: 20%;
     box-shadow: 0 2px 10px -2px rgb(0 0 0 / 15%);
     
     display: flex;
@@ -166,7 +174,7 @@ section{
     row-gap: 15px;
 
     font-size: 20px;
-    padding: 15px
+    padding: 15px;
 }
 
 #categories div i{
@@ -185,6 +193,11 @@ section{
     justify-content: center;
     align-items: center;
     column-gap: 2%;
+}
+
+.column{
+    display: flex;
+    flex-direction: column;
 }
 
 #scroller{
@@ -249,4 +262,75 @@ section{
 #options article span{
     font-weight: bold;
     font-size: 1.2em;
+}
+
+#cities{
+    width: 20%;
+    padding: 10px;
+    font-size: 1.1em;
+    color: #a9abad;
+    border-color: #a9abad;
+    justify-self: flex-end;
+    border-color: rgb(0, 174, 255);
+}
+
+.carrousel{
+    height: 200px;
+    column-gap: 0.5%;
+}
+
+.carrousel article{
+    width: 20%;
+    height: 85%;
+    background-color: #f5f7fa;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 5px;
+    border: 1px solid rgba(0,0,0,.1);
+}
+
+.carrousel img{
+    height: 80%;
+}
+
+.carrousel article span{
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.carrousel-button{
+    width: 42px;
+    height: 80px;
+    border-radius: 4px;
+    border: 1px solid rgba(0,0,0,.1);
+    position: relative;
+    display: flex;
+    background-color: #e9ebee;
+}
+
+.carrousel-button .arrow{
+    border-color: #1b7bca;
+    width: 5px;
+    height: 5px;
+    align-self: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.text-button{
+    margin-top: 50px;
+    color: white;
+    height: 50px;
+    background-color: rgb(255, 76, 5);
+    width: 15%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 1.3em;
+}
+
+footer{
+    background-color: #e9ebee;
+    height: 200px;
 }
