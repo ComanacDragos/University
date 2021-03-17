@@ -1,4 +1,4 @@
-from Drone.UI.UI import *
+from Drone.UI.GUI import *
 
 if __name__ == '__main__':
-    UI()
+    GUI()
