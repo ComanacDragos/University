@@ -12,8 +12,21 @@ namespace Libraries.Repository
     public abstract class DBRepository<ID, E> : IRepository<ID, E> where E : Entity<ID>
     {
         protected SqlConnection dbConnection;
-        protected string table;
-        protected DataSet dataSet;
+        public string Table { get; }
+
+        private DataSet dataSet;
+        public DataSet DataSet { 
+            get
+            {
+                return dataSet;
+            }
+            set
+            {
+                dataSet = value;
+                dataAdapter.Fill(dataSet, Table);
+            } 
+        }
+
         protected SqlDataAdapter dataAdapter;
         SqlCommandBuilder builder;
 
@@ -22,38 +35,32 @@ namespace Libraries.Repository
             dbConnection = new SqlConnection();
             dbConnection.ConnectionString = "Data Source = " + dbServer + ";" +
                 "Initial Catalog = " + db + "; Integrated Security = SSPI";
-            this.table = table;
+            this.Table = table;
 
-            dataSet = new DataSet();
+
             dataAdapter = new SqlDataAdapter("SELECT * FROM " + table, dbConnection);
+            DataSet = new DataSet();
             builder = new SqlCommandBuilder(dataAdapter);
-            dataAdapter.Fill(dataSet, table);
         }
-
-        public virtual DataTable getTable()
-        {
-            return dataSet.Tables[table];
-        }
-
         public virtual IEnumerable<E> FindAll()
         {
             List<E> entities = new List<E>();
         
-            return from dataRow in dataSet.Tables[table].AsEnumerable() select ExtractEntity(dataRow);
+            return from dataRow in DataSet.Tables[Table].AsEnumerable() select ExtractEntity(dataRow);
         }
 
         public virtual E FindOne(ID id)
         {
-            return (from dataRow in dataSet.Tables[table].AsEnumerable() where dataRow[0].Equals(id) select ExtractEntity(dataRow)).First();
+            return (from dataRow in DataSet.Tables[Table].AsEnumerable() where dataRow[0].Equals(id) select ExtractEntity(dataRow)).First();
         }
         public virtual void Add(E entity)
         {
-            dataSet.Tables[table].Rows.Add(CreateDataRow(entity));   
+            DataSet.Tables[Table].Rows.Add(CreateDataRow(entity));   
         }
         public virtual E Remove(ID id)
         {
             
-            DataRow dataRow = dataSet.Tables[table].Select(dataSet.Tables[table].Columns[0] + " = " + id).FirstOrDefault();
+            DataRow dataRow = DataSet.Tables[Table].Select(DataSet.Tables[Table].Columns[0] + " = " + id).FirstOrDefault();
 
             if(dataRow == null)
             {
@@ -67,7 +74,7 @@ namespace Libraries.Repository
 
         public virtual void Update(E entity)
         {
-            DataRow dataRow = dataSet.Tables[table].Select(dataSet.Tables[table].Columns[0] + " = " + entity.Id).FirstOrDefault();
+            DataRow dataRow = DataSet.Tables[Table].Select(DataSet.Tables[Table].Columns[0] + " = " + entity.Id).FirstOrDefault();
 
             if (dataRow == null)
             {
@@ -81,7 +88,7 @@ namespace Libraries.Repository
         {
             try
             {
-                dataAdapter.Update(dataSet, table);
+                dataAdapter.Update(DataSet, Table);
             }
             catch (SqlException exc)
             {

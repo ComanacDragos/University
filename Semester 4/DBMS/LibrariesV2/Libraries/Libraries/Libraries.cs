@@ -17,8 +17,6 @@ namespace Libraries
     {
         public OneToManyService<int, Title, int, Character> MyService { get; set; }
 
-        private string CharacterFilterString = "";
-
         public Libraries()
         {
             InitializeComponent();
@@ -26,11 +24,11 @@ namespace Libraries
 
         private void Libraries_Load(object sender, EventArgs e)
         {
-            titlesTable.DataSource = MyService.getParentTable();
+            titlesTable.DataSource = MyService.getParentDataSource();
             titlesTable.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             titlesTable.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
-            charactersTable.DataSource = MyService.getChildTable();
+            charactersTable.DataSource = MyService.getChildDataSource();
             charactersTable.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             charactersTable.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             charactersTable.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
@@ -55,7 +53,6 @@ namespace Libraries
                                             Character.StringToRole(roleComboBox.Text)
                                             )
                               );
-                RefreshCharactersTable();
             }
             catch (MyException exc)
             {
@@ -71,7 +68,6 @@ namespace Libraries
             try
             {
                 MyService.Remove(Int32.Parse(characterIdTextBox.Text));
-                RefreshCharactersTable();
             }
             catch (MyException exc)
             {
@@ -93,7 +89,6 @@ namespace Libraries
                                             Character.StringToRole(roleComboBox.Text)
                                             )
                               );
-                RefreshCharactersTable();
             }
             catch (MyException exc)
             {
@@ -103,16 +98,6 @@ namespace Libraries
             {
                 MessageBox.Show("Both TitleId and CharacterId must be integers", "Error");
             }
-        }
-
-        private void displayCharactersButton_Click(object sender, EventArgs e)
-        {
-            if (titleIdTextBox.Text.Length == 0)
-                return;
-         
-            CharacterFilterString = "";
-           
-            RefreshCharactersTable();
         }
 
         private void charactersTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -134,30 +119,15 @@ namespace Libraries
                 DataGridViewRow dataRow = titlesTable.SelectedRows[0];
                 titleIdTextBox.Text = dataRow.Cells[0].Value.ToString();
 
-                try
-                {
-                    Int32.Parse(titleIdTextBox.Text);
-                    CharacterFilterString = string.Format("TitleId = {0}", titleIdTextBox.Text);
-                }
-                catch (FormatException)
-                {
-                    MessageBox.Show("Title id must be an integer", "Error");
-                }
-                RefreshCharactersTable();
                 charactersTable_CellContentClick(null, null);
-               
             }
-        }
-
-        private void RefreshCharactersTable()
-        {
-            charactersTable.DataSource = MyService.getChildTable();
-            (charactersTable.DataSource as DataTable).DefaultView.RowFilter = CharacterFilterString;
         }
 
         private void updateDBButton_Click(object sender, EventArgs e)
         {
             MyService.updateChild();
+
+            MessageBox.Show("DB updated", "Success");
         }
     }
 }

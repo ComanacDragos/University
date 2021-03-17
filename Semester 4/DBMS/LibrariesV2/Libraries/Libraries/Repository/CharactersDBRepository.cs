@@ -17,7 +17,7 @@ namespace Libraries.Repository
         }
         protected override DataRow CreateDataRow(Character entity)
         {
-            DataRow dataRow = dataSet.Tables[table].NewRow();
+            DataRow dataRow = DataSet.Tables[Table].NewRow();
             dataRow["CharacterId"] = entity.Id;
             dataRow["TitleId"] = entity.TitleId;
             dataRow["FullName"] = entity.FullName;

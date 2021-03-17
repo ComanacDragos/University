@@ -6,30 +6,42 @@ using Libraries.Domain;
 using System.Linq;
 using Libraries.Domain.Validator;
 using System.Data;
+using System.Windows.Forms;
 
 namespace Libraries.Service
 {
     public class OneToManyService<ParentId, Parent, ChildId, Child> where Parent: Entity<ParentId> where Child: ChildEntity<ChildId, ParentId>
     {
-        IRepository<ParentId, Parent> parentRepository;
-        IRepository<ChildId, Child> childRepository;
+        DBRepository<ParentId, Parent> parentRepository;
+        DBRepository<ChildId, Child> childRepository;
         IValidator<Child> childValidator;
 
-        public OneToManyService(IRepository<ParentId, Parent> parentRepository, IRepository<ChildId, Child> childRepository, IValidator<Child> childValidator)
+        BindingSource bsParent, bsChild;
+
+        public OneToManyService(DBRepository<ParentId, Parent> parentRepository, DBRepository<ChildId, Child> childRepository, IValidator<Child> childValidator)
         {
             this.parentRepository = parentRepository;
             this.childRepository = childRepository;
             this.childValidator = childValidator;
-        }
 
-        public IEnumerable<Parent> GetParents()
-        {
-            return parentRepository.FindAll();
-        }
+            DataSet dataSet = new DataSet();
+            childRepository.DataSet = dataSet;
+            parentRepository.DataSet = dataSet;
 
-        public IEnumerable<Child> GetRecordsForParentId(ParentId parentId)
-        {
-            return from child in childRepository.FindAll() where child.ParentId.Equals(parentId) select child;
+            string parentPrimaryKey = parentRepository.Table.Remove(parentRepository.Table.Length - 1) + "Id";
+
+            DataRelation dataRelation = new DataRelation("FK_" + childRepository.Table + "_" + parentRepository.Table,
+                dataSet.Tables[parentRepository.Table].Columns[parentPrimaryKey],
+                dataSet.Tables[childRepository.Table].Columns[parentPrimaryKey]);
+            dataSet.Relations.Add(dataRelation);
+
+            bsParent = new BindingSource();
+            bsParent.DataSource = dataSet;
+            bsParent.DataMember = parentRepository.Table;
+
+            bsChild = new BindingSource();
+            bsChild.DataSource = bsParent;
+            bsChild.DataMember = "FK_" + childRepository.Table + "_" + parentRepository.Table;
         }
 
         public void Add(Child child)
@@ -49,14 +61,14 @@ namespace Libraries.Service
             childRepository.Update(child);
         }
 
-        public DataTable getParentTable()
+        public BindingSource getParentDataSource()
         {
-            return parentRepository.getTable();
+            return bsParent;
         }
 
-        public DataTable getChildTable()
+        public BindingSource getChildDataSource()
         {
-            return childRepository.getTable();
+            return bsChild;
         }
 
         public void updateChild()

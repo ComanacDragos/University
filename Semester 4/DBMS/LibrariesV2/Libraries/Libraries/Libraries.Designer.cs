@@ -44,7 +44,6 @@
             this.deleteCharacterButton = new System.Windows.Forms.Button();
             this.updateCharacterButton = new System.Windows.Forms.Button();
             this.roleComboBox = new System.Windows.Forms.ComboBox();
-            this.displayCharactersButton = new System.Windows.Forms.Button();
             this.updateDBButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.titlesTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.charactersTable)).BeginInit();
@@ -188,19 +187,9 @@
             this.roleComboBox.Size = new System.Drawing.Size(100, 21);
             this.roleComboBox.TabIndex = 16;
             // 
-            // displayCharactersButton
-            // 
-            this.displayCharactersButton.Location = new System.Drawing.Point(115, 378);
-            this.displayCharactersButton.Name = "displayCharactersButton";
-            this.displayCharactersButton.Size = new System.Drawing.Size(119, 23);
-            this.displayCharactersButton.TabIndex = 15;
-            this.displayCharactersButton.Text = "Display Characters";
-            this.displayCharactersButton.UseVisualStyleBackColor = true;
-            this.displayCharactersButton.Click += new System.EventHandler(this.displayCharactersButton_Click);
-            // 
             // updateDBButton
             // 
-            this.updateDBButton.Location = new System.Drawing.Point(115, 415);
+            this.updateDBButton.Location = new System.Drawing.Point(115, 376);
             this.updateDBButton.Name = "updateDBButton";
             this.updateDBButton.Size = new System.Drawing.Size(119, 23);
             this.updateDBButton.TabIndex = 17;
@@ -215,7 +204,6 @@
             this.ClientSize = new System.Drawing.Size(761, 450);
             this.Controls.Add(this.updateDBButton);
             this.Controls.Add(this.roleComboBox);
-            this.Controls.Add(this.displayCharactersButton);
             this.Controls.Add(this.updateCharacterButton);
             this.Controls.Add(this.deleteCharacterButton);
             this.Controls.Add(this.Characters);
@@ -258,7 +246,6 @@
         private System.Windows.Forms.Button deleteCharacterButton;
         private System.Windows.Forms.Button updateCharacterButton;
         private System.Windows.Forms.ComboBox roleComboBox;
-        private System.Windows.Forms.Button displayCharactersButton;
         private System.Windows.Forms.Button updateDBButton;
     }
 }

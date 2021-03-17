@@ -13,7 +13,6 @@ namespace Libraries.Repository
         void Add(E entity);
         E Remove(ID id);
         void Update(E entity);
-        DataTable getTable();
         void updateDataBase();
     }
 }
