@@ -25,6 +25,7 @@ class Service:
             position = self._runRepo.dronePosition
 
         self._drone = Drone(position)
+        self._log = False
 
     def steadyState(self, fitnessFunction):
         # args - list of parameters needed to run one iteration
@@ -33,16 +34,17 @@ class Service:
         # create offsprings by crossover of the parents
         # apply some mutations
         # selection of the survivors
-        (firstPos, firstParent), (secondPos, secondParent) = self._populationRepo.selection(2)
-        offspring = firstParent.crossover(secondParent)
-        offspring.mutate()
+        for _ in range(STEADY_STATE_NO_OFFSPRINGS):
+            (firstPos, firstParent), (secondPos, secondParent) = self._populationRepo.selection(2)
+            offspring = firstParent.crossover(secondParent)
+            offspring.mutate()
 
-        offspring.fitness = fitnessFunction(offspring.representation)
+            offspring.fitness = fitnessFunction(offspring.representation)
 
-        if (firstParent.fitness > secondParent.fitness) and (firstParent.fitness > offspring.fitness):
-            self._populationRepo[firstPos] = offspring
-        if (secondParent.fitness > firstParent.fitness) and (secondParent.fitness > offspring.fitness):
-            self._populationRepo[secondPos] = offspring
+            if (firstParent.fitness > secondParent.fitness) and (firstParent.fitness > offspring.fitness):
+                self._populationRepo[firstPos] = offspring
+            if (secondParent.fitness > firstParent.fitness) and (secondParent.fitness > offspring.fitness):
+                self._populationRepo[secondPos] = offspring
 
     def generational(self, fitnessFunction):
         newPopulation = []
@@ -71,9 +73,8 @@ class Service:
             if localBest.fitness < globalBest.fitness:
                 foundAt, globalBest = generation, localBest
             averages.append(self._populationRepo.fitnessAverage)
-            bests.append(localBest.fitness)
             print(generation)
-
+            bests.append(localBest.fitness)
         return foundAt, globalBest, averages, bests
 
     def solver(self):
@@ -85,7 +86,7 @@ class Service:
         mySeed = randint(1, 1000000)
         seed(mySeed)
         self._populationRepo = PopulationRepository()
-        self._populationRepo.evaluate(self.simpleFitness)
+        self._populationRepo.evaluate(self.functionFactory(FITNESS_FUNCTION))
 
         start = time.time()
         foundAt, bestChromosome, averages, bests = self.run(self.functionFactory(FITNESS_FUNCTION),
@@ -98,16 +99,35 @@ class Service:
             'found at generation': foundAt,
             'best fitness': bestChromosome.fitness,
             'execution time': executionTime,
-            'path length': len(path)
+            'path length': len(path),
+            'unique positions': len(set(path)),
+            'detected positions': len(detectedPositions)
         }
 
-        self._runRepo.saveRun(mySeed, bestChromosome.fitness)
+        if self._log:
+            self._runRepo.saveRun(mySeed, bestChromosome.fitness)
         return data, path, detectedPositions, averages, bests
 
     def simpleFitness(self, representation):
         path = self.interpretRepresentation(representation)
         error = len(representation) - len(path)
         return -(len(self.detectedPositions(path)) - error * ERROR_FACTOR)
+
+    def uniquePositionsFitness(self, representation):
+        path = self.interpretRepresentation(representation)
+        error = len(representation) - len(path)
+        return -(len(set(path)) - error * ERROR_FACTOR)
+
+    def variationFitness(self, representation):
+        count = -1
+        prev = None
+        for gene in representation:
+            if gene != prev:
+                count += 1
+                prev = gene
+
+        path = self.interpretRepresentation(representation)
+        return -(count * len(set(path))/len(representation))
 
     def detectedPositions(self, path):
         detectedPositions = set()
@@ -159,9 +179,16 @@ class Service:
             return self.steadyState
         elif functionString == "simpleFitness":
             return self.simpleFitness
+        elif functionString == "uniquePositionsFitness":
+            return self.uniquePositionsFitness
+        elif functionString == "variationFitness":
+            return self.variationFitness
         else:
             raise Exception("Bad function string")
 
     def computeStats(self):
         fitnesses = [data['fitness'] for data in self._runRepo.data]
         return np.average(fitnesses), np.std(fitnesses)
+
+    def setLog(self, value):
+        self._log = value
