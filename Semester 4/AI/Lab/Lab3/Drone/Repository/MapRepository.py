@@ -1,29 +1,14 @@
 from Drone.Domain.Map import *
-from Drone.Domain.settings import *
-from Drone.Domain.Drone import *
-from Drone.Domain.Individual import *
 import pickle
 
 
-class Repository:
-    def __init__(self, mapFile=None, populationSize=POPULATION_SIZE, individualSize=INDIVIDUAL_SIZE):
+class MapRepository:
+    def __init__(self, mapFile=None):
         self._map = Map()
         if mapFile is not None:
             self.loadMap(mapFile)
         else:
             self._map.randomMap()
-
-        self._population = [Individual(individualSize) for _ in range(populationSize)]
-
-    def evaluate(self, fitnessFunction):
-        for x in self._population:
-            x.fitness = fitnessFunction(x.representation)
-
-    def selection(self, k=0):
-        indexes = set()
-        while len(indexes) != k:
-            indexes.add(randint(0, len(self._population) - 1))
-        return [self._population[i] for i in indexes]
 
     def saveMap(self, numFile):
         with open(numFile, 'wb') as f:
@@ -39,7 +24,26 @@ class Repository:
     def mapImage(self):
         return self._map.image()
 
+    def _readDirection(self, direction, position):
+        dx, dy = direction
+        x, y = position
+        positions = []
+
+        x, y = x+dx, y+dy
+        while self.validPosition((x, y)) and self._map[(x, y)] == EMPTY:
+            positions.append((x, y))
+            x, y = x + dx, y + dy
+        return positions
+
+    def readSensors(self, position):
+        readings = [position]
+        for direction in DIRECTIONS:
+            readings += self._readDirection(direction, position)
+        return readings
+
+    @staticmethod
+    def validPosition(position):
+        return 0 <= position[0] < HEIGHT and 0 <= position[1] < WIDTH
+
     def __getitem__(self, item):
-        if type(item) is int:
-            return self._population[item]
         return self._map[item]

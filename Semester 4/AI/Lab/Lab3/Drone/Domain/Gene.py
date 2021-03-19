@@ -1,8 +1,10 @@
 from random import choice
+from Drone.Domain.settings import *
+
 
 class Gene:
     def __init__(self):
-        self._value = choice([(-1, 0), (1, 0), (0, 1), (0, -1)])
+        self._value = choice(DIRECTIONS)
 
     @property
     def value(self):
