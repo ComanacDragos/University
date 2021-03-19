@@ -1,4 +1,5 @@
-from Drone.Repository.Repository import *
+from Drone.Domain.Drone import Drone
+from Drone.Repository.MapRepository import *
 from queue import PriorityQueue
 from random import randint
 from random import choice
@@ -7,10 +8,10 @@ import numpy as np
 import time
 
 
-class Service:
+class MapController:
     def __init__(self):
-        self._repo = Repository("Resources/test1.map")
-        self._repo = Repository()
+        self._repo = MapRepository("Resources/test1.map")
+        self._repo = MapRepository()
 
         position = randint(0, HEIGHT - 1), randint(0, WIDTH - 1)
         while self._repo[position] != EMPTY:

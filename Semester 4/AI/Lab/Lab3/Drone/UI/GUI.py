@@ -1,10 +1,9 @@
-from Drone.Service.Service import *
-from time import sleep
+from Drone.UI.GUI.MapController import *
 
 
 class GUI:
     def __init__(self):
-        self._service = Service()
+        self._service = MapController()
 
         pygame.init()
         logo = pygame.image.load("Resources/logo32x32.png")
