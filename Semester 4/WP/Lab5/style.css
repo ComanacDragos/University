@@ -1,0 +1,16 @@
+body{
+    background-color: black;
+}
+
+div{
+    width: 600px;
+    height: 200px;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color:indigo;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

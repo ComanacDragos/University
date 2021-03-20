@@ -19,8 +19,8 @@ DIRECTIONS = [(-1, 0), (1, 0), (0, 1), (0, -1)]
 WIDTH = 40
 HEIGHT = 40
 
-SQUARE_WIDTH = 20
-SQUARE_HEIGHT = 20
+SQUARE_WIDTH = 10
+SQUARE_HEIGHT = 10
 
 WALL = 1
 EMPTY = 0
@@ -32,26 +32,22 @@ EARLY_STOP = 100
 
 INDIVIDUAL_SIZE = 100  # steps until the battery depletes
 POPULATION_SIZE = 5000
-GENERATIONS = 2000
+GENERATIONS = 1000
 
 MUTATE_PROB = 0.3
 CROSSOVER_PROB = 0.9
-ERROR_FACTOR = 0.5
+ERROR_FACTOR = 0
 
 #FITNESS_FUNCTION = "simpleFitness"
 FITNESS_FUNCTION = "uniquePositionsFitness"
 #FITNESS_FUNCTION = "variationFitness"
 #FITNESS_FUNCTION = "neighborsFitness"
-#FITNESS_FUNCTION = "circularFitness"
 
 #ITERATION_STRATEGY = "generational"
 ITERATION_STRATEGY = "steadyState"
-STEADY_STATE_NO_OFFSPRINGS = 600
+STEADY_STATE_NO_OFFSPRINGS = 1000
 
 TARGET = "cpu"
 
 NEIGHBORS_RADIUS = 2
 GENE_STRENGTH = 10
-
-#OUTPUT_FILE = "Resources/Paths/testCircular.path"
-OUTPUT_FILE = "Resources/Paths/uniquePositions.path"

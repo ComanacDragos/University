@@ -106,11 +106,9 @@ class Service:
             'execution time': executionTime,
             'path length': len(path),
             'unique positions': len(set(path)),
-            'detected positions': len(detectedPositions),
-            'drone position': self._drone.position,
-            'final position': path[-1]
+            'detected positions': len(detectedPositions)
         }
-        self.savePath(path)
+
         if self._log:
             self._runRepo.saveRun(mySeed, bestChromosome.fitness, len(detectedPositions))
         return data, path, detectedPositions, averages, bests
@@ -140,16 +138,6 @@ class Service:
         path = set(self.interpretRepresentation(representation))
         error = sum([len(self.neighbors(position, NEIGHBORS_RADIUS).intersection(path)) for position in path])
         return -(len(path) - error * ERROR_FACTOR)
-
-    def circularFitness(self, representation):
-        dx, dy = 0, 0
-        path = self.interpretRepresentation(representation)
-
-        for x, y in representation[:len(path)]:
-            dx += x
-            dy += y
-        error = len(representation) - len(set(path))
-        return self.euclideanDistance((0, 0), (dx, dy)) + error * ERROR_FACTOR
 
     def detectedPositions(self, path):
         detectedPositions = set()
@@ -189,10 +177,9 @@ class Service:
             image.blit(markPath, (move[1] * SQUARE_HEIGHT, move[0] * SQUARE_WIDTH))
         return image
 
-    def setDronePosition(self, position, sleepTime=0):
+    def setDronePosition(self, position):
         if self._mapRepo[position] == EMPTY:
             self._drone.position = position
-            time.sleep(sleepTime)
         else:
             raise Exception("Bad position")
 
@@ -203,8 +190,7 @@ class Service:
             "simpleFitness": self.simpleFitness,
             "uniquePositionsFitness": self.uniquePositionsFitness,
             "variationFitness": self.variationFitness,
-            "neighborsFitness": self.neighborsFitness,
-            "circularFitness": self.circularFitness
+            "neighborsFitness": self.neighborsFitness
         }
         if functionString in functions:
             return functions[functionString]
@@ -239,18 +225,3 @@ class Service:
             if (dx, dy) not in DIRECTIONS:
                 raise Exception("Bad path")
             prev = pos
-
-    @staticmethod
-    def euclideanDistance(leftPos, rightPos):
-        return np.linalg.norm(np.array(leftPos) - np.array(rightPos))
-
-    @staticmethod
-    def savePath(path, file=OUTPUT_FILE):
-        with open(file, 'wb') as f:
-            pickle.dump(path, f)
-
-    @staticmethod
-    def loadPath(file):
-        with open(file, "rb") as f:
-            return pickle.load(f)
-

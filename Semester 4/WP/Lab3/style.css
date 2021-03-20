@@ -170,7 +170,6 @@ section{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: left;
     row-gap: 15px;
 
     font-size: 20px;
