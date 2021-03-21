@@ -1,6 +1,7 @@
+__pycache__
+*.pyc
 *.vs
 *.bin
 *.obj
 *.csproj
 *.sln
-__pycache__
