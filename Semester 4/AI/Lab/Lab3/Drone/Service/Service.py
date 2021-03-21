@@ -5,7 +5,6 @@ from random import randint
 from Drone.Repository.RunRepository import *
 from random import seed
 from numba import jit, cuda
-import matplotlib.pyplot as plt
 import pickle
 import numpy as np
 import time
@@ -28,12 +27,6 @@ class Service:
         self._log = False
 
     def steadyState(self, fitnessFunction):
-        # args - list of parameters needed to run one iteration
-        # a iteration:
-        # selection of the parrents
-        # create offsprings by crossover of the parents
-        # apply some mutations
-        # selection of the survivors
         parents = self._populationRepo.selection(2 * STEADY_STATE_NO_OFFSPRINGS)
         for _ in range(STEADY_STATE_NO_OFFSPRINGS):
             (firstPos, firstParent), (secondPos, secondParent) = parents.pop(randint(0, len(parents) - 1)), \
@@ -59,13 +52,6 @@ class Service:
         self._populationRepo.setPopulation(newPopulation)
 
     def run(self, fitnessFunction, iterationStrategy):
-        # args - list of parameters needed in order to run the algorithm
-
-        # until stop condition
-        #    perform an iteration
-        #    save the information need it for the satistics
-
-        # return the results and the info for statistics
         foundAt, globalBest = 0, self._populationRepo.bestChromosome()
         averages = []
         bests = [globalBest.fitness]
@@ -83,11 +69,6 @@ class Service:
         return foundAt, globalBest, averages, bests
 
     def solver(self):
-        # args - list of parameters needed in order to run the solver
-
-        # create the population,
-        # run the algorithm
-        # return the results and the statistics
         mySeed = randint(1, 1000000)
         seed(mySeed)
         self._populationRepo = PopulationRepository()

@@ -92,6 +92,10 @@ namespace Libraries.Repository
             }
             catch (SqlException exc)
             {
+                (from dataRow in dataSet.Tables[Table].AsEnumerable()
+                 where dataRow.HasErrors
+                 select dataRow)
+                .ToList().ForEach(row => dataSet.Tables[Table].Rows.Remove(row));
                 throw new MyException(exc.Message);
             }
         }

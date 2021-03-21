@@ -12,12 +12,18 @@
         <input type="text" id="myInput"/>
         <select id="mySelect">
         </select>
-    </div>  
+    </div> 
+    <div>
+        <input type="text" id="myCombo" list="myDataList">
+        <datalist id="myDataList"></datalist>
+    </div>
 
-    
-    <script>
+    <script lang="javascript">
         var input = document.getElementById("myInput");
         var select = document.getElementById("mySelect")
+
+        var optionList = [];
+        
         function enterInput(event){
             if(event.keyCode === 13 && input.value.length !== 0){
                 var option = document.createElement("option");
@@ -26,8 +32,22 @@
                 alert("Added option " + input.value);
             }
         }
+
+        function enterInputCombo(event){
+            var combo = document.getElementById("myCombo");
+            var datalist = document.getElementById("myDataList")
+
+            if(event.keyCode === 13 && combo.value.length !== 0){
+                var option = document.createElement('option');
+                option.value = combo.value;
+                optionList.push(option);
+                optionList.forEach(opt => datalist.appendChild(opt));
+            }
+        }
+
         document.addEventListener("keyup", enterInput)
 
+        document.addEventListener("keyup", enterInputCombo)
     </script>
 </body>
 </html>

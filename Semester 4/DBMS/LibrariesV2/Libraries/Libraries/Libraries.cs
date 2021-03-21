@@ -71,7 +71,7 @@ namespace Libraries
             }
             catch (MyException exc)
             {
-                MessageBox.Show(exc.Message, "Could not add character");
+                MessageBox.Show(exc.Message, "Could not delete character");
             }
             catch (FormatException)
             {
@@ -125,9 +125,16 @@ namespace Libraries
 
         private void updateDBButton_Click(object sender, EventArgs e)
         {
-            MyService.updateChild();
+            try
+            {
+                MyService.updateChild();
 
-            MessageBox.Show("DB updated", "Success");
+                MessageBox.Show("DB updated", "Success");
+            }
+            catch (MyException exc)
+            {
+                MessageBox.Show(exc.Message, "Could not update table");
+            }
         }
     }
 }

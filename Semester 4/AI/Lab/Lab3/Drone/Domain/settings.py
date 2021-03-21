@@ -39,14 +39,14 @@ CROSSOVER_PROB = 0.9
 ERROR_FACTOR = 0.5
 
 #FITNESS_FUNCTION = "simpleFitness"
-FITNESS_FUNCTION = "uniquePositionsFitness"
+#FITNESS_FUNCTION = "uniquePositionsFitness"
 #FITNESS_FUNCTION = "variationFitness"
 #FITNESS_FUNCTION = "neighborsFitness"
-#FITNESS_FUNCTION = "circularFitness"
+FITNESS_FUNCTION = "circularFitness"
 
 #ITERATION_STRATEGY = "generational"
 ITERATION_STRATEGY = "steadyState"
-STEADY_STATE_NO_OFFSPRINGS = 600
+STEADY_STATE_NO_OFFSPRINGS = 800
 
 TARGET = "cpu"
 
