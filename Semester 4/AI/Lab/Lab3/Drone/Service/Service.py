@@ -122,7 +122,7 @@ class Service:
         error = sum([len(self.neighbors(position, NEIGHBORS_RADIUS).intersection(path)) for position in path])
         return -(len(path) - error * ERROR_FACTOR)
 
-    def circularFitness(self, representation):
+    def circularFitnessOLD(self, representation):
         dx, dy = 0, 0
         path = self.interpretRepresentation(representation)
 
@@ -131,6 +131,11 @@ class Service:
             dy += y
         error = len(representation) - len(set(path))
         return self.euclideanDistance((0, 0), (dx, dy)) + error * ERROR_FACTOR
+
+    def circularFitness(self, representation):
+        path = self.interpretRepresentation(representation)
+        error = len(representation) - len(set(path))
+        return self.euclideanDistance(self._drone.position, path[-1]) + error * ERROR_FACTOR
 
     def detectedPositions(self, path):
         detectedPositions = set()
