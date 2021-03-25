@@ -36,14 +36,13 @@ function handleInput(event){
 
         if(count == noCol)
             for(var i=1;i<row.length-1;i+=1)
-                row[i].innerHTML = "<td>" + row[i].firstChild.value + "</td>"
+                row[i].innerHTML = row[i].firstChild.value 
             
     }
 }
 
-for(var i=0;i<noRow;i+=1){
-    row = generateRow(Math.floor(90*Math.random() + 10))
-    $("table").append("<tr>" + row + "</tr>")
-}
+for(var i=0;i<noRow;i+=1)
+    $("table").append("<tr>" + generateRow(Math.floor(90*Math.random() + 10)) + "</tr>")
+
 
 $("button").click(handleButton)
