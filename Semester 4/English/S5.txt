@@ -1,0 +1,58 @@
+Building an application from zero can be done in several ways.
+
+It is possible to build the application in one single file, mixing different parts of the program, or 
+the program can be split in multiple layers. It appears that the latter option is more suitable especially when 
+working on a large scale application.
+
+First of all, these layers can be regarded as an onion. There is the core layer which is also called
+model or domain which represents the problem base entities, then there is the repository layer, which is responsible
+with the storage of the entities in the domain. On top of the repository there is the service which stores
+the logic of the program, and the outer most layer is the user interface.
+
+Concluding, this layered architecture helps developers that work alone or in teams to improove their products
+qulity in means of code maintanability, time and resources efficiency.
+
+A-> 2 fourth
+B-> 3 second 
+C-> 1 last paragraph
+D-> 4 first
+E-> 5 third
+
+
+
+A line graph is a versatile tool that is used to represent the evolution of one or multiple sets of data. 
+
+The evolution can be in time or in other metric that is relevant to the problem domain. Usually,
+the intuitive way is to represent this metric
+on the X axis the actual data on the Y axis.
+
+In conclusion, the understanding
+of the data can be improved by  a description for the graph itself but also for each set of data presented 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

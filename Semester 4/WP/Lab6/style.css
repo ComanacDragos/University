@@ -1,0 +1,15 @@
+table {
+    border-style: solid;
+    border-color: black;
+    border-collapse: collapse;
+  }
+
+td {
+    border: 1px solid black;
+    width: 60px;
+    text-align: center;
+}
+
+input{
+    width: 50px;
+}
