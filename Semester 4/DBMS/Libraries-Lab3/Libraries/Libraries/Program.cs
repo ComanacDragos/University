@@ -20,18 +20,20 @@ namespace Libraries
         [STAThread]
         static void Main()
         {
-            String database = ConfigurationManager.AppSettings.Get("database");
-            String server = ConfigurationManager.AppSettings.Get("server");
-            String parentTable = ConfigurationManager.AppSettings.Get("parentTable");
-            String childTable = ConfigurationManager.AppSettings.Get("childTable");
+            string database = ConfigurationManager.AppSettings.Get("database");
+            string server = ConfigurationManager.AppSettings.Get("server");
+            string parentTable = ConfigurationManager.AppSettings.Get("parentTable");
+            string childTable = ConfigurationManager.AppSettings.Get("childTable");
+            string parentPrimaryKey = ConfigurationManager.AppSettings.Get("parentPrimaryKey");
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Libraries libraries = new Libraries();
-            TitlesDBRepository repoTitles = new TitlesDBRepository(server, database);
-            CharactersDBRepository repoCharacters = new CharactersDBRepository(server, database);
+            Libraries libraries = new Libraries(parentTable, childTable);
 
-            OneToManyService<int, Title, int, Character> service = new OneToManyService<int, Title, int, Character>(repoTitles, repoCharacters, new CharacterValidator());
+            DBRepository parentRepo = new DBRepository(server, database, parentTable);
+            DBRepository childRepo = new DBRepository(server, database, childTable);
+
+            OneToManyService service = new OneToManyService(parentRepo, childRepo, parentPrimaryKey);
             libraries.MyService = service;
  
             Application.Run(libraries);
