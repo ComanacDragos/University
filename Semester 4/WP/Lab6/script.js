@@ -6,7 +6,7 @@ function generateRow(content){
     for(var j=0;j<noCol;j+=1)
         row += "<td>" + content + "</td>"
     row = "<td><button>-</button></td>" + row + "<td><button>+</button></td>"
-    return row
+    return "<tr>" + row + "</tr>"
 }
 
 function setHandles(){
@@ -18,11 +18,13 @@ function setHandles(){
 
 function handleButton(){
     if($(this).text() == "+"){
-        $(this).parent().parent().after("<tr>" + generateRow('<input type="text"></input>') + "</tr>")
+        $(this).parent().parent().after(generateRow('<input type="text"></input>'))
         setHandles()
     }
-    else
+    else{
         $(this).parent().parent().remove()
+        $("table").css('top', (parseFloat($("table").css("top")) + $("tr").height()) + 'px')
+    }
 }
 
 function handleInput(event){
@@ -42,7 +44,7 @@ function handleInput(event){
 }
 
 for(var i=0;i<noRow;i+=1)
-    $("table").append("<tr>" + generateRow(Math.floor(90*Math.random() + 10)) + "</tr>")
+    $("table").append(generateRow(Math.floor(90*Math.random() + 10)))
 
 
 $("button").click(handleButton)

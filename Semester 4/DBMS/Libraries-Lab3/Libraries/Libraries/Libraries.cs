@@ -8,7 +8,7 @@ namespace Libraries
     public partial class Libraries : Form
     {
         public OneToManyService MyService { get; set; }
-        private String ParentTable, ChildTable;
+        private string ParentTable, ChildTable;
 
         public Libraries(string parentTable, string childTable)
         {
