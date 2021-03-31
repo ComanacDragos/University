@@ -5,6 +5,7 @@ from random import seed
 from Domain.CycleAnt import CycleAnt
 from Domain.Drone import Drone
 from Domain.Ant import Ant
+import Domain.settings as config
 from Repository.MapGraph import MapGraph
 from Repository.MapRepository import *
 from Repository.SensorGraph import *
@@ -85,17 +86,22 @@ class Service:
 
             # print(f"global best: {bestAnt[0].fitness} at {bestAnt[1]}")
             # print(f"local best: {ant.fitness} at {epoch}\n\n")
+        print(f"found at: {bestAnt[1]} -- {start} --> {end}")
         return bestAnt[0].representation, bestAnt[1]
 
     def solver(self):
+        initialEnergy = config.ANT_SIZE
         closeSensor = min([(sensor, self.euclideanDistance(sensor, self._drone.position))
                            for sensor in self._sensorGraph.nodes], key=lambda pair: pair[1])[0]
 
         sensors = [sensor for sensor in self._sensorGraph.nodes]
         print(sensors, closeSensor)
+        print(f"Energy: {config.ANT_SIZE}")
 
         graph = MapGraph(self._mapRepo)
         firstPath = self.solverPath(graph, Ant, self._drone.position, closeSensor)[0]
+        config.ANT_SIZE -= len(firstPath)
+        print(f"Remaining energy: {config.ANT_SIZE}")
 
         paths = {}
 
@@ -114,11 +120,22 @@ class Service:
 
         finalPath = firstPath
         for i in range(len(cycle) - 1):
-            finalPath += paths[cycle[i], cycle[i+1]]
+            path = paths[cycle[i], cycle[i+1]][:]
+            if path[0] != cycle[i]:
+                path.reverse()
+
+            print(f"{cycle[i]} -> {cycle[i+1]} = {len(path)}")
+            config.ANT_SIZE -= (len(path) - 1)
+            print(f"Remaining energy: {config.ANT_SIZE}")
+
+            finalPath += path[1:]
 
         for sensor in self._sensorGraph.nodes:
             if sensor not in finalPath:
                 print("Error")
+        self.validatePath(finalPath)
+
+        config.ANT_SIZE = initialEnergy
         return finalPath
 
     def detectedPositions(self, path):
@@ -197,7 +214,7 @@ class Service:
         for pos in path[1:]:
             dx, dy = pos[0] - prev[0], pos[1] - prev[1]
             if (dx, dy) not in DIRECTIONS:
-                print("teleportation")
+                print(f"teleportation {prev} -> {pos}")
             prev = pos
 
     @staticmethod

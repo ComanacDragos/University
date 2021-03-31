@@ -24,6 +24,11 @@ class GUI:
                     if pygame.key.get_pressed()[pygame.K_SPACE]:
                         pathIndex = 0
 
+                    if pygame.key.get_pressed()[pygame.K_LEFT]:
+                        self.slow_down()
+                    if pygame.key.get_pressed()[pygame.K_RIGHT]:
+                        self.speed_up()
+
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if pygame.mouse.get_pressed()[pygame.BUTTON_RIGHT - 1] == 1:
                         y, x = pygame.mouse.get_pos()
