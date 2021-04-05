@@ -1,4 +1,5 @@
 from Service.Service import *
+import traceback
 
 
 class GUI:
@@ -45,7 +46,7 @@ class GUI:
                             print(len(path))
                             print(len(set(path)))
                         except Exception as exc:
-                            print(exc)
+                            traceback.print_exc()
 
             if pathIndex is not None:
                 if pathIndex == len(path):

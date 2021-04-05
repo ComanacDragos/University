@@ -14,7 +14,7 @@ DOWN = 2
 LEFT = 1
 RIGHT = 3
 
-DIRECTIONS = [(-1, 0), (1, 0), (0, 1), (0, -1)]
+DIRECTIONS = [(-1, 0), (1, 0), (0, -1), (0, 1)]
 
 WIDTH = 40
 HEIGHT = 40
@@ -27,9 +27,9 @@ EMPTY = 0
 
 FILL_FACTOR = 0.2
 
-ANT_SIZE = 200  # steps until the battery depletes
+ANT_SIZE = 125  # steps until the battery depletes
 NO_ANTS = 3
-EPOCHS = 300
+EPOCHS = 500
 
 ALPHA = 2.5
 BETA = 0.8 # 1.3
@@ -38,8 +38,11 @@ Q0 = 0.3
 Q = 100.0
 
 SENSORS = 5
+SENSOR_STRENGTH = 5
 
 SEED = 5
+
+EARLY_STOP = 300
 
 ERROR_FACTOR = 10000
 

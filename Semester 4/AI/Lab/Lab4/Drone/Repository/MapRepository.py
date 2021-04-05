@@ -38,7 +38,7 @@ class MapRepository:
     def readSensors(self, position):
         readings = []
         for direction in DIRECTIONS:
-            readings.append(self._readDirection(direction, position)[:5])
+            readings.append(self._readDirection(direction, position)[:SENSOR_STRENGTH])
         return readings
 
     def validPosition(self, position):

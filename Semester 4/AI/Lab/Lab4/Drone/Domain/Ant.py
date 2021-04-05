@@ -17,7 +17,7 @@ class Ant:
                (1 / self._graph.cost(self._path[-1], node, self._endPoint) ** BETA)
 
     def endCond(self):
-        return self._path[-1] == self._endPoint or len(self._path) == ANT_SIZE
+        return self._path[-1] == self._endPoint or len(self._path) > ANT_SIZE
 
     def addMove(self):
         if self.endCond():

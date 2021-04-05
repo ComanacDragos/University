@@ -8,18 +8,22 @@ from Domain.Ant import Ant
 import Domain.settings as config
 from Repository.MapGraph import MapGraph
 from Repository.MapRepository import *
+from Repository.MyGraph import MyGraph
 from Repository.SensorGraph import *
 
 
 class Service:
     def __init__(self):
-        seed(SEED)
+        #seed(SEED)
         self._mapRepo = MapRepository("Resources/test2.map")
         self._drone = Drone(self.generatePositions().pop())
-        self._sensorGraph = SensorGraph({sensor: self._mapRepo.readSensors(sensor)
-                                         for sensor in self.generatePositions(SENSORS, [self._drone.position])})
 
-        seed(randint(1, 10000))
+        self._sensorData = {sensor: self._mapRepo.readSensors(sensor)
+                            for sensor in self.generatePositions(SENSORS, [self._drone.position])}
+
+        self._sensorGraph = SensorGraph(self._sensorData)
+
+        self._sensorStrengths = {sensor: 0 for sensor in self._sensorGraph.nodes}
 
     def generatePositions(self, count=1, badPositions=()):
         positions = set()
@@ -63,7 +67,7 @@ class Service:
             key=lambda pair: pair[0]
         )[1]
 
-        delta = 1/bestAnt.fitness
+        delta = 1 / bestAnt.fitness
 
         graph.decay()
 
@@ -84,12 +88,66 @@ class Service:
             if bestAnt is None or bestAnt[0].fitness > ant.fitness:
                 bestAnt = ant, epoch
 
+            if bestAnt is not None and epoch - bestAnt[1] > EARLY_STOP:
+                print(f"Early stop at {epoch}", end=" -- ")
+                break
+
             # print(f"global best: {bestAnt[0].fitness} at {bestAnt[1]}")
             # print(f"local best: {ant.fitness} at {epoch}\n\n")
-        print(f"found at: {bestAnt[1]} -- {start} --> {end}")
-        return bestAnt[0].representation, bestAnt[1]
+        print(f"found at: {bestAnt[1]} -- {start} --> {end} : {len(bestAnt[0].representation)}")
+        return bestAnt
 
     def solver(self):
+        # newSeed = randint(1, 10000)
+        # seed(newSeed)
+        # print(newSeed)
+
+        sensors = [sensor for sensor in self._sensorGraph.nodes]
+        print(sensors)
+        print(f"Energy: {config.ANT_SIZE}")
+
+        paths = {}
+        nodes = [self._drone.position] + sensors
+        for i in range(len(nodes) - 1):
+            source = nodes[i]
+            for destination in nodes[i + 1:]:
+                paths[(source, destination)] = self.solverPath(MapGraph(self._mapRepo), Ant, source, destination)[
+                    0].representation
+                paths[(destination, source)] = paths[(source, destination)]
+
+        print("Computing cycle...")
+        # config.NO_ANTS = 5
+        bestAnt = self.solverPath(MyGraph(paths, nodes, self._sensorData), CycleAnt, self._drone.position, None)[0]
+        cycle = bestAnt.representation
+        self._sensorStrengths = bestAnt.sensorEnergy
+        print(cycle)
+        print(self._sensorStrengths)
+        print(f"Best ant fitness {bestAnt.fitness}\nBest ant cost: {bestAnt._cost}\nBest ant remaining energy: {bestAnt._remainingEnergy}")
+
+        energyConsumed = sum(self._sensorStrengths.values())
+        print(f"Energy consumed by sensors: {energyConsumed}")
+        print(f"battery: {config.ANT_SIZE - energyConsumed}")
+
+        finalPath = [self._drone.position]
+        for i in range(len(cycle) - 1):
+            path = paths[cycle[i], cycle[i + 1]][:]
+            if path[0] != cycle[i]:
+                path.reverse()
+
+            energyConsumed += (len(path) - 1)
+            print(f"{cycle[i]} -> {cycle[i + 1]} = {len(path)}")
+
+            finalPath += path[1:]
+        energyConsumed += 1
+        print(f"Remaining energy: {config.ANT_SIZE - energyConsumed}")
+        for sensor in self._sensorGraph.nodes:
+            if sensor not in finalPath:
+                print("Error")
+        self.validatePath(finalPath)
+
+        return finalPath
+
+    def solverV1(self):
         initialEnergy = config.ANT_SIZE
         closeSensor = min([(sensor, self.euclideanDistance(sensor, self._drone.position))
                            for sensor in self._sensorGraph.nodes], key=lambda pair: pair[1])[0]
@@ -109,22 +167,22 @@ class Service:
             sensor = sensors[i]
             for destination in sensors[i + 1:]:
                 mapGraph = MapGraph(self._mapRepo)
-                paths[(sensor, destination)] = self.solverPath(mapGraph, Ant, sensor, destination)[0]
+                paths[(sensor, destination)] = self.solverPath(mapGraph, Ant, sensor, destination)[0].representation
                 paths[(destination, sensor)] = paths[(sensor, destination)]
 
         self._sensorGraph.initGraph(paths)
 
-        cycle = self.solverPath(self._sensorGraph, CycleAnt, closeSensor, None)[0]
+        cycle = self.solverPath(self._sensorGraph, CycleAnt, closeSensor, None)[0].representation
 
         print(cycle)
 
         finalPath = firstPath
         for i in range(len(cycle) - 1):
-            path = paths[cycle[i], cycle[i+1]][:]
+            path = paths[cycle[i], cycle[i + 1]][:]
             if path[0] != cycle[i]:
                 path.reverse()
 
-            print(f"{cycle[i]} -> {cycle[i+1]} = {len(path)}")
+            print(f"{cycle[i]} -> {cycle[i + 1]} = {len(path)}")
             config.ANT_SIZE -= (len(path) - 1)
             print(f"Remaining energy: {config.ANT_SIZE}")
 
@@ -161,14 +219,16 @@ class Service:
             image = self.mapImage
         for sensor in self._sensorGraph.sensors:
             image.blit(sensorImg, (sensor[1] * SQUARE_HEIGHT, sensor[0] * SQUARE_WIDTH))
-            #for path in self._sensorGraph.sensors[sensor]:
-            #    image = self.mapWithPath(path, image, RED, finalColor=RED)
+            for path in self._sensorGraph.sensors[sensor]:
+                image = self.mapWithPath(path, image, RED, finalColor=RED, alpha=50)
+                image = self.mapWithPath(path[:self._sensorStrengths[sensor]], image, YELLOW, finalColor=YELLOW, alpha=200)
 
         return image
 
-    def mapWithPath(self, path, image=None, color=GREEN, finalColor=PURPLE):
+    def mapWithPath(self, path, image=None, color=GREEN, finalColor=PURPLE, alpha=255):
         markPath = pygame.Surface((SQUARE_HEIGHT, SQUARE_WIDTH))
         markPath.fill(color)
+        markPath.set_alpha(alpha)
         if image is None:
             image = self.mapImage
         if not path:
