@@ -29,7 +29,12 @@ class GUI:
                         self.slow_down()
                     if pygame.key.get_pressed()[pygame.K_RIGHT]:
                         self.speed_up()
-
+                    if pygame.key.get_pressed()[pygame.K_r]:
+                        self._service = Service()
+                        pathIndex = None
+                        path = []
+                    if pygame.key.get_pressed()[pygame.K_d]:
+                        self._service.displaySensorStrengths = not self._service.displaySensorStrengths
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if pygame.mouse.get_pressed()[pygame.BUTTON_RIGHT - 1] == 1:
                         y, x = pygame.mouse.get_pos()

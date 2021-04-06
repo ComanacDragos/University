@@ -1,11 +1,10 @@
 import time
 from random import randint
-from random import seed
 
+import Domain.settings as config
+from Domain.Ant import Ant
 from Domain.CycleAnt import CycleAnt
 from Domain.Drone import Drone
-from Domain.Ant import Ant
-import Domain.settings as config
 from Repository.MapGraph import MapGraph
 from Repository.MapRepository import *
 from Repository.MyGraph import MyGraph
@@ -14,7 +13,6 @@ from Repository.SensorGraph import *
 
 class Service:
     def __init__(self):
-        #seed(SEED)
         self._mapRepo = MapRepository("Resources/test2.map")
         self._drone = Drone(self.generatePositions().pop())
 
@@ -24,6 +22,8 @@ class Service:
         self._sensorGraph = SensorGraph(self._sensorData)
 
         self._sensorStrengths = {sensor: 0 for sensor in self._sensorGraph.nodes}
+
+        self.displaySensorStrengths = True
 
     def generatePositions(self, count=1, badPositions=()):
         positions = set()
@@ -92,16 +92,10 @@ class Service:
                 print(f"Early stop at {epoch}", end=" -- ")
                 break
 
-            # print(f"global best: {bestAnt[0].fitness} at {bestAnt[1]}")
-            # print(f"local best: {ant.fitness} at {epoch}\n\n")
         print(f"found at: {bestAnt[1]} -- {start} --> {end} : {len(bestAnt[0].representation)}")
         return bestAnt
 
     def solver(self):
-        # newSeed = randint(1, 10000)
-        # seed(newSeed)
-        # print(newSeed)
-
         sensors = [sensor for sensor in self._sensorGraph.nodes]
         print(sensors)
         print(f"Energy: {config.ANT_SIZE}")
@@ -116,7 +110,6 @@ class Service:
                 paths[(destination, source)] = paths[(source, destination)]
 
         print("Computing cycle...")
-        # config.NO_ANTS = 5
         bestAnt = self.solverPath(MyGraph(paths, nodes, self._sensorData), CycleAnt, self._drone.position, None)[0]
         cycle = bestAnt.representation
         self._sensorStrengths = bestAnt.sensorEnergy
@@ -145,55 +138,8 @@ class Service:
                 print("Error")
         self.validatePath(finalPath)
 
-        return finalPath
-
-    def solverV1(self):
-        initialEnergy = config.ANT_SIZE
-        closeSensor = min([(sensor, self.euclideanDistance(sensor, self._drone.position))
-                           for sensor in self._sensorGraph.nodes], key=lambda pair: pair[1])[0]
-
-        sensors = [sensor for sensor in self._sensorGraph.nodes]
-        print(sensors, closeSensor)
-        print(f"Energy: {config.ANT_SIZE}")
-
-        graph = MapGraph(self._mapRepo)
-        firstPath = self.solverPath(graph, Ant, self._drone.position, closeSensor)[0]
-        config.ANT_SIZE -= len(firstPath)
-        print(f"Remaining energy: {config.ANT_SIZE}")
-
-        paths = {}
-
-        for i in range(len(sensors) - 1):
-            sensor = sensors[i]
-            for destination in sensors[i + 1:]:
-                mapGraph = MapGraph(self._mapRepo)
-                paths[(sensor, destination)] = self.solverPath(mapGraph, Ant, sensor, destination)[0].representation
-                paths[(destination, sensor)] = paths[(sensor, destination)]
-
-        self._sensorGraph.initGraph(paths)
-
-        cycle = self.solverPath(self._sensorGraph, CycleAnt, closeSensor, None)[0].representation
-
-        print(cycle)
-
-        finalPath = firstPath
-        for i in range(len(cycle) - 1):
-            path = paths[cycle[i], cycle[i + 1]][:]
-            if path[0] != cycle[i]:
-                path.reverse()
-
-            print(f"{cycle[i]} -> {cycle[i + 1]} = {len(path)}")
-            config.ANT_SIZE -= (len(path) - 1)
-            print(f"Remaining energy: {config.ANT_SIZE}")
-
-            finalPath += path[1:]
-
-        for sensor in self._sensorGraph.nodes:
-            if sensor not in finalPath:
-                print("Error")
-        self.validatePath(finalPath)
-
-        config.ANT_SIZE = initialEnergy
+        if len(finalPath) > ANT_SIZE:
+            finalPath = finalPath[:ANT_SIZE]
         return finalPath
 
     def detectedPositions(self, path):
@@ -219,9 +165,10 @@ class Service:
             image = self.mapImage
         for sensor in self._sensorGraph.sensors:
             image.blit(sensorImg, (sensor[1] * SQUARE_HEIGHT, sensor[0] * SQUARE_WIDTH))
-            for path in self._sensorGraph.sensors[sensor]:
-                image = self.mapWithPath(path, image, RED, finalColor=RED, alpha=50)
-                image = self.mapWithPath(path[:self._sensorStrengths[sensor]], image, YELLOW, finalColor=YELLOW, alpha=200)
+            if self.displaySensorStrengths:
+                for path in self._sensorGraph.sensors[sensor]:
+                    image = self.mapWithPath(path, image, RED, finalColor=RED, alpha=50)
+                    image = self.mapWithPath(path[:self._sensorStrengths[sensor]], image, YELLOW, finalColor=YELLOW, alpha=200)
 
         return image
 
@@ -246,28 +193,6 @@ class Service:
         else:
             raise Exception("Bad position")
 
-    def functionFactory(self, functionString):
-        functions = {
-
-        }
-        if functionString in functions:
-            return functions[functionString]
-        else:
-            raise Exception("Bad function string")
-
-    def neighbors(self, position, radius=1):
-        neighbors = set()
-        x, y = position
-        ulX, ulY = x - radius, y - radius
-        brX, brY = x + radius, y + radius
-
-        for x in range(ulX, brX + 1):
-            for y in range(ulY, brY + 1):
-                if self._mapRepo.validPosition((x, y)):
-                    neighbors.add((x, y))
-
-        return neighbors
-
     @staticmethod
     def validatePath(path):
         prev = path[0]
@@ -286,7 +211,3 @@ class Service:
     def loadPath(file):
         with open(file, "rb") as f:
             return pickle.load(f)
-
-    @staticmethod
-    def euclideanDistance(leftPos, rightPos):
-        return np.linalg.norm(np.array(leftPos) - np.array(rightPos))

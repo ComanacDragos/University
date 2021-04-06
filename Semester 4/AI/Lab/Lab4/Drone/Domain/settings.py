@@ -27,7 +27,7 @@ EMPTY = 0
 
 FILL_FACTOR = 0.2
 
-ANT_SIZE = 125  # steps until the battery depletes
+ANT_SIZE = 100  # steps until the battery depletes
 NO_ANTS = 3
 EPOCHS = 500
 
@@ -37,10 +37,8 @@ DECAY = 0.01
 Q0 = 0.3
 Q = 100.0
 
-SENSORS = 5
+SENSORS = 3
 SENSOR_STRENGTH = 5
-
-SEED = 5
 
 EARLY_STOP = 300
 

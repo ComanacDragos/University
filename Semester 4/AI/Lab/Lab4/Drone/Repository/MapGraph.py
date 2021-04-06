@@ -1,5 +1,3 @@
-from math import inf
-from Domain.settings import *
 from Domain.Ant import *
 
 

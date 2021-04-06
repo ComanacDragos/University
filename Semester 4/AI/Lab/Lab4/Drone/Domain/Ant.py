@@ -60,37 +60,8 @@ class Ant:
 
     @property
     def fitness(self):
-        #return len(self._path) + self.euclideanDistance(self._endPoint, self._path[-1]) * ERROR_FACTOR
-        #return sum([self._graph.cost(self._path[i], self._path[i+1], self._endPoint) for i in range(len(self._path) - 1)]) + self.euclideanDistance(self._path[-1], )
-        #return Fitness((self.euclideanDistance(self._path[-1], self._endPoint), len(self._path)))
         return self.euclideanDistance(self._path[-1], self._endPoint) * 60 + len(self._path) * 40
 
     @staticmethod
     def euclideanDistance(leftPos, rightPos):
         return np.linalg.norm(np.array(leftPos) - np.array(rightPos))
-
-
-class Fitness:
-    def __init__(self, values):
-        self._values = values
-
-    @property
-    def values(self):
-        return self._values
-
-    def __lt__(self, other):
-        for i, j in zip(self._values, other.values):
-            if i < j:
-                return True
-        return False
-
-    def __eq__(self, other):
-        for i, j in zip(self._values, other.values):
-            if i != j:
-                return False
-
-    def __gt__(self, other):
-        for i, j in zip(self._values, other.values):
-            if i > j:
-                return True
-        return False
