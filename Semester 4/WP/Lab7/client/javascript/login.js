@@ -1,0 +1,18 @@
+$("button").click(()=>{
+    var user = $("#username").val()
+    var psw= $("#password").val()
+
+    $.ajax({
+        type : "GET",
+        url : "http://localhost:3000/Lab7/server/controller.php", 
+        data: {action: "getUser", username : user , password : psw},					
+            success: function(data, status) {
+                console.log(data)
+                if(data)
+                    window.location.replace("news.html?username=" + user)
+                else
+                    alert("Invalid credentials")
+            }
+        });
+    }
+  )

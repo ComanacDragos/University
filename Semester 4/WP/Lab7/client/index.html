@@ -4,29 +4,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    
+    <link href="style/main.css" rel="stylesheet" type="text/css">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="javascript/login.js" defer></script>
+    
+    <title>News</title>
 </head>
 <body>
     <body>
-        <form action="#" method="get">
-        Nameeee: <input type="text" name="fname" />
-        Age: <input type="text" name="age" />
-        <input type="submit" />
-        </form>
-        
-        <p><?php echo "hi"; ?></p>
-        Welcomeee <?php 
-        if(isset($_GET["fname"]))
-            echo $_GET["fname"];
-        else
-            echo "Nobody" 
-        ?>.
-        <br />
-        You are <?php 
-        echo $_GET["age"]; 
-        ?> years old! 
-        
-        </body>
+    <div class="form">
+        <h1>Welcome</h1>
+        <label for="username">Username</label>
+        <input type="username" id="username" name="username"><br><br>
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password"><br><br>
+        <button class="news">Login</button>
+    </div>
 </body>
 </html>
 
@@ -41,4 +36,17 @@ before doing this. The other type of users can see all the news from a range of
 dates and all news from a specific category (use AJAX for these filters). 
 Also, on the news browsing page, the filter used for the previous browsing action 
 (i.e. date range, category), should be displayed (do this in javascript).
+
+            require 'database/UserDB.php';
+
+            $db = new UserDB();
+            $resultset = $db->select("admin", "admin");
+
+            //var_dump($resultset);
+            echo $resultset[0]['username'];
+            echo "<p></p>";
+            echo $resultset[0]['password'];
+    
+        
+        </body>
 -->

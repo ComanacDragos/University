@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="style/main.css" rel="stylesheet" type="text/css">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="javascript/news.js" defer></script>
+
+    <title>News</title>
+</head>
+<body>
+    <header>
+        <h1 id="welcome">Welcome!</h1>
+        <nav>
+            <a class="headerLink" href="index.html">Logout</a>
+            <a id="addNews" class="headerLink" href="addNews.html">Manage news</a>
+        </nav>
+    </header>
+
+    <div class="form">
+        <label for="category">Category</label>
+        <input type="category" id="category" name="category"><br><br>
+        <label for="startDate">Start Date</label>
+        <input type="date" id="startDate" name="startDate"><br><br>
+        <label for="endDate">End Date</label>
+        <input type="date" id="endDate" name="endDate"><br><br>
+        <button class="news" id="filterButton">Filter news</button>
+    </div>
+
+
+    <div id="newsContainer"></div>
+</body>
+</html>
