@@ -86,7 +86,47 @@ $("#addNewsButton").click(
 
 $("#deleteNewsButton").click(
     (e)=>{
-        console.log($("#title").val())
+        $.ajax({
+            type : "GET",
+            url : "http://localhost:3000/Lab7/server/controller.php", 
+            data: {
+                action : 'deleteNews',
+                title : $("#title").val() , 
+                username : username,
+            },					
+                success: function(data, status) {
+                    data = JSON.parse(data)
+                    if(data[0])
+                        refreshNews()
+                    else
+                        alert(data[1])
+                }
+            });
+    }
+)
+
+$("#updateNewsButton").click(
+    (e)=>{
+        $.ajax({
+            type : "GET",
+            url : "http://localhost:3000/Lab7/server/controller.php", 
+            data: {
+                action : 'updateNews',
+                title : $("#title").val() , 
+                username : username,
+                category : $("#category").val(),
+                date : $("#date").val(),
+                text : $("#text").val()
+            },					
+                success: function(data, status) {
+                    console.log(data)
+                    data = JSON.parse(data)
+                    if(data[0])
+                        refreshNews()
+                    else
+                        alert(data[1])
+                }
+            });
     }
 )
 

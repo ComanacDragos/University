@@ -46,15 +46,13 @@
 			$stmt = $this->pdo->query("SELECT * FROM news WHERE $condition ORDER BY date DESC");
 			return $stmt->fetchAll(PDO::FETCH_ASSOC);
 		}
-		/*
-		public function delete ($id) {
-			$affected_rows = $this->pdo->exec("DELETE from table where id=" . $id);
-			return $affected_rows;
+		
+		public function delete ($title, $producer) {
+			return $this->pdo->exec("DELETE from news where title='$title' AND producer='$producer'");
 		}
 
-		public function update ($id, $value) {
-			$affected_rows = $this->pdo->exec("UPDATE table SET field='" . $value ."' where id=" . $id);
-
-		}*/
+		public function update ($title, $producer, $category, $date, $text) {
+			return $this->pdo->exec("UPDATE news SET category='$category', date='$date', text='$text' WHERE title='$title' AND producer='$producer'");
+		}
 	}
 ?>

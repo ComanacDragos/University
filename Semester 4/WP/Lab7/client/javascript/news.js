@@ -19,8 +19,17 @@ function refreshNews(news){
 
 
 $("#welcome").text((i, oldText)=>{
-    return "Welcome " + username  + "!"
+    if(username != null)
+        return "Welcome " + username  + "!"
+    return "Welcome guest!"
 }) 
+
+if(username == null){
+    let links = $("header nav").children()
+    links[0].text = "Back to login"
+    links[1].remove()
+    links[2].remove()
+}
 
 $.ajax({
     type : "GET",
@@ -53,5 +62,11 @@ $("#filterButton").click(
                     refreshNews(JSON.parse(data))
                 }
         });
+    }
+)
+
+$("#changePassword").click(
+    (e)=>{
+        window.location.replace("changePassword.html?username=" + username)
     }
 )

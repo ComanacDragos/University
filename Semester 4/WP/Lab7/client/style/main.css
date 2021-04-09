@@ -28,7 +28,7 @@ header{
     margin-bottom: 20px;
 }
 
-header nav{
+nav{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -40,16 +40,8 @@ header nav{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
     width: 30%;
     margin: auto;
-}
-
-.form{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 
 textarea{
@@ -85,9 +77,7 @@ button.news{
     color: rgb(85, 238, 218);
 }
 
-.buttonContainer{
-    display: flex;
-    flex-direction: row;
-    
-    column-gap: 5%;
+nav button{
+    height: 60px;
+    width: 100px;
 }

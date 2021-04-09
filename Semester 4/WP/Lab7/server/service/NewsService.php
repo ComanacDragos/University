@@ -31,5 +31,17 @@
         public function getFilteredNews($category, $startDate, $endDate){
             return $this->newsDB->filterNews($category, $startDate, $endDate);
         }
+
+        public function deleteNews($title, $username){
+            if($this->newsDB->delete($title, $username) == 0)
+                return array(FALSE, "Could not delete news");
+            return array(TRUE, "News deleted");
+        }
+
+        public function updateNews($title, $producer, $category, $date, $text){
+            if($this->newsDB->update($title, $producer, $category, $date, $text) == 0)
+                return array(FALSE, "Could not update news");
+            return array(TRUE, "News updated");
+        }
     }
 ?>

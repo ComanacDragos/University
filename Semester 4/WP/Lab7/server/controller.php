@@ -32,14 +32,38 @@ class Controller
                         $_GET['text']
                     );
                     break;
+                case "updateNews":
+                    $this->{$_GET['action']}(
+                        $_GET['title'], 
+                        $_GET['username'], 
+                        $_GET['category'],
+                        $_GET['date'],
+                        $_GET['text']
+                    );
+                    break;
+                case "deleteNews":
+                    $this->{$_GET['action']}(
+                        $_GET['title'], 
+                        $_GET['username']
+                    );
+                    break;
                 case "getUserNews":
                     $this->{$_GET['action']}($_GET['username']);
                     break;
                 case "getNewsWithTitle":
                     $this->{$_GET['action']}($_GET['title']);
                     break;
+                case "updateNews":
+                    $this->{$_GET['action']}($_GET['title'], $_GET['username']);
+                    break;
                 case "getFilteredNews":
                     $this->{$_GET['action']}($_GET['category'], $_GET['startDate'], $_GET['endDate']);
+                    break;
+                case "registerUser":
+                    $this->{$_GET['action']}($_GET['username'], $_GET['password'], $_GET['confirmPassword']);
+                    break;
+                case "changePassword":
+                    $this->{$_GET['action']}($_GET['username'], $_GET['password'], $_GET['confirmPassword'], $_GET['oldPassword']);
                     break;
                 default:
                 $this->{$_GET['action']}();
@@ -48,7 +72,7 @@ class Controller
     }
 
     public function getUser($username, $password) {
-	    $this->view->output($this->userService->login($_GET['username'], $_GET['password']));
+	    $this->view->output($this->userService->login($username, $password));
     }
 
     public function getNews(){       
@@ -69,6 +93,22 @@ class Controller
 
     public function getFilteredNews($category, $startDate, $endDate){
         $this->view->output($this->newsService->getFilteredNews($category, $startDate, $endDate));
+    }
+
+    public function registerUser($username, $password, $confirmPassword){
+        $this->view->output($this->userService->registerUser($username, $password, $confirmPassword));
+    }
+
+    public function deleteNews($title, $username){
+        $this->view->output($this->newsService->deleteNews($title, $username));
+    }
+
+    public function updateNews($title, $producer, $category, $date, $text){
+        $this->view->output($this->newsService->updateNews($title, $producer, $category, $date, $text));
+    }
+
+    public function changePassword($username, $password, $confirmPassword, $oldPassword){
+        $this->view->output($this->userService->changePassword($username, $password, $confirmPassword, $oldPassword));
     }
 }
 
