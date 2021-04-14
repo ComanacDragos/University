@@ -1,6 +1,17 @@
 var searchParams = new URLSearchParams(window.location.search)
 var username = searchParams.get('username')
 
+$.ajax({
+    type : "GET",
+    url : "http://localhost:3000/Lab7/server/controller.php", 
+    data: {action: "getLoggedUser", username: username},					
+        success: function(data, status) {
+            if(!JSON.parse(data)){
+                window.location.replace("index.html")
+            }
+        }
+});
+
 $("#backToNews").click(
     (e) =>{
         window.location.replace("news.html?username=" + username)
@@ -20,7 +31,14 @@ $("#changePasswordButton").click(
                 oldPassword: $("#oldPassword").val()
             },					
                 success: function(data, status) {
-                    alert(JSON.parse(data))
+                    console.log(data)
+                    tokens = JSON.parse(data)
+                    if(tokens[0]){
+                        window.location.replace("changePassword.html?username=" + tokens[1])
+                        alert("Password changed successfuly!")
+                    }else{
+                        alert(tokens[1])
+                    }
                 }
             });  
     }

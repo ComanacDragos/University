@@ -4,28 +4,46 @@
     class UserService{
         private $userDB;
         private $user="";
+        private $ciphering = "AES-128-CTR";
+        private $options = 0;
+        private $encryption_iv = '1234567891011121';
+        private $encryption_key = "PHPLab";
 
         public function __construct (){
             $this->userDB = new UserDB();
         }
 
-        public function login($username, $password){
+        private function encrypt($string){
+            return openssl_encrypt($string, $this->ciphering,
+            $this->encryption_key, $this->options, $this->encryption_iv);
+        }
+
+        private function decrypt($string){
+            return $decryption=openssl_decrypt ($string, $this->ciphering, 
+            $this->encryption_key, $this->options, $this->encryption_iv);
+        }
+
+        public function getUser($encryption){
+            if($encryption == "")
+                return "";
+            $tokens = explode(";", $this->decrypt($encryption));
+            $username = $tokens[0];
+            $password = $tokens[1];
             $resultset = $this->userDB->select($username, $password);
-        
             if(count($resultset) == 1){
-                $_SESSION["username"] = $username;
-                return TRUE;
+                return $username;
             }
             else 
                 return FALSE;
         }
 
-        public function getUser(){
-            return $this->user;
-        }
-        
-        public function setUser($user){
-            return $this->user = $user;
+        public function login($username, $password){
+            $resultset = $this->userDB->select($username, $password);
+            if(count($resultset) == 1){
+                return $this->encrypt($username . ";" . $password);
+            }
+            else 
+                return FALSE;
         }
 
         public function registerUser($username, $password, $confirmPassword){
@@ -46,18 +64,19 @@
 
         public function changePassword($username, $password, $confirmPassword, $oldPassword){
             if($username == '')
-            return "Username must not be empty";
+                return array(FALSE, "Username must not be empty");
             if($password == '')
-                return "Password must not be empty";
+                return array(FALSE, "Password must not be empty");
             if($password != $confirmPassword)
-                return "Password and confirm password must be the same";
+                return array(FALSE, "Password and confirm password must be the same");
                 
             try{
-                $this->userDB->update($username, $password, $oldPassword);
-                return "Password updated successfuly";
+                if($this->userDB->update($username, $password, $oldPassword) == 1)
+                    return array(TRUE, $this->encrypt($username . ";" . $password));
+                return array(FALSE, "Old password is wrong");
             }
             catch(Exception $e){
-                return "Could not update password: $e";
+                return array(FALSE, "Could not update password: $e");
             }
         }
     }

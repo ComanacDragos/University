@@ -1,6 +1,33 @@
 var searchParams = new URLSearchParams(window.location.search)
 var username = searchParams.get('username')
 
+$.ajax({
+    type : "GET",
+    url : "http://localhost:3000/Lab7/server/controller.php", 
+    data: {action: "getLoggedUser", username: username},					
+        success: function(data, status) {
+            if(JSON.parse(data) || JSON.parse(data) === ""){
+                let username = JSON.parse(data)
+                $("#welcome").text((i, oldText)=>{
+                    if(username != "")
+                        return "Welcome " + username  + "!"
+                    return "Welcome guest!"
+                }) 
+                
+                if(username === ""){
+                    let links = $("header nav").children()
+                    links[0].text = "Back to login"
+                    links[1].remove()
+                    links[2].remove()
+                }
+            }
+            else{
+                window.location.replace("index.html")
+            }
+        }
+});
+
+
 function generateNews(newsData){
     return `<div class=\"news\">
                 <h2>${newsData['title']}</h2>
@@ -15,20 +42,6 @@ function refreshNews(news){
     news.map(generateNews).forEach(element => {
         $("#newsContainer").append(element)    
     });
-}
-
-
-$("#welcome").text((i, oldText)=>{
-    if(username != null)
-        return "Welcome " + username  + "!"
-    return "Welcome guest!"
-}) 
-
-if(username == null){
-    let links = $("header nav").children()
-    links[0].text = "Back to login"
-    links[1].remove()
-    links[2].remove()
 }
 
 $.ajax({

@@ -7,16 +7,19 @@ from random import randint
 
 
 class Fuzzyfier:
-    def __init__(self, left, right):
+    def __init__(self, left, right, mean=None):
         self._left = left
         self._right = right
+        self._mean = mean
+        if self._mean is None:
+            self._mean = (self._left + self._right) / 2
 
     def fuzzyfy(self, x):
-        m = (self._left + self._right) / 2
-        if self._left <= x < m:
-            return (x - self._left) / (m - self._left)
-        elif m <= x < self._right:
-            return (self._right - x) / (self._right - m)
+
+        if self._left is not None and self._left <= x < self._mean:
+            return (x - self._left) / (self._mean - self._left)
+        elif self._right is not None and self._mean <= x < self._right:
+            return (self._right - x) / (self._right - self._mean)
         else:
             return 0
 
@@ -26,26 +29,28 @@ class Fuzzyfier:
 
 class Solver:
     def __init__(self):
+        self.isActive = True
+
         self._thetaRanges = {
-            "NVB": (-55, -25),
+            "NVB": (None, -25, -40),
             "NB": (-40, -10),
             "N": (-20, 0),
             "ZO": (-5, 5),
             "P": (0, 20),
             "PB": (10, 40),
-            "PVB": (25, 55)
+            "PVB": (25, None, 40)
         }
 
         self._omegaRanges = {
-            "NB": (-13, -3),
+            "NB": (None, -3, -8),
             "N": (-6, 0),
             "ZO": (-1, 1),
             "P": (0, 6),
-            "PB": (3, 13)
+            "PB": (3, None, 8)
         }
 
         self._fRanges = {
-            "NVVB": (-40, -24),
+            "NVVB": (None, -24, -32),
             "NVB": (-32, -16),
             "NB": (-24, -8),
             "N": (-16, 0),
@@ -53,7 +58,7 @@ class Solver:
             "P": (0, 16),
             "PB": (8, 24),
             "PVB": (16, 32),
-            "PVVB": (24, 40)
+            "PVVB": (24, None, 32)
         }
 
         self._bValues = {
@@ -96,6 +101,9 @@ class Solver:
         return {set_: function.fuzzyfy(value) for (set_, function) in functions.items()}
 
     def solver(self, theta, omega):
+        if not self.isActive:
+            return
+
         thetaValues = self.computeValues(theta, self._thetaFunctions)
         omegaValues = self.computeValues(omega, self._omegaFunctions)
 
@@ -111,7 +119,9 @@ class Solver:
 
         s = sum(fValues.values())
         if s == 0:
-            return None
+            if theta == 0:
+                return
+            return 22 * theta/abs(theta)
         return sum(fValues[fSet] * self._bValues[fSet] for fSet in fValues.keys()) / s
 
 def solver(t, w):
@@ -133,4 +143,3 @@ def solver(t, w):
 
     """
     return randint(-300, 300)
-

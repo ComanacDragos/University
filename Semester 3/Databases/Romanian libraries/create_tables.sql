@@ -1,5 +1,5 @@
 --USE RomanianLibrariesDB
-
+--USE Libraries
 CREATE TABLE Regions
 (
 	RegionId INT PRIMARY KEY,
@@ -29,7 +29,7 @@ CREATE TABLE Libraries
 CREATE TABLE Titles
 (
 	TitleId INT PRIMARY KEY,
-	Title VARCHAR(100)
+	Title VARCHAR(100) UNIQUE
 );
 
 CREATE TABLE Books
@@ -54,9 +54,10 @@ CREATE TABLE Characters
 CREATE TABLE Authors
 (
 	AuthorId INT PRIMARY KEY,
-	FirstName VARCHAR(50), 
-	LastName VARCHAR(50),
+	FirstName VARCHAR(50) NOT NULL, 
+	LastName VARCHAR(50) NOT NULL,
 	DOB DATE
+	UNIQUE (FirstName, LastName)
 );
 
 CREATE TABLE Topics

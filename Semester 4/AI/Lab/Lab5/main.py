@@ -16,6 +16,7 @@ import math
 # IMPORT OBJECT LOADER
 from objloader import *
 from solver_solved import Solver
+from random import randint
 
 
 def loadTexture():
@@ -369,6 +370,10 @@ def test():
                         revPend.theta = revPend.tMax
                         revPend.dtheta = oldT - revPend.theta
 
+                if pressed_keys[K_d]:
+                    solver.isActive = not solver.isActive
+                    appliedForce = 0
+
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
         glLoadIdentity()
 
@@ -387,7 +392,8 @@ def test():
         newForce = solver.solver(t, w)
         if newForce != None:
             appliedForce = newForce
-        print(t, w, appliedForce)
+        print(t, w, appliedForce, newForce, solver.isActive)
+
         # se deseneaza pendulul
         revPend.draw()
 

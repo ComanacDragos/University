@@ -1,6 +1,17 @@
 var searchParams = new URLSearchParams(window.location.search)
 var username = searchParams.get('username')
 
+$.ajax({
+    type : "GET",
+    url : "http://localhost:3000/Lab7/server/controller.php", 
+    data: {action: "getLoggedUser", username: username},					
+        success: function(data, status) {
+           if(!JSON.parse(data)){
+                window.location.replace("index.html")
+            }
+        }
+});
+
 function refreshNews(){
     $.ajax({
         type : "GET",
@@ -11,6 +22,7 @@ function refreshNews(){
         },					
             success: function(data, status) {
                 $("#newsContainer").html("")
+                console.log(data)
                 JSON.parse(data).forEach(element => {
                     //$("#newsContainer").append("<button class=\"news\">" + element['title'] + "</button>")    
                     $("#newsContainer").append(
@@ -95,6 +107,7 @@ $("#deleteNewsButton").click(
                 username : username,
             },					
                 success: function(data, status) {
+                    console.log(data)
                     data = JSON.parse(data)
                     if(data[0])
                         refreshNews()

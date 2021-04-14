@@ -5,3 +5,4 @@ __pycache__
 *.obj
 *.csproj
 *.sln
+*.idea

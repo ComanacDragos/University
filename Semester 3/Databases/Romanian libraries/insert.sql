@@ -1,5 +1,5 @@
-USE RomanianLibrariesDB
-
+--USE RomanianLibrariesDB
+USE Libraries
 /*
 DELETE FROM Borrowers_Books
 DELETE FROM Borrowers
@@ -8,11 +8,11 @@ DELETE FROM Topics
 DELETE FROM Characters
 DELETE FROM Authors_Titles
 DELETE FROM Authors
-DELETE FROM Titles
 DELETE FROM Books
 DELETE FROM Libraries
 DELETE FROM Cities
 DELETE FROM Regions
+DELETE FROM Titles
 */
 
 INSERT INTO Regions(RegionId, Name) VALUES

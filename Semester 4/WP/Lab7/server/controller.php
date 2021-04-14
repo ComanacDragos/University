@@ -20,7 +20,7 @@ class Controller
     public function service() {
 	   if (isset($_GET['action']) && !empty($_GET['action'])) {
            switch($_GET['action']){
-               case "getUser":
+               case "login":
                     $this->{$_GET['action']}($_GET['username'], $_GET['password']);
                     break;
                 case "addNews":
@@ -50,6 +50,9 @@ class Controller
                 case "getUserNews":
                     $this->{$_GET['action']}($_GET['username']);
                     break;
+                case "getLoggedUser":
+                    $this->{$_GET['action']}($_GET['username']);
+                    break;
                 case "getNewsWithTitle":
                     $this->{$_GET['action']}($_GET['title']);
                     break;
@@ -71,7 +74,7 @@ class Controller
 	   }
     }
 
-    public function getUser($username, $password) {
+    public function login($username, $password) {
 	    $this->view->output($this->userService->login($username, $password));
     }
 
@@ -80,11 +83,15 @@ class Controller
     }
 
     public function addNews($title, $producer, $category, $date, $text){
-        $this->view->output($this->newsService->addNews($title, $producer, $category, $date, $text));
+        $username = $this->userService->getUser($producer);
+        if($username)
+            $this->view->output($this->newsService->addNews($title, $username, $category, $date, $text));
     }
 
     public function getUserNews($user){
-        $this->view->output($this->newsService->getUserNews($user));
+        $username = $this->userService->getUser($user);
+        if($username)
+            $this->view->output($this->newsService->getUserNews($username));
     }
 
     public function getNewsWithTitle($title){
@@ -100,15 +107,25 @@ class Controller
     }
 
     public function deleteNews($title, $username){
-        $this->view->output($this->newsService->deleteNews($title, $username));
+        $user = $this->userService->getUser($username);
+        if($user)
+            $this->view->output($this->newsService->deleteNews($title, $user));
     }
 
     public function updateNews($title, $producer, $category, $date, $text){
-        $this->view->output($this->newsService->updateNews($title, $producer, $category, $date, $text));
+        $user = $this->userService->getUser($producer);
+        if($user)
+            $this->view->output($this->newsService->updateNews($title, $user, $category, $date, $text));
     }
 
     public function changePassword($username, $password, $confirmPassword, $oldPassword){
-        $this->view->output($this->userService->changePassword($username, $password, $confirmPassword, $oldPassword));
+        $user = $this->userService->getUser($username);
+        if($user)
+            $this->view->output($this->userService->changePassword($user, $password, $confirmPassword, $oldPassword));
+    }
+
+    public function getLoggedUser($username){
+        $this->view->output($this->userService->getUser($username));
     }
 }
 

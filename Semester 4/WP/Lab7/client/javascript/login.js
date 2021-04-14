@@ -4,11 +4,11 @@ $("#loginButton").click(()=>{
     $.ajax({
         type : "GET",
         url : "http://localhost:3000/Lab7/server/controller.php", 
-        data: {action: "getUser", username : user , password : psw},					
+        data: {action: "login", username : user , password : psw},					
             success: function(data, status) {
                 console.log(data)
                 if(JSON.parse(data))
-                    window.location.replace("news.html?username=" + user)
+                    window.location.replace("news.html?username=" + JSON.parse(data));
                 else
                     alert("Invalid credentials")
             }
