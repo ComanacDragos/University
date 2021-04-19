@@ -1,6 +1,10 @@
 var searchParams = new URLSearchParams(window.location.search)
 var username = searchParams.get('username')
 
+prevCategory = ""
+prevStartDate = ""
+prevEndDate = ""
+
 $.ajax({
     type : "GET",
     url : "http://localhost:3000/Lab7/server/controller.php", 
@@ -73,6 +77,19 @@ $("#filterButton").click(
                 },					
                 success: function(data, status) {
                     refreshNews(JSON.parse(data))
+                    $("#prevCategory").text((i, oldText)=>{
+                        return "Category: " + prevCategory
+                    })
+                    $("#prevStartDate").text((i, oldText)=>{
+                        return "Start Date: " + prevStartDate
+                    })
+                    $("#prevEndDate").text((i, oldText)=>{
+                        return "End Date: " + prevEndDate
+                    })
+
+                    prevCategory = $("#category").val()
+                    prevStartDate = $("#startDate").val()
+                    prevEndDate = $("#endDate").val()
                 }
         });
     }

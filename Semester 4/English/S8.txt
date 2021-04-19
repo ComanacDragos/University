@@ -1,0 +1,36 @@
+Eraser average rutime of the optimal solution's and 
+probability of finding a solution of the decision problem
+
+1. but the text highlight the key results
+2. important part of finding answers
+3. no in this section just highlight key differecnes 
+4. no because some of charts will not show anything, just choose the one with the most important
+ then order (choose the order) and number them
+5. yes, any table or graph also needs an explanation
+6. interesting because of similairty of difference (high or low) (interesting relations)
+7. no, make notes on the key results only should not include raw numbesr (include means, percentage, units)
+8. test name and the key value after the result
+
+The graph illustrates spending on online Games over the Past two years
+The y-axis is the spend amount and the x-axis are the months
+
+Overall the spending increased between aug 2017 and oct 2018, followed by a peak and a high decrease
+
+There are a few key points
+The first one is the peaks across all games in the period of oct 2018 and dec 2018
+This might be because of the winter sales
+
+Also a noteworthy aspect would the increased evolution of fortnite compared to the relatively steady evolution
+of other games
+The cause of this could be the gameplay which might be more accessible to a wider audience
+
+In conclusion this graph depicts the preferred games over the last 2 years
+
+
+
+
+
+
+
+
+

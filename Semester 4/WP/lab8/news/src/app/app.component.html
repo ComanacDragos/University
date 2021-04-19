@@ -1,0 +1,25 @@
+<div *ngIf="userToken === ''">
+  <div class="form">
+    <h1>{{title}}</h1>
+    <label for="username">Username</label>
+    <input type="username" id="username" name="username" #username><br><br>
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" #password><br><br>
+
+    <nav>
+      <button (click)="login(username.value, password.value)" id="loginButton" class="news">Login</button>
+      <button (click)=OnClickShowCreateAccount() id="createAccountButton" class="news">Create account</button>
+      <button (click)=OnClickShowViewNews() id="viewNews" class="news">View news</button>
+    </nav>
+  </div>
+
+  <div *ngIf="showCreateAccount">
+    <app-create-account></app-create-account>
+  </div>
+
+  <div *ngIf="showViewNews">
+    <app-view-news></app-view-news>
+  </div>
+</div>
+
+<app-manage-news *ngIf="userToken !== ''"></app-manage-news>

@@ -1,0 +1,11 @@
+<header>
+  <h1 id="welcome">Welcome {{username}}!</h1>
+  <nav>
+    <a class="headerLink" href="">Logout</a>
+    <a class="headerLink" routerLink="/manage-news/user-news" routerLinkActive="active">Manage news</a>
+    <a class="headerLink" routerLink="/manage-news/change-password" routerLinkActive="active">Change password</a>
+    <a class="headerLink" routerLink="/view-news" routerLinkActive="active">View news</a>
+  </nav>
+</header>
+
+<router-outlet></router-outlet>

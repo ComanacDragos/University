@@ -1,0 +1,20 @@
+<div class="form">
+  <h1>Add, delete, update news!</h1>
+  <label for="title">Title</label>
+  <input id="title" name="title" value="{{selectedNews.title}}" #title><br><br>
+  <label for="category">Category</label>
+  <input id="category" name="category" value="{{selectedNews.category}}" #category><br><br>
+  <label for="date">Date</label>
+  <input type="date" id="date" name="date" value="{{selectedNews.date}}" #date><br><br>
+  <label for="text">Text</label>
+  <textarea id="text" name="text" [value]="selectedNews.text" #text></textarea><br><br>
+  <nav>
+    <button (click)="addHandle(title.value, category.value, date.value, text.value)" class="news" id="addNewsButton">Add</button>
+    <button (click)="deleteHandle(title.value)" class="news" id="deleteNewsButton">Delete</button>
+    <button (click)="updateHandle(title.value, category.value, date.value, text.value)" class="news" id="updateNewsButton">Update</button>
+  </nav>
+</div>
+
+<div id="newsContainer">
+  <button class="news" (click)="clickNewsHandle(news.title)" *ngFor="let news of userNews">{{news.title}}</button>
+</div>

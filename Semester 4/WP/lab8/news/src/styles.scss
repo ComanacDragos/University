@@ -1,0 +1,95 @@
+body, html{
+  background-color: black;
+  color: rgb(85, 238, 218);
+  width: 100%;
+  margin: 0;
+}
+
+.headerLink{
+  text-decoration: none;
+  background-color: rgb(85, 238, 218);
+  color: black;
+  padding: 5px;
+  border-radius: 10px;
+  height: 50%;
+}
+
+.headerLink:hover, button.news:hover{
+  background-color: rgb(12, 138, 121);
+  transition: 1s;
+}
+
+header{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 20px;
+}
+
+nav{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 20px;
+}
+
+.form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+  margin: auto;
+}
+
+textarea{
+  height: 200px;
+  width: 400px;
+}
+
+textarea, input {
+  background-color: black;
+  color: rgb(85, 238, 218);;
+}
+
+#newsContainer{
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+
+  width: 60%;
+  margin: auto;
+
+  text-align: justify;
+  margin-top: 20px;
+}
+
+.news{
+  border-style: groove;
+  border-color: white;
+  padding: 10px;
+}
+
+button.news{
+  background-color: black;
+  color: rgb(85, 238, 218);
+}
+
+nav button{
+  height: 60px;
+  width: 100px;
+}
+
+#previous{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 60%;
+  row-gap: 10px;
+
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+}

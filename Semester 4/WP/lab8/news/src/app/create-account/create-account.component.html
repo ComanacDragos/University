@@ -1,0 +1,15 @@
+<div class="form">
+  <h1>Create account</h1>
+  <label for="newUsername">Username</label>
+  <input type="username" id="newUsername" name="newUsername" #newUsername><br><br>
+  <label for="newPassword">Password</label>
+  <input type="password" id="newPassword" name="newPassword" #newPassword><br><br>
+  <label for="confirmPassword">Confirm password</label>
+  <input type="password" id="confirmPassword" name="confirmPassword" #confirmPassword><br><br>
+
+  <nav>
+    <button id="createAccountButton" class="news" (click)="registerUser(newUsername.value, newPassword.value, confirmPassword.value)">Create account</button>
+  </nav>
+
+  <p>{{createAccountState}}</p>
+</div>

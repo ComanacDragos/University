@@ -1,0 +1,24 @@
+<div class="form">
+  <label for="category">Category</label>
+  <input type="category" id="category" name="category" #category><br><br>
+  <label for="startDate">Start Date</label>
+  <input type="date" id="startDate" name="startDate" #startDate><br><br>
+  <label for="endDate">End Date</label>
+  <input type="date" id="endDate" name="endDate" #endDate><br><br>
+  <button class="news" id="filterButton" (click)="filterHandle(category.value, startDate.value, endDate.value)">Filter news</button>
+</div>
+
+<div id = "previous">
+  <span id="prevCategory">Category: {{prevCategory}}</span>
+  <span id="prevStartDate">Start Date: {{prevStartDate}}</span>
+  <span id="prevEndDate">End Date: {{prevEndDate}}</span>
+</div>
+
+<div id="newsContainer">
+  <div class="news" *ngFor="let currentNews of news">
+    <h2>{{currentNews.title}}</h2>
+    <p>{{currentNews.text}}</p>
+    <p>By {{currentNews.producer}} on {{currentNews.date}}</p>
+    <p>{{currentNews.category}}</p>
+  </div>
+</div>
