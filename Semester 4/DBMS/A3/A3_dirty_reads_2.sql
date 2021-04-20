@@ -16,6 +16,10 @@ SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
 -- FIX: SET TRANSACTION ISOLATION LEVEL READ COMMITTED
 BEGIN TRAN
 
+EXEC sp_log_locks @info = 'before select'
+
 SELECT * FROM Regions
+
+EXEC sp_log_locks @info = 'after select'
 
 COMMIT TRAN

@@ -19,8 +19,8 @@ DROP TABLE ChangesLog
 */
 
 CREATE TABLE LocksLog(
-	logId INT PRIMARY KEY IDENTITY(1, 1),
-	currentTime DATETIME, 
+	currentTime DATETIME,
+	info VARCHAR(100),
 	
 	resource_type VARCHAR(100),
 	request_mode VARCHAR(100),
@@ -29,15 +29,24 @@ CREATE TABLE LocksLog(
 	request_session_id INT
 )
 
+CREATE TABLE ChangesLog(
+	currentTime DATETIME,
+	oldData VARCHAR(100),
+	newData VARCHAR(100),
+	error VARCHAR(100)
+)
 
+DELETE FROM LocksLog
+DELETE FROM ChangesLog
 
 -- DROP PROCEDURE sp_log_locks
 GO
 CREATE PROCEDURE sp_log_locks
+	@info VARCHAR(100)
 AS 
 BEGIN 
-	INSERT INTO LocksLog (currentTime, resource_type, request_mode, request_type, request_status, request_session_id)
-	SELECT GETDATE(), resource_type, request_mode, request_type, request_status, request_session_id
+	INSERT INTO LocksLog (currentTime, info, resource_type, request_mode, request_type, request_status, request_session_id)
+	SELECT GETDATE(), @info, resource_type, request_mode, request_type, request_status, request_session_id
 	FROM sys.dm_tran_locks
 	WHERE request_owner_type = 'TRANSACTION'
 	
@@ -48,14 +57,17 @@ GO
 GO
 CREATE PROCEDURE sp_log_changes
 	@oldData VARCHAR(100),
-	@newData VARCHAR(100)
+	@newData VARCHAR(100),
+	@error VARCHAR(100)
 AS 
 BEGIN
-	INSERT INTO ChangesLog (currentTime, oldData, newData) VALUES
-	(GETDATE(), @oldData, @newData)
+	INSERT INTO ChangesLog (currentTime, oldData, newData, error) VALUES
+	(GETDATE(), @oldData, @newData, @error)
 END
 GO
 
 SELECT * FROM ChangesLog
 
 SELECT * FROM LocksLog
+
+--EXECUTE sp_log_locks

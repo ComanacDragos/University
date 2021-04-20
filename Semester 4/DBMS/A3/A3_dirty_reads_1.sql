@@ -17,10 +17,36 @@ INSERT INTO Regions (RegionId, Name) VALUES
 
 SELECT * FROM Regions
 
+DECLARE @auxTable TABLE (
+	logId INT PRIMARY KEY IDENTITY(1, 1),
+	currentTime DATETIME,
+	info VARCHAR(100),
+	
+	resource_type VARCHAR(100),
+	request_mode VARCHAR(100),
+	request_type VARCHAR(100), 
+	request_status VARCHAR(100),
+	request_session_id INT
+)
+
 BEGIN TRAN
 
-UPDATE Regions
-SET Name = 'Dirty region'
-WHERE RegionId = 1
+	INSERT INTO @auxTable (currentTime, info, resource_type, request_mode, request_type, request_status, request_session_id)
+		SELECT GETDATE(), 'beforeUpdate', resource_type, request_mode, request_type, request_status, request_session_id
+		FROM sys.dm_tran_locks
+		WHERE request_owner_type = 'TRANSACTION'
 
+	UPDATE Regions
+	SET Name = 'Dirty region'
+	WHERE RegionId = 1
+
+	INSERT INTO @auxTable (currentTime, info, resource_type, request_mode, request_type, request_status, request_session_id)
+		SELECT GETDATE(), 'afterUpdate', resource_type, request_mode, request_type, request_status, request_session_id
+		FROM sys.dm_tran_locks
+		WHERE request_owner_type = 'TRANSACTION'
+
+	WAITFOR DELAY '00:00:05'
 ROLLBACK
+
+INSERT INTO LocksLog (currentTime, info, resource_type, request_mode, request_type, request_status, request_session_id)
+	SELECT * FROM @auxTable
