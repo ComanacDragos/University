@@ -16,10 +16,14 @@ SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
 -- FIX: SET TRANSACTION ISOLATION LEVEL READ COMMITTED
 BEGIN TRAN
 
-EXEC sp_log_locks @info = 'before select'
+	EXEC sp_log_locks @info = 'dirty read - before select'
 
-SELECT * FROM Regions
+	DECLARE @name VARCHAR(100)
 
-EXEC sp_log_locks @info = 'after select'
+	SELECT @name = Name FROM Regions
+	PRINT 'Read: ' + @name
+	EXEC sp_log_changes @oldData = NULL, @newData = @name, @info = 'dirty read - read', @error = NULL
+
+	EXEC sp_log_locks @info = 'dirty read - after select'
 
 COMMIT TRAN

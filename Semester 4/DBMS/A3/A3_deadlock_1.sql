@@ -23,16 +23,29 @@ INSERT INTO Cities (CityId, CityName) VALUES
 SELECT * FROM Regions
 SELECT * FROM Cities
 
+SELECT * FROM ChangesLog
+ORDER BY currentTime
+SELECT * FROM LocksLog
+ORDER BY currentTime DESC
+
 BEGIN TRAN
+	EXEC sp_log_locks @info = 'deadlock1 - before update'
 
 	UPDATE Regions
 	SET Name = 'deadlockRegion1'
+	OUTPUT GETDATE(), 'deadlock1 - update', deleted.Name, inserted.Name, NULL
+	INTO ChangesLog
 	WHERE RegionId = 1
 	
+	EXEC sp_log_locks @info = 'deadlock1 - between updates'
+
 	WAITFOR DELAY '00:00:05'
 	
 	UPDATE Cities
 	SET CityName = 'deadlockCity1'
+	OUTPUT GETDATE(), 'deadlock1 - update', deleted.CityName, inserted.CityName, NULL
+	INTO ChangesLog
 	WHERE CityId = 1
 
+	EXEC sp_log_locks @info = 'deadlock1 - after update'
 COMMIT TRAN

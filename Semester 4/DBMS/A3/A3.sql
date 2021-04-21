@@ -84,21 +84,38 @@ BEGIN
 	END
 	SET @titleId = @titleId + 1
 
+	DECLARE @newData VARCHAR(100)
+	DECLARE @auxTable TABLE(
+		currentTime DATETIME,
+		info VARCHAR(100), 
+		oldData VARCHAR(100), 
+		newData VARCHAR(100),
+		error VARCHAR(1000)
+	)
+
 	BEGIN TRAN
 	BEGIN TRY
 		EXEC sp_validate_author @firstName, @lastName, @DOB 
 		INSERT INTO Authors (AuthorId, FirstName, LastName, DOB) VALUES
 		(@authorId, @firstName, @lastName, @DOB)
 		PRINT 'INSERTED AUTHOR'
-
+		SET @newData = @firstName + ' ' + @lastName
+		INSERT INTO @auxTable (currentTime, newData, info) VALUES
+			(GETDATE(), @newData, 'INSERTED AUTHOR')
+		
 		EXEC sp_validate_title @title
 		INSERT INTO Titles (TitleId, Title) VALUES
 		(@titleId, @title)
 		PRINT 'INSERTED TITLE'
-
+		INSERT INTO @auxTable (currentTime, newData, info) VALUES
+			(GETDATE(), @title, 'INSERTED TITLE')
+		
 		INSERT INTO Authors_Titles (AuthorId, TitleId, ContributionPercentage) VALUES
 		(@authorId, @titleId, @contributionPercentage)
 		PRINT 'INSERTED AUTHOR_TITLE'
+		SET @newData = CAST(@authorId as varchar(10)) + ' - ' + CAST(@titleId as varchar(10)) + ' - ' + CAST(@contributionPercentage as varchar(10)) 
+		INSERT INTO @auxTable (currentTime, newData, info) VALUES
+			(GETDATE(), @newData, 'INSERTED TITLE')
 
 		PRINT 'SUCCESS!'
 		COMMIT TRAN
@@ -106,9 +123,15 @@ BEGIN
 	BEGIN CATCH
 		DECLARE @error VARCHAR(1000)
 		 SELECT @error = ERROR_MESSAGE()
-		PRINT @error
+		PRINT 'Error: ' + @error
+		EXEC sp_log_changes @oldData = '', @newData = '', @info = '', @error = @error
+		INSERT INTO @auxTable(currentTime, error) VALUES
+			(GETDATE(), @error)
 		ROLLBACK
 	END CATCH
+
+	INSERT INTO ChangesLog
+		SELECT * FROM @auxTable
 END
 GO
 
@@ -117,6 +140,9 @@ ORDER BY AuthorId
 SELECT * FROM Titles
 ORDER BY TitleId
 SELECT * FROM Authors_Titles
+
+SELECT * FROM ChangesLog
+ORDER BY currentTime
 
 EXEC sp_insert_author_title @title = 'newTitle', @contributionPercentage = 30, @firstName = 'firstName', @lastName = 'lastName', @DOB ='12-12-1990'
 
@@ -175,15 +201,20 @@ BEGIN
 	END
 	SET @titleId = @titleId + 1
 
+	DECLARE @newData VARCHAR(1000)
+
 	BEGIN TRY
 		EXEC sp_validate_author @firstName1, @lastName1, @DOB1 
 		INSERT INTO Authors (AuthorId, FirstName, LastName, DOB) VALUES
 		(@authorId1, @firstName1, @lastName1, @DOB1)
 		PRINT 'INSERTED AUTHOR1'
+		SET @newData = @firstName1 + ' ' + @lastName1
+		EXEC sp_log_changes @oldData = NULL, @newData = @newData, @info = 'INSERTED AUTHOR1', @error = NULL
 	END TRY
 	BEGIN CATCH
 		SELECT @error = ERROR_MESSAGE()
 		PRINT 'Error on inserting AUTHOR1: ' + @error
+		EXEC sp_log_changes @oldData = NULL, @newData = NULL, @info = 'Error on inserting AUTHOR1', @error = @error
 	END CATCH
 
 	BEGIN TRY
@@ -191,10 +222,13 @@ BEGIN
 		INSERT INTO Authors (AuthorId, FirstName, LastName, DOB) VALUES
 		(@authorId2, @firstName2, @lastName2, @DOB2)
 		PRINT 'INSERTED AUTHOR2'
+		SET @newData = @firstName2 + ' ' + @lastName2
+		EXEC sp_log_changes @oldData = NULL, @newData = @newData, @info = 'INSERTED AUTHOR2', @error = NULL
 	END TRY
 	BEGIN CATCH
 		SELECT @error = ERROR_MESSAGE()
 		PRINT 'Error on inserting AUTHOR2: ' + @error
+		EXEC sp_log_changes @oldData = NULL, @newData = NULL, @info = 'Error on inserting AUTHOR2', @error = @error
 	END CATCH
 
 	BEGIN TRY
@@ -202,30 +236,38 @@ BEGIN
 		INSERT INTO Titles (TitleId, Title) VALUES
 		(@titleId, @title)
 		PRINT 'INSERTED TITLE'
+		EXEC sp_log_changes @oldData = NULL, @newData = @title, @info = 'INSERTED TITLE', @error = NULL
 	END TRY
 	BEGIN CATCH
 		SELECT @error = ERROR_MESSAGE()
 		PRINT 'Error on inserting TITLE: ' + @error
+		EXEC sp_log_changes @oldData = NULL, @newData = NULL, @info = 'Error on inserting TITLE', @error = @error
 	END CATCH
 
 	BEGIN TRY 
 		INSERT INTO Authors_Titles (AuthorId, TitleId, ContributionPercentage) VALUES
 		(@authorId1, @titleId, @contributionPercentage1)
 		PRINT 'INSERTED AUTHOR_TITLE1'
+		SET @newData = CAST(@authorId1 as VARCHAR(10)) + ' - ' + CAST(@titleId as VARCHAR(10)) + ' - ' + CAST(@contributionPercentage1 as VARCHAR(10))
+		EXEC sp_log_changes @oldData = NULL, @newData = @newData, @info = 'INSERTED AUTHOR_TITLE1', @error = NULL
 	END TRY
 	BEGIN CATCH
 		SELECT @error = ERROR_MESSAGE()
 		PRINT 'Error on inserting AUTHOR_TITLE1: ' + @error
+		EXEC sp_log_changes @oldData = NULL, @newData = NULL, @info = 'Error on inserting AUTHOR_TITLE1', @error = @error
 	END CATCH
 
 	BEGIN TRY 
 		INSERT INTO Authors_Titles (AuthorId, TitleId, ContributionPercentage) VALUES
 		(@authorId2, @titleId, @contributionPercentage2)
 		PRINT 'INSERTED AUTHOR_TITLE2'
+		SET @newData = CAST(@authorId2 as VARCHAR(10)) + ' - ' + CAST(@titleId as VARCHAR(10)) + ' - ' + CAST(@contributionPercentage2 as VARCHAR(10))
+		EXEC sp_log_changes @oldData = NULL, @newData = @newData, @info = 'INSERTED AUTHOR_TITLE2', @error = NULL
 	END TRY
 	BEGIN CATCH
 		SELECT @error = ERROR_MESSAGE()
 		PRINT 'Error on inserting AUTHOR_TITLE2: ' + @error
+		EXEC sp_log_changes @oldData = NULL, @newData = NULL, @info = 'Error on inserting AUTHOR_TITLE2', @error = @error
 	END CATCH
 END
 GO
@@ -235,6 +277,10 @@ ORDER BY AuthorId
 SELECT * FROM Titles
 ORDER BY TitleId
 SELECT * FROM Authors_Titles
+
+
+SELECT * FROM ChangesLog
+ORDER BY currentTime
 
 EXEC sp_insert_authors_title @title = 'newTitle', 
 							 @contributionPercentage1 = 50, @firstName1 = 'firstName1', @lastName1 = 'lastName1', @DOB1 ='11-11-1991',

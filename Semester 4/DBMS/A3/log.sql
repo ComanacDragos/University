@@ -31,9 +31,10 @@ CREATE TABLE LocksLog(
 
 CREATE TABLE ChangesLog(
 	currentTime DATETIME,
+	info VARCHAR(100),
 	oldData VARCHAR(100),
 	newData VARCHAR(100),
-	error VARCHAR(100)
+	error VARCHAR(1000)
 )
 
 DELETE FROM LocksLog
@@ -58,16 +59,17 @@ GO
 CREATE PROCEDURE sp_log_changes
 	@oldData VARCHAR(100),
 	@newData VARCHAR(100),
+	@info VARCHAR(100),
 	@error VARCHAR(100)
 AS 
 BEGIN
-	INSERT INTO ChangesLog (currentTime, oldData, newData, error) VALUES
-	(GETDATE(), @oldData, @newData, @error)
+	INSERT INTO ChangesLog (currentTime, oldData, newData, error, info) VALUES
+	(GETDATE(), @oldData, @newData, @error, @info)
 END
 GO
 
-SELECT * FROM ChangesLog
 
 SELECT * FROM LocksLog
+SELECT * FROM ChangesLog
 
 --EXECUTE sp_log_locks

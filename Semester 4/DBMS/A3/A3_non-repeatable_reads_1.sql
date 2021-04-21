@@ -17,10 +17,20 @@ INSERT INTO Regions (RegionId, Name) VALUES
 
 SELECT * FROM Regions
 
+SELECT * FROM ChangesLog
+ORDER BY currentTime
+SELECT * FROM LocksLog
+ORDER BY currentTime DESC
+
 BEGIN TRAN
+	
+	EXEC sp_log_locks @info = 'non-repeatable read - before update'
 
-UPDATE Regions
-SET Name = 'Dirty region'
-WHERE RegionId = 1
+	UPDATE Regions
+	SET Name = 'Dirty region'
+	OUTPUT GETDATE(), 'non-repeatable read - update', deleted.Name, inserted.Name, NULL
+	INTO ChangesLog
+	WHERE RegionId = 1
 
+	EXEC sp_log_locks @info = 'non-repeatable read - after update'
 COMMIT
