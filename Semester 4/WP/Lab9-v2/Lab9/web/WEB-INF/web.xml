@@ -16,6 +16,10 @@
         <servlet-name>ImagesController</servlet-name>
         <servlet-class>webubb.controller.ImagesController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PageController</servlet-name>
+        <servlet-class>webubb.controller.PageController</servlet-class>
+    </servlet>
 
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
@@ -29,5 +33,8 @@
         <servlet-name>ImagesController</servlet-name>
         <url-pattern>/ImagesController</url-pattern>
     </servlet-mapping>
-
+    <servlet-mapping>
+        <servlet-name>PageController</servlet-name>
+        <url-pattern>/PageController</url-pattern>
+    </servlet-mapping>
 </web-app>

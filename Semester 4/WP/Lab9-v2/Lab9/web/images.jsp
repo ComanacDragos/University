@@ -21,20 +21,28 @@
 %>
     <div class="column">
         <h1><%="Welcome " + user.getUsername()%></h1>
-
+        <h2>User images</h2>
+        <form action="LoginController" method="get">
+            <button>Logout</button>
+        </form>
+        <form action="PageController" method="get">
+            <input type="hidden" name="page" value="allImages.jsp">
+            <button>Browse all photos</button>
+        </form>
+        <br>
         <input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;">
         <button style="width: 20%"><label for="file" style="cursor: pointer;">Upload Image</label></button>
 
         <br>
-        <div class="column" id="userPhotos"></div>
+        <div class="column" id="images"></div>
         <script>
             const loadFile = function (event) {
-                addImage( <%= user.getId() %>, event.target.files[0])
+                addImage('<%= user.getUsername() %>', event.target.files[0])
             };
         </script>
 
         <script defer>
-            getImagesOfUser(<%=user.getId()%>, '<%=user.getUsername()%>')
+            getImagesOfUser('<%=user.getUsername()%>')
         </script>
     </div>
 <%

@@ -1,19 +1,13 @@
 package webubb.domain;
 
 public class User {
-    private int id;
     private String username;
     private String password;
 
-    public User(int id, String username, String password){
-        this.id = id;
+    public User(String username, String password) {
         this.username = username;
         this.password = password;
     }
-
-    public int getId() { return id; }
-
-    public void setId(int id) { this.id=id; }
 
     public String getUsername() {
         return username;
@@ -30,5 +24,4 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-
 }

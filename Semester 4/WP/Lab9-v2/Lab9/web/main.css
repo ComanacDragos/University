@@ -15,7 +15,15 @@ html, body{
 
 }
 
-#userPhotos{
+form{
+    width: 50%;
+}
+
+form button{
+    width: 100%;
+}
+
+#images{
     width: 50%;
     row-gap: 20px;
 }
@@ -43,6 +51,7 @@ html, body{
 
 .content img{
     width: 90%;
+    height: 400px;
 }
 
 input {
@@ -82,6 +91,5 @@ nav a:hover, button:hover {
 
 nav button{
     height: 60px;
-    width: 100px;
+    width: 150px;
 }
-

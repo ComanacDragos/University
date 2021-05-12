@@ -1,14 +1,17 @@
-function addImage(userId, image) {
+function addImage(username, image) {
     const reader = new FileReader();
-
+    console.log("Uploading image...")
     reader.readAsDataURL(image);
     reader.onloadend = function() {
         const base64data = reader.result;
         $.ajax({
             url:"ImagesController",
             type: "post",
-            data: {userId: userId, image: base64data},
-            success: () => console.log("Image uploaded"),
+            data: {username: username, image: base64data},
+            success: () => {
+                console.log("Image uploaded")
+                getImagesOfUser(username)
+            },
             error: () => console.log("Error")
         })
     }
@@ -27,7 +30,7 @@ function addImage(userId, image) {
 </div>
 */
 
-function generateContent(author, image, likes){
+function generateContent(author, image, likes, imageId, username, buttonHandle, buttonText){
     let content = $("<div></div>")
     content.addClass("content column")
     content.append("<p>" + author + "</p>")
@@ -38,21 +41,103 @@ function generateContent(author, image, likes){
     let row = $("<div></div>")
     row.addClass("row")
     row.append("<p>" + likes + "</p>")
-    row.append("<button>Likes</button>")
+    let button = $("<button>" + buttonText + "</button>")
+    button.click((e) => buttonHandle(imageId, username))
+    row.append(button)
     content.append(row)
     return content
 }
 
-function getImagesOfUser(userId, username){
+function getImagesOfUser(username){
     $.ajax({
         url:"ImagesController",
         type: "get",
-        data: {action: "getImagesOfUser", userId: userId, username: username},
+        data: {action: "getImagesOfUser", username: username},
         success: (data) => {
+            let images = $("#images")
+            images.html("")
             JSON.parse(data).forEach(
-                (img) => $("#userPhotos").append(generateContent(img.author, img.base64Data, img.likes))
+                (img) => images.append(generateContent(
+                    img.author,
+                    img.base64Data,
+                    img.likes,
+                    img.id,
+                    username,
+                    dropPhoto,
+                    "Drop")
+                )
             )
         },
         error: () => console.log("Error")
     })
+}
+
+function getAllImages(username){
+    const noImages = $("#noImages").val()
+    if (noImages === '')
+        return
+    if(isNaN(noImages)){
+        alert("Enter a natural number")
+        return
+    }
+    $.ajax({
+        url:"ImagesController",
+        type: "get",
+        data: {action: "getAllImages", noImages: noImages},
+        success: (data) => {
+            let images = $("#images")
+            images.html("")
+            JSON.parse(data).forEach(
+                (img) => images.append(generateContent(
+                    img.author,
+                    img.base64Data,
+                    img.likes,
+                    img.id,
+                    username,
+                    likePhoto,
+                    "Like")
+                )
+            )
+        },
+        error: () => console.log("Error")
+    })
+}
+
+function likePhoto(imageId, username){
+    $.ajax({
+        url:"ImagesController" + '?' + $.param({imageId: imageId, username: username}),
+        type: "put",
+        success: (data) => {
+            console.log(data)
+            getAllImages(username)
+        },
+        error: () => console.log("Error")
+    })
+}
+
+function dropPhoto(imageId, username){
+    if(confirm("Are you sure you want to drop the image?"))
+        $.ajax({
+            url:"ImagesController" + '?' + $.param({imageId: imageId, username: username}),
+            type: "delete",
+            success: () => {
+                console.log("Image dropped")
+                getImagesOfUser(username)
+            },
+            error: () => console.log("Error")
+        })
+}
+
+function createAccount(){
+    $.ajax({
+        type : "put",
+        url : "LoginController" + '?' + $.param({
+            username : $("#newUsername").val(),
+            password : $("#newPassword").val(),
+            confirmPassword: $("#confirmPassword").val()
+        }),
+        success: function(data) {
+           alert(data)
+        }
+    });
 }
