@@ -1,0 +1,57 @@
+﻿@using AspCoreMVCEF.Models
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>News</title>
+    <link href="~/css/main.css" rel="stylesheet" type="text/css" />
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+</head>
+<body>
+    <header>
+        <h1 id="welcome">Welcome!</h1>
+        <nav>
+            <a class="headerLink" href="#">Logout</a>
+            <a id="manageNews" class="headerLink" href="#">Manage news</a>
+            <a id="changePassword" class="headerLink" href="#">Change password</a>
+        </nav>
+    </header>
+
+    <div class="form">
+        <label for="category">Category</label>
+        <input type="category" id="category" name="category"><br><br>
+        <label for="startDate">Start Date</label>
+        <input type="date" id="startDate" name="startDate"><br><br>
+        <label for="endDate">End Date</label>
+        <input type="date" id="endDate" name="endDate"><br><br>
+        <button class="news" id="filterButton">Filter news</button>
+    </div>
+
+    <div id="previous">
+        <span id="prevCategory">Category: </span>
+        <span id="prevStartDate">Start Date: </span>
+        <span id="prevEndDate">End Date: </span>
+    </div>
+
+    <div id="newsContainer">
+        @{
+            List<News> newsList = (List<News>)ViewData["newsList"];
+        }
+
+        @foreach (News news in newsList)
+        {
+            <div class="news">
+                <h2>@news.Title</h2>
+                <p>@news.Text</p>
+                <p>By @news.Producer on @news.Date</p>
+                <p>@news.Category</p>
+            </div>
+        }
+    </div>
+</body>
+</html>

@@ -108,7 +108,7 @@ function likePhoto(imageId, username){
         url:"ImagesController" + '?' + $.param({imageId: imageId, username: username}),
         type: "put",
         success: (data) => {
-            console.log(data)
+            alert(data)
             getAllImages(username)
         },
         error: () => console.log("Error")
