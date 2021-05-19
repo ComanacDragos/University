@@ -13,6 +13,6 @@ namespace AspCoreMVCEF.Models
 		public string Producer { get; set; }
 		public string Text { get; set; }
 		public string Category { get; set; }
-		public DateTime Date { get; set; }
+		public DateTime Date{ get; set; }
 	}
 }

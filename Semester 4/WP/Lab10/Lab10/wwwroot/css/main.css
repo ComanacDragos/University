@@ -1,95 +1,101 @@
-html, body{
+html, body {
     background-color: black;
     color: rgb(85, 238, 218);
     width: 100%;
     margin: 0;
 }
 
-.headerLink{
-    text-decoration: none;
-    background-color: rgb(85, 238, 218);
-    color: black;
-    padding: 5px;
-    border-radius: 10px;
-    height: 50%;
+.column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    width: 100%;
 }
 
-.headerLink:hover, button.news:hover{
-    background-color: rgb(12, 138, 121);
-    transition: 1s;
+.row {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    column-gap: 5px;
 }
 
-header{
+nav.row{
+    height: 50px;
+}
+
+nav button{
+    height: 100%;
+}
+
+header {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
     margin-bottom: 20px;
 }
 
-nav{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    column-gap: 20px;
-}
-
-.form{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 30%;
-    margin: auto;
-}
-
-textarea{
+textarea {
     height: 200px;
     width: 400px;
 }
 
 textarea, input {
     background-color: black;
-    color: rgb(85, 238, 218);;
+    color: rgb(85, 238, 218);
 }
 
-#newsContainer{
+#newsContainer {
     display: flex;
     flex-direction: column;
     row-gap: 20px;
-
     width: 60%;
     margin: auto;
-
     text-align: justify;
     margin-top: 20px;
 }
 
-.news{
+#newsContainer button {
+    width: 100%;
+    height: 50px;
+}
+
+.news {
     border-style: groove;
     border-color: white;
     padding: 10px;
 }
 
-button.news{
-    background-color: black;
-    color: rgb(85, 238, 218);
-}
-
-nav button{
-    height: 60px;
-    width: 100px;
-}
-
-#previous{
+#previous {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 60%;
     row-gap: 10px;
-
     margin-left: auto;
     margin-right: auto;
     margin-top: 20px;
+}
+
+a, button {
+    padding: 20px 10px;
+    text-decoration: none;
+    background-color: black;
+    width: 30%;
+    text-align: center;
+    line-height: 0;
+    color: rgb(85, 238, 218);
+    border-style: groove;
+    border-width: 3px;
+    border-color: white;
+}
+
+a:hover, button:hover {
+    background-color: rgb(12, 138, 121);
+    transition: 1s;
+    color: black;
+    border-color: rgb(85, 238, 218);
 }

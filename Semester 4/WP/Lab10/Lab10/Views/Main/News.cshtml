@@ -1,0 +1,37 @@
+﻿@using AspCoreMVCEF.Models;
+@using System.Text.Json;
+@using Microsoft.AspNetCore.Http;
+@{
+    Layout = null;
+    User user = null;
+    string userStr = Context.Session.GetString("user");
+    if (userStr != null)
+        user = JsonSerializer.Deserialize<User>(userStr);
+    if (user != null)
+    {
+        <!DOCTYPE html>
+
+        <html>
+        <head>
+            <meta name="viewport" content="width=device-width" />
+            <title>News</title>
+            <link href="~/css/main.css" rel="stylesheet" type="text/css" />
+            <script src="~/lib/jquery/dist/jquery.js"></script>
+            <script src="~/js/filterNews.js" defer></script>
+        </head>
+        <body>
+            <header class="column">
+                <h1 id="welcome">Welcome @user.Username!</h1>
+                <nav class="row">
+                    <a href="/Main/Logout">Logout</a>
+                    <a id="manageNews" href="/Main/ManageNews">Manage news</a>
+                    <a id="changePassword" href="/Main/ChangePassword">Change password</a>
+                </nav>
+            </header>
+            <br>
+            <br>
+            <partial name="FilterNews" />
+        </body>
+    </html>
+}
+}

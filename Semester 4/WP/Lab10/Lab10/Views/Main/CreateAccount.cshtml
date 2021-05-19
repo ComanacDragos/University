@@ -1,0 +1,35 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create account</title>
+    <link href="~/css/main.css" rel="stylesheet" type="text/css" />
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/js/createAccount.js" defer></script>
+</head>
+<body>
+    <div class="column">
+        <h1>Create account</h1>
+        <label for="newUsername">Username</label>
+        <input type="text" id="newUsername" name="newUsername"><br><br>
+        <label for="newPassword">Password</label>
+        <input type="password" id="newPassword" name="newPassword"><br><br>
+        <label for="confirmPassword">Confirm password</label>
+        <input type="password" id="confirmPassword" name="confirmPassword"><br><br>
+
+        <div class="row" style="width: 50%;">
+            <button style="width: 50%;" id="createAccountButton">Create account</button>
+            <a style="width: 50%;" href="/Main">Back to login</a>
+        </div>
+
+        <h3 id="message"></h3>
+    </div>
+</body>
+</html>

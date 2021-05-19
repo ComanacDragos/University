@@ -1,0 +1,59 @@
+﻿
+@{
+    Layout = null;
+}
+@using AspCoreMVCEF.Models;
+@using System.Text.Json;
+@using Microsoft.AspNetCore.Http;
+@{
+    User user = null;
+    string userStr = Context.Session.GetString("user");
+    if (userStr != null)
+        user = JsonSerializer.Deserialize<User>(userStr);
+    if (user != null)
+    {
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+            <link href="~/css/main.css" rel="stylesheet" type="text/css" />
+            <script src="~/lib/jquery/dist/jquery.js"></script>
+            <script src="~/js/manageNews.js" defer></script>
+
+            <title>AddNews</title>
+        </head>
+        <body>
+            <header class="column">
+                <h1 id="welcome">Add, delete, update news of @user.Username!</h1>
+                <nav class="row">
+                    <a href="/Main/Logout">Logout</a>
+                    <a id="backToNews" href="/Main/News">Back to news</a>
+                </nav>
+            </header>
+            <br>
+            <div class="column">
+                <label for="title">Title</label>
+                <input type="text" id="title" name="title"><br><br>
+                <label for="category">Category</label>
+                <input type="text" id="category" name="category"><br><br>
+                <label for="date">Date</label>
+                <input type="date" id="date" name="date"><br><br>
+                <label for="text">Text</label>
+                <textarea type="text" id="text" name="text"></textarea><br><br>
+                
+                <h3 id="message"></h3>
+                <nav class="row">
+                    <button class="news" id="addNewsButton">Add</button>
+                    <button class="news" id="deleteNewsButton">Delete</button>
+                    <button class="news" id="updateNewsButton">Update</button>
+                </nav>
+            </div>
+
+            <div id="newsContainer" class="column"></div>
+        </body>
+    </html>
+}
+}

@@ -31,6 +31,7 @@ namespace Lab10
             services.AddDbContext<DBContext>(options =>
                     options.UseMySQL(Configuration.GetConnectionString("Database")));
 
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,6 +51,8 @@ namespace Lab10
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseSession();
 
             app.UseAuthorization();
 
