@@ -6,7 +6,7 @@ import sys
 import os
 
 ann = Net()
-ann.load_state_dict(torch.load("./weights/myModelV3.model"))
+ann.load_state_dict(torch.load("./weights/myModelV4.model"))
 ann.eval()
 
 transforms = transforms.Compose([

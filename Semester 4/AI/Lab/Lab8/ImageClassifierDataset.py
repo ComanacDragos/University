@@ -65,8 +65,8 @@ class ImageClassifierDataset(Dataset):
         #self.processDirectory("./data/159.people", "face", 200)
         self.processDirectory("./data/253.faces-easy-101", "face", 400)
 
-        self.processDirectory("./data/256_ObjectCategories/257.clutter", "not_face", 800)
-        #self.processNestedDirectory("./data/256_ObjectCategories", "not_face")
+        self.processDirectory("./data/257.clutter", "not_face", 800)
+        self.processNestedDirectory("./data/256_ObjectCategories", "not_face")
 
     def processImages(self, image_list, image_classes):
         for image, image_class in zip(image_list, image_classes):

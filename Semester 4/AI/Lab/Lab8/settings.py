@@ -15,7 +15,7 @@ EARLY_STOP = 5
 LOSS_IMPROVEMENT = 0.0001
 
 FACE_IMAGES_SIZE = 2000
-NOT_FACE_IMAGES_PER_DIR = 3
+NOT_FACE_IMAGES_PER_DIR = 1
 
 # torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 
