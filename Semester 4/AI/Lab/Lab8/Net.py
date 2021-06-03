@@ -20,49 +20,6 @@ class Unit(nn.Module):
         return output
 
 
-"""
-self.unit(3, 32),
-            # self.unit(32, 32),
-            self.maxPool(2),
-            self.unit(32, 64),
-            # self.unit(64, 64),
-            self.maxPool(2),
-            self.unit(64, 128),
-            # self.unit(128, 128),
-            self.maxPool(4),
-            self.unit(128, 128),
-            # self.unit(128, 128),
-            self.maxPool(4),
-            self.unit(128, 128),
-            # self.unit(128, 128),
-            self.avgPool(4)
-            
-            
-            
-            self.unit(3, 32),
-            #self.unit(32, 32),
-            #self.unit(32, 32),
-            self.maxPool(2),
-            self.unit(32, 32),
-            #self.unit(32, 32),
-            #self.unit(32, 32),
-            #self.maxPool(2),
-            #self.unit(32, 32),
-            #self.unit(32, 32),
-            #self.unit(32, 32),
-            self.maxPool(4),
-            self.unit(32, 32),
-            #self.unit(32, 32),
-            self.maxPool(4),
-            self.unit(32, 32),
-            #self.unit(32, 32),
-            #self.maxPool(2),
-            #self.unit(32, 32),
-            #self.unit(32, 32),
-            self.avgPool(4),
-"""
-
-
 class Net(torch.nn.Module):
     def __init__(self):
         super(Net, self).__init__()
@@ -105,20 +62,8 @@ class Net(torch.nn.Module):
         return nn.MaxPool2d(kernel_size=kernel_size)
 
     def forward(self, input):
-        #print(input.shape)
-        #print()
         output = self.net(input)
-        #print(output.shape)
-        #print()
         output = output.view(-1, 128)
-        #print(output.shape)
-        #print()
         output = self.fc(output)
-        #print(output.shape)
-        #print(output)
-        #print()
-        #print(torch.round(output.data))
-        #output = self.softMax(output)
-        #sys.exit(0)
         output = torch.sigmoid(output)
         return output
