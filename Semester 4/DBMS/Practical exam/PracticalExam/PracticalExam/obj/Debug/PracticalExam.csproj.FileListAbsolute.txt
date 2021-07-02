@@ -1,0 +1,9 @@
+E:\University\Semester 4\DBMS\Practical exam\PracticalExam\PracticalExam\bin\Debug\PracticalExam.exe.config
+E:\University\Semester 4\DBMS\Practical exam\PracticalExam\PracticalExam\bin\Debug\PracticalExam.exe
+E:\University\Semester 4\DBMS\Practical exam\PracticalExam\PracticalExam\bin\Debug\PracticalExam.pdb
+E:\University\Semester 4\DBMS\Practical exam\PracticalExam\PracticalExam\obj\Debug\PracticalExam.csprojAssemblyReference.cache
+E:\University\Semester 4\DBMS\Practical exam\PracticalExam\PracticalExam\obj\Debug\PracticalExam.Form1.resources
+E:\University\Semester 4\DBMS\Practical exam\PracticalExam\PracticalExam\obj\Debug\PracticalExam.Properties.Resources.resources
+E:\University\Semester 4\DBMS\Practical exam\PracticalExam\PracticalExam\obj\Debug\PracticalExam.csproj.GenerateResource.cache
+E:\University\Semester 4\DBMS\Practical exam\PracticalExam\PracticalExam\obj\Debug\PracticalExam.exe
+E:\University\Semester 4\DBMS\Practical exam\PracticalExam\PracticalExam\obj\Debug\PracticalExam.pdb
