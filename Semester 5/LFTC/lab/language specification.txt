@@ -1,0 +1,49 @@
+letter ::= "a"|"b"|...|"z"|"A"|...|"Z"
+digit ::= "0"|"1"|"2"|...|"9"
+non_zero_digit ::= "1"|"2"|...|"9"
+
+symbols ::= "_"
+
+identifier ::= letter{(letter|digit|symbol)}\{0,255\} //at most 256 characters
+
+number ::= non_zero_digit{digit}
+const_num ::= ("+"|"-")?number
+
+const_character ::= "'"character"'"
+character ::= letter|digit|symbol
+
+const_string ::= \"string\"
+string ::= character{string}
+
+const_bool ::= "true" | "false"
+
+program ::= statement | (statement program) 
+statement ::= simple_statement | compund_statement
+
+simple_statement ::= (assignment_statement | iostatement | declaration_statement)";"
+
+compound_statement ::= if_statement | while_statement
+
+
+simple_type ::= "bool" | "char" | "int" | "string" -- is char needed ?
+array_type ::= simple_type"["number"]"
+
+type ::= simple_type | array_type
+
+constant ::= const_num | const_character | const_string | const_bool
+
+unary_operator ::= "!"
+binary_operator ::= "+" | "-" | "*" | "/" | "and" | "or" | ">" | "<" | ">=" | "<="| "!=" | "==" 
+
+expression ::= constant | identifier | expression binary_operator expression | unary_operator expression | "("expression")"
+													?^^^^^^^^^^^^^^^
+
+declaration_statement ::= type identifier | type identifier"="expression
+
+iostatement ::= ("<<"|">>")expression
+
+assignment_statement ::= identifier "=" expression
+
+if_statement ::= if expression "{"{statement}"}" | if expression "{"{statement}"}" else "{"{statement}"}" 
+while_statement ::= while expression "{"{statement}"}"
+

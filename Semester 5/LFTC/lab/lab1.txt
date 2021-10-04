@@ -1,0 +1,51 @@
+p1 
+#computes the maxium
+int a=9;
+int b=6;
+if a>b{
+	>>"a is the maximum";
+}else{
+	>>"b is the maximum";
+}
+
+
+p2
+#computes the gcd
+int a=9;
+int b=6;
+while a!=b{
+	if a>b{
+		a=a-b;
+	}
+	if a<b{
+		b=b-a;
+	}
+}
+>>a." is the gcd";
+
+p3
+#prints the square of the elements of an array
+int[256] a;
+int i=0;
+int n;
+<<n;
+while i<n{
+	<<a[i];
+	i=i+1;
+}
+i=0;
+while i<n{
+	>>"square of".a[i]." is ".a[i]^2;
+	i=i+1;
+}
+
+
+p4
+
+1a=9;
+@b=6;
+if a>b{
+	>>"a is the maximum
+}else{
+	>>"b is the maximum"
+}
