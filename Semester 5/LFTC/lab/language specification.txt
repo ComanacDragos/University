@@ -25,7 +25,7 @@ simple_statement ::= (assignment_statement | iostatement | declaration_statement
 compound_statement ::= if_statement | while_statement
 
 
-simple_type ::= "bool" | "char" | "int" | "string" -- is char needed ?
+simple_type ::= "bool" | "char" | "int" | "string" // is char needed ?
 array_type ::= simple_type"["number"]"
 
 type ::= simple_type | array_type
@@ -33,10 +33,10 @@ type ::= simple_type | array_type
 constant ::= const_num | const_character | const_string | const_bool
 
 unary_operator ::= "!"
-binary_operator ::= "+" | "-" | "*" | "/" | "and" | "or" | ">" | "<" | ">=" | "<="| "!=" | "==" 
+binary_operator ::= "+" | "-" | "*" | "/" | "and" | "or" | ">" | "<" | ">=" | "<="| "!=" | "==" | "^" | "%"
 
-expression ::= constant | identifier | expression binary_operator expression | unary_operator expression | "("expression")"
-													?^^^^^^^^^^^^^^^
+expression ::= constant | identifier | expression binary_operator expression | unary_operator expression | "("expression")" // are the parenthesis required?
+													
 
 declaration_statement ::= type identifier | type identifier"="expression
 

@@ -1,0 +1,34 @@
+
+program ::= statement {statement} 
+statement ::= simple_statement | compund_statement
+
+simple_statement ::= (assignment_statement 
+						| iostatement 
+						| declaration_statement)";"
+
+compound_statement ::= if_statement | while_statement
+
+array_type ::= simple_type"["number"]"
+
+type ::= simple_type | array_type
+
+constant ::= const_num | const_character | const_string | const_bool
+
+expression ::= constant 
+				| identifier 
+				| expression binary_operator expression 
+				| unary_operator expression 
+				| "("expression")"
+													
+
+declaration_statement ::= type identifier | type identifier"="expression
+
+iostatement ::= ("<<"identifier) | (">>"expression)
+
+assignment_statement ::= identifier "=" expression
+
+if_statement ::= if expression "{"{statement}"}" 
+				| if expression "{"{statement}"}" else "{"{statement}"}" 
+
+while_statement ::= while expression "{"{statement}"}"
+

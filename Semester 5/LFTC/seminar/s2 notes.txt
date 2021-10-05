@@ -1,0 +1,9 @@
+Tokens:
+eroare lexicala
+identificator - se adauga in ST o singura data
+constanta
+separator
+operator
+cuvant rezervat 
+
+symbol table  -- identificatori si/sau constante 
