@@ -15,7 +15,7 @@ public class Settings {
     public static boolean printProductsAtTheEnd = false;
     public static boolean printThreadInfo = false;
 
-    public static int noIterations = 1000;
+    public static int noIterations = 100;
 
     public enum Granularity{
         PRODUCT,

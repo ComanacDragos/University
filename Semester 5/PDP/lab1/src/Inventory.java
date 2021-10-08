@@ -1,7 +1,9 @@
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.Semaphore;
+import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantLock;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public class Inventory {
     public static Logger logger = new Logger("Inventory");
@@ -15,7 +17,26 @@ public class Inventory {
     private final Map<Integer, Semaphore> lockMap = new ConcurrentHashMap<>();
     private final Semaphore globalLock = new Semaphore(1);
     private final Semaphore moneyLock = new Semaphore(1);
+    private final ReadWriteLock inventoryCheckLock = new ReentrantReadWriteLock();
 
+    /*
+     lockMap
+        - for PRODUCT mode
+        - locks for each product
+        - each product is locked while it is processed
+     globalLock
+        - for INVENTORY mode
+        - locks all products while a single product is processed
+
+     moneyLock
+         - lock for the total amount of money
+         - it is controlled by the moneyLock setting
+     inventoryCheckLock
+         - read write lock used only for checking the inventory
+         - the threads acquire the read lock until they finish processing the bills
+         - the inventory check operation acquires the write lock
+         - this is used so that the threads don't modify the state while the inventory check is performed
+     */
 
     public Inventory(Integer numberOfProducts){
         while(availableProducts.size() != numberOfProducts){
@@ -36,6 +57,14 @@ public class Inventory {
 
     public void releaseInventory(){
         globalLock.release();
+    }
+
+    public void lockCheck(){
+        this.inventoryCheckLock.readLock().lock();
+    }
+
+    public void unlockCheck(){
+        this.inventoryCheckLock.readLock().unlock();
     }
 
     public Product getProduct(){
@@ -87,12 +116,13 @@ public class Inventory {
         }
     }
 
-    public void inventoryCheck(){
+    public void inventoryCheck(String context){
+        this.inventoryCheckLock.writeLock().lock();
         Integer totalSum = bills.stream()
                 .map(Bill::getValue)
                 .reduce(0, Integer::sum);
         if(!totalSum.equals(amountOfMoney)){
-            logger.log("money check failed: Inventory sum: " + amountOfMoney + " Computed sum: " + totalSum);
+            logger.log(context + " money check failed: Inventory sum: " + amountOfMoney + " Computed sum: " + totalSum);
         }
 
         Map<Integer, Integer> productIdToQuantity = new HashMap<>();
@@ -124,7 +154,8 @@ public class Inventory {
                 })
                 .count();
         if(quantityErrors != 0){
-            logger.log("quantity check failed with " + quantityErrors + " errors");
+            logger.log(context + " quantity check failed with " + quantityErrors + " errors");
         }
+        this.inventoryCheckLock.writeLock().unlock();
     }
 }

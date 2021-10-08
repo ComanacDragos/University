@@ -26,6 +26,7 @@ public class BuyerThread extends Thread{
         int remainingProducts = number_of_products;
 
         long startTime = System.currentTimeMillis();
+        inventory.lockCheck();
         while (number_of_products!=0){
             Product product = inventory.getProduct();
             if(product.getQuantity() > 0){
@@ -38,6 +39,7 @@ public class BuyerThread extends Thread{
             number_of_products--;
         }
         inventory.addBill(bill);
+        inventory.unlockCheck();
         long totalTime = (System.currentTimeMillis() - startTime);
         this.totalTime.getAndAdd(totalTime);
 

@@ -30,7 +30,8 @@ expression ::= constant
 				| "("expression")"
 													
 
-declaration_statement ::= type identifier | type identifier"="expression
+declaration_statement ::= type identifier 
+						| type identifier"="expression
 
 iostatement ::= ("<<"identifier) | (">>"expression)
 

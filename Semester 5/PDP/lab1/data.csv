@@ -1,0 +1,5 @@
+Time per thread(ms),Total time(ms),#threads,#products,#products per thread,Granularity,MoneyLock,#iterations
+10.753,3258.0,10,1000,1000,INVENTORY,true,100
+9.0,3081.0,10,1000,1000,INVENTORY,true,100
+0.289,1860.0,10,1000,1000,PRODUCT,true,100
+0.3,1940.0,10,1000,1000,PRODUCT,true,100
