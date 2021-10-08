@@ -1,0 +1,34 @@
+extra white spaces and 
+comments are eliminated
+
+
+unsorted table - O(n)
+sorted table - O(log n)
+binary search tree (balanced) - O(log n)
+hash table - O(1)
+
+toy hash function - sum of ascii codes
+
+each scope = separate ST -> structure -> inclusion tree
+
+for labs only one visibility domain
+
+formal language is a set
+
+semantic - meaning
+
+epsilon denotes the empty symbol
+
+k derivation - derivate k  times
++ derivation for an arbitrary k>0
+
+k can be 0
+0 derivation means equality
+
+
+A->alpha
+
+A is the left hand side of production (rhp)
+alpha is the lhp
+
+cfg - context free gramar

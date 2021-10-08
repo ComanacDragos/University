@@ -1,6 +1,6 @@
 Public tranport access detectection
 
---metedo de detectie a usilor
+--metoda de detectie a usilor
 
 AMS Mathematical Subject Classification - 68T45 Machine vision and scene understanding
 

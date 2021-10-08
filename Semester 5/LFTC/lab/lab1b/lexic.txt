@@ -5,7 +5,10 @@ non_zero_digit ::= "1"|"2"|...|"9"
 symbols ::= "_"
 
 unary_operator ::= "!"
-binary_operator ::= "+" | "-" | "*" | "/" | "and" | "or" | ">" | "<" | ">=" | "<="| "!=" | "==" | "^" | "%"
+binary_operator ::= "+" | "-" | "*" | "/" | "^" | "%" 
+					| "and" | "or" 
+					| ">" | "<" | ">=" | "<="| "!=" | "==" 
+
 
 operator ::= "=" | unary_operator | binary_operator
 
@@ -19,12 +22,18 @@ float ::= number"."{digit}
 const_num ::= ("+"|"-")?(number|float)
 
 const_character ::= "'"character"'"
-character ::= letter|digit|symbol | "-"
+character ::= letter|digit|symbol
 
 const_string ::= \"string\"
 string ::= character{string}
 
 const_bool ::= "true" | "false"
 
-simple_type ::= "bool" | "char" | "int" | "string" | "float"
-reserved_words ::= "if" | "while" | simple_type
+reserved_words ::= "if" 
+				| "while" 
+				|"bool" 
+				| "char" 
+				| "int" 
+				| "string" 
+				| "float"
+				

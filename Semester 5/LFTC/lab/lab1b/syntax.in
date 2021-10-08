@@ -8,11 +8,20 @@ simple_statement ::= (assignment_statement
 
 compound_statement ::= if_statement | while_statement
 
+
+simple_type ::= "bool" 
+				| "char" 
+				| "int" 
+				| "string" 
+				| "float"
 array_type ::= simple_type"["number"]"
 
 type ::= simple_type | array_type
 
-constant ::= const_num | const_character | const_string | const_bool
+constant ::= const_num 
+			| const_character 
+			| const_string 
+			| const_bool
 
 expression ::= constant 
 				| identifier 
