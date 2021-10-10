@@ -1,5 +1,6 @@
 
-program ::= statement {statement} 
+program ::= statement_list 
+statement_list ::= statement | statement statement_list
 statement ::= simple_statement | compund_statement
 
 simple_statement ::= (assignment_statement 
@@ -24,7 +25,8 @@ constant ::= const_num
 			| const_bool
 
 expression ::= constant 
-				| identifier 
+				| identifier
+				| identifier"["number"]"" 
 				| expression binary_operator expression 
 				| unary_operator expression 
 				| "("expression")"
@@ -37,8 +39,8 @@ iostatement ::= ("<<"identifier) | (">>"expression)
 
 assignment_statement ::= identifier "=" expression
 
-if_statement ::= if expression "{"{statement}"}" 
-				| if expression "{"{statement}"}" else "{"{statement}"}" 
+if_statement ::= if expression "{"statement_list"}" 
+				| if expression "{"statement_list"}" else "{"statement_list"}" 
 
-while_statement ::= while expression "{"{statement}"}"
+while_statement ::= while expression "{"statement_list"}"
 

@@ -1,0 +1,178 @@
+letter ::= "a"|"b"|...|"z"|"A"|...|"Z"
+digit ::= "0"|"1"|"2"|...|"9"
+non_zero_digit ::= "1"|"2"|...|"9"
+
+symbols ::= "_"
+
+unary_operator ::= "!"
+binary_operator ::= "+" | "-" | "*" | "/" | "^" | "%" 
+					| "and" | "or" 
+					| ">" | "<" | ">=" | "<="| "!=" | "==" 
+					| "," // string concatenation
+
+
+operator ::= "=" | unary_operator | binary_operator
+
+separators ::= "[" | "]" | "{" | "}" | ";" | "space" | "newline"
+
+identifier ::= letter{letter|digit|symbol}\{0,255\} //at most 256 characters
+
+number ::= non_zero_digit{digit}
+float ::= (number|"0")"."(digit{digit}) 
+
+const_num ::= ("+"|"-")?(number|float) | "0"
+
+const_character ::= "'"character"'"
+character ::= letter|digit|symbol
+
+const_string ::= \"string\"
+string ::= {character}
+
+const_bool ::= "true" | "false"
+
+reserved_words ::= "if" 
+				| "while" 
+				| "bool" 
+				| "char" 
+				| "int" 
+				| "string" 
+				| "float"
+				
+// Syntax
+
+program ::= statement_list 
+statement_list ::= statement | statement statement_list
+statement ::= simple_statement | compund_statement
+
+simple_statement ::= (assignment_statement 
+						| iostatement 
+						| declaration_statement)";"
+
+compound_statement ::= if_statement | while_statement
+
+
+simple_type ::= "bool" 
+				| "char" 
+				| "int" 
+				| "string" 
+				| "float"
+
+array_type ::= simple_type"["number"]"
+
+type ::= simple_type | array_type
+
+constant ::= const_num 
+			| const_character 
+			| const_string 
+			| const_bool
+
+expression ::= constant 
+				| identifier
+				| identifier"["number"]"
+				| expression binary_operator expression 
+				| unary_operator expression 
+				| "("expression")"
+													
+
+declaration_statement ::= type identifier 
+						| type identifier"="expression
+
+iostatement ::= ("<<"identifier) | (">>"expression)
+
+assignment_statement ::= identifier "=" expression
+
+if_statement ::= if "("expression")" "{"statement_list"}" ["else" "{"statement_list"}"] 
+
+while_statement ::= while "("expression")" "{"statement_list"}"
+
+
+Atom	
+----------	
+identifier	
+constant	
+int			
+char		
+bool		
+string		
+float	
+>>			
+<<				
+while		
+if			
+else		
+and			
+or			
+!			
++			
+-			
+*			
+/		
+%	
+>			
+<				
+>=			
+<=			
+!=			
+==			
+=
+;			
+[			
+]			
+{			
+}			
+(			
+)			
+.			
+^	 	
+
+p1 
+#computes the maxium
+int a=9;
+int b=6;
+if(a>b){
+	>>"a is the maximum";
+}else{
+	>>"b is the maximum";
+}
+
+
+p2
+#computes the gcd
+int a=9;
+int b=6;
+while(a!=b){
+	if (a>b){
+		a=a-b;
+	}
+	if (a<b){
+		b=b-a;
+	}
+}
+>>a." is the gcd";
+
+p3
+#prints the square of the elements of an array
+int[256] a;
+int i=0;
+int n;
+<<n;
+while (i<n){
+	<<a[i];
+	i=i+1;
+}
+i=0;
+while (i<n){
+	>>"square of",a[i]," is ",a[i]^2;
+	i=i+1;
+}
+
+
+p4
+
+1a=9;
+@b=6;
+if (a>b){
+	>>"a is the maximum
+}else{
+	>>"b is the maximum"
+}

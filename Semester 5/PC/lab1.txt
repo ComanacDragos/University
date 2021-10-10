@@ -1,10 +1,8 @@
-Public tranport access detectection
-
---metoda de detectie a usilor
+Public tranport access detection
 
 AMS Mathematical Subject Classification - 68T45 Machine vision and scene understanding
 
 ACM Computing Reviews Categories and Subject Descriptors - I.4 IMAGE PROCESSING AND COMPUTER VISION 
 							 - I.4.6. Segmentation - Edge and feature detection
 
- 
+
