@@ -1,1 +1,30 @@
 eroare lexicala - atom neclasificat
+
+seminar 3
+
+G = (N, E, P, S)
+
+set of non terminals
+set of terminals
+produciton rules
+starting symbol
+
+alpha -> beta
+^lhs	  ^rhs
+
+alhpa may be replaced by beta
+
+lhs shoudl contain at least one non terminal
+
+language= set of sequences over the alphabet that
+can be obtained for starting symbol by 0 or multiply derivations
+
+L(G) sequences do not contain non-terminals
+
+languages words contain only terminals
+
+
+
+induction on written exam
+
+S => aS => aaS => aab
