@@ -1,9 +1,9 @@
 public class Settings {
     public static int numberOfThreads = 10;
     public static int numberOfProducts = 1000;
-    public static int numberOfProductsPerThread = 1000;
+    public static int numberOfProductsPerThread = numberOfProducts/numberOfThreads;
 
-    public static Granularity granularity = Granularity.PRODUCT;
+    public static Granularity granularity = Granularity.NONE;
     public static boolean moneyLock = true;
 
     public static  int maxUnitPrice = 10;
