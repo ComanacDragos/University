@@ -18,15 +18,15 @@ separators ::= "[" | "]" | "{" | "}" | ";" | "space" | "newline"
 identifier ::= letter{letter|digit|symbol}\{0,255\} //at most 256 characters
 
 number ::= non_zero_digit{digit}
-float ::= (number|"0")"."(digit{digit}) 
 
-const_num ::= ("+"|"-")?(number|float) | "0"
+const_int ::= ("+"|"-")?number | "0"
+const_float ::= ("+"|"-")?(number|"0")"."(digit{digit})
 
 const_character ::= "'"character"'"
 character ::= letter|digit|symbol
 
 const_string ::= \"string\"
-string ::= {character}
+string ::= {character|\s}
 
 const_bool ::= "true" | "false"
 
@@ -61,7 +61,8 @@ array_type ::= simple_type"["number"]"
 
 type ::= simple_type | array_type
 
-constant ::= const_num 
+constant ::= const_int
+            | const_float
 			| const_character 
 			| const_string 
 			| const_bool

@@ -1,0 +1,59 @@
+last column
+ gives the final state
+
+
+RG:
+- right linear
+A->aB|a
+
+if S-> e then S does not
+appear on the rhs 
+of a production
+
+if S->e then S is final state
+
+A->a then delta(A, a) = {k}
+
+
+
+delta(P, a) = {Q}
+then P->aQ | a
+             * if q is final
+
+
+
+if delta(p,b)={p}
+if p belong to F
+we should add a new prod
+p->b
+
+
+
+if initial state is also
+final, the grammar 
+should contain empty sequence
+if p is starting state
+p->e
+
+
+in order to determine
+regular expression
+a system must be resolved:
+
+S-> 0A|1S
+A->1S|0B
+B->0B|0
+
+S=0A+1S = 1S + 0(1S + 00+)
+	= 01S + 00+ + 1S
+	= (01+1S)+00+
+	= (01+1)*00+
+A=1S+0B = 1S + 00+
+B=0B+0 = 0*0=0+
+
+
+X=aX+b -> X=a*b
+
+
+
+
