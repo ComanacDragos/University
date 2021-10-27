@@ -6,6 +6,9 @@ import java.util.concurrent.Executors;
 
 public class Main {
     public static void main(String[] args) {
+        //Settings.tasks = 5;
+        //splitTasks(6, 4).forEach(System.out::println);
+
         MatrixRepo matrixRepo;
         if(Settings.generateMatrix)
             matrixRepo = new MatrixRepo(
@@ -18,7 +21,7 @@ public class Main {
                     new Matrix("data/a.txt", Settings.bl, Settings.bc)
             );
 
-        List<Integer> tasks = Arrays.asList(1,2,4,8, 16);
+        List<Integer> tasks = Arrays.asList(1, 2, 4, 8, 16);
         List<Integer> poolThreads = Arrays.asList(0, 2, 4, 8);
         poolThreads.forEach(
                 noPoolThreads->{

@@ -8,7 +8,6 @@ unary_operator ::= "!"
 binary_operator ::= "+" | "-" | "*" | "/" | "^" | "%" 
 					| "and" | "or" 
 					| ">" | "<" | ">=" | "<="| "!=" | "==" 
-					| "," // string concatenation
 
 
 operator ::= "=" | unary_operator | binary_operator

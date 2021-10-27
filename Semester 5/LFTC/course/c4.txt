@@ -1,0 +1,37 @@
+regular sets are right linear 
+languages
+
+(for any regex there exists an
+equivalent right linear language
+
+L1 and L2 right linear
+=> L1 U L2, L1L2, L1* are right linear
+
+hw at course might be at the exam
+
+
+concatenation
+if A->aB in P1 
+=> A->aB in P4
+
+if A->a in P1
+=> A-aS2 in P4
+
+
+if p in P2 => p in P4
+
+
+
+Theorem
+
+a language is a regular set 
+if and only if is a right
+linear language
+
+
+grammar - solve system for
+starting symbol
+
+finite automata - solve for final
+state (union for solutions for
+final states)

@@ -1,0 +1,57 @@
+fa -> regex
+
+how can we arrive
+at the given state
+
+tranzition delta(P,a)=Q
+translates to Q=Pa
+
+if p is initial state
+then p=epsilon
+
+X=Xa+b 
+X=ba*
+
+RE : sum of final states
+
+
+c)
+p = epsilon
+q = p0 = 0
+r = q1 + r1 
+  = 01 + r1
+  = 011*
+t = p1 + t0
+  = 1 + t0
+  = 10*
+regex = r+t
+      = 011*+10*
+
+
+regex- > rg
+find grammar for each part
+
+(0+1)(01)*
+
+G1: 0 : S1->0
+G1: 1: S2->1
+=> G3=G1UG2 S3->0|1
+
+G4: 01 : S4-> 0A
+	 A->1
+
+G5: (01)* : S5-> epsilon | 0A 
+	    A->1S4 | 1
+	    S4->0A
+ 
+eliminate epsilon productions
+is S5-> eps
+replace S5 with eps or S5 
+in the other productions
+
+
+regex -> fa
+
+
+
+
