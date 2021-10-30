@@ -1,0 +1,8 @@
+pumping lemma
+
+
+for any decomposition
+there is an i => how to proove
+that it is not regular using
+pumping lemma
+
