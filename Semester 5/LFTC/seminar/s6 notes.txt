@@ -1,0 +1,37 @@
+cfg generates context free languages
+
+A-> alpha
+A is a nonterminal
+alpha is in (N U E)*
+
+
+S => (L) 
+=> (L,S) 
+=> (L,S, S)
+=> (S, S, S)
+=> ((L), S, S)
+=> ((L, S), S, S)
+=> ((S, S), S, S)
+=> ((a, S), S, S)
+=> ((a, a), S, S)
+=> ((a, a), a, S)
+=> ((a,a),a,(L))
+=> ((a,a),a,(S))
+=> ((a,a),a,(a))
+
+
+=> ((L), S) => ((L, S), S) =>
+((S, S), S) => ((a, S),S) =>
+((a, a), S) => 
+
+
+if starting symbol
+is not productive 
+then L(G)=empty set
+
+
+remove inaccessible symbols
+remove productions that have in 
+the lhs inaccesible symbols
+
+

@@ -1,0 +1,12 @@
+parsing
+
+2 approaches
+top down vs
+bottom up
+
+recursive vs linear
+
+store which productions
+have been used
+
+momentary insuccess
