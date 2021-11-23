@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link href="style/main.css" rel="stylesheet" type="text/css">
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ally.js/1.4.1/ally.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="javascript/login.js" defer></script>
+
+    
+    <title>News</title>
+</head>
+<body>
+    <div class="form">
+        <h1>Welcome</h1>
+        <label for="username">Username</label>
+        <input type="username" id="username" name="username"><br><br>
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password"><br><br>
+        
+        <nav>
+            <button id="loginButton" class="news">Login</button>
+            <button id="createAccountButton" class="news">Create account</button>
+            <button id="viewNews" class="news">View news</button>
+        </nav>
+    </div>
+
+</body>
+</html>
+
+<!--
+Write a web application for a news service. 
+
+Some users add or update news and others just view news. 
+News are saved on a database and they have the following characteristics: 
+text of the news, title, producer, date, category (politics, society, health etc.). 
+The user who adds or updates news must log in using a username and password 
+before doing this. The other type of users can see all the news from a range of 
+dates and all news from a specific category (use AJAX for these filters). 
+Also, on the news browsing page, the filter used for the previous browsing action 
+(i.e. date range, category), should be displayed (do this in javascript).
+
+            require 'database/UserDB.php';
+
+            $db = new UserDB();
+            $resultset = $db->select("admin", "admin");
+
+            //var_dump($resultset);
+            echo $resultset[0]['username'];
+            echo "<p></p>";
+            echo $resultset[0]['password'];
+    
+        
+        </body>
+-->
