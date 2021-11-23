@@ -12,7 +12,7 @@ $.ajax({
         }
 });
 
-function refreshNews(){
+async function refreshNews(){
     $.ajax({
         type : "GET",
         url : "http://localhost:3000/controller.php",
@@ -54,8 +54,9 @@ function refreshNews(){
                         )    
                     )
                 });
+                refreshHandles()
             }
-        });    
+        });
 }
 
 $("#backToNews").click(

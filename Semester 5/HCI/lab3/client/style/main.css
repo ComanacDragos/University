@@ -93,3 +93,7 @@ nav button{
     margin-right: auto;
     margin-top: 20px;
 }
+
+label{
+    margin-bottom: 10px;
+}
