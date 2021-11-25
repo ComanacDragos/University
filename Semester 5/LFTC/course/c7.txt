@@ -1,0 +1,10 @@
+concatenation of lenght 1 - 
+normal concatenation but take only 
+first symbol
+
+
+FIRST(A) -> takes first 
+symbols take can be generated
+
+FOLLOW(A) -> next k symbols generated
+after/followig A

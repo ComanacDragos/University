@@ -1,0 +1,14 @@
+shift
+reduce
+
+handle
+
+
+item: kernel,prediction
+
+
+dot means what was discovered
+u is the next item from the 
+frontier that need to be taken
+into consideration
+

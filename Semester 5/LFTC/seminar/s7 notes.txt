@@ -1,0 +1,13 @@
+Descendant recursive parser and CFG
+
+(q, 1, eps, S) - init config
+
+state, index, stack ,starting symbol
+
+aabbab
+
+A->Aalpha|beta - left recursive
+
+to right recursive
+A->betaA'
+A'->alphaA'|eps

@@ -1,0 +1,34 @@
+LR
+
+0 no prediction
+
+add new production
+S' -> S
+
+number the productions
+
+build the canonical collection / closure
+of the grammar
+
+if dot is in front of non terminal
+add its rhs to the right of the dot
+
+go to for each element in state
+dot is moving to the right
+
+
+LR(0) table:
+row for each state
+first column: action
+rest columns terminals and non terminals
+
+
+if dot is at the end action is reduce 
+
+accept for s1
+reduce and number of production if dot at the
+end and only item
+
+otherwise is shift
+
+it is completed with the next states

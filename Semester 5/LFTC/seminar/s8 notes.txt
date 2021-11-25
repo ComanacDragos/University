@@ -1,0 +1,35 @@
+LL1 table
+column for each terminal and
+special sign for the empty stack
+
+
+and lines for non terminals
+and terminals
+and special symbol 
+$ (empty stack)
+
+cells are filled with 
+production numbers
+
+
+for line LHS and column in
+symbols for FIRST(rhs)
+put the production number
+
+
+
+S->Aa|BB
+A->bA|c
+B->Ca
+C->d.
+
+
+w=bbcs
+
+
+if there is a conflict in the 
+cell of LL1 table
+the grammar is not LL1
+
+get common part of expression
+and factor it out

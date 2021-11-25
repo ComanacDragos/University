@@ -1,0 +1,7 @@
+dollar empty production
+
+LALR look aheat at action
+before the prediction
+
+merge states with same kernel 
+if no conflicts are created

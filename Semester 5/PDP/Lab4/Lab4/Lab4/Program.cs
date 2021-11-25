@@ -13,7 +13,8 @@ namespace Lab4
             {
                 "www.cs.ubbcluj.ro/~rlupsa/edu/pdp/progs/srv-begin-end.cs",
                 "www.cs.ubbcluj.ro/~rlupsa/edu/pdp/progs/srv-task.cs",
-                "www.cs.ubbcluj.ro/~rlupsa/edu/pdp/progs/srv-await.cs"
+                "www.cs.ubbcluj.ro/~rlupsa/edu/pdp/progs/srv-await.cs",
+                "www.cs.ubbcluj.ro/~rlupsa/edu/pdp/progs/vector_sum_limited_thread.cpp"
             }; 
             new CallbackParser(urls);
             new TaskParser(urls);
