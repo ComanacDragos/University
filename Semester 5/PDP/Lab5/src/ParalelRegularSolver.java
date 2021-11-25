@@ -2,18 +2,14 @@ import java.util.*;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class ParalelRegularSolver {
-    public static Polynomial multiply(Polynomial p, Polynomial q, Integer noThreads){
-        List<ReentrantLock> locks = new ArrayList<>();
-        for(int i=0;i<p.degree+q.degree-1;i++)
-            locks.add(new ReentrantLock());
+    public static Polynomial multiply(Polynomial p, Polynomial q, Integer noThreads, List<List<Integer>> splitTasks){
         Thread[] threads = new Thread[noThreads];
 
         Polynomial result = new Polynomial(p.degree+q.degree-1);
 
-        List<List<Map.Entry<Integer, Integer>>> splitTasks = splitTasks(p.degree, q.degree, noThreads);
         try{
             for(int i=0;i<noThreads;i++){
-                threads[i] = new Worker(locks, splitTasks.get(i), p, q, result);
+                threads[i] = new Worker(splitTasks.get(i), p, q, result);
                 threads[i].start();
             }
             for (int i=0;i<noThreads;i++)
@@ -24,35 +20,31 @@ public class ParalelRegularSolver {
         return result;
     }
 
-    public static List<List<Map.Entry<Integer, Integer>>> splitTasks(Integer pDegree, Integer qDegree, Integer noThreads){
-        int elements = pDegree * qDegree;
+    public static List<List<Integer>> splitTasks(Integer pDegree, Integer qDegree, Integer noThreads){
+        int elements = pDegree + qDegree-1;
         int chunk = elements / noThreads;
         int rest = elements % noThreads;
-        List<List<Map.Entry<Integer, Integer>>> split = new LinkedList<>();
-        List<Map.Entry<Integer, Integer>> subSplit = new LinkedList<>();
-        for (int i = 0; i < pDegree; i++) {
-            for (int j = 0; j < qDegree; j++) {
-                if(split.size() != noThreads) {
-                    subSplit.add(Map.entry(i, j));
-                    if(subSplit.size() == chunk){
-                        split.add(subSplit);
-                        subSplit = new LinkedList<>();
-                    }
-                }else {
-                    split.get(--rest).add(Map.entry(i, j));
+        List<List<Integer>> split = new LinkedList<>();
+        List<Integer> subSplit = new LinkedList<>();
+        for (int i = 0; i < elements; i++) {
+           if(split.size() != noThreads) {
+                subSplit.add(i);
+                if(subSplit.size() == chunk){
+                    split.add(subSplit);
+                    subSplit = new LinkedList<>();
                 }
+            }else {
+                split.get(--rest).add(i);
             }
         }
         return split;
     }
 
     private static class Worker extends Thread{
-        List<ReentrantLock> locks;
-        List<Map.Entry<Integer, Integer>> tasks;
+        List<Integer> tasks;
         Polynomial p, q, result;
 
-        public Worker(List<ReentrantLock> locks, List<Map.Entry<Integer, Integer>> tasks, Polynomial p, Polynomial q, Polynomial result) {
-            this.locks = locks;
+        public Worker(List<Integer> tasks, Polynomial p, Polynomial q, Polynomial result) {
             this.tasks = tasks;
             this.p = p;
             this.q = q;
@@ -61,13 +53,20 @@ public class ParalelRegularSolver {
 
         @Override
         public void run(){
-            for(Map.Entry<Integer, Integer> entry : tasks){
-                int position = entry.getKey() + entry.getValue();
-                int pValue = p.get(entry.getKey());
-                int qValue = q.get(entry.getValue());
-                locks.get(position).lock();
-                result.accumulate(position, pValue * qValue);
-                locks.get(position).unlock();
+            for(Integer position : tasks){
+                int s = 0;
+                int start, end;
+                if(position < p.degree)
+                    end = position;
+                else
+                    end = p.degree-1;
+                start = position - end;
+                if(start < 0)
+                    start = 0;
+                for(int i=start;i<=end;i++) {
+                    s += p.get(i) * q.get(position - i);
+                }
+                result.set(position, s);
             }
         }
     }

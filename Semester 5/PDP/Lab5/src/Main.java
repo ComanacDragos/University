@@ -1,32 +1,51 @@
+import java.util.Arrays;
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
-        test();
-
+        //test();
+        runAll();
     }
 
     public static void runAll(){
-        //generatePolynomials(10000, 10000);
-        run("regular", 1);
-        System.out.println("done regular");
-        run("karatsuba", 1);
+        generatePolynomials(10000, 10000);
+       Arrays.asList(1, 2, 4, 8, 16).forEach(noThreads ->{
+           run("regular", noThreads);
+           System.out.println("done regular with" + noThreads);
+           run("karatsuba", noThreads);
+           System.out.println("done karatsuba with" + noThreads);
+        });
+
     }
 
     public static void test(){
-        generatePolynomials(6, 6);
+        generatePolynomials(5000, 5000);
         Polynomial p = new Polynomial("data/p1.txt");
         Polynomial q = new Polynomial("data/p2.txt");
-        System.out.println(p);
-        System.out.println(q);
+        //System.out.println(p);
+        //System.out.println(q);
 
         System.out.println("===================");
-        System.out.println(SequentialRegularMultiplier.multiply(p, q));
-        System.out.println(SequentialKaratsubaMultiplier.multiply(p, q));
-        System.out.println(ParalelRegularSolver.multiply(p, q, 4));
+        String r1,r2,r3,r4;
+        List<List<Integer>> splitTasks = ParalelRegularSolver.splitTasks(p.degree, q.degree, 4);
+        long start = System.currentTimeMillis();
+        r1 = SequentialRegularMultiplier.multiply(p, q).toString();
+        r2 = SequentialKaratsubaMultiplier.multiply(p, q).toString();
+        r3 = ParalelRegularSolver.multiply(p, q, 4, splitTasks).toString();
+        r4 = ParalelKaratsubaSolver.multiply(p, q, 4).toString();
+        System.out.println(System.currentTimeMillis()-start);
+//        System.out.println(r1);
+//        System.out.println(r2);
+//        System.out.println(r3);
+//        System.out.println(r4);
+        System.out.println(r1.equals(r2));
+        System.out.println(r2.equals(r3));
+        System.out.println(r3.equals(r4));
         System.out.println("===================");
 
-        System.out.println(SequentialAdder.add(p, q, 1));
-        System.out.println(SequentialAdder.add(p, p, 1));
-        System.out.println(SequentialAdder.add(q, q, 1));
+        //System.out.println(SequentialAdder.add(p, q, 1));
+        //System.out.println(SequentialAdder.add(p, p, 1));
+        //System.out.println(SequentialAdder.add(q, q, 1));
     }
 
     public static void run(String variant, int threads){
@@ -34,7 +53,6 @@ public class Main {
         Polynomial p2 = new Polynomial("data/p2.txt");
         double mean = 0.0;
         for (int i = 0; i < 10; i++) {
-            long start = System.currentTimeMillis();
             if(variant.equals("regular"))
                 mean += regular(threads, p1, p2);
             else
@@ -43,19 +61,25 @@ public class Main {
         Logger.log(mean/10.0, threads, variant, p1.degree, p2.degree);
     }
 
-    public static double regular(int nrThreads, Polynomial p1, Polynomial p2){
+    public static double regular(int noThreads, Polynomial p, Polynomial q){
         long start = System.currentTimeMillis();
-        if(nrThreads==1)
-            SequentialRegularMultiplier.multiply(p1, p2);
-        else
-            ParalelRegularSolver.multiply(p1, p2, nrThreads);
+        if(noThreads==1)
+            SequentialRegularMultiplier.multiply(p, q);
+        else{
+            List<List<Integer>> splitTasks = ParalelRegularSolver.splitTasks(p.degree, q.degree, noThreads);
+            start = System.currentTimeMillis();
+            ParalelRegularSolver.multiply(p, q, noThreads, splitTasks);
+        }
         return System.currentTimeMillis() - start;
     }
 
-    public static double karatsuba(int nrThreads, Polynomial p1, Polynomial p2){
+    public static double karatsuba(int noThreads, Polynomial p, Polynomial q){
         long start = System.currentTimeMillis();
-        if(nrThreads==1)
-            SequentialKaratsubaMultiplier.multiply(p1, p2);
+        if(noThreads==1)
+            SequentialKaratsubaMultiplier.multiply(p, q);
+        else{
+            ParalelKaratsubaSolver.multiply(p, q, noThreads);
+        }
         return System.currentTimeMillis() - start;
     }
 
