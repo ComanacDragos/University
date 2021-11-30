@@ -10,9 +10,11 @@ import java.util.concurrent.locks.ReentrantLock;
 public class ParallelSolver extends Solver{
     ExecutorService executorService;
     Lock lock = new ReentrantLock();
+    Integer activeTasks = 0, totalThreads;
 
     public ParallelSolver(DirectedGraph graph, Integer totalThreads) {
         super(graph);
+        this.totalThreads = totalThreads;
         this.executorService = Executors.newFixedThreadPool(totalThreads);
     }
 
@@ -21,11 +23,25 @@ public class ParallelSolver extends Solver{
         path.add(0);
         path.add(0);
         for(int i=1;i<graph.getNoVertices();i++){
-            if(graph.isEdge(0, i)) {
-                path.set(path.size() - 1, i);
-                executorService.execute(new Worker(new ArrayList<>(path)));
+            path.set(path.size()-1, i);
+            if(consistent(path)){
+                if(solution(path)) {
+                    lock.lock();
+                    if(!solutions.contains(path))
+                        solutions.add(new ArrayList<>(path));
+                    lock.unlock();
+                }
+                else {
+                    if(activeTasks < this.totalThreads) {
+                        executorService.execute(new Worker(new ArrayList<>(path)));
+                        activeTasks++;
+                    }
+                    else
+                        break;
+                }
             }
         }
+
         executorService.shutdown();
         try{
             if(!executorService.awaitTermination(1, TimeUnit.MINUTES))

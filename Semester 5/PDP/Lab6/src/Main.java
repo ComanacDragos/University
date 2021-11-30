@@ -28,12 +28,11 @@ public class Main {
             }else{
                 solver = new ParallelSolver(graph, threads);
             }
-            long start = System.currentTimeMillis();
+            long start = System.nanoTime();
             List<List<Integer>> solutions = solver.solve();
-            mean += System.currentTimeMillis()-start;
-            validateResults(graph, solutions);
+            mean += System.nanoTime()-start;
         }
-        Logger.log(mean/10.0, threads, graph.getNoVertices(), graph.getNoEdges());
+        Logger.log((mean/10.0)/1000000.0, threads, graph.getNoVertices(), graph.getNoEdges());
     }
 
         //20_80
