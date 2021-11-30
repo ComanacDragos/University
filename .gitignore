@@ -6,8 +6,10 @@ __pycache__
 *.csproj
 *.sln
 *.idea
+*.iml
 
 *.csproj*
 bin
 Debug
 Properties
+out
