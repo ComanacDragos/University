@@ -1,0 +1,2 @@
+80% of execution time
+is in 20% of the code

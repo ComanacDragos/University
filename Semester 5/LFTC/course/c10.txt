@@ -1,0 +1,19 @@
+lex -> flex for windwos
+yacc -> byson for windows
+
+scanning - lex
+parsing - yacc
+
+
+input file spec
+extension is .lxi
+
+definitions
+%%
+rules
+%%
+user code
+
+yytext is the current token
+
+combine lex and yacc

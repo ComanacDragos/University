@@ -1,0 +1,69 @@
+SLR and LR(1)
+
+SLR we do not have
+just an action for a state
+it is possible to have
+different actions based
+on prediction
+
+enrich grammar
+number productions
+compute cannonical collection
+build lr0 table
+	lines -> states
+	columns: action, terminals and non temrinals
+
+. at the end means reduce 
+except for starting symbol
+
+
+for SLR structure of table changes
+lines-> states
+columns: action for
+terminals and $
+GOTO for non terminals
+
+
+acc is on the column of $
+
+
+
+
+
+Elements of LR(1)
+have item and prediction
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

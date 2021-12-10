@@ -1,0 +1,25 @@
+push down automata
+
+atach a stack to the
+finite automata
+
+- read + push
+- read and pop
+- push/pop
+- push n times
+
+central unit
+
+result of delta
+contains results from
+Q and Gamma
+epsilon transitions are 
+allowed
+
+Transition is determined by
+current state,
+current input symbol
+head of stack
+
+AAST - simplified and types
+annotations
