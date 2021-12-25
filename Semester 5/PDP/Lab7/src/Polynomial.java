@@ -12,6 +12,11 @@ public class Polynomial {
         this.degree = degree;
     }
 
+    public Polynomial(int[] coefficients){
+        this.coefficients = coefficients;
+        this.degree = coefficients.length;
+    }
+
     public Polynomial(Polynomial polynomial, int start, int end){
         this.coefficients = new int[end-start];
         this.degree = end-start;
@@ -37,7 +42,7 @@ public class Polynomial {
             degree = Integer.parseInt(lines.get(0));
             if(degree != lines.size()-1)
                 throw new RuntimeException("Polynomial does not have the given degree");
-            coefficients = new int[degree+1];
+            coefficients = new int[degree];
             for(int i=0;i<degree;i++)
                 coefficients[i] = Integer.parseInt(lines.get(i+1));
         } catch (IOException e) {
