@@ -5,7 +5,7 @@ import java.io.PrintWriter;
 
 public class Logger {
     public static void log(double time, int threads, String variant, int p1Degree, int p2Degree){
-        try(PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter("data/logs.csv", true)))){
+        try(PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter("E:\\University\\Semester 5\\PDP\\Lab7\\data\\logs.csv", true)))){
             writer.print(time + ","
                     + threads + ","
                     + variant + ","
