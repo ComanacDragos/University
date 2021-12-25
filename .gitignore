@@ -13,3 +13,9 @@ bin
 Debug
 Properties
 out
+
+mpi
+mpjbuf
+mpjdev
+runtime
+xdev
