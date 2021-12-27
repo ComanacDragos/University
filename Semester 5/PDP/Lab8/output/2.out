@@ -1,0 +1,77 @@
+17. waiting for messages...
+Shared Memory
+X = 0
+Z = 0
+Y = 0
+Observers
+X -> [0, 1]
+Z -> []
+Y -> [0, 1]
+
+
+14. Sent to 0 : Close
+Shared Memory
+X = 0
+Z = 0
+Y = 0
+Observers
+X -> [0, 1]
+Z -> []
+Y -> [0, 1]
+
+
+14. Sent to 1 : Close
+Shared Memory
+X = 0
+Z = 0
+Y = 0
+Observers
+X -> [0, 1]
+Z -> []
+Y -> [0, 1]
+
+
+14. Sent to 2 : Close
+Shared Memory
+X = 0
+Z = 0
+Y = 0
+Observers
+X -> [0, 1]
+Z -> []
+Y -> [0, 1]
+
+
+17. Received: Close from 2
+Shared Memory
+X = 0
+Z = 0
+Y = 0
+Observers
+X -> [0, 1]
+Z -> []
+Y -> [0, 1]
+
+
+17. Received: Close from 0
+Shared Memory
+X = 0
+Z = 0
+Y = 0
+Observers
+X -> [0, 1]
+Z -> []
+Y -> [0, 1]
+
+
+17. Received: Close from 1
+Shared Memory
+X = 0
+Z = 0
+Y = 0
+Observers
+X -> [0, 1]
+Z -> []
+Y -> [0, 1]
+
+

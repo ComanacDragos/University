@@ -1,0 +1,9 @@
+CloseMessage.java
+CompareAndExchangeMessage.java
+DistributedSharedMemory.java
+Logger.java
+Main.java
+Message.java
+Observer.java
+UpdateMessage.java
+Variable.java
