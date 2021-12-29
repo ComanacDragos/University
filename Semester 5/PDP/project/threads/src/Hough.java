@@ -1,8 +1,11 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Vector;
+import java.util.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
+/*
+https://github.com/davidchatting/hough_lines/blob/master/HoughTransform.java
+ */
 public class Hough implements Transformer{
     // The size of the neighbourhood in which to search for other local maxima
     final int neighbourhoodSize = 4;
@@ -35,6 +38,9 @@ public class Hough implements Transformer{
     private double[] sinCache;
     private double[] cosCache;
 
+    int[][][] result;
+    int[][][] imageArray;
+
     int threshold, noLines;
 
     public Hough(int threshold, int noLines){
@@ -42,9 +48,16 @@ public class Hough implements Transformer{
         this.noLines = noLines;
     }
 
-    public void initialise(int width, int height) {
-        this.width = width;
-        this.height = height;
+    @Override
+    public void initialise(Image image) {
+        if(image.getChannels()!=1)
+            throw new RuntimeException("Image must be grayscale");
+
+        result = new int[image.getHeight()][image.getWidth()][1];
+        imageArray = image.getImageArray();
+
+        this.width = image.getWidth();
+        this.height = image.getHeight();
 
         // Calculate the maximum height the hough array needs to have
         houghHeight = (int) (Math.sqrt(2) * Math.max(height, width)) / 2;
@@ -82,7 +95,7 @@ public class Hough implements Transformer{
         for (int x = 0; x < image.getWidth(); x++) {
             for (int y = 0; y < image.getHeight(); y++) {
                 // Find non-black pixels
-                if (image.getImageArray()[y][x][0] != 0) {
+                if (imageArray[y][x][0] != 0) {
                     addPoint(x, y);
                 }
             }
@@ -171,33 +184,101 @@ public class Hough implements Transformer{
     }
 
     @Override
-    public Image transform(Image image) {
-        if(image.getChannels()!=1)
-            throw new RuntimeException("Image must be grayscale");
-        initialise(image.getWidth(), image.getHeight());
+    public Image transformSequential(Image image) {
+        long start = System.currentTimeMillis();
         addPoints(image);
-        List<HoughLine> lines= getLines(noLines);
-        lines.forEach(System.out::println);
-        int[][][] result = new int[image.getHeight()][image.getWidth()][1];
-        for(int y=0;y<image.getHeight();y++)
-            for(int x=0;x<image.getWidth();x++) {
-                if(image.getImageArray()[y][x][0] != 0)
-                    result[y][x][0] = 128;
-                for (HoughLine line : lines) {
-                    double x1 = line.getX1();
-                    double x2 = line.getX2();
-                    double y1 = line.getY1();
-                    double y2 = line.getY2();
-                    double val = (y-y1)/(y2-y1) - (x-x1)/(x2-x1);
-                    double lineThreshold = 0.005;
-                    if (-lineThreshold <= val && val <= lineThreshold) {
-                        result[y][x][0] = 255;
-                        break;
-                    }
-                }
+        System.out.println("Points: " + (System.currentTimeMillis()-start));
+        start = System.currentTimeMillis();
+        List<HoughLine> lines = getLines(noLines);
+        System.out.println("GetLines: " + (System.currentTimeMillis()-start));
+        start = System.currentTimeMillis();
+        for(int x=0;x<image.getWidth();x++)
+            for(int y=0;y<image.getHeight();y++) {
+                drawLines(x, y, lines);
             }
-
+        System.out.println("Draw: " + (System.currentTimeMillis()-start));
         return new Image(result);
+    }
+
+    private void drawLines(int x, int y, List<HoughLine> lines){
+        if(imageArray[y][x][0] != 0)
+            result[y][x][0] = 128;
+        for (HoughLine line : lines) {
+            if(Objects.isNull(line))
+                break;
+            double x1 = line.getX1();
+            double x2 = line.getX2();
+            double y1 = line.getY1();
+            double y2 = line.getY2();
+            double val = (y-y1)/(y2-y1) - (x-x1)/(x2-x1);
+            double lineThreshold = 0.005;
+            if (-lineThreshold <= val && val <= lineThreshold) {
+                result[y][x][0] = 255;
+                break;
+            }
+        }
+    }
+
+    @Override
+    public Image transformParallel(Image image) {
+        long start = System.currentTimeMillis();
+        List<List<Entry>> tasks = Main.splitTasks(image.getWidth(), image.getHeight());
+        ExecutorService executorService = Executors.newFixedThreadPool(Settings.threads);
+        tasks.forEach(task -> executorService.execute(new PointsWorker(task)));
+        executorService.shutdown();
+        try {
+            executorService.awaitTermination(1, TimeUnit.SECONDS);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println("Points: " + (System.currentTimeMillis()-start));
+        start = System.currentTimeMillis();
+        List<HoughLine> lines = getLines(noLines);
+        System.out.println("GetLines: " + (System.currentTimeMillis()-start));
+        start = System.currentTimeMillis();
+        ExecutorService executorServiceLines = Executors.newFixedThreadPool(Settings.threads);
+        tasks.forEach(task -> executorServiceLines.execute(new LinesWorker(task, lines)));
+        executorServiceLines.shutdown();
+        try {
+            executorServiceLines.awaitTermination(1, TimeUnit.SECONDS);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println("Draw: " + (System.currentTimeMillis()-start));
+        return new Image(result);
+    }
+
+    public class PointsWorker implements Runnable{
+        List<Entry> tasks;
+
+        public PointsWorker(List<Entry> tasks) {
+            this.tasks = tasks;
+        }
+
+        @Override
+        public void run() {
+            for(Entry entry: tasks){
+                if(imageArray[entry.getY()][entry.getX()][0] != 0)
+                    addPoint(entry.getX(), entry.getY());
+            }
+        }
+    }
+
+    public class LinesWorker implements Runnable{
+        List<Entry> tasks;
+        List<HoughLine> lines;
+
+        public LinesWorker(List<Entry> tasks, List<HoughLine> lines) {
+            this.tasks = tasks;
+            this.lines = lines;
+        }
+
+        @Override
+        public void run() {
+            for(Entry entry: tasks){
+                drawLines(entry.getX(), entry.getY(), lines);
+            }
+        }
     }
 }
 

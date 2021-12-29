@@ -3,6 +3,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Random;
 
 public class Image {
     private int height, width, channels;
@@ -38,6 +39,18 @@ public class Image {
         width = imageArray[0].length;
         channels = imageArray[0][0].length;
         this.imageArray = imageArray;
+    }
+
+    public Image(int height, int width, int channels){
+        this.height = height;
+        this.width = width;
+        this.channels = channels;
+        this.imageArray = new int[height][width][channels];
+        Random rand = new Random();
+        for(int x=0;x<width;x++)
+            for(int y=0;y<height;y++)
+                for(int c=0;c<channels;c++)
+                    imageArray[y][x][c] = rand.nextInt(256);
     }
 
     public int getHeight() {
