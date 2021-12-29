@@ -16,7 +16,8 @@ public class Main {
         Convolution testC = new Convolution(filter);
         GaussianBlur gaussianBlur = new GaussianBlur();
         GrayScale grayScale = new GrayScale();
-        Sobel sobel = new Sobel(200);
+        Sobel sobel = new Sobel(150);
+        Hough hough = new Hough(100, 10);
 
         Image img = new Image("E:\\University\\Semester 5\\PDP\\project\\threads\\data\\cameraman.jpg");
         //new DisplayImage(img);
@@ -26,6 +27,7 @@ public class Main {
         new DisplayImage(img);
         img = sobel.transform(img);
         new DisplayImage(img);
-
+        img = hough.transform(img);
+        new DisplayImage(img);
     }
 }

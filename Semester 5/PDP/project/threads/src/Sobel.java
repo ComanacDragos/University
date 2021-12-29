@@ -30,7 +30,7 @@ public class Sobel implements Transformer{
                 int s2 = gy.getImageArray()[i][j][0];
                 double gradient = Math.sqrt(Math.pow(s1, 2)+Math.pow(s2, 2));
                 if(gradient > threshold){
-                    result[i][j][0] = 255;//(int)gradient;
+                    result[i][j][0] = 128;//(int)gradient;
                 }
             }
         return new Image(result);

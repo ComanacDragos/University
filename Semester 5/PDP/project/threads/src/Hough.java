@@ -35,6 +35,13 @@ public class Hough implements Transformer{
     private double[] sinCache;
     private double[] cosCache;
 
+    int threshold, noLines;
+
+    public Hough(int threshold, int noLines){
+        this.threshold = threshold;
+        this.noLines = noLines;
+    }
+
     public void initialise(int width, int height) {
         this.width = width;
         this.height = height;
@@ -75,7 +82,7 @@ public class Hough implements Transformer{
         for (int x = 0; x < image.getWidth(); x++) {
             for (int y = 0; y < image.getHeight(); y++) {
                 // Find non-black pixels
-                if ((image.getImageArray()[x][y][0] & 0x000000ff) != 0) {
+                if (image.getImageArray()[y][x][0] != 0) {
                     addPoint(x, y);
                 }
             }
@@ -106,8 +113,8 @@ public class Hough implements Transformer{
         numPoints++;
     }
 
-    public Vector<HoughLine> getLines(int n) {
-        return(getLines(n, 0));
+    public List<HoughLine> getLines(int n) {
+        return(getLines(n, threshold));
     }
 
     /**
@@ -116,10 +123,10 @@ public class Hough implements Transformer{
      *
      * @param threshold The percentage threshold above which lines are determined from the hough array
      */
-    public Vector<HoughLine> getLines(int n, int threshold) {
+    public List<HoughLine> getLines(int n, int threshold) {
 
         // Initialise the vector of lines that we'll return
-        Vector<HoughLine> lines = new Vector<HoughLine>(20);
+        Vector<HoughLine> lines = new Vector<>(20);
 
         // Only proceed if the hough array is not empty
         if (numPoints == 0) return lines;
@@ -156,6 +163,7 @@ public class Hough implements Transformer{
                 }
             }
         }
+
         lines.sort(Collections.reverseOrder());
         lines.setSize(n);
 
@@ -166,60 +174,30 @@ public class Hough implements Transformer{
     public Image transform(Image image) {
         if(image.getChannels()!=1)
             throw new RuntimeException("Image must be grayscale");
-        double d = Math.sqrt(Math.pow(image.getHeight(), 2) + Math.pow(image.getWidth(), 2));
-
-        int houghHeight = (int) (Math.sqrt(2) * Math.max(image.getHeight(), image.getWidth())) / 2;
-        int doubleHeight = 2 * houghHeight;
-
-        List<Double> sinCache = new ArrayList<>();
-        List<Double> cosCache = new ArrayList<>();
-        List<Integer> thetaCache = new ArrayList<>();
-        List<Double> rhoCache = new ArrayList<>();
-
-        for(int i=0;i<maxTheta;i++){
-            double realTheta = i * thetaStep;
-            sinCache.add(Math.sin(realTheta));
-            cosCache.add(Math.cos(realTheta));
-            thetaCache.add(i);
-        }
-        double rStep = (2*d)/numRhos;
-        for(double r=-d;r<d;r+=rStep)
-            rhoCache.add(r);
-
-        int[][] accumulator = new int[rhoCache.size()][rhoCache.size()];
-
-        int[][][] edgeMap = image.getImageArray();
-        int edgeHeightHalf = image.getHeight()/2;
-        int edgeWidthHalf = image.getWidth()/2;
+        initialise(image.getWidth(), image.getHeight());
+        addPoints(image);
+        List<HoughLine> lines= getLines(noLines);
+        lines.forEach(System.out::println);
+        int[][][] result = new int[image.getHeight()][image.getWidth()][1];
         for(int y=0;y<image.getHeight();y++)
-            for(int x=0;x<image.getWidth();x++)
-                if(edgeMap[y][x][0] != 0){
-                    int edgePointHeight = y-edgeHeightHalf;
-                    int edgePointWidth = x-edgeWidthHalf;
-                    for(int thetaIndex=0;thetaIndex<thetaCache.size();thetaIndex++){
-                        double rho = edgePointWidth * cosCache.get(thetaIndex) + edgePointHeight * sinCache.get(thetaIndex);
-                        int rhoIndex = 0;
-                        double minRho = Math.abs(rhoCache.get(0)-rho);
-                        for(int i=1;i<rhoCache.size();i++){
-                            double val = Math.abs(rhoCache.get(i)-rho);
-                            if(val<minRho){
-                                minRho = val;
-                                rhoIndex = i;
-                            }
-                        }
-                        accumulator[rhoIndex][thetaIndex]++;
+            for(int x=0;x<image.getWidth();x++) {
+                if(image.getImageArray()[y][x][0] != 0)
+                    result[y][x][0] = 128;
+                for (HoughLine line : lines) {
+                    double x1 = line.getX1();
+                    double x2 = line.getX2();
+                    double y1 = line.getY1();
+                    double y2 = line.getY2();
+                    double val = (y-y1)/(y2-y1) - (x-x1)/(x2-x1);
+                    double lineThreshold = 0.005;
+                    if (-lineThreshold <= val && val <= lineThreshold) {
+                        result[y][x][0] = 255;
+                        break;
                     }
                 }
-        for(int y=0;y<rhoCache.size();y++)
-            for(int x=0;x<rhoCache.size();x++)
-                if(accumulator[y][x] > accumulatorThreshold){
-                    double rho = rhoCache.get(y);
-                    double a = cosCache.get(x);
-                    double b = sinCache.get(x);
-                    System.out.println(a + " " + b);
-                }
+            }
 
-        return image;
+        return new Image(result);
     }
 }
 
