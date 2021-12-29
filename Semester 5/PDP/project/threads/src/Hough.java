@@ -1,0 +1,225 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Vector;
+
+public class Hough implements Transformer{
+    // The size of the neighbourhood in which to search for other local maxima
+    final int neighbourhoodSize = 4;
+
+    // How many discrete values of theta shall we check?
+    final int maxTheta = 180;
+
+    // Using maxTheta, work out the step
+    final double thetaStep = Math.PI / maxTheta;
+
+    // the width and height of the image
+    protected int width, height;
+
+    // the hough array
+    protected int[][] houghArray;
+
+    // the coordinates of the centre of the image
+    protected float centerX, centerY;
+
+    // the height of the hough array
+    protected int houghHeight;
+
+    // double the hough height (allows for negative numbers)
+    protected int doubleHeight;
+
+    // the number of points that have been added
+    protected int numPoints;
+
+    // cache of values of sin and cos for different theta values. Has a significant performance improvement.
+    private double[] sinCache;
+    private double[] cosCache;
+
+    public void initialise(int width, int height) {
+        this.width = width;
+        this.height = height;
+
+        // Calculate the maximum height the hough array needs to have
+        houghHeight = (int) (Math.sqrt(2) * Math.max(height, width)) / 2;
+
+        // Double the height of the hough array to cope with negative r values
+        doubleHeight = 2 * houghHeight;
+
+        // Create the hough array
+        houghArray = new int[maxTheta][doubleHeight];
+
+        // Find edge points and vote in array
+        centerX = (float)width / 2;
+        centerY = (float)height / 2;
+
+        // Count how many points there are
+        numPoints = 0;
+
+        // cache the values of sin and cos for faster processing
+        sinCache = new double[maxTheta];
+        cosCache = sinCache.clone();
+        for (int t = 0; t < maxTheta; t++) {
+            double realTheta = t * thetaStep;
+            sinCache[t] = Math.sin(realTheta);
+            cosCache[t] = Math.cos(realTheta);
+        }
+    }
+
+    /**
+     * Adds points from an image. The image is assumed to be greyscale black and white, so all pixels that are
+     * not black are counted as edges. The image should have the same dimensions as the one passed to the constructor.
+     */
+    public void addPoints(Image image) {
+
+        // Now find edge points and update the hough array
+        for (int x = 0; x < image.getWidth(); x++) {
+            for (int y = 0; y < image.getHeight(); y++) {
+                // Find non-black pixels
+                if ((image.getImageArray()[x][y][0] & 0x000000ff) != 0) {
+                    addPoint(x, y);
+                }
+            }
+        }
+    }
+
+    /**
+     * Adds a single point to the hough transform. You can use this method directly
+     * if your data isn't represented as a buffered image.
+     */
+    public void addPoint(int x, int y) {
+
+        // Go through each value of theta
+        for (int t = 0; t < maxTheta; t++) {
+
+            //Work out the r values for each theta step
+            int r = (int) (((x - centerX) * cosCache[t]) + ((y - centerY) * sinCache[t]));
+
+            // this copes with negative values of r
+            r += houghHeight;
+
+            if (r < 0 || r >= doubleHeight) continue;
+
+            // Increment the hough array
+            houghArray[t][r]++;
+        }
+
+        numPoints++;
+    }
+
+    public Vector<HoughLine> getLines(int n) {
+        return(getLines(n, 0));
+    }
+
+    /**
+     * Once points have been added in some way this method extracts the lines and returns them as a Vector
+     * of HoughLine objects, which can be used to draw on the
+     *
+     * @param threshold The percentage threshold above which lines are determined from the hough array
+     */
+    public Vector<HoughLine> getLines(int n, int threshold) {
+
+        // Initialise the vector of lines that we'll return
+        Vector<HoughLine> lines = new Vector<HoughLine>(20);
+
+        // Only proceed if the hough array is not empty
+        if (numPoints == 0) return lines;
+
+        // Search for local peaks above threshold to draw
+        for (int t = 0; t < maxTheta; t++) {
+            loop:
+            for (int r = neighbourhoodSize; r < doubleHeight - neighbourhoodSize; r++) {
+
+                // Only consider points above threshold
+                if (houghArray[t][r] > threshold) {
+
+                    int peak = houghArray[t][r];
+
+                    // Check that this peak is indeed the local maxima
+                    for (int dx = -neighbourhoodSize; dx <= neighbourhoodSize; dx++) {
+                        for (int dy = -neighbourhoodSize; dy <= neighbourhoodSize; dy++) {
+                            int dt = t + dx;
+                            int dr = r + dy;
+                            if (dt < 0) dt = dt + maxTheta;
+                            else if (dt >= maxTheta) dt = dt - maxTheta;
+                            if (houghArray[dt][dr] > peak) {
+                                // found a bigger point nearby, skip
+                                continue loop;
+                            }
+                        }
+                    }
+
+                    // calculate the true value of theta
+                    double theta = t * thetaStep;
+
+                    // add the line to the vector
+                    lines.add(new HoughLine(theta, r, width, height, houghArray[t][r]));
+                }
+            }
+        }
+        lines.sort(Collections.reverseOrder());
+        lines.setSize(n);
+
+        return lines;
+    }
+
+    @Override
+    public Image transform(Image image) {
+        if(image.getChannels()!=1)
+            throw new RuntimeException("Image must be grayscale");
+        double d = Math.sqrt(Math.pow(image.getHeight(), 2) + Math.pow(image.getWidth(), 2));
+
+        int houghHeight = (int) (Math.sqrt(2) * Math.max(image.getHeight(), image.getWidth())) / 2;
+        int doubleHeight = 2 * houghHeight;
+
+        List<Double> sinCache = new ArrayList<>();
+        List<Double> cosCache = new ArrayList<>();
+        List<Integer> thetaCache = new ArrayList<>();
+        List<Double> rhoCache = new ArrayList<>();
+
+        for(int i=0;i<maxTheta;i++){
+            double realTheta = i * thetaStep;
+            sinCache.add(Math.sin(realTheta));
+            cosCache.add(Math.cos(realTheta));
+            thetaCache.add(i);
+        }
+        double rStep = (2*d)/numRhos;
+        for(double r=-d;r<d;r+=rStep)
+            rhoCache.add(r);
+
+        int[][] accumulator = new int[rhoCache.size()][rhoCache.size()];
+
+        int[][][] edgeMap = image.getImageArray();
+        int edgeHeightHalf = image.getHeight()/2;
+        int edgeWidthHalf = image.getWidth()/2;
+        for(int y=0;y<image.getHeight();y++)
+            for(int x=0;x<image.getWidth();x++)
+                if(edgeMap[y][x][0] != 0){
+                    int edgePointHeight = y-edgeHeightHalf;
+                    int edgePointWidth = x-edgeWidthHalf;
+                    for(int thetaIndex=0;thetaIndex<thetaCache.size();thetaIndex++){
+                        double rho = edgePointWidth * cosCache.get(thetaIndex) + edgePointHeight * sinCache.get(thetaIndex);
+                        int rhoIndex = 0;
+                        double minRho = Math.abs(rhoCache.get(0)-rho);
+                        for(int i=1;i<rhoCache.size();i++){
+                            double val = Math.abs(rhoCache.get(i)-rho);
+                            if(val<minRho){
+                                minRho = val;
+                                rhoIndex = i;
+                            }
+                        }
+                        accumulator[rhoIndex][thetaIndex]++;
+                    }
+                }
+        for(int y=0;y<rhoCache.size();y++)
+            for(int x=0;x<rhoCache.size();x++)
+                if(accumulator[y][x] > accumulatorThreshold){
+                    double rho = rhoCache.get(y);
+                    double a = cosCache.get(x);
+                    double b = sinCache.get(x);
+                    System.out.println(a + " " + b);
+                }
+
+        return image;
+    }
+}
+

@@ -8,9 +8,8 @@ public class GaussianBlur implements Transformer{
             {2/159., 4/159., 5/159., 4/159., 2/159.}
     };
 
-
     @Override
     public Image transform(Image image) {
-        return null;
+        return new Convolution(filter).transform(image);
     }
 }

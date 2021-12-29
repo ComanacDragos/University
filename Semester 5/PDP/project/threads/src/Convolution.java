@@ -1,21 +1,21 @@
-public class ConvolutionSequential implements Transformer{
+public class Convolution implements Transformer{
     double[][] filter;
 
-    public ConvolutionSequential(double[][] filter) {
+    public Convolution(double[][] filter) {
         this.filter = filter;
     }
 
     @Override
     public Image transform(Image image) {
         int[][][] imageArray = image.getImageArray();
-        int[][][] result = new int[image.getHeight()][image.getWidth()][3];
+        int[][][] result = new int[image.getHeight()][image.getWidth()][image.getChannels()];
         for(int y=0;y<image.getHeight();y++)
             for(int x=0;x<image.getWidth();x++)
             for(int c=0;c<image.getChannels();c++){
                 int sum = 0;
                 int halfFilter = filter.length/2;
-                for(int fy=-halfFilter;fy<halfFilter;fy++)
-                    for(int fx=-halfFilter;fx<halfFilter;fx++){
+                for(int fy=-halfFilter;fy<=halfFilter;fy++)
+                    for(int fx=-halfFilter;fx<=halfFilter;fx++){
                         int valueFromImage;
                         if(x+fx<0 || x+fx>=image.getWidth() || y+fy<0 || y+fy>=image.getHeight())
                             valueFromImage = 0;

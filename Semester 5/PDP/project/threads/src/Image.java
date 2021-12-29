@@ -2,6 +2,7 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 
 public class Image {
     private int height, width, channels;
@@ -22,13 +23,10 @@ public class Image {
             int[] aux;
             for (int i = 0; i < height; i++)
                 for (int j = 0; j < width; j++) {
-                    if(channels == 1)
-                        imageArray[i][j][0] = img.getRGB(j, i);
-                    else {
-                        aux = img.getRaster().getPixel(j, i, new int[channels]);
-                        for (int c = 0; c < channels; c++)
-                            imageArray[i][j][c] = aux[c];
-                    }
+                    aux = img.getRaster().getPixel(j, i, new int[channels]);
+                    for (int c = 0; c < channels; c++)
+                        imageArray[i][j][c] = aux[c];
+
                 }
         } catch (IOException e) {
             e.printStackTrace();
@@ -38,6 +36,7 @@ public class Image {
     public Image(int[][][] imageArray){
         height = imageArray.length;
         width = imageArray[0].length;
+        channels = imageArray[0][0].length;
         this.imageArray = imageArray;
     }
 

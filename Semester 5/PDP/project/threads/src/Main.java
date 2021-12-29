@@ -3,11 +3,29 @@ import java.util.Arrays;
 public class Main {
 
     public static void main(String[] args) {
+        int[][][] a = new int[][][]{{
+                {}
+        }};
+
+        double[][] filter = new double[][]{
+                {1., 2., 1.},
+                {0., 0., 0.},
+                {-1., -2., -1.},
+        };
+
+        Convolution testC = new Convolution(filter);
         GaussianBlur gaussianBlur = new GaussianBlur();
-        for(int i=0;i<3;i++){
-            System.out.println(Arrays.toString(gaussianBlur.filter[i]));
-        }
-        Image img = new Image("E:\\University\\Semester 5\\PDP\\project\\threads\\data\\engine.png");
+        GrayScale grayScale = new GrayScale();
+        Sobel sobel = new Sobel(200);
+
+        Image img = new Image("E:\\University\\Semester 5\\PDP\\project\\threads\\data\\cameraman.jpg");
+        //new DisplayImage(img);
+        img = grayScale.transform(img);
+        //new DisplayImage(img);
+        //img = gaussianBlur.transform(img);
         new DisplayImage(img);
+        img = sobel.transform(img);
+        new DisplayImage(img);
+
     }
 }

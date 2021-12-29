@@ -9,9 +9,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 public class DisplayImage {
-    public DisplayImage(Image imageArray)
+    public DisplayImage(Image image)
     {
-        BufferedImage img = imageArray.toBufferedImage();
+        BufferedImage img = image.toBufferedImage();
         ImageIcon icon=new ImageIcon(img);
         JFrame frame=new JFrame();
         frame.setLayout(new FlowLayout());
