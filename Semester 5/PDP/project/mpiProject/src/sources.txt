@@ -1,0 +1,14 @@
+Convolution.java
+DisplayImage.java
+Entry.java
+GaussianBlur.java
+GrayScale.java
+Hough.java
+HoughLine.java
+Image.java
+Logger.java
+Main.java
+Settings.java
+Sobel.java
+Solver.java
+Transformer.java

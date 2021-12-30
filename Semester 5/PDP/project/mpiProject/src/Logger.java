@@ -5,16 +5,20 @@ import java.io.PrintWriter;
 
 public class Logger {
     public static void log(double time, int width, int height, String transformer){
-        try(PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter("data/logs.csv", true)))){
+        try(PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter("E:\\University\\Semester 5\\PDP\\project\\mpi\\data\\logs.csv", true)))){
             writer.println(
                     time + ","
-                    + Settings.threads + ","
-                    + transformer + "_Regular,"
+                    + Settings.processes + ","
+                    + transformer + "_MPI,"
                     + width + ","
                     + height
             );
         }catch (IOException e){
             e.printStackTrace();
         }
+    }
+
+    public static void logToConsole(Object obj){
+        System.out.println(Main.rank + ". " + obj.toString());
     }
 }

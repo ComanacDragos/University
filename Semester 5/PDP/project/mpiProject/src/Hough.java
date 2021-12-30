@@ -215,24 +215,10 @@ public class Hough implements Transformer{
 
     @Override
     public Image transformParallel(Image image) {
-        List<List<Entry>> tasks = Main.splitTasks(image.getWidth(), image.getHeight());
-        ExecutorService executorService = Executors.newFixedThreadPool(Settings.threads);
-        tasks.forEach(task -> executorService.execute(new PointsWorker(task)));
-        executorService.shutdown();
-        try {
-            executorService.awaitTermination(1, TimeUnit.SECONDS);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        Entry[][] tasks = Main.splitTasks(image.getWidth(), image.getHeight(), Settings.processes);
+
         List<HoughLine> lines = getLines(noLines);
-        ExecutorService executorServiceLines = Executors.newFixedThreadPool(Settings.threads);
-        tasks.forEach(task -> executorServiceLines.execute(new LinesWorker(task, lines)));
-        executorServiceLines.shutdown();
-        try {
-            executorServiceLines.awaitTermination(1, TimeUnit.SECONDS);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+
         return new Image(result);
     }
 

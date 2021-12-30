@@ -1,4 +1,5 @@
 public class Settings {
     public static boolean debugMode = true;
-    public static int threads = 4;
+    public static int processes;
+    public static int size = 500;
 }
