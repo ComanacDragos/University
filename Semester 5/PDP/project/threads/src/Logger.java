@@ -9,7 +9,7 @@ public class Logger {
             writer.println(
                     time + ","
                     + Settings.threads + ","
-                    + transformer + "_Regular,"
+                    + transformer + "Regular,"
                     + width + ","
                     + height
             );

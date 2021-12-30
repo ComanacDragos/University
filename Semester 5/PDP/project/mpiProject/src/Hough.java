@@ -1,7 +1,6 @@
+import mpi.MPI;
+
 import java.util.*;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 
 /*
 https://github.com/davidchatting/hough_lines/blob/master/HoughTransform.java
@@ -20,7 +19,7 @@ public class Hough implements Transformer{
     protected int width, height;
 
     // the hough array
-    protected int[][] houghArray;
+    protected Integer[][] houghArray;
 
     // the coordinates of the centre of the image
     protected float centerX, centerY;
@@ -53,7 +52,8 @@ public class Hough implements Transformer{
         if(image.getChannels()!=1)
             throw new RuntimeException("Image must be grayscale");
 
-        result = new int[image.getHeight()][image.getWidth()][1];
+        if(Main.rank == 0)
+            result = new int[image.getHeight()][image.getWidth()][1];
         imageArray = image.getImageArray();
 
         this.width = image.getWidth();
@@ -66,7 +66,10 @@ public class Hough implements Transformer{
         doubleHeight = 2 * houghHeight;
 
         // Create the hough array
-        houghArray = new int[maxTheta][doubleHeight];
+        houghArray = new Integer[maxTheta][doubleHeight];
+        for(int i=0;i<maxTheta;i++)
+            for(int j=0;j<doubleHeight;j++)
+                houghArray[i][j] = 0;
 
         // Find edge points and vote in array
         centerX = (float)width / 2;
@@ -189,14 +192,15 @@ public class Hough implements Transformer{
         List<HoughLine> lines = getLines(noLines);
         for(int x=0;x<image.getWidth();x++)
             for(int y=0;y<image.getHeight();y++) {
-                drawLines(x, y, lines);
+                result[y][x][0] = drawLines(x, y, lines);
             }
         return new Image(result);
     }
 
-    private void drawLines(int x, int y, List<HoughLine> lines){
+    private int drawLines(int x, int y, List<HoughLine> lines){
+        int rez = 0;
         if(imageArray[y][x][0] != 0)
-            result[y][x][0] = 128;
+            rez = 128;
         for (HoughLine line : lines) {
             if(Objects.isNull(line))
                 break;
@@ -207,52 +211,58 @@ public class Hough implements Transformer{
             double val = (y-y1)/(y2-y1) - (x-x1)/(x2-x1);
             double lineThreshold = 0.005;
             if (-lineThreshold <= val && val <= lineThreshold) {
-                result[y][x][0] = 255;
-                break;
+                 return 255;
             }
         }
+        return rez;
     }
 
     @Override
     public Image transformParallel(Image image) {
-        Entry[][] tasks = Main.splitTasks(image.getWidth(), image.getHeight(), Settings.processes);
+        Entry[][] tasks = Main.splitTasks(image.getWidth(), image.getHeight(), Settings.processes-1);
+        sendTasks(tasks);
+        List<Integer[][]> partialHoughArrays = new LinkedList<>();
+        for(int i=1;i<Settings.processes;i++){
+            int[] partialPoints = new int[1];
+            MPI.COMM_WORLD.Recv(partialPoints, 0, 1 , MPI.INT, i, 0);
+            Integer[][] partialHoughArray = receiveArray(i, Integer[][]::new);
+            numPoints += partialPoints[0];
+            partialHoughArrays.add(partialHoughArray);
+        }
+        for(int t=0;t<maxTheta;t++)
+            for(int d=0;d<doubleHeight;d++){
+                for(Integer[][] partialHoughArray: partialHoughArrays)
+                    houghArray[t][d] += partialHoughArray[t][d];
+            }
 
         List<HoughLine> lines = getLines(noLines);
 
+        for(int i=1;i<Settings.processes;i++)
+            sendArray(lines.toArray(), i);
+        for(int i=1;i<Settings.processes;i++){
+            Integer[] results = receiveArray(i, Integer[]::new);
+            for(int r=0;r<results.length;r++){
+                Entry e = tasks[i-1][r];
+                result[e.getY()][e.getX()][0] = results[r];
+            }
+        }
         return new Image(result);
     }
 
-    public class PointsWorker implements Runnable{
-        List<Entry> tasks;
-
-        public PointsWorker(List<Entry> tasks) {
-            this.tasks = tasks;
+    @Override
+    public void worker(Image image) {
+        Entry[] tasks = receiveTasks();
+        for(Entry entry: tasks){
+            if(imageArray[entry.getY()][entry.getX()][0] != 0)
+                addPoint(entry.getX(), entry.getY());
         }
-
-        @Override
-        public void run() {
-            for(Entry entry: tasks){
-                if(imageArray[entry.getY()][entry.getX()][0] != 0)
-                    addPoint(entry.getX(), entry.getY());
-            }
-        }
-    }
-
-    public class LinesWorker implements Runnable{
-        List<Entry> tasks;
-        List<HoughLine> lines;
-
-        public LinesWorker(List<Entry> tasks, List<HoughLine> lines) {
-            this.tasks = tasks;
-            this.lines = lines;
-        }
-
-        @Override
-        public void run() {
-            for(Entry entry: tasks){
-                drawLines(entry.getX(), entry.getY(), lines);
-            }
-        }
+        MPI.COMM_WORLD.Send(new int[]{numPoints}, 0, 1, MPI.INT, 0, 0);
+        sendArray(houghArray, 0);
+        HoughLine[] lines = receiveArray(0, HoughLine[]::new);
+        Integer[] results = new Integer[tasks.length];
+        for(int i=0;i<tasks.length;i++)
+            results[i] = drawLines(tasks[i].getX(), tasks[i].getY(), Arrays.asList(lines));
+        sendArray(results, 0);
     }
 }
 

@@ -18,13 +18,12 @@ public class Main {
     public static void testPerformance(){
         Settings.debugMode = false;
         Solver solver = new Solver();
-        for(int size: List.of(500, 1000, 2000, 3000)){
-            Image image = new Image(size, size, 3);
-            for(int threads: List.of(1, 2, 4, 8, 16)){
-                Settings.processes = threads;
-                solver.transform(image);
-                System.out.println("Done with " + threads + " threads and image of size " + size);
-            }
+        for(int size: List.of(500, 1000, 2000)){
+            Image image = null;
+            if(rank == 0)
+                image = new Image(size, size, 3);
+            solver.transform(image);
+            Logger.logToConsole("Done with image of size " + size);
         }
     }
 
@@ -42,13 +41,17 @@ public class Main {
         Hough hough = new Hough(100, 10);
         Solver solver = new Solver();
         //solver.transform(img);
-        //img = grayScale.transform(img);
-        Transformer trans = blur;
+//        img = grayScale.transform(img);
+//        img = sobel.transform(img);
+//        if(rank==0)
+//            new DisplayImage(img);
+
+        Transformer trans = solver;
 
         //long start = System.currentTimeMillis();
         img = trans.transform(img);
-        if(rank==0)
-            new DisplayImage(img);
+        //if(rank==0)
+        //    new DisplayImage(img);
         //System.out.println("MPI: " + (System.currentTimeMillis()-start));
     }
 

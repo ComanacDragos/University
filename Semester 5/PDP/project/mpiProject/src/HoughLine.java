@@ -1,9 +1,10 @@
 import java.awt.geom.Line2D;
+import java.io.Serializable;
 
 /*
 https://github.com/davidchatting/hough_lines/blob/master/HoughLine.java
  */
-public class HoughLine extends Line2D.Float implements Comparable<HoughLine> {
+public class HoughLine extends Line2D.Float implements Comparable<HoughLine>, Serializable {
     protected double theta;
     protected double r;
     protected int score;

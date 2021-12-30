@@ -5,7 +5,7 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 
 public interface Transformer {
-    default Image transform(Image image){
+    default Image broadcastImage(Image image){
         Image img;
         if(Main.rank == 0){
             img = image;
@@ -19,6 +19,11 @@ public interface Transformer {
             MPI.COMM_WORLD.Bcast(arr, 0, len[0], MPI.OBJECT, 0);
             img = new Image(arr);
         }
+        return img;
+    }
+
+    default Image transform(Image image){
+        Image img = broadcastImage(image);
         initialise(img);
         if(Main.rank == 0){
             if(Settings.processes == 1)
@@ -40,7 +45,7 @@ public interface Transformer {
         }
     }
 
-    default Entry[] receviceTasks(){
+    default Entry[] receiveTasks(){
         return receiveArray(0, Entry[]::new);
 
     }
