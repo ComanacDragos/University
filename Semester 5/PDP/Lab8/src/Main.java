@@ -1,8 +1,6 @@
 import mpi.MPI;
 
 public class Main {
-    public static long START = System.nanoTime();
-
     public static int process, processes;
     public static void main(String[] args) {
         MPI.Init(args);
