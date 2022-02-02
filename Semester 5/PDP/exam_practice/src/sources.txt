@@ -3,6 +3,7 @@ Combinations.java
 Main.java
 MatrixMultiplication.java
 Permutations.java
+Power.java
 Primes.java
 SumMatrices.java
 VectorConv.java
