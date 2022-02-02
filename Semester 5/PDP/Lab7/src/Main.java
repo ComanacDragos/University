@@ -12,9 +12,9 @@ public class Main {
     public static String Q = "E:\\University\\Semester 5\\PDP\\Lab7\\data\\p2.txt";
 
     public static int rank, processes;
-    public static boolean enableLogs = false;
+    public static boolean enableLogs = true;
     public static String variant = "regularMPI";
-    public static int p1Degree = 10000, p2Degree = 10000;
+    public static int p1Degree = 1000, p2Degree = 1000;
 
     public static void main(String[] args) {
         MPI.Init(args);
@@ -35,7 +35,7 @@ public class Main {
             runRegular();
         else
             runKaratsuba();
-        if(rank == 0) Logger.log(System.currentTimeMillis()-start, processes, variant, p1Degree, p2Degree);
+        //if(rank == 0) Logger.log(System.currentTimeMillis()-start, processes, variant, p1Degree, p2Degree);
     }
 
     public static void runRegular(){

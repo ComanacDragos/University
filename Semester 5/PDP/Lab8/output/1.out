@@ -1,99 +1,99 @@
 16. waiting for messages...
 Shared Memory
-X = 0
 Z = 0
+X = 0
 Y = 0
 Observers
-X -> [0, 1]
 Z -> []
+X -> [0, 1]
 Y -> [0, 1]
 
 
 16. Received: X = 3 from 0
 Shared Memory
-X = 3
 Z = 0
+X = 3
 Y = 0
 Observers
-X -> [0, 1]
 Z -> []
+X -> [0, 1]
 Y -> [0, 1]
 
 
 16. Received: Close from 0
 Shared Memory
-X = 3
 Z = 0
+X = 3
 Y = 0
 Observers
-X -> [0, 1]
 Z -> []
+X -> [0, 1]
 Y -> [0, 1]
 
 
 14. Sent to 0 : X = 7
 Shared Memory
-X = 3
 Z = 0
+X = 3
 Y = 0
 Observers
-X -> [0, 1]
 Z -> []
+X -> [0, 1]
 Y -> [0, 1]
 
 
 14. Sent to 1 : X = 7
 Shared Memory
-X = 7
 Z = 0
+X = 7
 Y = 0
 Observers
-X -> [0, 1]
 Z -> []
+X -> [0, 1]
 Y -> [0, 1]
 
 
 16. Received: X = 7 from 1
 Shared Memory
-X = 7
 Z = 0
+X = 7
 Y = 0
 Observers
-X -> [0, 1]
 Z -> []
+X -> [0, 1]
 Y -> [0, 1]
 
 
 14. Sent to 0 : Close
 Shared Memory
-X = 7
 Z = 0
+X = 7
 Y = 0
 Observers
-X -> [0, 1]
 Z -> []
+X -> [0, 1]
 Y -> [0, 1]
 
 
 14. Sent to 1 : Close
 Shared Memory
-X = 7
 Z = 0
+X = 7
 Y = 0
 Observers
-X -> [0, 1]
 Z -> []
+X -> [0, 1]
 Y -> [0, 1]
 
 
 16. Received: Close from 1
 Shared Memory
-X = 7
 Z = 0
+X = 7
 Y = 0
 Observers
-X -> [0, 1]
 Z -> []
+X -> [0, 1]
 Y -> [0, 1]
 
 
