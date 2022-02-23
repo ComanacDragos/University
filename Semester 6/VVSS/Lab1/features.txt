@@ -1,0 +1,6 @@
+display list of students
+display list of tasks
+display list of grades
+student look-up based on id
+delete a student
+modify a student - the feature does not work. It reports that the user does not exist, when it indeed does. 

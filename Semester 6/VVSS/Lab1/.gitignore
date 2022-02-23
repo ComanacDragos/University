@@ -1,0 +1,8 @@
+build
+.idea
+.gradle
+*.iml
+gradle
+out
+generated
+*.zip

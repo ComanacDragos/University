@@ -1,0 +1,4 @@
+ D_03	 Specification document	The name of the files is in English in the specification file and in the code they are in Romanian.
+  
+For example, the file name Students.txt from the specification does not match the Studenti.txt from code.
+ D_03	  Specification document, page 1, paragraph 1	 In the specification it is mentioned that the student data contains the name of the professor, but in the file from the code, the name of the professor is omitted
