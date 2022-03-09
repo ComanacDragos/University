@@ -2,7 +2,8 @@ import Phaser from 'phaser';
 import leftDudeImg from './assets/leftDude.png'
 import rightDudeImg from './assets/rightDude.png'
 import platformImg from './assets/platform.png'
-import projectileImg from './assets/projectile.png'
+import leftProjectileImg from './assets/leftProjectile.png'
+import rightProjectileImg from './assets/rightProjectile.png'
 import skyImg from './assets/sky.png'
 import starImg from './assets/star.png'
 
@@ -18,7 +19,8 @@ class MyGame extends Phaser.Scene
     {
         this.load.image('sky', skyImg)
         this.load.image('star', starImg)
-        this.load.image('projectile', projectileImg)
+        this.load.image('leftProjectile', leftProjectileImg)
+        this.load.image('rightProjectile', rightProjectileImg)
         this.load.image('platform', platformImg)
         this.load.spritesheet('leftDude', leftDudeImg, { frameWidth: 32, frameHeight: 48 })
         this.load.spritesheet('rightDude', rightDudeImg, { frameWidth: 32, frameHeight: 48 })
