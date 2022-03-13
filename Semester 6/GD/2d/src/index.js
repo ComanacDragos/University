@@ -205,6 +205,16 @@ class MyGame extends Phaser.Scene
             state.player.x = 400
             state.lives -= 1
             state.livesText.text = `lives: ${state.lives}`
+
+            this.tweens.add({
+                targets: state.livesText,
+                y: 100,
+                duration: 500,
+                ease: "Power2",
+                yoyo: true,
+                loop: 1
+            })
+
             gameOver = state.lives === 0
         }
     }
@@ -335,8 +345,6 @@ class GameOver extends Phaser.Scene{
 
     preload(){
         this.load.image('sky', skyImg)
-        this.load.image('playAgain', playAgainImg)
-
     }
 
     create() {
