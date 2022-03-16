@@ -3,3 +3,14 @@ observer
 builder
 singleton
 Model View ModelView
+
+1 creational
+- builder/singleton
+
+2 structural
+- adapter?
+- proxy?
+
+2 behavioral
+- observer
+- state?/mediator?
