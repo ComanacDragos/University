@@ -6,7 +6,6 @@ import leftBombImg from './assets/leftBomb.png'
 import rightBombImg from './assets/rightBomb.png'
 import skyImg from './assets/sky.png'
 import starImg from './assets/star.png'
-import playAgainImg from './assets/playAgain.png'
 
 var initialState = {
     player: null,

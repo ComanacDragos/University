@@ -1,16 +1,10 @@
-adapter
-observer
-builder
-singleton
-Model View ModelView
-
 1 creational
 - builder/singleton
 
 2 structural
-- adapter?
-- proxy?
+- facade
+- decorator
 
 2 behavioral
 - observer
-- state?/mediator?
+- single responsability principle

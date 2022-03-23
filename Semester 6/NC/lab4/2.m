@@ -5,4 +5,4 @@ pred = newton(2.5, x, y)
 
 
 fine_x = 1:0.01:5;
-plot(x, y, fine_x, newton(fine_x, x, y))
+plot(x, y,'r*', fine_x,  newton(fine_x, x, y))

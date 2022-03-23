@@ -1,5 +1,3 @@
-import java.io.BufferedInputStream;
-
 public class Main {
     public static Pizza smallPizza(){
         return new SmallPizza();
