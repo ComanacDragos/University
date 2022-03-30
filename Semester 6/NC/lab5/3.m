@@ -10,3 +10,4 @@ for i=1:length(x)
 endfor
 
 plot(x, sin(2*x), 'r', x, f_aprox, 'b')
+legend('actual', 'approx')
