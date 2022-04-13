@@ -61,22 +61,43 @@
           // position camera
           this.camera.position.set(10, 10, 20)
 
-          // blue box
-          this.box = this.add.box({ y: 2 }, { lambert: { color: 'deepskyblue' } })
 
           // pink box
-          this.physics.add.box({ y: 10 }, { lambert: { color: 'hotpink' } })
+          this.physics.add.box({ y: 2 }, { lambert: { color: 'hotpink' } })
 
           // green sphere
-          const geometry = new THREE.SphereGeometry(0.8, 16, 16)
-          const material = new THREE.MeshLambertMaterial({ color: 0x00ff00 })
-          const cube = new THREE.Mesh(geometry, material)
-          cube.position.set(0.2, 3, 0)
-          this.scene.add(cube)
+          const geometry = new THREE.SphereGeometry(0.4, 16, 16)
+          const material = new THREE.MeshLambertMaterial({ color: 0x0000ff })
+          const sphere = new THREE.Mesh(geometry, material)
+          sphere.position.set(0.2, 3, 0)
+          this.scene.add(sphere)
           // add physics to an existing object
-          this.physics.add.existing(cube)
+          this.physics.add.existing(sphere, {mass: 20})
 
+          this.platform = this.add.box({ height: 1, width: 21, depth: 21 }, { lambert: { color: 'green' } })
+          this.platform.name = 'platform'
+          this.platform.position.set(0, 5, 0)
+          this.physics.add.existing(this.platform, { mass: 10, collisionFlags: 2 })
 
+          this.northWall = this.add.box({ height: 5, width: 1, depth: 21 }, { lambert: { color: 'red' } })
+          this.northWall.name = 'northWall'
+          this.northWall.position.set(11, 0, 0)
+          this.physics.add.existing(this.northWall, { mass: 10, collisionFlags: 2 })
+
+          this.southWall = this.add.box({ height: 5, width: 1, depth: 21 }, { lambert: { color: 'red' } })
+          this.southWall.name = 'southWall'
+          this.southWall.position.set(-11, 0, 0)
+          this.physics.add.existing(this.southWall, { mass: 10, collisionFlags: 2 })
+
+          this.eastWall = this.add.box({ height: 5, width: 21, depth: 1 }, { lambert: { color: 'red' } })
+          this.eastWall.name = 'eastWall'
+          this.eastWall.position.set(0, 0, 11)
+          this.physics.add.existing(this.eastWall, { mass: 10, collisionFlags: 2 })
+
+          this.westWall = this.add.box({ height: 5, width: 21, depth: 1 }, { lambert: { color: 'red' } })
+          this.westWall.name = 'westWall'
+          this.westWall.position.set(0, 0, -11)
+          this.physics.add.existing(this.westWall, { mass: 10, collisionFlags: 2 })
 
           const addMan = async () => {
             const object = await  this.load.gltf('/assets/glb/box_man.glb')
@@ -87,7 +108,7 @@
             this.man.rotateY(Math.PI + 0.1) // a hack
             this.man.add(man)
             this.man.rotation.set(0, Math.PI * 1.5, 0)
-            this.man.position.set(0, 0, 0)
+            this.man.position.set(4, 0, 0)
             // add shadow
             this.man.traverse(child => {
               if (child.isMesh) {
@@ -150,7 +171,6 @@
             }
           }
 
-
           addMan()
 
           /**
@@ -211,7 +231,6 @@
             buttonB.onClick(() => (this.move = true))
             buttonB.onRelease(() => (this.move = false))
           }
-
         }
 
         jump() {
@@ -226,8 +245,8 @@
         }
 
         update(time, delta) {
-          this.box.rotation.x += 0.01
-          this.box.rotation.y += 0.01
+          this.platform.position.x = (Math.sin(time) + 1) * 5 + 6
+          this.platform.body.needUpdate = true
 
           if (this.man && this.man.body) {
             /**
@@ -268,7 +287,10 @@
 
               this.man.body.setVelocity(x, y, z)
             } else {
-              if (this.man.animation.current === 'run' && this.canJump) this.man.animation.play('idle')
+              if (this.man.animation.current === 'run' && this.canJump) {
+                this.man.animation.play('idle')
+                this.man.body.setVelocity(0,0,0)
+              }
             }
 
             /**
