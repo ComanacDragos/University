@@ -7,7 +7,7 @@ from utils import to_json, softmax
 
 if __name__ == '__main__':
     experiment = 'batch_size_32_epochs_20_lr_0.0001'
-    architecture = 'cnn'
+    architecture = 'ann'
 
     for test_batch in range(1, 7):
         generator = Cifar10DataGenerator(

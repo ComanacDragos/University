@@ -38,7 +38,7 @@ def create_cnn(input_shape=(32, 32, 3), no_classes=10, filter_stride_pairs=((128
 
 
 if __name__ == '__main__':
-    model = create_ann(hidden_layers=(512, 128, 64))
+    model = create_ann(hidden_layers=(512, 256, 32))
     model.summary()
     model = create_cnn(filter_stride_pairs=(
         (16, 1),

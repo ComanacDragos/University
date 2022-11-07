@@ -76,7 +76,7 @@ if __name__ == '__main__':
     test_batch = 1
     initial_lr = 1e-4
     experiment = f"batch_size_{batch_size}_epochs_{epochs}_lr_{initial_lr}"
-    architecture = "cnn"
+    architecture = "ann"
 
     path = f"weights/{architecture}/{experiment}"
     if os.path.isdir(path):
@@ -90,7 +90,7 @@ if __name__ == '__main__':
     print("Train batches", train_batches)
 
     if architecture == 'ann':
-        _model = create_ann(hidden_layers=(1024, 512, 128, 32))
+        _model = create_ann(hidden_layers=(512, 256, 32))
     else:
         _model = create_cnn(filter_stride_pairs=(
             (16, 1),
