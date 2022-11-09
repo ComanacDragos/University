@@ -15,11 +15,13 @@ if __name__ == '__main__':
             for sub_k, sub_v in v.items():
                 analysis[k][sub_k] = {
                     'mean': np.mean(sub_v),
-                    'std': np.std(sub_v)
+                    'std': np.std(sub_v),
+                    'alpha': 1.96*np.std(sub_v)/np.sqrt(6)
                 }
         else:
             analysis[k] = {
                 'mean': np.mean(v),
-                'std': np.std(v)
+                'std': np.std(v),
+                'alpha': 1.96*np.std(v)/np.sqrt(6)
             }
     to_json(analysis, f'{metrics_path[:-5]}_analysis.json')

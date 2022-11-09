@@ -155,8 +155,8 @@ def process_batch(test_batch, results_dir, output_metrics, plot=False):
                 output_metrics[k] = [v]
             else:
                 output_metrics[k].append(v)
-    #if plot:
-        #plot_confusion_matrix(_conf_mat)
+    if plot:
+        plot_confusion_matrix(_conf_mat)
 
 
 if __name__ == '__main__':
