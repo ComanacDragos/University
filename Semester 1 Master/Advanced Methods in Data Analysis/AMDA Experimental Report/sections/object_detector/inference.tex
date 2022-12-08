@@ -1,0 +1,12 @@
+\subsection{Inference}
+    The inference represents a pipeline of processing an input and getting the predictions for that input. In our case, the input is an image and there are three stages of processing that an image goes through in order to get the output, represented by the bounding boxes.
+
+   Firstly, there is preprocessing, which consists of normalizing the images in the range [-1, 1]. This is required by the MobileNetV2 backbone model. Also, here the data augmentation occurs, before the normalization.
+   
+   The second step is passing the image through the actual neural network.
+    
+    Postprocessing is the final step. Firstly, the bounding boxes are extracted from the resulting tensor of size $C \times C \times B \times (5+C)$. Basically, for each cell in the $C \times C$ grid, we extract the $B \cdot (5+C)$ raw bounding boxes. Then the raw values are converted using \ref{conversion_formulas} to obtain the actual values. These boxes are filtered based on their score.
+    
+    Usually, there are a lot of overlapping boxes that predict the same object. This is solved using Non-maximum Suppression (NMS) which prunes away extra bounding boxes by ordering the boxes by their scores, descending. Then each box is kept only if they have a low enough IOU with any previously kept bounding box with the same label. In this way, if there are a lot of boxes with the same label in some area, only the one with the highest score is kept. 
+    
+    %This stage introduces two new hyperparameters. One that controls the minimum score threshold of the bounding boxes, and one that controls the maximum IOU a bounding box can have with other boxes with the same label for NMS.

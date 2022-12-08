@@ -1,0 +1,44 @@
+\section{State of the art} \label{soa}
+    We emphasize what are the current options the VIPs have when it comes to public transportation. Also, we will review some of the most performing object detection systems that are currently used in various domains.
+    \subsection{Accessible public transportation applications for VIP}
+        
+        Broadly speaking, there are two options of improving public transportation for VIPs: on one hand, classical methods which are based on radio signals, and on the other hand, the more lightweight solutions based on computer vision.
+    
+        %We will explore two approaches of improving the accessibility of public transportation. Firstly, we will review a classical method based on radio signals, then more of a lightweight computer vision based method.
+    \subsubsection{Radio frequency approach}
+        The current approach to making buses more accessible to the VIP is a solution based on Radio Frequency Identification (RFID) \cite{busIdentificationSystem}. Basically, it uses wireless radio frequency transmissions to transfer data between two devices. The disadvantage of this method is the complex infrastructure required that makes the bus, station, and the user dependent upon each other. 
+        
+    \subsubsection{Computer vision approach}
+        Another approach would be to make the user independent of any infrastructure. This can be achieved by using a mobile application that uses an object detection model that tells the user where the bus is located by using real-time object detection. 
+         % version of a computer vision model that tells the user where the bus is located by using real-time object detection. 
+        
+        Using this approach, Travis \cite{travis} is an Android add-on that is simply connected to the smartphone and uses its computing power to execute several computer vision tasks, mainly object detection in order to provide information about public transport and the surrounding environment.
+        
+    \subsection{Object detectors}
+        Initially, the task of object detection was decomposed into multiple tasks, that together made a pipeline, which is hard to train. For example, region-based object detectors such as R-CNN \cite{rcnn} and its faster variants first generate bounding boxes through selective search, then a convolutional network extracts features that are classified by a support vector machine. All these steps slow down performance. This approach is called two-stage object detection.
+        
+        Single-shot object detectors achieve real-time speed with decent accuracy \cite{ssd, yolo} because their detection pipeline consists only of one neural network that processes the image and directly output the predictions. This approach used to have low accuracy, but recent advances have made the single-shot detectors rival the two-stage detectors in terms of accuracy, without losing speed. Thus, we will focus especially on the single-shot detector class of object detection models.
+        
+        \textbf{You only look once} (YOLO) \cite{yolo} is a single-shot object detection system that achieves real-time performance. Instead of a long and complex detection pipeline, in YOLO, the object detection problem is treated as a regression problem. There is only one neural network that predicts the bounding boxes and class probabilities from an image. This way, the network can benefit from using end-to-end learning, and the inference time is greatly reduced, thus achieving real-time performance.
+        
+          The network is composed of two parts. The first one consists of what is called the base network, which is a truncated version of an image classifier, where the classification layers are removed, that is used to extract features. On top of the base network, a head is added that output the prediction in the form of a grid with multiple anchors for each cell that predict a bounding box each. 
+          
+          %The image is split into an SxS grid, each cell being responsible for the detection of one object. For each cell, there are B bounding boxes predicted, and for each box, the position of the center, relative to the grid cell is predicted, the width and height are predicted relative to the image and a confidence score is predicted indicating if there is an object in that box. Also, C class probabilities, conditioned on the cell containing an object, are predicted for each cell, regardless of the number of boxes B. Therefore, the network outputs a tensor of shape $S \times S \times (B*5+C)$. In the second version of YOLO \cite{yolov2}, the notion of anchors is introduced. This changes the output to be $S \times S \times B \times (5+C))$, where B is the number of anchors. This allows the model to detect multiple objects in the same grid cell, with multiple shapes and sizes. This is the approach we have followed, and it is explained in more detail in a later section.
+          
+        In order to see how accurate the model is, mean average precision (mAP) is used. Firstly, the predictions are sorted descending by their confidence score. Then, the predictions are parsed one by one, and at each step, the precision and recall are computed, taking into consideration only the parsed prediction up until that point. Average precision is defined as the area under the precision-recall curve and mAP is defined as the mean of the average precisions for each class.% We use the official implementation from \cite{pascal-voc-2012} in order to compute the average precision, given the precision and recall, for a given image.
+            
+        According to \cite{yolo}, in terms of performance on the Pascal VOC 2007 dataset \cite{pascal-voc-2007}, the first version of YOLO achieves 63.4\% mAP and 45 frames per second (FPS), and the faster version has 52.7\% mAP and 155 FPS. For comparison, Faster R-CNN \cite{fasterRcnn} achieves 73.2\% mAP but 7 FPS, which is accurate but very slow, and the Deformable parts model \cite{30hzDPM} achieves 100 FPS but it has 16\% mAP, or a slower variant achieves 26.1\% mAP at 30 FPS. Therefore YOLO strikes a good balance between speed and accuracy.
+        
+        Newer versions of YOLO bring some incremental improvements. Also, the Microsoft COCO dataset \cite{coco} is another relevant dataset for comparing object detection systems. On this dataset, YOLOv4 \cite{yolov4} achieves 43.9\% mAP at 31 FPS, or a smaller variant achieves 38 FPS, with 41.2\% mAP.
+    
+        \textbf{Single Shot MultiBox Detector} (SSD) \cite{ssd} is an object detector that achieves real-time performance, encapsulating all operations in a single deep neural network
+         
+        Similar to YOLO, the network is composed of two parts. The key features of SSD are the multi-scale feature maps, convolutional predictors, and default boxes. 
+        
+        Several convolutional layers are appended to the base network that decrease progressively in size the feature map from the base network. This way predictions are made for each newly added layer, therefore, the predictions are made at various scales. 
+        
+        Regarding performance on the Pascal VOC 2007 dataset, SSD achieves 74.3\% mAP and 59 FPS, surpassing the first version of YOLO in terms of speed and accuracy balance.
+        
+        On the Microsoft COCO and in the context in which YOLOv4 was tested, described in \cite{yolov4}, SSD achieves 43 FPS with 25.1\% mAP. This shows that YOLO surpasses SSD in terms of prediction quality, with minimal time costs.
+
+

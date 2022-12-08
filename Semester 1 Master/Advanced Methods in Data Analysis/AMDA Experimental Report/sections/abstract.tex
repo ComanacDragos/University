@@ -1,0 +1,20 @@
+%Context
+Billions of people that suffer from some form of visual impairment, out of which a significant part is legally blind. Also, a basic human need is mobility, but there aren't enough traditional mobility solutions for all visually impaired persons, such as assistance dogs, thus, for most legally blind people this need can't be easily satisfied. A more scalable solution would be a digital one, which involves computer vision. %This is possible because recent advances in hardware enable complex computations on mobile devices, and computer vision has emerged as a key field of artificial intelligence because it aims to replicate the human visual cortex. 
+
+%This kind of solution could be easily distributed to the millions of legally blind people because a mobile phone is much cheaper and more common than an assistance dog, for instance.
+
+%Objective
+Therefore, the main purpose of this paper is to provide a form of mobile assistive technology, based on object detection for visually impaired persons.
+
+%The idea is that the object detector takes as input live images from the mobile device's camera and outputs bounding boxes that describe surrounding objects. Finally, this information is converted to sound and played using the mobile device's speakers. In this way, visually impaired persons can gather valuable information about the environment and travel through it.
+
+%Method
+
+Our object detector is implemented along the lines of You Only Look Once. We train on a subset of Open Images V4 dataset composed of bus, car, and license plate, a single convolutional neural network. Also, we have developed an Android mobile application that uses this object detector in order to visualize the bounding box predictions. The key feature of the application is the accessible live object detection, in which the predictions are converted to sound and played using the mobile device speakers. %This is the proof of concept for the assistive technology that uses computer vision, on low-budget hardware, such as a mobile phone.
+
+%Results
+
+We obtain a mean average precision of 70.03\%, and for the bus class, we obtain an average precision of 90.01\%, for the car class 64.04\% and for the license plate 56.68\%, with a speed of around 5 FPS on a mobile device. 
+
+%We have also trained a model on the COCO dataset that achieves around 0.4\% mAP on the test dataset. The result is modest, but the object detection system was built around the Open Images V4 dataset, and we tried to obtain a model that is as small as possible in order to consume few resources. 
+

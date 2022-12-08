@@ -1,0 +1,115 @@
+\subsection{Hyperparameter tuning}
+    Hyperparameters are important because the performance of an algorithm can be improved by simply tuning the hyperparameters. We select some hyperparameters and explore how they impact the mAP. Also, in order to better comprehend the differences, we compute the mAP at different score thresholds, which results in a curve that we use to compare different models. In general, we use a true positive threshold of $50\%$ and a NMS threshold of $30\%$.
+    
+    We start by analyzing the scheduler. In the formula from \ref{cosine_formula}, we use for the maximum learning rate a value of $10^{-3}$ and for the minimum learning rate a value of $10^{-6}$. We compare how different values for the restart epoch parameter $T$ influence the mAP. We detail in Table \ref{t_values_table} the value for $T$ used in training each model. In general, the mAP value in the table is the maximum on the mAP curve across various scores.
+
+We can tell from Table \ref{t_values_table} that a value of 60 yields the best results. These models were trained for 50 epochs, and we can see that in general, values under 50 for the restart epoch give slightly worse results, meaning that increasing and decreasing the learning rate doesn't help that much. Therefore, further on, we use 60 as the restart epoch.
+
+
+    \begin{table}[H]
+    \centering
+    \caption{Restart epoch values}
+    \begin{tabular}{c|cccccc}
+    Model & v29    & v30     & v31     & v32     & \textbf{v33}     & v34     \\ \hline
+    T     & 100    & 50      & 25      & 10      & \textbf{60}      & 75      \\ \hline
+    mAP   & 67.7\% & 67.17\% & 64.23\% & 66.36\% & \textbf{67.72\%} & 65.74\%
+    \end{tabular}
+    \label{t_values_table}
+    \end{table}
+
+    Next, we see how the batch size influences the performance. In \ref{bs_values_table} we detail the batch size value used in training each model. In our case, the smallest batch size yields best results. Usually, a larger batch size should give better results, but our dataset is relatively small, and this could be a reason why a small batch size is better. Our model is also very small, thus it would benefit from more precise changes given by a smaller batch size.
+
+    \begin{table}[H]
+    \centering
+    \caption{Batch size values}
+    
+    \begin{tabular}{c|ccc}
+Model      & v33                         & v35                         & \textbf{v36}                         \\ \hline
+Batch Size & 32                          & 16                          & \textbf{8}                           \\ \hline
+mAP        & \multicolumn{1}{l}{67.72\%} & \multicolumn{1}{l}{62.88\%} & \multicolumn{1}{l}{\textbf{68.91\%}}
+\end{tabular}
+    \label{bs_values_table}
+    \end{table}
+    
+    The dropout probability is important because of its regularization effect. We study various values presented in Table \ref{dropout_values_table}. We go further on with a value of 30\% because it is the best in the average case.
+    
+
+    \begin{table}[H]
+    \caption{Dropout values}
+    
+    \centering
+\begin{tabular}{c|cccc}
+Model   & \textbf{v36}     & v37     & v38     & v39     \\ \hline
+Dropout & \textbf{30\%}    & 40\%    & 50\%    & 20\%    \\ \hline
+mAP     & \textbf{68.81\%} & 65.64\% & 68.22\% & 67.33\%
+\end{tabular}
+    \label{dropout_values_table}
+    \end{table}
+    
+    So far, we have tuned parameters related to training or to the model itself. Finally, we will see how the data augmentation hyperparameters affect the performance.
+    
+    
+    For the cutout data augmentation, we consider as a hyperparameter the length of the side of the cutout square. We can see in Table \ref{cutout_values_table} the different values that we have chosen to see the influence of the size of the cutout patch. The lowest and the highest values yield the worst results, but increasing the cutout until $192 \times 192$ also increases the mAP. Further on we use this value.
+    
+    \begin{table}[H]
+     \caption{Cutout values}
+    \centering
+\begin{tabular}{c|ccccc}
+Model  & v39     & v40     & v41     & \textbf{v42}      & v43     \\ \hline
+Cutout & 64      & 32      & 128     & \textbf{192}     & 256     \\ \hline
+mAP    & 67.33\% & 63.03\% & 68.79\% & \textbf{69.29\%} & 59.33\%
+\end{tabular}
+    
+    \label{cutout_values_table}
+    \end{table}
+    
+    For the mosaic data augmentation, we study the influence of the probability that it is applied and the minimum size that one of the four images can take. For example, when the minimum size is 50, then each image will have a size of at least $50 \times 50$. In Table \ref{min_size_values_table} we describe the values for the minimum size, where a value of 50 gives the best results, and the lowest and the highest values give the worst results.
+
+    
+    \begin{table}[H]
+    \caption{Mosaic minimum size values}
+    \centering
+\begin{tabular}{c|ccc}
+Model & \textbf{v42}     & v44     & v45     \\ \hline
+Size  & \textbf{50}      & 100     & 25      \\ \hline
+mAP   & \textbf{69.29\%} & 66.25\% & 67.54\%
+\end{tabular}
+    \label{min_size_values_table}
+    \end{table}
+    
+    In Table \ref{mosaic_prob_values_table} we have the values that we have used for the probability that mosaic data augmentation is applied during training. We can see that a low mosaic probability such as 40\% results in low mAP. In the average case, the models with 60\% and 80\% probability are close in terms of mAP, but because the mAP for the bus class is much larger with a probability of 80\% we consider this value to be the best.
+    
+    \begin{table}[H]
+    \centering
+        \caption{Mosaic probability values}
+\begin{tabular}{c|ccc}
+Model       & \textbf{v42}              & v46             & v47     \\ \hline
+Probability & 80\%             & 60\%            & 40\%    \\ \hline
+mAP         & 69.29\%          & \textbf{69.6\%} & 68.11\% \\ \hline
+Bus AP      & \textbf{90.23\%} & 88.16\%         & 87.98\%
+\end{tabular}
+
+    \label{mosaic_prob_values_table}
+    \end{table}
+
+    In Table \ref{photometric_hyperparameters} we present the hyperparameters used in the data augmentation techniques presented in Fig. \ref{photometric_data_augmentation}.
+
+   \begin{table}[h]
+    \centering
+    \caption{Photometric data augmentation hyperparameters}
+    \begin{tabular}{l|ll}
+    Random Hue                                              & delta & 0.5 \\ \hline
+    \multicolumn{1}{c|}{\multirow{2}{*}{Random Saturation}} & lower & 5   \\
+    \multicolumn{1}{c|}{}                                   & upper & 10  \\ \hline
+    Random Brightness                                       & delta & 0.3 \\ \hline
+    \multirow{2}{*}{Random contrast}                        & lower & 1   \\
+                                                            & upper & 2  
+    \end{tabular}
+    
+    \label{photometric_hyperparameters}
+    \end{table}
+    
+    We have tried to use three, four and five centroids, or clusters, in order to generate the anchors, but in all cases the outer boxes are the same and in the case of four and five anchors, only smaller and smaller anchors are added which are not different enough from each other, therefore we choose to use the variant with three anchors.
+    
+    
+    

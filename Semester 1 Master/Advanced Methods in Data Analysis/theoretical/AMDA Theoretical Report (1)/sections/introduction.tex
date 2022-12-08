@@ -1,0 +1,14 @@
+\section{Introduction}\label{introduction}
+
+You Only Look Once (YOLO) \cite{yolo} is a widely used method for performing object detection. It is a one-stage object detection method well suited for performance in real-time. Here, the object detection is modeled as a regression problem, as opposed to the more complex and long pipeline of two-stage object detectors. The real-time performance is essentially achieved by greatly reducing the inference time using end-to-end learning. The network can benefit from this by directly predicting the class probabilities and bounding boxes from the image.
+        
+Beside speed, the relatively easy to implement architecture is another reason for its popularity, or the fact that usually the neural networks that implement this architecture can be quite small, therefore they are suitable for deployment on devices with limited computing power. 
+
+The importance of this subject comes from the need for fast and precise methods such as YOLO for finding objects in visual data such as images and videos. Some fields in which this method can be successfully implemented (among others) include the automotive industry with use cases such as autonomous driving, traffic monitoring, or parking management, and logistics with use cases such as inventory management. 
+
+Also, the authors of YOLO do not provide a detailed explanation of their implementation, leaving out only the key details, and their implementation is written using their C library implemented from scratch, by them, thus the code is not necessarily trivial to understand. Given these circumstances, we hope that this paper could serve as a guide for a step by step implementation of an YOLO object detection pipeline. 
+
+Given the potential of this subject, the aim of this paper is to study the YOLO method and the reasons behind its success. In what follows, we integrate the topic in the general field in Section \ref{placement} and we give a description of the method in Section \ref{method}. Also, we present other object detection methods in Section \ref{related_work} and we compare YOLO with them in Section \ref{comparison}.
+
+
+%Given the potential of deep neural networks in solving the problem of object detection, the purpose of this paper is to study the popular neural network architecture proposed in You Only Look Once (YOLO) \cite{yolo}. 

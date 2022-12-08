@@ -1,0 +1,82 @@
+\subsection{Loss}
+    During training, we optimize a composed loss function adapted from \cite{experincor}: 
+    
+   \begin{equation*}
+        L = L_{loc} + L_{obj} + L_{class}
+        \label{total_loss}
+    \end{equation*}
+    
+    The first component is basically a sum-squared error, handling the localization loss: 
+    
+    \begin{equation*}
+    \begin{split}
+        & L_{loc} = \frac{\lambda_{coord}}{N_{L^{obj}}}
+        \sum_{i=0}^{S^2}\sum_{j=0}^B 
+        L_{ij}^{obj} 
+         \cdot [(x_{ij}-\hat{x}_{ij})^2 + 
+        (y_{ij}-\hat{y}_{ij})^2 +\\
+        & + (\sqrt{w_{ij}}-\sqrt{\hat{w}_{ij}})^2 + (\sqrt{h_{ij}}-\sqrt{\hat{h}_{ij}})^2 ]
+    \end{split}
+    \end{equation*}
+    
+    Where $
+    L_{ij}^{obj} = \left\{
+        \begin{array}{ll}
+              1 & C_{ij} = 1\\
+              0 & otherwise\\
+        \end{array} 
+        \right. 
+    $ is an indicator function in which $C_{ij}$ means that there is an actual object in the i'th cell and j'th anchor. $N_{L^{obj}}$ just represents the number of actual object in the image and it is given by the following formula: $\sum_{i=0}^{S^2}\sum_{j=0}^B L_{ij}^{obj}$. The center of the bounding box is denoted using the $x$ for the horizontal position and $y$ for the vertical position. The width is denoted with $w$ and the height with $h$. The square root of the width and height is used because, otherwise, the error in small and large bounding boxes is treated the same.
+    
+    The second component is related to the objectness of a bounding box, which represents the probability that an object is present in that bounding box:
+    
+    \begin{equation*}
+    \begin{split}
+        & L_{obj} = \frac{\lambda_{obj}}{N^{conf}}
+        \sum_{i=0}^{S^2}\sum_{j=0}^B
+        L_{ij}^{obj}(IOU_{prediction_{i,j}}^{ground\;truth_{i,j}} - \hat{C}_{ij})^2 +\\
+        & +\frac{\lambda_{noobj}}{N^{conf}}
+        \sum_{i=0}^{S^2}\sum_{j=0}^B
+        L_{ij}^{noobj}(0 - \hat{C}_{ij})^2
+    \end{split}
+    \end{equation*}
+        
+    Where \\ $
+    L_{ij}^{noobj} = \left\{
+        \begin{array}{ll}
+              1 & max_{i'j'} IOU_{pred_{i,j}}^{GT_{i',j'}} < IOU_{t} \; and \; C_{ij} = 0\\
+              0 & otherwise\\
+        \end{array} 
+        \right.
+        $ is an indicator function which is one only if a predicted bounding box that does not appear in the ground truth in the respective cell and anchor, has the IOU overlap with any ground truth bounding box less than $IOU_{t}$. Basically, if the prediction has an IOU overlap with any bounding box larger than $IOU_{t}$, but it does not appear in the ground truth, then it is considered correct and it's not penalized, otherwise, it is not considered an object and it must increase the loss. Here we use the extra output explained in the previous section. $N^{conf} = \sum_{i=0}^{S^2}\sum_{j=0}^B L_{ij}^{obj} + L_{ij}^{noobj}(1-L_{ij}^{obj})$ counts the number of bounding boxes from the ground truth, but also the boxes that predict objects where there shouldn't be any. Therefore, the first part penalizes the errors in the confidence scores for objects that should be predicted, and the second part penalizes the boxes that predict an object that should not be there.
+        
+        
+    
+        
+    The last component represents the loss from the class probabilities, and when multiple classes are involved, usually cross-entropy loss is used:
+    
+    \begin{equation*}
+        L_{class} = - \frac{\lambda_{class}}{N_{L^{obj}}} 
+        \sum_{i=0}^{S^2} \sum_{j=0}^B
+        L_{ij}^{obj}
+        \sum_{c \in classes}p_{ij}^c log(\hat{p}_{ij}^c)
+        \label{class_loss}
+    \end{equation*}
+    
+    
+    
+    Most grid cells do not contain any boxes. Therefore, in order to balance the confidence scores, $\lambda_{coord}=5$ and $\lambda_{noobj}=0.5$ are added in order to increase the loss from bounding box predictions and decrease the loss from confidence predictions. Also, $\lambda_{obj}=2$ and $\lambda_{class}=3$ are added to control the loss from the objectness and class losses. For $IOU_t$ we choose a value of 60\%.%In Table \ref{loss_hyperparameters}, we detail the values for these hyperparameters. 
+    
+    %\begin{table}[h]
+    %\centering
+    %\caption{Loss %hyperparameters}
+    %\begin{tabular}{l|l}
+    %$\lambda_{coord}$ & 5  % \\ \hline
+    %$\lambda_{obj}$   & 2  % \\ \hline
+    %$\lambda_{noobj}$ & 0.5 %\\ \hline
+    %$\lambda_{class}$ & 3  % \\ \hline
+    %IOU threshold     & 0.6
+    %\end{tabular}
+    %\label{loss_hyperparame%ters}
+    %\end{table}
+    

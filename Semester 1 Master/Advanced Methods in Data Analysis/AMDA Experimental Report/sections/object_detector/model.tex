@@ -1,0 +1,17 @@
+\subsection{Model}
+    The object detection model is inspired by YOLOv2 \cite{yolov2}. The neural network is fully convolutional and is composed of three parts: feature extractor, neck, and head. For the feature extractor, we use MobileNetv2 \cite{mobilenetv2} because of its flexibility and the fact that it uses depthwise convolutions, inverted residual blocks, and linear bottlenecks, which all help with performance, thus consuming less power, which is crucial for mobile solutions. Also, we use pretrained weights on ImageNet \cite{imagenet} to benefit from transfer learning.
+    
+    For the rest of the model, we use convolution blocks which are composed of a convolution layer that uses HeNormal initialization, batch normalization, and optionally LeakyReLU activation function. In general, we choose an alpha of 0.1 for LeakyReLU.
+    
+    The neck is inspired by U-Net \cite{unet}. The aim is to add features from earlier layers to the result through skip layers and upsample blocks that use transposed convolutions, followed by LeakyReLu and batch normalization. This helps the network to "see" the image at multiple resolutions as explained in the fine-grained features section in \cite{yolov2}.
+
+    On top of the upsamlple blocks, a dropout layer is used for regularization in order to reduce overfitting. Another reason for adding this layer at this specific position is that the upsample blocks have the most trainable parameters, compared to other areas of the model. After the dropout layer, a convolutional block and two inverted residual blocks are added, which help in refining the feature maps.
+
+    The head is composed of a convolution layer that has 24 filters in our case, so the final output is $13 \times 13 \times 3 \times 8$ after a reshape layer. This is because we use three anchors and three classes. This can vary if other datasets are used.
+    
+    Also, an additional input that represents all the true bounding boxes is directly added to the output. This is an implementation trick that only helps in the computation of the loss because, even though each image is associated with a specific anchor, it is not restricted to be predicted only by that anchor. If the IOU threshold between the predicted box from another anchor and one of the true bounding boxes is high enough, that prediction is considered correct. During normal inference, a dummy array is passed for this input.
+    
+    In total, our model has around 2 million parameters, out of which around 1.3 million are from MobileNet.
+ 
+    
+

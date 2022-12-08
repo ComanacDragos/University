@@ -1,0 +1,11 @@
+\section{Object detector} \label{object_detector}
+    
+    In this section we present the details of our object detection system implementation\footnote{\href{https://github.com/ComanacDragos/PublicTransportDetector}{\textit{Full implementation on GitHub}}}, which is in Python 3.7 and uses Tensorflow 2.3, including Keras.% Other notable libraries include NumPy for various mathematical operations, Matplotlib for plotting, and Albumentations for some operations on bounding boxes. In terms of hardware, the training is performed on a NVIDIA GeForce GTX 1050 Ti GPU with 4021 MB of VRAM, the images are stored on a Samsung SSD 970 PRO and the CPU is an Intel i5-7300 with four cores, each having a frequency of 2.50 GHz.
+    
+    
+    \input{sections/object_detector/dataset}
+    \input{sections/object_detector/model}
+    \input{sections/object_detector/loss}
+    \input{sections/object_detector/data_augmentation}
+    \input{sections/object_detector/training}
+    \input{sections/object_detector/inference}
