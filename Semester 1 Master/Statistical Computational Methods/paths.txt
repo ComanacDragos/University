@@ -1,0 +1,28 @@
+seminar 2	
+	- simulate bernoulli
+	- simulate binomial
+	- simulate geometric
+	- simulate negative binomial
+	- simulate poisson
+seminar 3 
+	- DITM to generate GEO, NB -> geo_DTIM, nb_DITM
+	- ITM to generate EXP. Gam -> exp_ITM, gamma_ITM
+		-  here the number of simulations is computed to reach a given err and alpha
+ 	- special method to generate Poiss -> poiss_special
+	- rejection method to approximate pi -> rejection_to_aprox_pi
+	- forecasting new software release -> forecasting_software_release
+		- errors found
+seminar 4 Markov chains
+	- prob after 3 hours -> ex_1.m
+	- weather_forecast in Rainbow city
+		- 2 states, forecast for next 30 days
+seminar 5 Counting Processes
+	- plane_landings_bino_counting_process
+	- internet_connections_poiss_counting_process
+seminar 6 Queuing Systems
+	- mg1 
+		- messages arrive at an electronic mail server according to a Poisson process
+	- dg1 
+		- clinic with doctors
+		- fixed arrival time
+	- dg1 with time limit

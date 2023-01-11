@@ -19,7 +19,9 @@ NTotalerr = zeros(1,N); # total number of errors that are detected
 for i=1:N
   # T is time from now on in days, X is the nr of errors on day T
   # nerr is the number of errors detected so far
-  printf("sim %d/%d\n", i, N);
+  if mod(i, 1000) == 0
+    printf("sim %d/%d\n", i, N);
+  end
   T = 0;
   X = in_last(k);
   nerr = sum(in_last);

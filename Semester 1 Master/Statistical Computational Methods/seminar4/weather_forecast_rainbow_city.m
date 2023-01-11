@@ -81,7 +81,7 @@ for j=1:N
 
     max_sunny(j) = max(sunny);
     max_rainy(j) = max(rainy);
-endfo
+endfor
 
 
 fprintf(' \n prob of drought is %1.4f\n', mean(max_sunny>=7))
