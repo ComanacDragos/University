@@ -17,7 +17,7 @@ arrival = 0 : t : (Nmax - 1)*t;
 
 expw = zeros(1, N); % expected waiting time for each simulationmaxw = zeros(1, N); % maximum waiting time for each simulationnr_p = zeros(1, N); % number of patients in the clinic at% the end of the day for each simulation
 maxw = zeros(1, N); % maximum waiting time for each simulation
-nr_p = zeros(1, N); % number of patients in the clinic at
+nr_p = zeros(1, N); % number of patients in the clinic at 6pm
 
 for i = 1 : N
   j = 0; % job number

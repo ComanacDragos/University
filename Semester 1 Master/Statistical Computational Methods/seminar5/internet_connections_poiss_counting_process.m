@@ -27,7 +27,7 @@ X = zeros(1, Nsteps);
 for s=1:Nsteps
   X(s) = sum(arr_times <= t(s)); # number of arrivals by the time s
 endfor 
-X
+
 axis([0 max(t) 0 max(X)]); hold on
 title('Poisson process of arrivals')
 xlabel('time');
