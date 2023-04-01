@@ -1,0 +1,18 @@
+Text understanding from scratch
+ - using deep learning to handle text clasification
+ - no syntactic or semantic structures associated
+ - temporal ConvNets
+ - CNNs do not require knowledge of words
+ - works on character level
+
+Convolutional Neural Networks for Sentence Classification
+ - simple CNN
+ - uses word representations from word2vec
+ - performs well on several datasets
+
+Recurrent Convolutional Neural Networks for Text Classification
+ - recurrent structure to capture as much contextual information as possible
+ - captures better the semantic compared to simple recurrent neural networks
+ - bi-directional recurrent structure
+ - max-pooling that automatically judges which features are most important
+ - O(n) complexity where n is the length of the text
