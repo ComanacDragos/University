@@ -5,7 +5,7 @@
 TensorFlow and Keras are popular open-source machine learning frameworks widely
 used in building and training deep learning models.
 
-TensorFlow is an end-to-end open-source platform for building machine learning
+TensorFlow is an open-source platform for building machine learning
 and deep learning models. It provides a set of libraries for data manipulation,
 preprocessing, and visualization, along with a high-level API to build
 and train deep neural networks.
