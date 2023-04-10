@@ -4,11 +4,13 @@ import javax.swing.*;
 
 public class GridGUI extends JFrame {
 
-    private JPanel[][] gridPanels; // Panels representing each grid space in the environment
+    private final JPanel[][] gridPanels; // Panels representing each grid space in the environment
+    int rows, cols;
 
     public GridGUI(int rows, int cols) {
         super("Grid Environment");
-
+        this.rows = rows;
+        this.cols = cols;
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // Create the grid panels and add them to the GUI
@@ -30,26 +32,36 @@ public class GridGUI extends JFrame {
         setVisible(true);
     }
 
-    public void updateGrid(int x, int y, int id) {
-        for (JPanel[] gridPanel : gridPanels) {
-            for (JPanel jPanel : gridPanel) {
-                if (jPanel.getBackground() == Color.RED) {
-                    jPanel.setBackground(null);
+    public void updateGrid(Cell[][] grid) {
+        for(int i=0;i<rows;i++)
+            for(int j=0;j<cols;j++){
+                JPanel panel = gridPanels[i][j];
+                panel.setBackground(null);
+                panel.removeAll();
 
+                Cell cell = grid[i][j];
+
+                if(cell.agentId > -1){
+                    panel.setBackground(Color.GREEN);
+                    String text = String.valueOf(cell.agentId);
+                    if(cell.isDirty){
+                        text += " cleaning";
+                    }
+                    JLabel jlabel = new JLabel(text, SwingConstants.CENTER);
+                    if(cell.isDirty)
+                        jlabel.setForeground(Color.RED);
+                    jlabel.setPreferredSize(new Dimension(70, 50));
+                    panel.add(jlabel);
+
+                    panel.revalidate();
+                    panel.repaint();
+                }else{
+                    if(cell.isDirty)
+                        panel.setBackground(Color.BLACK);
+                    else if(cell.visited)
+                        panel.setBackground(Color.BLUE);
                 }
-                jPanel.removeAll();
             }
-        }
-        JPanel panel = gridPanels[y][x];
-
-        panel.setBackground(Color.RED);
-        JLabel jlabel = new JLabel(String.valueOf(id), SwingConstants.CENTER);
-        jlabel.setBackground(Color.WHITE);
-        jlabel.setPreferredSize(new Dimension(50, 50));
-        panel.add(jlabel);
-
-        panel.revalidate();
-        panel.repaint();
     }
 
 }
