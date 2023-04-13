@@ -2,7 +2,9 @@ import jade.core.AID;
 import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
 import jade.lang.acl.ACLMessage;
+import jade.lang.acl.MessageTemplate;
 
+import java.awt.event.WindowEvent;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -35,14 +37,51 @@ public class GridEnvironment extends Agent {
                     nrDirty += 1;
             }
 
-        addBehaviour(new LocationUpdateBehavior());
+        addBehaviour(new AgentExitBehaviour());
+        addBehaviour(new LocationUpdateBehaviour());
     }
 
-    private class LocationUpdateBehavior extends CyclicBehaviour {
-        int receivedInitialPositions = 0;
+    private class AgentExitBehaviour extends CyclicBehaviour {
+        int doneAgents = 0;
+
+        MessageTemplate template = MessageTemplate.MatchPerformative(ACLMessage.CANCEL);
 
         public void action(){
-            ACLMessage message = receive();
+            ACLMessage message = receive(template);
+            if (message != null) {
+                String[] tokens = message.getContent().split(",");
+                int id = Integer.parseInt(tokens[0]);
+                int x = Integer.parseInt(tokens[1]);
+                int y = Integer.parseInt(tokens[2]);
+
+                Cell cell = grid[y][x];
+                if(cell.agentId != id || cell.isDirty)
+                    throw new RuntimeException("Bad exit call");
+                cell.agentId = -1;
+                doneAgents += 1;
+                gui.updateGrid(grid);
+                if(doneAgents == nrAgents) {
+                    System.out.println("Exit env...");
+                    doDelete();
+                    gui.dispatchEvent(new WindowEvent(gui, WindowEvent.WINDOW_CLOSING));
+                    Runtime.getRuntime().exit(0);
+                }
+            }
+        }
+    }
+
+    private class LocationUpdateBehaviour extends CyclicBehaviour {
+        int receivedInitialPositions = 0;
+        MessageTemplate template = MessageTemplate.or(
+                MessageTemplate.MatchPerformative(ACLMessage.INFORM),
+                MessageTemplate.or(
+                        MessageTemplate.MatchPerformative(ACLMessage.REQUEST),
+                        MessageTemplate.MatchPerformative(ACLMessage.CONFIRM)
+                )
+        );
+
+        public void action(){
+            ACLMessage message = receive(template);
             if (message != null) {
                 switch (message.getPerformative()){
                     case ACLMessage.INFORM -> movementHandler(message);
@@ -108,6 +147,7 @@ public class GridEnvironment extends Agent {
                 int x = Integer.parseInt(tokens[1]);
                 int y = Integer.parseInt(tokens[2]);
                 grid[y][x].agentId = id;
+                grid[y][x].visited = true;
                 receivedInitialPositions ++;
                 gridUpdate = true;
                 scores.put(id, 0);
@@ -126,6 +166,7 @@ public class GridEnvironment extends Agent {
                     grid[old_y][old_x].agentId = -1;
                     grid[old_y][old_x].visited = true;
                     grid[y][x].agentId = id;
+                    grid[y][x].visited = true;
                     okMessage.setContent(String.valueOf(1));
                     gridUpdate = true;
                 }

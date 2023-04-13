@@ -5,10 +5,10 @@ import java.util.HashSet;
 public class Main {
 
     public static void main(String[] args) {
-        int M = 5;
-        int N = 5;
+        int M = 10;
+        int N = 10;
         int P = 25;
-        int K = 1;
+        int K = 9;
 
         String agents = "env:" + GridEnvironment.class.getName() + "(" + M + "," + N + "," + P + "," + K + ")";
 

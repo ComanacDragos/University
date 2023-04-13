@@ -39,6 +39,7 @@ public class CleanerAgent extends Agent {
         addBehaviour(new CommunicateInitialPosition());
         addBehaviour(new CleaningBehaviour());
         addBehaviour(new ReceivePositionBehaviour());
+        addBehaviour(new CheckIfOverBehaviour());
         addBehaviour(new MovementBehaviour());
     }
 
@@ -54,6 +55,22 @@ public class CleanerAgent extends Agent {
     MessageTemplate confirmTemplate = MessageTemplate.MatchPerformative(ACLMessage.CONFIRM);
     MessageTemplate informTemplate = MessageTemplate.MatchPerformative(ACLMessage.INFORM);
     MessageTemplate agreeTemplate = MessageTemplate.MatchPerformative(ACLMessage.AGREE);
+
+
+    private class CheckIfOverBehaviour extends CyclicBehaviour{
+        @Override
+        public void action(){
+            if(cleanedCells.size() == rows*cols){
+                ACLMessage message = new ACLMessage(ACLMessage.CANCEL);
+                message.addReceiver(new AID("env", AID.ISLOCALNAME));
+                message.setContent(id + "," + position);
+                send(message);
+
+                System.out.println(id + ": exiting...");
+                doDelete();
+            }
+        }
+    }
 
     private class ReceivePositionBehaviour extends CyclicBehaviour{
         @Override
@@ -96,6 +113,7 @@ public class CleanerAgent extends Agent {
             boolean isDirty = Boolean.parseBoolean(isDirtyMessage.getContent());
             if(!isDirty) {
                 broadcastPosition();
+                cleanedCells.add(position);
                 return;
             }
             sleep(3000); // cleaning
@@ -111,6 +129,7 @@ public class CleanerAgent extends Agent {
                 okMessage = receive(confirmTemplate);
             }
             broadcastPosition();
+            cleanedCells.add(position);
         }
     }
 
