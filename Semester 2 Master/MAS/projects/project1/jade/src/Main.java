@@ -8,7 +8,7 @@ public class Main {
         int M = 10;
         int N = 10;
         int P = 25;
-        int K = 9;
+        int K = 100;
 
         String agents = "env:" + GridEnvironment.class.getName() + "(" + M + "," + N + "," + P + "," + K + ")";
 

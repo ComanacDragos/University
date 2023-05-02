@@ -16,3 +16,4 @@ Recurrent Convolutional Neural Networks for Text Classification
  - bi-directional recurrent structure
  - max-pooling that automatically judges which features are most important
  - O(n) complexity where n is the length of the text
+
