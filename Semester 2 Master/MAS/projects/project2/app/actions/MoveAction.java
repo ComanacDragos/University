@@ -13,7 +13,6 @@ public class MoveAction extends Action{
     @Override
     public State execute(Agent a, State s) {
         a.moveAgent(s.moveAgent(a.id, a.position, desiredPosition));
-        Agent.sleep(1500);
         return s;
     }
 

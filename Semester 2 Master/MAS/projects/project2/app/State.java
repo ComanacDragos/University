@@ -7,16 +7,17 @@ import utils.Position;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public class State {
     private final GridGUI gui;
-    int nrAgents, nrDirty=0, nrCleaned=0;
+    int nrAgents, nrDirty=0;
     Cell[][] grid;
     ReadWriteLock[][] locks;
 
-    Map<Integer, Integer> scores = new HashMap<>();
+    Map<Integer, Integer> scores = new ConcurrentHashMap<>();
 
     public State(int rows, int cols, int dirtyPercent, int nrAgents, GridGUI gui){
         grid = new Cell[rows][cols];
@@ -33,6 +34,8 @@ public class State {
             for(int j=0;j<cols;j++)
                 locks[i][j] = new ReentrantReadWriteLock();
         this.gui = gui;
+        for(int i=0;i<nrAgents;i++)
+            scores.put(i, 0);
     }
 
     private void readLockPos(Position position){
@@ -66,6 +69,28 @@ public class State {
         return toReturn;
     }
 
+    public void cleanDirt(int id, Position position){
+        writeLockPos(position);
+        Cell cell = positionToCell(position);
+        cell.isDirty = false;
+        gui.updateCell(position, cell);
+        scores.put(id, scores.get(id) + 1);
+        logScores();
+        writeUnlockPos(position);
+    }
+
+    private synchronized void logScores(){
+        int cleaned = scores.entrySet().stream().map(
+                Map.Entry::getValue
+        ).reduce(0, Integer::sum);
+
+        System.out.println("\nSCORE " + cleaned + "/" + nrDirty);
+        for(Map.Entry<Integer, Integer> entry : scores.entrySet()) {
+            System.out.println(entry.getKey() + " -> " + entry.getValue());
+        }
+        System.out.println("\n");
+    }
+
     public void spawnAgent(int id, Position position){
         Cell cell = positionToCell(position);
         cell.agentId = id;
@@ -94,5 +119,14 @@ public class State {
         if(canMove)
             return desiredPos;
         return currentPos;
+    }
+
+    public void shutDownAgent(Position position){
+        writeLockPos(position);
+        Cell cell = positionToCell(position);
+        cell.agentId = -1;
+        cell.visited = true;
+        gui.updateCell(position, cell);
+        writeUnlockPos(position);
     }
 }

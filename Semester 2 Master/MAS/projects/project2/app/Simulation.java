@@ -23,13 +23,21 @@ public class Simulation extends Thread{
             if(Objects.isNull(action))
                 continue;
             env.updateState(agent, action);
+            sleep(1000 + (new Random()).nextInt(500));
         }
+        System.out.println("OVER " + agent.id);
+        sleep(1000);
     }
 
     protected boolean isComplete() {
-        if (env.state.nrCleaned == env.state.nrDirty)
-            return true;
-        else
-            return false;
+        return agent.isOver();
+    }
+
+    public void sleep(int ms){
+        try {
+            Thread.sleep(ms);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }

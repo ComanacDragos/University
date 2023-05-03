@@ -1,8 +1,6 @@
 package app;
 
-import app.actions.Action;
-import app.actions.MoveAction;
-import app.actions.SpawnAgentAction;
+import app.actions.*;
 import utils.Position;
 
 import java.util.*;
@@ -14,8 +12,9 @@ public class Agent {
 
     private Deque<Position> previousPositions = new ArrayDeque<>();
     private Blackboard blackboard;
-    public boolean isSpawned=false;
-    private boolean onDirt = false;
+    public boolean isSpawned= false;
+    public boolean onDirt = false;
+    private boolean isOver = false;
 
     public Agent(int id, int nrAgents, int rows, int cols, Position position, Blackboard blackboard) {
         this.id = id;
@@ -85,6 +84,14 @@ public class Agent {
             isSpawned = true;
             return new SpawnAgentAction();
         }
+        if (blackboard.getPositions().size() == rows*cols && !onDirt) {
+            isOver = true;
+            return new ShutDownAction();
+        }
+
+        if (onDirt)
+            return new CleanDirtAction();
+
         List<Position> nextPositions = filterNextPositions(getNextPositions());
         if(nextPositions.size() == 0)
             return null;
@@ -92,11 +99,7 @@ public class Agent {
         return new MoveAction(nextPositions.get(0));
     }
 
-    public static void sleep(int ms){
-        try {
-            Thread.sleep(ms);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+    public boolean isOver(){
+        return isOver;
     }
 }

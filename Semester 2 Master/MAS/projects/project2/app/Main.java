@@ -4,16 +4,17 @@ import utils.Cell;
 import utils.GridGUI;
 import utils.Position;
 
+import java.awt.event.WindowEvent;
 import java.util.HashSet;
 import java.util.LinkedList;
 
 public class Main {
 
     public static void main(String[] args) {
-        int M = 3; // rows
-        int N = 3; // cols
+        int M = 10; // rows
+        int N = 10; // cols
         int P = 25; // dirt percent
-        int K = 1; // nr agents
+        int K = 9; // nr agents
 
         GridGUI gui = new GridGUI(M, N);
         Blackboard blackboard = new Blackboard();
@@ -45,6 +46,7 @@ public class Main {
                 e.printStackTrace();
             }
         }
+        gui.dispatchEvent(new WindowEvent(gui, WindowEvent.WINDOW_CLOSING));
     }
 
 }
