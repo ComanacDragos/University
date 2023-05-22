@@ -1,6 +1,5 @@
 package app;
 
-import utils.Cell;
 import utils.GridGUI;
 import utils.Position;
 
@@ -14,12 +13,13 @@ public class Main {
         int M = 10; // rows
         int N = 10; // cols
         int P = 25; // dirt percent
-        int K = 9; // nr agents
+        int K = 7; // nr agents
 
         GridGUI gui = new GridGUI(M, N);
         Blackboard blackboard = new Blackboard();
 
         HashSet<Position> pairs = new HashSet<>();
+
         while(pairs.size() < K) {
             int x = (int) (Math.random() * N);
             int y = (int) (Math.random() * M);

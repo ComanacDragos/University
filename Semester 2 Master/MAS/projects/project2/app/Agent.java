@@ -61,7 +61,7 @@ public class Agent {
                 if(!(i==0 && j==0)){
                     int new_x = position.x+i;
                     int new_y = position.y+j;
-                    if(new_x >= 0 && new_x < rows && new_y >= 0 && new_y < cols) {
+                    if(new_x >= 0 && new_x < cols && new_y >= 0 && new_y < rows) {
                         positions.add(new Position(new_x, new_y));
                     }
                 }
@@ -76,6 +76,8 @@ public class Agent {
 
         if(filtered.isEmpty() && !previousPositions.isEmpty())
             filtered.add(previousPositions.peek());
+        if(filtered.isEmpty())
+            return positions;
         return filtered;
     }
 
