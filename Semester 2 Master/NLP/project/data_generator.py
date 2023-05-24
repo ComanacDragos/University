@@ -11,7 +11,7 @@ class TextDataGenerator(tf.keras.utils.Sequence):
     def __init__(self, csv_path, split, batch_size, shuffle=False):
         self.data = pd.read_csv(csv_path, sep=';')
         self.data = self.data[self.data['split'] == split]
-
+        print(f"Loaded {csv_path} for {split} - {len(self.data)} samples")
         self.batch_size = batch_size
         self.shuffle = shuffle
 
@@ -33,7 +33,6 @@ class TextDataGenerator(tf.keras.utils.Sequence):
             category = row['category']
             title = row['title']
             description = row['description']
-            print(category, " : ", title + ' ' + description)
             classes.append(self.CLASSES.index(category))
             one_hot_encodings = np.zeros((len(self.ALPHABET), self.MAX_LENGTH))
             for i, char in enumerate((title + ' ' + description)[:self.MAX_LENGTH].lower()):
@@ -63,9 +62,16 @@ class TextDataGenerator(tf.keras.utils.Sequence):
 
 
 if __name__ == '__main__':
+    print("Starting")
     db = TextDataGenerator("data/news.csv", 'val', 2)
     print(len(db))
     encodings, classes = db[0]
+
+    import matplotlib.pyplot as plt
+
+    plt.imshow(encodings[0], cmap='gray')
+    plt.show()
+
     text, cls = db.decode_gt(encodings[0], classes[0])
 
     print('\n\n')

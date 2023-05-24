@@ -3,9 +3,10 @@ import os
 import numpy as np
 import tensorflow.keras as K
 from matplotlib import pyplot as plt
-from models import create_ann, create_cnn
-from data_generator import Cifar10DataGenerator
+from models import create_cnn
+from data_generator import TextDataGenerator
 from utils import to_json
+from tensorflow.keras.utils import plot_model
 
 
 def plot_history(history):
@@ -71,12 +72,11 @@ class CosineAnnealingScheduler(K.callbacks.Callback):
 
 
 if __name__ == '__main__':
-    batch_size = 32
+    batch_size = 128
     epochs = 20
-    test_batch = 1
-    initial_lr = 1e-4
+    initial_lr = 1e-3
     experiment = f"batch_size_{batch_size}_epochs_{epochs}_lr_{initial_lr}"
-    architecture = "ann"
+    csv = "data/news.csv"
 
     path = f"weights/{experiment}"
     if os.path.isdir(path):
@@ -85,14 +85,17 @@ if __name__ == '__main__':
         print(f"creating {path}")
         os.mkdir(path)
 
-    train_batches = list(range(1, 7))
-    train_batches.remove(test_batch)
-    print("Train batches", train_batches)
+    _train_generator = TextDataGenerator(
+        csv, 'train', batch_size, shuffle=True
+    )
+    _val_generator = TextDataGenerator(
+        csv, 'val', batch_size,
+    )
 
-    if architecture == 'ann':
-        _model = create_ann(hidden_layers=(512, 256, 32))
-    else:
-        _model = create_cnn(filter_stride_pairs=(
+    _model = create_cnn(
+        input_shape=(len(_train_generator.ALPHABET), _train_generator.MAX_LENGTH),
+        no_classes=len(_train_generator.CLASSES),
+        filter_stride_pairs=(
             (16, 1),
             (32, 1),
             (32, 1),
@@ -102,19 +105,11 @@ if __name__ == '__main__':
             (128, 1),
             (256, 2),
             (256, 1),
-            (256, 1),
+            (256, 1)
         ))
     _model.summary()
-    _train_generator = Cifar10DataGenerator(
-        "cifar-10-batches-py",
-        train_batches,
-        batch_size=batch_size, flatten=architecture == 'ann', shuffle=True
-    )
-    _val_generator = Cifar10DataGenerator(
-        "cifar-10-batches-py",
-        [test_batch],
-        batch_size=batch_size, flatten=architecture == 'ann'
-    )
+    plot_model(_model, to_file=f'weights/{experiment}/model.png', show_shapes=True, show_layer_names=True)
+
     _optimizer = K.optimizers.Adam(learning_rate=initial_lr)
     _callbacks = [
         K.callbacks.LearningRateScheduler(lambda epoch, lr: lr),
@@ -122,11 +117,11 @@ if __name__ == '__main__':
         K.callbacks.EarlyStopping(patience=5, min_delta=1e-2, verbose=2),
         K.callbacks.TensorBoard(log_dir=f'tensorboard/'),
         K.callbacks.ModelCheckpoint(
-            filepath=f'weights/{experiment}/test_batch_{test_batch}',
+            filepath=f'weights/{experiment}/model',
             save_best_only=True,
             verbose=2
         ),
-        #K.callbacks.ReduceLROnPlateau(patience=3, factor=0.5, verbose=1)
+        # K.callbacks.ReduceLROnPlateau(patience=3, factor=0.5, verbose=1)
         CosineAnnealingScheduler(1e-5, initial_lr, epochs)
     ]
 
@@ -134,5 +129,5 @@ if __name__ == '__main__':
     history = history.history
     for k, v in history.items():
         history[k] = [float(x) for x in v]
-    to_json(history, f'weights/{experiment}/test_batch_{test_batch}/history.json')
+    to_json(history, f'weights/{experiment}/history.json')
     plot_history(history)

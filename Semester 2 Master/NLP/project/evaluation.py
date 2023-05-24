@@ -4,7 +4,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 from utils import open_json, to_json
-from data_generator import Cifar10DataGenerator
+from data_generator import TextDataGenerator
 
 
 def plot_confusion_matrix(conf_mat):
@@ -13,8 +13,8 @@ def plot_confusion_matrix(conf_mat):
     plt.figure(figsize=(15, 15))
     sn.set(font_scale=1.4)
     sn.heatmap(df_cm, annot=True, annot_kws={"size": 12}, fmt='g',
-               xticklabels=Cifar10DataGenerator.CLASSES,
-               yticklabels=Cifar10DataGenerator.CLASSES)
+               xticklabels=TextDataGenerator.CLASSES,
+               yticklabels=TextDataGenerator.CLASSES)
     plt.xlabel("Target")
     plt.ylabel("Predicted")
     plt.show()
@@ -46,7 +46,7 @@ def plot_roc_curve(tpr, fpr, scatter=True, ax=None):
     plt.ylabel("True Positive Rate")
 
 
-def compute_confusion_matrix(gt, pred, num_classes=10):
+def compute_confusion_matrix(gt, pred, num_classes=len(TextDataGenerator.CLASSES)):
     conf_mat = np.zeros((num_classes, num_classes))
     np.add.at(conf_mat, (pred, gt), 1)
     return conf_mat
@@ -96,9 +96,10 @@ def repeated_trapezium(x, y):
     return (x[-1] - x[0]) / (2 * n) * (y[0] + y[-1] + 2 * np.sum(y[:-1]))
 
 
-def compute_AUC(gt, prob, plot=False, steps=11, classes=Cifar10DataGenerator.CLASSES):
+def compute_AUC(gt, prob, plot=False, steps=11, classes=TextDataGenerator.CLASSES):
     if plot:
-        plt.subplots(5, 2, figsize=(5, 10))
+        no_subplots = len(classes)//2 + len(classes) % 2
+        plt.subplots(no_subplots, 2, figsize=(5, 10))
     class_AUC = []
     for c in range(len(classes)):
         binary_prob = prob[:, c]
@@ -106,7 +107,7 @@ def compute_AUC(gt, prob, plot=False, steps=11, classes=Cifar10DataGenerator.CLA
         true_positive_rates, false_positive_rates = compute_AUC_binary(binary_gt, binary_prob, steps)
         class_AUC.append(repeated_trapezium(false_positive_rates, true_positive_rates))
         if plot:
-            ax = plt.subplot(5, 2, c + 1)
+            ax = plt.subplot(no_subplots, 2, c + 1)
             ax.set_title(classes[c])
             plot_roc_curve(true_positive_rates, false_positive_rates, ax=ax)
             ax.set_title(classes[c])
@@ -116,12 +117,12 @@ def compute_AUC(gt, prob, plot=False, steps=11, classes=Cifar10DataGenerator.CLA
     return class_AUC
 
 
-def map_results(class_results, classes=Cifar10DataGenerator.CLASSES):
+def map_results(class_results, classes=TextDataGenerator.CLASSES):
     return {cls: cls_val for cls, cls_val in zip(classes, class_results)}
 
 
-def process_batch(test_batch, results_dir, output_metrics, plot=False):
-    results = open_json(f'{results_dir}/test_batch_{test_batch}.json')
+def process_results(results_dir, output_metrics, plot=False):
+    results = open_json(f'{results_dir}/results.json')
     _gt, _pred, _prob = np.asarray(results['gt']), np.asarray(results['pred']), np.asarray(results['prob'])
     _conf_mat = compute_confusion_matrix(_gt, _pred)
 
@@ -160,10 +161,7 @@ def process_batch(test_batch, results_dir, output_metrics, plot=False):
 
 
 if __name__ == '__main__':
-    _results_dir = "results/cnn/batch_size_32_epochs_20_lr_0.0001"
+    _results_dir = "weights/batch_size_32_epochs_5_lr_0.0001"
     _output_metrics = {}
-    process_batch(6, _results_dir, _output_metrics, plot=True)
-    #for _test_batch in range(1, 7):
-    #    print(_test_batch)
-    #    process_batch(_test_batch, _results_dir, _output_metrics)
-    #to_json(_output_metrics, f'{_results_dir}/metrics.json')
+    process_results(_results_dir, _output_metrics, plot=True)
+    to_json(_output_metrics, f'{_results_dir}/metrics.json')
