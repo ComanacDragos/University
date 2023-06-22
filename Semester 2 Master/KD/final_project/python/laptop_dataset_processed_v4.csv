@@ -1,0 +1,208 @@
+id,company,cpu,ram,memory,gpu
+Apple_1,Apple,intel,8,SSD,Intel
+Apple_2,Apple,intel,8,flash,Intel
+HP_1,HP,intel,8,SSD,Intel
+Apple_3,Apple,intel,16,SSD,AMD
+Acer_1,Acer,amd,4,HDD,AMD
+Apple_4,Apple,intel,16,flash,Intel
+Asus_1,Asus,intel,16,SSD,Nvidia
+Acer_2,Acer,intel,8,SSD,Intel
+HP_2,HP,intel,4,HDD,Intel
+Dell_1,Dell,intel,4,SSD,AMD
+Dell_2,Dell,intel,8,SSD,AMD
+Lenovo_1,Lenovo,intel,8,HDD,Nvidia
+Dell_3,Dell,intel,8,SSD,Intel
+Asus_2,Asus,intel,2,flash,Intel
+Lenovo_2,Lenovo,intel,8,SSD + HDD,Nvidia
+HP_3,HP,amd,4,HDD,AMD
+Dell_4,Dell,intel,4,HDD,Intel
+HP_4,HP,intel,8,HDD,Nvidia
+Chuwi_1,Chuwi,intel,4,flash,Intel
+Asus_3,Asus,amd,2,flash,AMD
+Dell_5,Dell,intel,16,SSD,Intel
+Lenovo_3,Lenovo,intel,4,flash,Intel
+Acer_3,Acer,intel,4,HDD,Intel
+Dell_6,Dell,intel,8,SSD + HDD,AMD
+HP_5,HP,intel,8,SSD,Nvidia
+Asus_4,Asus,intel,4,HDD,Intel
+Dell_7,Dell,intel,16,SSD + HDD,Nvidia
+Asus_5,Asus,intel,8,HDD,Nvidia
+Acer_4,Acer,intel,4,SSD,Intel
+Dell_8,Dell,intel,12,HDD,Nvidia
+Lenovo_4,Lenovo,intel,4,SSD,Intel
+Asus_6,Asus,amd,8,SSD + HDD,AMD
+Asus_7,Asus,intel,4,HDD,Nvidia
+Acer_5,Acer,intel,8,SSD,Nvidia
+HP_6,HP,amd,4,SSD,AMD
+HP_7,HP,intel,4,SSD,Intel
+Asus_8,Asus,intel,4,SSD,Intel
+MSI_1,MSI,intel,16,SSD + HDD,Nvidia
+Dell_9,Dell,intel,16,SSD + HDD,AMD
+Lenovo_5,Lenovo,intel,8,SSD,Intel
+Asus_9,Asus,intel,8,SSD,Intel
+HP_8,HP,intel,4,HDD,AMD
+Lenovo_6,Lenovo,intel,4,HDD,Intel
+Asus_10,Asus,intel,12,HDD,Nvidia
+Microsoft_1,Microsoft,intel,4,SSD,Intel
+MSI_2,MSI,intel,8,SSD + HDD,Nvidia
+Acer_6,Acer,intel,8,HDD,Intel
+Lenovo_7,Lenovo,intel,8,HDD,Intel
+Dell_10,Dell,intel,8,SSD + HDD,Intel
+Acer_7,Acer,intel,4,HDD,Nvidia
+HP_9,HP,intel,8,SSD + HDD,Nvidia
+Lenovo_8,Lenovo,amd,4,SSD,AMD
+Asus_11,Asus,intel,16,SSD + HDD,Nvidia
+Asus_12,Asus,amd,8,HDD,AMD
+Acer_8,Acer,intel,8,HDD,Nvidia
+HP_10,HP,intel,16,SSD,Intel
+Dell_11,Dell,intel,8,SSD,Nvidia
+Dell_12,Dell,intel,8,HDD,AMD
+Asus_13,Asus,intel,6,SSD,Nvidia
+HP_11,HP,intel,12,SSD + HDD,Nvidia
+HP_12,HP,intel,8,SSD,AMD
+Microsoft_2,Microsoft,intel,8,SSD,Intel
+HP_13,HP,intel,6,SSD,Nvidia
+Asus_14,Asus,intel,8,SSD,Nvidia
+Dell_13,Dell,intel,8,SSD + HDD,Nvidia
+Acer_9,Acer,intel,6,HDD,Intel
+Lenovo_9,Lenovo,intel,8,SSD,Nvidia
+HP_14,HP,intel,16,SSD,Nvidia
+Acer_10,Acer,amd,4,SSD,AMD
+HP_15,HP,intel,8,HDD,Intel
+Asus_15,Asus,amd,4,SSD,AMD
+Dell_14,Dell,intel,4,HDD,AMD
+Acer_11,Acer,intel,4,SSD,Nvidia
+Asus_16,Asus,intel,8,SSD + HDD,Nvidia
+Lenovo_10,Lenovo,intel,4,HDD,Nvidia
+Lenovo_11,Lenovo,intel,8,SSD,AMD
+Toshiba_1,Toshiba,intel,4,HDD,Intel
+Dell_15,Dell,intel,16,SSD,Nvidia
+HP_16,HP,intel,6,SSD,AMD
+Asus_17,Asus,amd,4,HDD,AMD
+Lenovo_12,Lenovo,intel,16,SSD,Nvidia
+Huawei_1,Huawei,intel,8,SSD,Intel
+HP_17,HP,intel,6,HDD,AMD
+Lenovo_13,Lenovo,amd,4,HDD,AMD
+Dell_16,Dell,intel,8,HDD,Intel
+MSI_3,MSI,intel,32,SSD + HDD,Nvidia
+Lenovo_14,Lenovo,intel,8,SSD + HDD,AMD
+Lenovo_15,Lenovo,intel,16,SSD,Intel
+Toshiba_2,Toshiba,intel,8,SSD,Intel
+Xiaomi_1,Xiaomi,intel,8,SSD,Nvidia
+Vero_1,Vero,intel,4,flash,Intel
+Razer_1,Razer,intel,32,SSD,Nvidia
+HP_18,HP,intel,16,SSD + HDD,Nvidia
+Lenovo_16,Lenovo,intel,16,SSD + HDD,Nvidia
+Dell_17,Dell,intel,6,HDD,Intel
+Dell_18,Dell,intel,16,HDD,AMD
+HP_19,HP,intel,8,HDD,AMD
+Dell_19,Dell,intel,16,SSD,AMD
+Asus_18,Asus,amd,4,SSD + HDD,AMD
+Asus_19,Asus,intel,32,SSD + HDD,Nvidia
+HP_20,HP,amd,8,SSD,AMD
+HP_21,HP,intel,16,HDD,Nvidia
+Asus_20,Asus,amd,16,SSD + HDD,AMD
+Toshiba_3,Toshiba,intel,8,HDD,Nvidia
+Dell_20,Dell,intel,12,HDD,Intel
+Lenovo_17,Lenovo,intel,6,SSD + HDD,Nvidia
+Lenovo_18,Lenovo,intel,6,SSD,Intel
+Acer_12,Acer,intel,12,HDD,Intel
+Acer_13,Acer,intel,2,SSD,Intel
+Lenovo_19,Lenovo,amd,6,HDD,AMD
+Lenovo_20,Lenovo,intel,6,HDD,Nvidia
+Toshiba_4,Toshiba,intel,8,SSD,Nvidia
+Acer_14,Acer,amd,8,SSD,AMD
+Acer_15,Acer,intel,4,flash,Intel
+Dell_21,Dell,intel,32,SSD,Nvidia
+Asus_21,Asus,intel,8,SSD + HDD,Intel
+Lenovo_21,Lenovo,amd,12,HDD,AMD
+HP_22,HP,intel,2,flash,Intel
+Asus_22,Asus,intel,4,flash,Intel
+Toshiba_5,Toshiba,intel,16,SSD,Nvidia
+Dell_22,Dell,intel,8,HDD,Nvidia
+Asus_23,Asus,intel,12,SSD + HDD,Nvidia
+Asus_24,Asus,intel,16,SSD,Intel
+Acer_16,Acer,intel,12,HDD,Nvidia
+MSI_4,MSI,intel,8,SSD,Nvidia
+Toshiba_6,Toshiba,intel,16,SSD,Intel
+Lenovo_22,Lenovo,intel,2,flash,Intel
+Dell_23,Dell,intel,4,SSD,Intel
+Chuwi_2,Chuwi,intel,6,flash,Intel
+Mediacom_1,Mediacom,intel,4,SSD,Intel
+Samsung_1,Samsung,intel,4,flash,Intel
+Google_1,Google,intel,16,SSD,Intel
+Lenovo_23,Lenovo,intel,24,SSD,Intel
+Lenovo_24,Lenovo,amd,8,HDD,AMD
+Microsoft_3,Microsoft,intel,16,SSD,Intel
+Asus_25,Asus,intel,8,HDD,Intel
+HP_23,HP,intel,12,HDD,Nvidia
+Lenovo_25,Lenovo,intel,12,SSD,Intel
+Google_2,Google,intel,8,SSD,Intel
+Asus_26,Asus,intel,12,SSD + HDD,Intel
+Toshiba_7,Toshiba,intel,32,SSD,Intel
+Acer_17,Acer,amd,8,HDD,AMD
+Asus_27,Asus,intel,24,SSD + HDD,Nvidia
+Xiaomi_2,Xiaomi,intel,16,SSD,Nvidia
+Asus_28,Asus,intel,24,SSD,Nvidia
+Toshiba_8,Toshiba,intel,8,HDD,Intel
+Mediacom_2,Mediacom,intel,4,flash,Intel
+HP_24,HP,amd,6,SSD,AMD
+Fujitsu_1,Fujitsu,intel,8,HDD,Intel
+Lenovo_26,Lenovo,intel,32,SSD + HDD,Nvidia
+Dell_24,Dell,intel,4,flash,Intel
+Lenovo_27,Lenovo,intel,12,HDD,Intel
+Lenovo_28,Lenovo,amd,12,SSD,AMD
+Samsung_2,Samsung,intel,16,SSD + HDD,Nvidia
+Lenovo_29,Lenovo,intel,6,HDD,Intel
+Lenovo_30,Lenovo,intel,32,SSD,Nvidia
+Dell_25,Dell,intel,16,HDD,Nvidia
+Fujitsu_2,Fujitsu,intel,8,SSD,Intel
+Mediacom_3,Mediacom,intel,2,flash,Intel
+Asus_29,Asus,intel,6,HDD,Intel
+HP_25,HP,amd,8,HDD,AMD
+Razer_2,Razer,intel,16,SSD,Nvidia
+Asus_30,Asus,intel,32,SSD,Nvidia
+Dell_26,Dell,intel,32,SSD + HDD,Nvidia
+Toshiba_9,Toshiba,intel,4,SSD,Intel
+HP_26,HP,intel,4,SSD,Nvidia
+HP_27,HP,intel,8,flash,Intel
+LG_1,LG,intel,8,SSD,Intel
+Acer_18,Acer,intel,16,SSD,Nvidia
+HP_28,HP,intel,4,SSD,AMD
+HP_29,HP,amd,6,HDD,AMD
+Mediacom_4,Mediacom,intel,4,HDD,Intel
+Acer_19,Acer,intel,16,SSD + HDD,Nvidia
+HP_30,HP,amd,6,SSD + HDD,AMD
+Acer_20,Acer,intel,2,flash,Intel
+Samsung_3,Samsung,intel,16,SSD,Intel
+Samsung_4,Samsung,intel,8,SSD,Intel
+Samsung_5,Samsung,intel,16,SSD,AMD
+HP_31,HP,intel,12,HDD,AMD
+Razer_3,Razer,intel,16,SSD,Intel
+HP_32,HP,intel,4,flash,Intel
+Lenovo_31,Lenovo,intel,8,flash,Intel
+Lenovo_32,Lenovo,intel,4,HDD,AMD
+Samsung_6,Samsung,intel,16,SSD,Nvidia
+Dell_27,Dell,intel,4,SSD + HDD,Nvidia
+LG_2,LG,intel,16,SSD,Intel
+Lenovo_33,Lenovo,intel,6,SSD,Nvidia
+Lenovo_34,Lenovo,amd,16,SSD + HDD,AMD
+Asus_31,Asus,intel,8,flash,Intel
+Acer_21,Acer,intel,12,SSD + HDD,Nvidia
+HP_33,HP,intel,6,HDD,Intel
+Dell_28,Dell,intel,12,SSD,Intel
+Lenovo_35,Lenovo,amd,6,SSD,AMD
+Fujitsu_3,Fujitsu,intel,4,SSD,Intel
+HP_34,HP,intel,4,SSD + HDD,AMD
+Acer_22,Acer,intel,8,SSD + HDD,Nvidia
+Acer_23,Acer,amd,6,HDD,AMD
+Vero_2,Vero,intel,2,flash,Intel
+HP_35,HP,intel,8,SSD + HDD,Intel
+Asus_32,Asus,intel,16,HDD,Nvidia
+Asus_33,Asus,intel,64,SSD,Nvidia
+Lenovo_36,Lenovo,intel,8,HDD,AMD
+Razer_4,Razer,intel,8,SSD,Intel
+MSI_5,MSI,intel,8,HDD,Nvidia
+HP_36,HP,intel,6,HDD,Nvidia
+Apple_5,Apple,intel,4,flash,Intel
+Dell_29,Dell,intel,2,HDD,Intel

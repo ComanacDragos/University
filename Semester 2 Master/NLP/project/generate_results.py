@@ -6,8 +6,8 @@ import tensorflow as tf
 from utils import to_json, softmax
 
 if __name__ == '__main__':
-    experiment = 'batch_size_32_epochs_5_lr_0.0001'
-    csv = 'data/news.csv'
+    experiment = 'desire_resnet_batch_size_8_epochs_20_lr_0.001_5424_acc'
+    csv = 'data/rodesire_shuffled.csv'
 
     generator = TextDataGenerator(
         csv, 'val', 128,

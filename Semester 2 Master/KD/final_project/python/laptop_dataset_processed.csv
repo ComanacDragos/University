@@ -1,0 +1,219 @@
+id,screen_size,cpu,ram,memory,gpu
+Apple_1,medium,intel,medium,SSD,Intel
+Apple_2,medium,intel,medium,flash,Intel
+HP_1,medium,intel,medium,SSD,Intel
+Apple_3,medium,intel,large,SSD,AMD
+Acer_1,medium,amd,small,HDD,AMD
+Apple_4,medium,intel,large,flash,Intel
+Asus_1,medium,intel,large,SSD,Nvidia
+Acer_2,medium,intel,medium,SSD,Intel
+HP_2,medium,intel,small,HDD,Intel
+Dell_1,medium,intel,small,SSD,AMD
+Apple_5,small,intel,medium,SSD,Intel
+Dell_2,medium,intel,medium,SSD,AMD
+Lenovo_1,medium,intel,medium,HDD,Nvidia
+Dell_3,medium,intel,medium,SSD,Intel
+Asus_2,small,intel,small,flash,Intel
+Lenovo_2,medium,intel,medium,SSD + HDD,Nvidia
+HP_3,medium,amd,small,HDD,AMD
+Dell_4,medium,intel,small,HDD,Intel
+HP_4,large,intel,medium,HDD,Nvidia
+Chuwi_1,medium,intel,small,flash,Intel
+Asus_3,medium,amd,small,flash,AMD
+HP_5,large,amd,small,HDD,AMD
+Dell_5,medium,intel,large,SSD,Intel
+Lenovo_3,medium,intel,small,flash,Intel
+Acer_3,medium,intel,small,HDD,Intel
+Dell_6,large,intel,medium,SSD + HDD,AMD
+HP_6,medium,intel,medium,SSD,Nvidia
+Asus_4,medium,intel,small,HDD,Intel
+Dell_7,medium,intel,large,SSD + HDD,Nvidia
+Asus_5,medium,intel,medium,HDD,Nvidia
+Acer_4,medium,intel,small,SSD,Intel
+Dell_8,large,intel,medium,HDD,Nvidia
+Lenovo_4,medium,intel,small,SSD,Intel
+Asus_6,large,amd,medium,SSD + HDD,AMD
+Asus_7,large,intel,small,HDD,Nvidia
+Lenovo_5,small,intel,small,flash,Intel
+Acer_5,medium,intel,medium,SSD,Nvidia
+HP_7,medium,amd,small,SSD,AMD
+HP_8,medium,intel,small,SSD,Intel
+Asus_8,medium,intel,small,SSD,Intel
+MSI_1,large,intel,large,SSD + HDD,Nvidia
+Dell_9,large,intel,large,SSD + HDD,AMD
+Lenovo_6,medium,intel,medium,SSD,Intel
+Asus_9,medium,intel,medium,SSD,Intel
+HP_9,medium,intel,small,HDD,AMD
+Lenovo_7,medium,intel,small,HDD,Intel
+Asus_10,large,intel,medium,HDD,Nvidia
+Microsoft_1,medium,intel,small,SSD,Intel
+MSI_2,large,intel,medium,SSD + HDD,Nvidia
+Acer_6,medium,intel,medium,HDD,Intel
+Lenovo_8,medium,intel,medium,HDD,Intel
+Dell_10,medium,intel,medium,SSD + HDD,Intel
+Acer_7,medium,intel,small,HDD,Nvidia
+HP_10,large,intel,medium,SSD + HDD,Nvidia
+Lenovo_9,medium,amd,small,SSD,AMD
+Asus_11,medium,intel,large,SSD + HDD,Nvidia
+Asus_12,medium,amd,medium,HDD,AMD
+Acer_8,medium,intel,medium,HDD,Nvidia
+HP_11,medium,intel,large,SSD,Intel
+Dell_11,medium,intel,medium,SSD,Nvidia
+Dell_12,medium,intel,medium,HDD,AMD
+Asus_13,medium,intel,small,SSD,Nvidia
+HP_12,medium,intel,medium,SSD + HDD,Nvidia
+HP_13,medium,intel,medium,SSD,AMD
+Microsoft_2,medium,intel,medium,SSD,Intel
+HP_14,medium,intel,small,SSD,Nvidia
+Asus_14,medium,intel,medium,SSD,Nvidia
+MSI_3,medium,intel,large,SSD + HDD,Nvidia
+Dell_13,medium,intel,medium,SSD + HDD,Nvidia
+Lenovo_10,medium,intel,medium,SSD,Nvidia
+HP_15,large,intel,large,SSD,Nvidia
+Acer_9,medium,amd,small,SSD,AMD
+HP_16,medium,intel,medium,HDD,Intel
+Asus_15,medium,amd,small,SSD,AMD
+HP_17,large,intel,medium,SSD,Intel
+Dell_14,medium,intel,small,HDD,AMD
+Acer_10,medium,intel,small,SSD,Nvidia
+Asus_16,large,intel,medium,SSD + HDD,Nvidia
+Lenovo_11,medium,intel,small,HDD,Nvidia
+Acer_11,large,intel,small,HDD,Nvidia
+Lenovo_12,medium,intel,medium,SSD,AMD
+Toshiba_1,medium,intel,small,HDD,Intel
+HP_18,small,intel,medium,SSD,Intel
+Dell_15,medium,intel,large,SSD,Nvidia
+HP_19,medium,intel,small,SSD,AMD
+Asus_17,medium,amd,small,HDD,AMD
+Acer_12,large,intel,small,SSD,Nvidia
+Lenovo_13,medium,intel,large,SSD,Nvidia
+Acer_13,large,intel,medium,SSD,Nvidia
+Huawei_1,medium,intel,medium,SSD,Intel
+HP_20,large,intel,small,HDD,AMD
+Lenovo_14,medium,amd,small,HDD,AMD
+HP_21,large,intel,medium,SSD,Nvidia
+Dell_16,medium,intel,medium,HDD,Intel
+Lenovo_15,medium,intel,medium,SSD + HDD,AMD
+Dell_17,medium,intel,large,SSD + HDD,AMD
+Lenovo_16,medium,intel,large,SSD,Intel
+Toshiba_2,medium,intel,medium,SSD,Intel
+Xiaomi_1,medium,intel,medium,SSD,Nvidia
+Dell_18,large,intel,large,SSD,Nvidia
+Vero_1,medium,intel,small,flash,Intel
+Lenovo_17,large,intel,medium,SSD,Nvidia
+Razer_1,large,intel,large,SSD,Nvidia
+HP_22,large,intel,large,SSD + HDD,Nvidia
+Lenovo_18,medium,intel,large,SSD + HDD,Nvidia
+Asus_18,large,intel,large,SSD + HDD,Nvidia
+Lenovo_19,large,intel,medium,HDD,Nvidia
+Dell_19,large,intel,large,SSD + HDD,Nvidia
+Dell_20,medium,intel,large,HDD,AMD
+HP_23,medium,intel,medium,HDD,AMD
+Dell_21,medium,intel,large,SSD,AMD
+Asus_19,medium,amd,small,SSD + HDD,AMD
+Dell_22,medium,intel,medium,SSD + HDD,AMD
+Asus_20,large,intel,large,SSD,Nvidia
+HP_24,medium,amd,medium,SSD,AMD
+HP_25,large,intel,large,HDD,Nvidia
+Asus_21,large,amd,large,SSD + HDD,AMD
+Toshiba_3,medium,intel,medium,HDD,Nvidia
+Lenovo_20,large,intel,small,HDD,Intel
+Lenovo_21,large,intel,small,SSD + HDD,Nvidia
+HP_26,large,intel,medium,HDD,Intel
+Lenovo_22,large,intel,small,HDD,Nvidia
+Asus_22,medium,intel,medium,SSD + HDD,Nvidia
+Toshiba_4,medium,intel,medium,SSD,Nvidia
+Acer_14,medium,amd,medium,SSD,AMD
+Acer_15,small,intel,small,flash,Intel
+Asus_23,medium,intel,medium,SSD + HDD,Intel
+Lenovo_23,medium,amd,medium,HDD,AMD
+HP_27,medium,intel,medium,HDD,Nvidia
+HP_28,medium,intel,small,flash,Intel
+Toshiba_5,medium,intel,large,SSD,Nvidia
+Dell_23,medium,intel,medium,HDD,Nvidia
+Lenovo_24,large,amd,small,SSD,AMD
+Lenovo_25,small,intel,small,SSD,Intel
+Asus_24,medium,intel,small,flash,Intel
+Asus_25,medium,intel,large,SSD,Intel
+MSI_4,large,intel,medium,SSD,Nvidia
+Toshiba_6,medium,intel,large,SSD,Intel
+Dell_24,medium,intel,small,SSD,Intel
+Chuwi_2,small,intel,small,flash,Intel
+Mediacom_1,small,intel,small,SSD,Intel
+Samsung_1,small,intel,small,flash,Intel
+Google_1,small,intel,large,SSD,Intel
+Lenovo_26,large,amd,medium,HDD,AMD
+Lenovo_27,small,intel,medium,SSD,Intel
+MSI_5,medium,intel,medium,SSD,Nvidia
+Microsoft_3,medium,intel,large,SSD,Intel
+Dell_25,small,intel,small,HDD,Intel
+Acer_16,small,intel,small,SSD,Intel
+Asus_26,medium,intel,medium,HDD,Intel
+Google_2,small,intel,medium,SSD,Intel
+Lenovo_28,small,intel,large,SSD,Intel
+Asus_27,small,intel,large,SSD,Intel
+Acer_17,medium,amd,medium,HDD,AMD
+Xiaomi_2,medium,intel,large,SSD,Nvidia
+Toshiba_7,medium,intel,medium,HDD,Intel
+Mediacom_2,medium,intel,small,SSD,Intel
+Mediacom_3,medium,intel,small,flash,Intel
+Fujitsu_1,medium,intel,medium,HDD,Intel
+Lenovo_29,large,intel,large,SSD + HDD,Nvidia
+Dell_26,small,intel,small,flash,Intel
+Lenovo_30,medium,amd,medium,SSD,AMD
+Dell_27,small,intel,small,SSD,Intel
+Samsung_2,medium,intel,large,SSD + HDD,Nvidia
+Dell_28,small,intel,medium,SSD,Intel
+Acer_18,medium,intel,small,flash,Intel
+Dell_29,medium,intel,large,HDD,Nvidia
+Fujitsu_2,medium,intel,medium,SSD,Intel
+HP_29,large,amd,medium,HDD,AMD
+Razer_2,medium,intel,large,SSD,Nvidia
+MSI_6,medium,intel,medium,SSD + HDD,Nvidia
+Toshiba_8,medium,intel,small,SSD,Intel
+HP_30,small,intel,medium,flash,Intel
+LG_1,medium,intel,medium,SSD,Intel
+Acer_19,medium,intel,large,SSD,Nvidia
+HP_31,large,intel,small,SSD,AMD
+Mediacom_4,medium,intel,small,HDD,Intel
+Acer_20,large,intel,large,SSD + HDD,Nvidia
+HP_32,medium,amd,small,SSD + HDD,AMD
+HP_33,medium,intel,large,SSD,Nvidia
+Samsung_3,medium,intel,large,SSD,Intel
+Asus_28,medium,intel,small,HDD,Nvidia
+Dell_30,small,intel,large,SSD,Intel
+Samsung_4,medium,intel,medium,SSD,Intel
+Samsung_5,medium,intel,large,SSD,AMD
+HP_34,small,intel,small,SSD,Intel
+Apple_6,small,intel,medium,flash,Intel
+HP_35,medium,amd,medium,HDD,AMD
+HP_36,large,intel,medium,HDD,AMD
+Razer_3,small,intel,large,SSD,Intel
+HP_37,small,intel,small,flash,Intel
+Lenovo_31,medium,intel,medium,flash,Intel
+Dell_31,large,intel,medium,HDD,AMD
+Lenovo_32,medium,intel,small,HDD,AMD
+Samsung_6,medium,intel,large,SSD,Nvidia
+Dell_32,medium,intel,small,SSD + HDD,Nvidia
+Lenovo_33,large,amd,small,HDD,AMD
+LG_2,medium,intel,large,SSD,Intel
+Lenovo_34,medium,intel,small,SSD,Nvidia
+HP_38,small,intel,small,HDD,Intel
+Lenovo_35,medium,amd,large,SSD + HDD,AMD
+Dell_33,large,intel,small,HDD,AMD
+Asus_29,small,intel,medium,flash,Intel
+Acer_21,medium,intel,medium,SSD + HDD,Nvidia
+Toshiba_9,small,intel,medium,SSD,Intel
+Fujitsu_3,medium,intel,small,SSD,Intel
+HP_39,medium,intel,small,SSD + HDD,AMD
+Lenovo_36,large,intel,large,SSD,Nvidia
+HP_40,medium,intel,medium,SSD + HDD,Intel
+Asus_30,large,intel,large,HDD,Nvidia
+Lenovo_37,large,intel,medium,HDD,AMD
+Razer_4,small,intel,medium,SSD,Intel
+Lenovo_38,medium,intel,medium,HDD,AMD
+MSI_7,medium,intel,medium,HDD,Nvidia
+HP_41,medium,intel,small,HDD,Nvidia
+Acer_22,large,intel,medium,HDD,Nvidia
+Lenovo_39,large,intel,medium,HDD,Intel
+Apple_7,small,intel,small,flash,Intel

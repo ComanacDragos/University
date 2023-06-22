@@ -1,0 +1,208 @@
+id,company,cpu,ram,memory,gpu
+0,Apple,intel,8,SSD,Intel
+1,Apple,intel,8,flash,Intel
+2,HP,intel,8,SSD,Intel
+3,Apple,intel,16,SSD,AMD
+4,Acer,amd,4,HDD,AMD
+5,Apple,intel,16,flash,Intel
+6,Asus,intel,16,SSD,Nvidia
+7,Acer,intel,8,SSD,Intel
+8,HP,intel,4,HDD,Intel
+9,Dell,intel,4,SSD,AMD
+10,Dell,intel,8,SSD,AMD
+11,Lenovo,intel,8,HDD,Nvidia
+12,Dell,intel,8,SSD,Intel
+13,Asus,intel,2,flash,Intel
+14,Lenovo,intel,8,SSD + HDD,Nvidia
+15,HP,amd,4,HDD,AMD
+16,Dell,intel,4,HDD,Intel
+17,HP,intel,8,HDD,Nvidia
+18,Chuwi,intel,4,flash,Intel
+19,Asus,amd,2,flash,AMD
+20,Dell,intel,16,SSD,Intel
+21,Lenovo,intel,4,flash,Intel
+22,Acer,intel,4,HDD,Intel
+23,Dell,intel,8,SSD + HDD,AMD
+24,HP,intel,8,SSD,Nvidia
+25,Asus,intel,4,HDD,Intel
+26,Dell,intel,16,SSD + HDD,Nvidia
+27,Asus,intel,8,HDD,Nvidia
+28,Acer,intel,4,SSD,Intel
+29,Dell,intel,12,HDD,Nvidia
+30,Lenovo,intel,4,SSD,Intel
+31,Asus,amd,8,SSD + HDD,AMD
+32,Asus,intel,4,HDD,Nvidia
+33,Acer,intel,8,SSD,Nvidia
+34,HP,amd,4,SSD,AMD
+35,HP,intel,4,SSD,Intel
+36,Asus,intel,4,SSD,Intel
+37,MSI,intel,16,SSD + HDD,Nvidia
+38,Dell,intel,16,SSD + HDD,AMD
+39,Lenovo,intel,8,SSD,Intel
+40,Asus,intel,8,SSD,Intel
+41,HP,intel,4,HDD,AMD
+42,Lenovo,intel,4,HDD,Intel
+43,Asus,intel,12,HDD,Nvidia
+44,Microsoft,intel,4,SSD,Intel
+45,MSI,intel,8,SSD + HDD,Nvidia
+46,Acer,intel,8,HDD,Intel
+47,Lenovo,intel,8,HDD,Intel
+48,Dell,intel,8,SSD + HDD,Intel
+49,Acer,intel,4,HDD,Nvidia
+50,HP,intel,8,SSD + HDD,Nvidia
+51,Lenovo,amd,4,SSD,AMD
+52,Asus,intel,16,SSD + HDD,Nvidia
+53,Asus,amd,8,HDD,AMD
+54,Acer,intel,8,HDD,Nvidia
+55,HP,intel,16,SSD,Intel
+56,Dell,intel,8,SSD,Nvidia
+57,Dell,intel,8,HDD,AMD
+58,Asus,intel,6,SSD,Nvidia
+59,HP,intel,12,SSD + HDD,Nvidia
+60,HP,intel,8,SSD,AMD
+61,Microsoft,intel,8,SSD,Intel
+62,HP,intel,6,SSD,Nvidia
+63,Asus,intel,8,SSD,Nvidia
+64,Dell,intel,8,SSD + HDD,Nvidia
+65,Acer,intel,6,HDD,Intel
+66,Lenovo,intel,8,SSD,Nvidia
+67,HP,intel,16,SSD,Nvidia
+68,Acer,amd,4,SSD,AMD
+69,HP,intel,8,HDD,Intel
+70,Asus,amd,4,SSD,AMD
+71,Dell,intel,4,HDD,AMD
+72,Acer,intel,4,SSD,Nvidia
+73,Asus,intel,8,SSD + HDD,Nvidia
+74,Lenovo,intel,4,HDD,Nvidia
+75,Lenovo,intel,8,SSD,AMD
+76,Toshiba,intel,4,HDD,Intel
+77,Dell,intel,16,SSD,Nvidia
+78,HP,intel,6,SSD,AMD
+79,Asus,amd,4,HDD,AMD
+80,Lenovo,intel,16,SSD,Nvidia
+81,Huawei,intel,8,SSD,Intel
+82,HP,intel,6,HDD,AMD
+83,Lenovo,amd,4,HDD,AMD
+84,Dell,intel,8,HDD,Intel
+85,MSI,intel,32,SSD + HDD,Nvidia
+86,Lenovo,intel,8,SSD + HDD,AMD
+87,Lenovo,intel,16,SSD,Intel
+88,Toshiba,intel,8,SSD,Intel
+89,Xiaomi,intel,8,SSD,Nvidia
+90,Vero,intel,4,flash,Intel
+91,Razer,intel,32,SSD,Nvidia
+92,HP,intel,16,SSD + HDD,Nvidia
+93,Lenovo,intel,16,SSD + HDD,Nvidia
+94,Dell,intel,6,HDD,Intel
+95,Dell,intel,16,HDD,AMD
+96,HP,intel,8,HDD,AMD
+97,Dell,intel,16,SSD,AMD
+98,Asus,amd,4,SSD + HDD,AMD
+99,Asus,intel,32,SSD + HDD,Nvidia
+100,HP,amd,8,SSD,AMD
+101,HP,intel,16,HDD,Nvidia
+102,Asus,amd,16,SSD + HDD,AMD
+103,Toshiba,intel,8,HDD,Nvidia
+104,Dell,intel,12,HDD,Intel
+105,Lenovo,intel,6,SSD + HDD,Nvidia
+106,Lenovo,intel,6,SSD,Intel
+107,Acer,intel,12,HDD,Intel
+108,Acer,intel,2,SSD,Intel
+109,Lenovo,amd,6,HDD,AMD
+110,Lenovo,intel,6,HDD,Nvidia
+111,Toshiba,intel,8,SSD,Nvidia
+112,Acer,amd,8,SSD,AMD
+113,Acer,intel,4,flash,Intel
+114,Dell,intel,32,SSD,Nvidia
+115,Asus,intel,8,SSD + HDD,Intel
+116,Lenovo,amd,12,HDD,AMD
+117,HP,intel,2,flash,Intel
+118,Asus,intel,4,flash,Intel
+119,Toshiba,intel,16,SSD,Nvidia
+120,Dell,intel,8,HDD,Nvidia
+121,Asus,intel,12,SSD + HDD,Nvidia
+122,Asus,intel,16,SSD,Intel
+123,Acer,intel,12,HDD,Nvidia
+124,MSI,intel,8,SSD,Nvidia
+125,Toshiba,intel,16,SSD,Intel
+126,Lenovo,intel,2,flash,Intel
+127,Dell,intel,4,SSD,Intel
+128,Chuwi,intel,6,flash,Intel
+129,Mediacom,intel,4,SSD,Intel
+130,Samsung,intel,4,flash,Intel
+131,Google,intel,16,SSD,Intel
+132,Lenovo,intel,24,SSD,Intel
+133,Lenovo,amd,8,HDD,AMD
+134,Microsoft,intel,16,SSD,Intel
+135,Asus,intel,8,HDD,Intel
+136,HP,intel,12,HDD,Nvidia
+137,Lenovo,intel,12,SSD,Intel
+138,Google,intel,8,SSD,Intel
+139,Asus,intel,12,SSD + HDD,Intel
+140,Toshiba,intel,32,SSD,Intel
+141,Acer,amd,8,HDD,AMD
+142,Asus,intel,24,SSD + HDD,Nvidia
+143,Xiaomi,intel,16,SSD,Nvidia
+144,Asus,intel,24,SSD,Nvidia
+145,Toshiba,intel,8,HDD,Intel
+146,Mediacom,intel,4,flash,Intel
+147,HP,amd,6,SSD,AMD
+148,Fujitsu,intel,8,HDD,Intel
+149,Lenovo,intel,32,SSD + HDD,Nvidia
+150,Dell,intel,4,flash,Intel
+151,Lenovo,intel,12,HDD,Intel
+152,Lenovo,amd,12,SSD,AMD
+153,Samsung,intel,16,SSD + HDD,Nvidia
+154,Lenovo,intel,6,HDD,Intel
+155,Lenovo,intel,32,SSD,Nvidia
+156,Dell,intel,16,HDD,Nvidia
+157,Fujitsu,intel,8,SSD,Intel
+158,Mediacom,intel,2,flash,Intel
+159,Asus,intel,6,HDD,Intel
+160,HP,amd,8,HDD,AMD
+161,Razer,intel,16,SSD,Nvidia
+162,Asus,intel,32,SSD,Nvidia
+163,Dell,intel,32,SSD + HDD,Nvidia
+164,Toshiba,intel,4,SSD,Intel
+165,HP,intel,4,SSD,Nvidia
+166,HP,intel,8,flash,Intel
+167,LG,intel,8,SSD,Intel
+168,Acer,intel,16,SSD,Nvidia
+169,HP,intel,4,SSD,AMD
+170,HP,amd,6,HDD,AMD
+171,Mediacom,intel,4,HDD,Intel
+172,Acer,intel,16,SSD + HDD,Nvidia
+173,HP,amd,6,SSD + HDD,AMD
+174,Acer,intel,2,flash,Intel
+175,Samsung,intel,16,SSD,Intel
+176,Samsung,intel,8,SSD,Intel
+177,Samsung,intel,16,SSD,AMD
+178,HP,intel,12,HDD,AMD
+179,Razer,intel,16,SSD,Intel
+180,HP,intel,4,flash,Intel
+181,Lenovo,intel,8,flash,Intel
+182,Lenovo,intel,4,HDD,AMD
+183,Samsung,intel,16,SSD,Nvidia
+184,Dell,intel,4,SSD + HDD,Nvidia
+185,LG,intel,16,SSD,Intel
+186,Lenovo,intel,6,SSD,Nvidia
+187,Lenovo,amd,16,SSD + HDD,AMD
+188,Asus,intel,8,flash,Intel
+189,Acer,intel,12,SSD + HDD,Nvidia
+190,HP,intel,6,HDD,Intel
+191,Dell,intel,12,SSD,Intel
+192,Lenovo,amd,6,SSD,AMD
+193,Fujitsu,intel,4,SSD,Intel
+194,HP,intel,4,SSD + HDD,AMD
+195,Acer,intel,8,SSD + HDD,Nvidia
+196,Acer,amd,6,HDD,AMD
+197,Vero,intel,2,flash,Intel
+198,HP,intel,8,SSD + HDD,Intel
+199,Asus,intel,16,HDD,Nvidia
+200,Asus,intel,64,SSD,Nvidia
+201,Lenovo,intel,8,HDD,AMD
+202,Razer,intel,8,SSD,Intel
+203,MSI,intel,8,HDD,Nvidia
+204,HP,intel,6,HDD,Nvidia
+205,Apple,intel,4,flash,Intel
+206,Dell,intel,2,HDD,Intel

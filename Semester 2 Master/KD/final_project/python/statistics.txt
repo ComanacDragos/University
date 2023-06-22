@@ -1,0 +1,38 @@
+Company statistics
+Apple (21) - HP (274) - Acer (103) - Asus (158) - Dell (297) - Lenovo (297) - Chuwi (3) - MSI (54) - Microsoft (6) - Toshiba (48) - Huawei (2) - Xiaomi (4) - Vero (4) - Razer (7) - Mediacom (7) - Samsung (9) - Google (3) - Fujitsu (3) - LG (3)
+Different types:  19
+
+
+TypeName statistics
+Ultrabook (196) - Notebook (727) - Netbook (25) - Gaming (205) - 2 in 1 Convertible (121) - Workstation (29)
+Different types:  6
+
+
+Inches statistics
+10.1 (4) - 11.3 (1) - 11.6 (33) - 12.0 (6) - 12.3 (5) - 12.5 (39) - 13.0 (2) - 13.3 (164) - 13.5 (6) - 13.9 (6) - 14.0 (197) - 14.1 (1) - 15.0 (4) - 15.4 (4) - 15.6 (665) - 17.0 (1) - 17.3 (164) - 18.4 (1)
+Different types:  18
+histogram (array([  88, 1049,  166], dtype=int64), array([10.1       , 12.86666667, 15.63333333, 18.4       ]))
+
+
+CPU statistics
+intel (1240) - amd (62)
+Different types:  2
+
+
+RAM statistics
+2GB (22) - 4GB (375) - 6GB (41) - 8GB (619) - 12GB (25) - 16GB (200) - 24GB (3) - 32GB (17) - 64GB (1)
+Different types:  9
+
+
+Memory statistics
+HDD (376) - SSD (643) - SSD + HDD (200) - flash (74)
+Different types:  4
+
+
+GPU statistics
+AMD (180) - Intel (722) - Nvidia (400)
+Different types:  3
+
+
+
+Process finished with exit code 0

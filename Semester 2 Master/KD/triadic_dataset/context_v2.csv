@@ -1,0 +1,636 @@
+employee_0,Data Scientist,SE
+employee_0,salary_medium,SE
+employee_0,company_size_M,SE
+employee_0,remote,SE
+employee_1,Data Scientist,SE
+employee_1,salary_low,SE
+employee_1,company_size_M,SE
+employee_1,remote,SE
+employee_2,Data Scientist,SE
+employee_2,salary_medium,SE
+employee_2,company_size_M,SE
+employee_3,Data Scientist,SE
+employee_3,salary_low,SE
+employee_3,company_size_M,SE
+employee_4,Data Analyst,SE
+employee_4,salary_low,SE
+employee_4,company_size_M,SE
+employee_4,remote,SE
+employee_5,Data Analyst,MI
+employee_5,salary_low,MI
+employee_5,company_size_M,MI
+employee_5,remote,MI
+employee_6,Analytics Engineer,SE
+employee_6,salary_medium,SE
+employee_6,company_size_M,SE
+employee_6,remote,SE
+employee_7,Analytics Engineer,SE
+employee_7,salary_low,SE
+employee_7,company_size_M,SE
+employee_7,remote,SE
+employee_8,Data Engineer,SE
+employee_8,salary_medium,SE
+employee_8,company_size_M,SE
+employee_9,Data Engineer,SE
+employee_9,salary_low,SE
+employee_9,company_size_M,SE
+employee_10,Data Engineer,MI
+employee_10,salary_medium,MI
+employee_10,company_size_M,MI
+employee_11,Data Engineer,MI
+employee_11,salary_low,MI
+employee_11,company_size_M,MI
+employee_12,Data Analyst,MI
+employee_12,salary_low,MI
+employee_12,company_size_M,MI
+employee_13,Data Engineer,SE
+employee_13,salary_medium,SE
+employee_13,company_size_M,SE
+employee_13,remote,SE
+employee_14,Data Engineer,SE
+employee_14,salary_low,SE
+employee_14,company_size_M,SE
+employee_14,remote,SE
+employee_15,Data Scientist,EX
+employee_15,salary_medium,EX
+employee_15,company_size_M,EX
+employee_16,Data Scientist,MI
+employee_16,salary_low,MI
+employee_16,company_size_L,MI
+employee_17,Data Analyst,SE
+employee_17,salary_medium,SE
+employee_17,company_size_L,SE
+employee_18,Data Analyst,SE
+employee_18,salary_low,SE
+employee_18,company_size_L,SE
+employee_19,Data Analyst,SE
+employee_19,salary_low,SE
+employee_19,company_size_M,SE
+employee_20,Analytics Engineer,SE
+employee_20,salary_low,SE
+employee_20,company_size_M,SE
+employee_21,Research Scientist,EN
+employee_21,salary_medium,EN
+employee_21,company_size_L,EN
+employee_21,remote,EN
+employee_22,Analytics Engineer,SE
+employee_22,salary_medium,SE
+employee_22,company_size_M,SE
+employee_23,Data Engineer,MI
+employee_23,salary_low,MI
+employee_23,company_size_M,MI
+employee_23,remote,MI
+employee_24,Data Engineer,EN
+employee_24,salary_low,EN
+employee_24,company_size_M,EN
+employee_25,Data Analyst,EN
+employee_25,salary_low,EN
+employee_25,company_size_M,EN
+employee_26,Data Analyst,SE
+employee_26,salary_medium,SE
+employee_26,company_size_M,SE
+employee_27,Data Scientist,MI
+employee_27,salary_low,MI
+employee_27,company_size_M,MI
+employee_28,Data Analyst,EN
+employee_28,salary_low,EN
+employee_28,company_size_M,EN
+employee_28,remote,EN
+employee_29,Data Engineer,EX
+employee_29,salary_medium,EX
+employee_29,company_size_M,EX
+employee_30,Data Engineer,EN
+employee_30,salary_low,EN
+employee_30,company_size_L,EN
+employee_30,remote,EN
+employee_31,Data Engineer,EX
+employee_31,salary_low,EX
+employee_31,company_size_M,EX
+employee_32,Data Scientist,SE
+employee_32,salary_medium,SE
+employee_32,company_size_L,SE
+employee_33,Data Scientist,SE
+employee_33,salary_low,SE
+employee_33,company_size_L,SE
+employee_34,Data Scientist,SE
+employee_34,salary_low,SE
+employee_34,company_size_L,SE
+employee_34,remote,SE
+employee_35,Data Engineer,SE
+employee_35,salary_medium,SE
+employee_35,company_size_L,SE
+employee_36,Data Engineer,SE
+employee_36,salary_low,SE
+employee_36,company_size_L,SE
+employee_37,Research Scientist,SE
+employee_37,salary_low,SE
+employee_37,company_size_M,SE
+employee_37,remote,SE
+employee_38,Analytics Engineer,EX
+employee_38,salary_medium,EX
+employee_38,company_size_M,EX
+employee_38,remote,EX
+employee_39,Analytics Engineer,EX
+employee_39,salary_low,EX
+employee_39,company_size_M,EX
+employee_39,remote,EX
+employee_40,Research Scientist,SE
+employee_40,salary_medium,SE
+employee_40,company_size_M,SE
+employee_41,Research Scientist,SE
+employee_41,salary_low,SE
+employee_41,company_size_M,SE
+employee_42,Data Manager,SE
+employee_42,salary_medium,SE
+employee_42,company_size_M,SE
+employee_43,Data Manager,SE
+employee_43,salary_low,SE
+employee_43,company_size_M,SE
+employee_44,Data Manager,SE
+employee_44,salary_low,SE
+employee_44,company_size_M,SE
+employee_44,remote,SE
+employee_45,Data Analyst,EN
+employee_45,salary_low,EN
+employee_45,company_size_L,EN
+employee_46,Data Scientist,EN
+employee_46,salary_low,EN
+employee_46,company_size_L,EN
+employee_46,remote,EN
+employee_47,Data Scientist,EN
+employee_47,salary_low,EN
+employee_47,company_size_M,EN
+employee_47,remote,EN
+employee_48,Data Scientist,MI
+employee_48,salary_low,MI
+employee_48,company_size_M,MI
+employee_48,remote,MI
+employee_49,Data Analyst,SE
+employee_49,salary_medium,SE
+employee_49,company_size_M,SE
+employee_49,remote,SE
+employee_50,Research Scientist,MI
+employee_50,salary_medium,MI
+employee_50,company_size_M,MI
+employee_51,Research Scientist,MI
+employee_51,salary_low,MI
+employee_51,company_size_M,MI
+employee_52,Data Scientist,MI
+employee_52,salary_medium,MI
+employee_52,company_size_M,MI
+employee_52,remote,MI
+employee_53,Data Scientist,EX
+employee_53,salary_low,EX
+employee_53,company_size_M,EX
+employee_54,Data Manager,MI
+employee_54,salary_low,MI
+employee_54,company_size_M,MI
+employee_55,Data Analyst,MI
+employee_55,salary_medium,MI
+employee_55,company_size_M,MI
+employee_56,Data Engineer,EN
+employee_56,salary_low,EN
+employee_56,company_size_M,EN
+employee_56,remote,EN
+employee_57,Data Engineer,EX
+employee_57,salary_medium,EX
+employee_57,company_size_M,EX
+employee_57,remote,EX
+employee_58,Machine Learning Scientist,MI
+employee_58,salary_medium,MI
+employee_58,company_size_M,MI
+employee_59,Research Scientist,MI
+employee_59,salary_medium,MI
+employee_59,company_size_M,MI
+employee_59,remote,MI
+employee_60,Research Scientist,MI
+employee_60,salary_low,MI
+employee_60,company_size_M,MI
+employee_60,remote,MI
+employee_61,Data Scientist,SE
+employee_61,salary_high,SE
+employee_61,company_size_M,SE
+employee_62,AI Scientist,SE
+employee_62,salary_high,SE
+employee_62,company_size_L,SE
+employee_63,Machine Learning Scientist,SE
+employee_63,salary_medium,SE
+employee_63,company_size_M,SE
+employee_64,Data Scientist,EN
+employee_64,salary_medium,EN
+employee_64,company_size_M,EN
+employee_65,Data Scientist,EN
+employee_65,salary_low,EN
+employee_65,company_size_M,EN
+employee_66,Data Scientist,MI
+employee_66,salary_low,MI
+employee_66,company_size_L,MI
+employee_66,remote,MI
+employee_67,Data Engineer,EX
+employee_67,salary_low,EX
+employee_67,company_size_M,EX
+employee_67,remote,EX
+employee_68,Research Scientist,EN
+employee_68,salary_low,EN
+employee_68,company_size_M,EN
+employee_69,Analytics Engineer,MI
+employee_69,salary_medium,MI
+employee_69,company_size_M,MI
+employee_70,Data Science Consultant,MI
+employee_70,salary_low,MI
+employee_70,company_size_M,MI
+employee_71,Research Scientist,MI
+employee_71,salary_high,MI
+employee_71,company_size_M,MI
+employee_71,remote,MI
+employee_72,Data Analyst,EN
+employee_72,salary_low,EN
+employee_72,company_size_L,EN
+employee_72,remote,EN
+employee_73,Data Engineer,EX
+employee_73,salary_high,EX
+employee_73,company_size_M,EX
+employee_73,remote,EX
+employee_74,Machine Learning Scientist,MI
+employee_74,salary_medium,MI
+employee_74,company_size_S,MI
+employee_75,Machine Learning Scientist,MI
+employee_75,salary_low,MI
+employee_75,company_size_S,MI
+employee_76,Data Analyst,EN
+employee_76,salary_low,EN
+employee_76,company_size_S,EN
+employee_76,remote,EN
+employee_77,BI Data Analyst,SE
+employee_77,salary_low,SE
+employee_77,company_size_M,SE
+employee_77,remote,SE
+employee_78,Data Analyst,SE
+employee_78,salary_low,SE
+employee_78,company_size_S,SE
+employee_78,remote,SE
+employee_79,Data Science Consultant,SE
+employee_79,salary_low,SE
+employee_79,company_size_M,SE
+employee_79,remote,SE
+employee_80,Data Scientist,EN
+employee_80,salary_medium,EN
+employee_80,company_size_M,EN
+employee_80,remote,EN
+employee_81,AI Scientist,MI
+employee_81,salary_low,MI
+employee_81,company_size_L,MI
+employee_81,remote,MI
+employee_82,Data Engineer,MI
+employee_82,salary_low,MI
+employee_82,company_size_L,MI
+employee_82,remote,MI
+employee_83,AI Scientist,MI
+employee_83,salary_low,MI
+employee_83,company_size_S,MI
+employee_84,Data Scientist,EN
+employee_84,salary_low,EN
+employee_84,company_size_L,EN
+employee_85,Data Scientist,MI
+employee_85,salary_medium,MI
+employee_85,company_size_M,MI
+employee_86,Data Engineer,EN
+employee_86,salary_low,EN
+employee_86,company_size_L,EN
+employee_87,Data Analyst,SE
+employee_87,salary_high,SE
+employee_87,company_size_M,SE
+employee_88,Research Scientist,SE
+employee_88,salary_high,SE
+employee_88,company_size_M,SE
+employee_89,Data Scientist,EN
+employee_89,salary_low,EN
+employee_89,company_size_S,EN
+employee_89,remote,EN
+employee_90,Research Scientist,MI
+employee_90,salary_low,MI
+employee_90,company_size_L,MI
+employee_90,remote,MI
+employee_91,Data Engineer,EN
+employee_91,salary_medium,EN
+employee_91,company_size_M,EN
+employee_92,Data Scientist,MI
+employee_92,salary_medium,MI
+employee_92,company_size_L,MI
+employee_92,remote,MI
+employee_93,Data Science Consultant,SE
+employee_93,salary_low,SE
+employee_93,company_size_M,SE
+employee_94,Machine Learning Scientist,SE
+employee_94,salary_medium,SE
+employee_94,company_size_M,SE
+employee_94,remote,SE
+employee_95,Data Engineer,SE
+employee_95,salary_high,SE
+employee_95,company_size_M,SE
+employee_96,Data Analyst,MI
+employee_96,salary_low,MI
+employee_96,company_size_L,MI
+employee_96,remote,MI
+employee_97,Data Science Consultant,EN
+employee_97,salary_low,EN
+employee_97,company_size_M,EN
+employee_97,remote,EN
+employee_98,Data Engineer,MI
+employee_98,salary_medium,MI
+employee_98,company_size_M,MI
+employee_98,remote,MI
+employee_99,AI Scientist,SE
+employee_99,salary_low,SE
+employee_99,company_size_L,SE
+employee_99,remote,SE
+employee_100,Analytics Engineer,MI
+employee_100,salary_low,MI
+employee_100,company_size_M,MI
+employee_100,remote,MI
+employee_101,Research Scientist,SE
+employee_101,salary_medium,SE
+employee_101,company_size_M,SE
+employee_101,remote,SE
+employee_102,Data Scientist,EX
+employee_102,salary_medium,EX
+employee_102,company_size_M,EX
+employee_102,remote,EX
+employee_103,Data Scientist,EX
+employee_103,salary_low,EX
+employee_103,company_size_M,EX
+employee_103,remote,EX
+employee_104,Data Analyst,MI
+employee_104,salary_high,MI
+employee_104,company_size_M,MI
+employee_105,BI Data Analyst,EN
+employee_105,salary_low,EN
+employee_105,company_size_L,EN
+employee_106,AI Scientist,EN
+employee_106,salary_medium,EN
+employee_106,company_size_L,EN
+employee_106,remote,EN
+employee_107,Machine Learning Scientist,MI
+employee_107,salary_low,MI
+employee_107,company_size_M,MI
+employee_108,Data Analyst,SE
+employee_108,salary_medium,SE
+employee_108,company_size_L,SE
+employee_108,remote,SE
+employee_109,Data Science Consultant,EN
+employee_109,salary_low,EN
+employee_109,company_size_L,EN
+employee_109,remote,EN
+employee_110,BI Data Analyst,MI
+employee_110,salary_low,MI
+employee_110,company_size_M,MI
+employee_110,remote,MI
+employee_111,Analytics Engineer,MI
+employee_111,salary_low,MI
+employee_111,company_size_M,MI
+employee_112,Data Scientist,SE
+employee_112,salary_high,SE
+employee_112,company_size_M,SE
+employee_112,remote,SE
+employee_113,Machine Learning Scientist,EN
+employee_113,salary_low,EN
+employee_113,company_size_S,EN
+employee_113,remote,EN
+employee_114,Data Engineer,SE
+employee_114,salary_high,SE
+employee_114,company_size_M,SE
+employee_114,remote,SE
+employee_115,Data Manager,EN
+employee_115,salary_low,EN
+employee_115,company_size_M,EN
+employee_115,remote,EN
+employee_116,Data Scientist,SE
+employee_116,salary_low,SE
+employee_116,company_size_S,SE
+employee_116,remote,SE
+employee_117,BI Data Analyst,EN
+employee_117,salary_low,EN
+employee_117,company_size_L,EN
+employee_117,remote,EN
+employee_118,Data Manager,EX
+employee_118,salary_low,EX
+employee_118,company_size_L,EX
+employee_118,remote,EX
+employee_119,Data Scientist,MI
+employee_119,salary_low,MI
+employee_119,company_size_S,MI
+employee_119,remote,MI
+employee_120,Research Scientist,MI
+employee_120,salary_low,MI
+employee_120,company_size_S,MI
+employee_121,BI Data Analyst,MI
+employee_121,salary_low,MI
+employee_121,company_size_L,MI
+employee_121,remote,MI
+employee_122,Data Engineer,SE
+employee_122,salary_medium,SE
+employee_122,company_size_L,SE
+employee_122,remote,SE
+employee_123,Data Engineer,SE
+employee_123,salary_low,SE
+employee_123,company_size_L,SE
+employee_123,remote,SE
+employee_124,AI Scientist,EN
+employee_124,salary_low,EN
+employee_124,company_size_M,EN
+employee_124,remote,EN
+employee_125,Data Scientist,SE
+employee_125,salary_medium,SE
+employee_125,company_size_L,SE
+employee_125,remote,SE
+employee_126,BI Data Analyst,EN
+employee_126,salary_low,EN
+employee_126,company_size_M,EN
+employee_126,remote,EN
+employee_127,Machine Learning Scientist,SE
+employee_127,salary_low,SE
+employee_127,company_size_M,SE
+employee_128,Machine Learning Scientist,EX
+employee_128,salary_medium,EX
+employee_128,company_size_S,EX
+employee_128,remote,EX
+employee_129,AI Scientist,EX
+employee_129,salary_medium,EX
+employee_129,company_size_S,EX
+employee_129,remote,EX
+employee_130,Data Analyst,MI
+employee_130,salary_low,MI
+employee_130,company_size_L,MI
+employee_131,Data Analyst,MI
+employee_131,salary_low,MI
+employee_131,company_size_S,MI
+employee_131,remote,MI
+employee_132,BI Data Analyst,MI
+employee_132,salary_low,MI
+employee_132,company_size_S,MI
+employee_132,remote,MI
+employee_133,Research Scientist,EX
+employee_133,salary_low,EX
+employee_133,company_size_L,EX
+employee_134,Analytics Engineer,SE
+employee_134,salary_low,SE
+employee_134,company_size_S,SE
+employee_134,remote,SE
+employee_135,Analytics Engineer,EN
+employee_135,salary_low,EN
+employee_135,company_size_L,EN
+employee_135,remote,EN
+employee_136,AI Scientist,MI
+employee_136,salary_medium,MI
+employee_136,company_size_M,MI
+employee_136,remote,MI
+employee_137,Machine Learning Scientist,MI
+employee_137,salary_low,MI
+employee_137,company_size_M,MI
+employee_137,remote,MI
+employee_138,Data Engineer,MI
+employee_138,salary_low,MI
+employee_138,company_size_S,MI
+employee_138,remote,MI
+employee_139,AI Scientist,MI
+employee_139,salary_medium,MI
+employee_139,company_size_L,MI
+employee_139,remote,MI
+employee_140,AI Scientist,MI
+employee_140,salary_low,MI
+employee_140,company_size_M,MI
+employee_141,Data Scientist,EN
+employee_141,salary_low,EN
+employee_141,company_size_S,EN
+employee_142,Machine Learning Scientist,MI
+employee_142,salary_medium,MI
+employee_142,company_size_L,MI
+employee_142,remote,MI
+employee_143,Machine Learning Scientist,MI
+employee_143,salary_low,MI
+employee_143,company_size_L,MI
+employee_143,remote,MI
+employee_144,Data Analyst,MI
+employee_144,salary_low,MI
+employee_144,company_size_S,MI
+employee_145,Data Analyst,EX
+employee_145,salary_low,EX
+employee_145,company_size_M,EX
+employee_145,remote,EX
+employee_146,Data Analyst,MI
+employee_146,salary_medium,MI
+employee_146,company_size_M,MI
+employee_146,remote,MI
+employee_147,Data Engineer,EN
+employee_147,salary_low,EN
+employee_147,company_size_S,EN
+employee_147,remote,EN
+employee_148,Research Scientist,SE
+employee_148,salary_low,SE
+employee_148,company_size_L,SE
+employee_148,remote,SE
+employee_149,Research Scientist,MI
+employee_149,salary_low,MI
+employee_149,company_size_L,MI
+employee_150,Research Scientist,EN
+employee_150,salary_low,EN
+employee_150,company_size_L,EN
+employee_150,remote,EN
+employee_151,Data Scientist,MI
+employee_151,salary_low,MI
+employee_151,company_size_S,MI
+employee_152,Machine Learning Scientist,SE
+employee_152,salary_low,SE
+employee_152,company_size_S,SE
+employee_152,remote,SE
+employee_153,Data Engineer,MI
+employee_153,salary_medium,MI
+employee_153,company_size_L,MI
+employee_153,remote,MI
+employee_154,BI Data Analyst,EN
+employee_154,salary_low,EN
+employee_154,company_size_S,EN
+employee_154,remote,EN
+employee_155,Research Scientist,MI
+employee_155,salary_high,MI
+employee_155,company_size_M,MI
+employee_156,Data Science Consultant,MI
+employee_156,salary_low,MI
+employee_156,company_size_L,MI
+employee_156,remote,MI
+employee_157,BI Data Analyst,EX
+employee_157,salary_low,EX
+employee_157,company_size_L,EX
+employee_157,remote,EX
+employee_158,Data Engineer,EX
+employee_158,salary_low,EX
+employee_158,company_size_L,EX
+employee_158,remote,EX
+employee_159,Machine Learning Scientist,EN
+employee_159,salary_medium,EN
+employee_159,company_size_L,EN
+employee_159,remote,EN
+employee_160,Data Science Consultant,EN
+employee_160,salary_low,EN
+employee_160,company_size_S,EN
+employee_160,remote,EN
+employee_161,Data Engineer,SE
+employee_161,salary_low,SE
+employee_161,company_size_S,SE
+employee_161,remote,SE
+employee_162,Research Scientist,MI
+employee_162,salary_medium,MI
+employee_162,company_size_L,MI
+employee_162,remote,MI
+employee_163,Data Analyst,EN
+employee_163,salary_low,EN
+employee_163,company_size_S,EN
+employee_164,Data Engineer,SE
+employee_164,salary_low,SE
+employee_164,company_size_S,SE
+employee_165,Machine Learning Scientist,SE
+employee_165,salary_medium,SE
+employee_165,company_size_S,SE
+employee_166,Research Scientist,EN
+employee_166,salary_low,EN
+employee_166,company_size_L,EN
+employee_167,Data Science Consultant,EN
+employee_167,salary_low,EN
+employee_167,company_size_L,EN
+employee_168,Data Analyst,SE
+employee_168,salary_low,SE
+employee_168,company_size_L,SE
+employee_168,remote,SE
+employee_169,Data Science Consultant,EX
+employee_169,salary_low,EX
+employee_169,company_size_S,EX
+employee_169,remote,EX
+employee_170,Data Engineer,MI
+employee_170,salary_low,MI
+employee_170,company_size_L,MI
+employee_171,Machine Learning Scientist,SE
+employee_171,salary_medium,SE
+employee_171,company_size_L,SE
+employee_171,remote,SE
+employee_172,BI Data Analyst,MI
+employee_172,salary_low,MI
+employee_172,company_size_M,MI
+employee_173,Research Scientist,MI
+employee_173,salary_low,MI
+employee_173,company_size_S,MI
+employee_173,remote,MI
+employee_174,AI Scientist,EN
+employee_174,salary_low,EN
+employee_174,company_size_S,EN
+employee_174,remote,EN
+employee_175,Research Scientist,SE
+employee_175,salary_low,SE
+employee_175,company_size_S,SE
+employee_175,remote,SE
+employee_176,Data Scientist,SE
+employee_176,salary_low,SE
+employee_176,company_size_S,SE
+employee_177,Data Scientist,SE
+employee_177,salary_high,SE
+employee_177,company_size_L,SE
+employee_177,remote,SE

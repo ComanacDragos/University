@@ -1,0 +1,206 @@
+experience_level,job_title,remote_ratio,salary_in_usd,company_size,salary_type
+SE,Data Scientist,100,175000,M,medium
+SE,Data Scientist,100,120000,M,low
+SE,Data Scientist,0,219000,M,medium
+SE,Data Scientist,0,141000,M,low
+SE,Data Analyst,100,130000,M,low
+MI,Data Analyst,100,150000,M,low
+SE,Analytics Engineer,100,230000,M,medium
+SE,Analytics Engineer,100,143200,M,low
+SE,Data Engineer,0,253200,M,medium
+SE,Data Engineer,0,90700,M,low
+MI,Data Engineer,0,162500,M,medium
+MI,Data Engineer,0,130000,M,low
+MI,Data Analyst,0,105380,M,low
+SE,Data Engineer,100,203300,M,medium
+SE,Data Engineer,100,123600,M,low
+EX,Data Scientist,0,258750,M,medium
+MI,Data Scientist,0,65062,L,low
+SE,Data Analyst,0,202800,L,medium
+SE,Data Analyst,0,104300,L,low
+SE,Data Analyst,0,145000,M,low
+SE,Analytics Engineer,0,152500,M,low
+EN,Research Scientist,100,220000,L,medium
+SE,Analytics Engineer,0,289800,M,medium
+MI,Data Engineer,100,100000,M,low
+EN,Data Engineer,0,85000,M,low
+EN,Data Analyst,0,75000,M,low
+SE,Data Analyst,0,204500,M,medium
+MI,Data Scientist,0,66837,M,low
+EN,Data Analyst,100,85000,M,low
+EX,Data Engineer,0,220000,M,medium
+EN,Data Engineer,100,17022,L,low
+EX,Data Engineer,0,145000,M,low
+SE,Data Scientist,0,239000,L,medium
+SE,Data Scientist,0,122900,L,low
+SE,Data Scientist,100,88256,L,low
+SE,Data Engineer,0,240500,L,medium
+SE,Data Engineer,0,123700,L,low
+SE,Research Scientist,100,130000,M,low
+EX,Analytics Engineer,100,221000,M,medium
+EX,Analytics Engineer,100,153000,M,low
+SE,Research Scientist,0,210000,M,medium
+SE,Research Scientist,0,136000,M,low
+SE,Data Manager,0,198800,M,medium
+SE,Data Manager,0,105200,M,low
+SE,Data Manager,100,115000,M,low
+EN,Data Analyst,0,40663,L,low
+EN,Data Scientist,100,51753,L,low
+EN,Data Scientist,100,130001,M,low
+MI,Data Scientist,100,93918,M,low
+SE,Data Analyst,100,175000,M,medium
+MI,Research Scientist,0,195895,M,medium
+MI,Research Scientist,0,102772,M,low
+MI,Data Scientist,100,180000,M,medium
+EX,Data Scientist,0,145000,M,low
+MI,Data Manager,0,135000,M,low
+MI,Data Analyst,0,182500,M,medium
+EN,Data Engineer,100,92700,M,low
+EX,Data Engineer,100,286000,M,medium
+MI,Machine Learning Scientist,0,230000,M,medium
+MI,Research Scientist,100,210000,M,medium
+MI,Research Scientist,100,151800,M,low
+SE,Data Scientist,0,317070,M,high
+SE,AI Scientist,0,423834,L,high
+SE,Machine Learning Scientist,0,220000,M,medium
+EN,Data Scientist,0,190000,M,medium
+EN,Data Scientist,0,120000,M,low
+EN,Data Scientist,100,121093,L,low
+MI,Data Scientist,100,17022,L,low
+EX,Data Engineer,100,116704,M,low
+EN,Research Scientist,0,150000,M,low
+MI,Analytics Engineer,0,185700,M,medium
+MI,Data Science Consultant,0,90000,M,low
+MI,Research Scientist,100,340000,M,high
+MI,Data Scientist,100,64385,M,low
+EN,Data Analyst,100,100000,L,low
+EX,Data Engineer,100,310000,M,high
+MI,Machine Learning Scientist,0,200000,S,medium
+MI,Machine Learning Scientist,0,125000,S,low
+EN,Data Analyst,100,30000,M,low
+EN,Data Analyst,100,34320,S,low
+SE,BI Data Analyst,100,71897,M,low
+SE,Data Analyst,100,15806,S,low
+MI,Data Scientist,100,40000,L,low
+SE,Data Science Consultant,100,29453,M,low
+EN,Data Scientist,100,168000,M,medium
+MI,AI Scientist,100,38631,L,low
+MI,Data Engineer,100,115447,L,low
+MI,AI Scientist,0,30000,S,low
+EN,Data Analyst,100,50000,L,low
+EN,Data Scientist,0,9727,L,low
+MI,Data Scientist,0,170000,M,medium
+EN,Data Engineer,0,12000,L,low
+SE,Data Analyst,0,385000,M,high
+SE,Research Scientist,0,370000,M,high
+EN,Data Scientist,100,110000,S,low
+MI,Research Scientist,100,23000,L,low
+EN,Data Engineer,0,160000,M,medium
+MI,Data Scientist,100,155000,L,medium
+SE,Data Scientist,100,63312,L,low
+SE,Data Science Consultant,0,122000,M,low
+SE,Machine Learning Scientist,100,225000,M,medium
+SE,Data Engineer,0,310000,M,high
+MI,Data Analyst,100,14307,L,low
+EN,Data Science Consultant,100,24165,M,low
+MI,Data Engineer,100,160000,M,medium
+MI,Data Engineer,100,35610,L,low
+SE,AI Scientist,100,125000,L,low
+MI,Analytics Engineer,100,122500,M,low
+SE,Research Scientist,100,210000,M,medium
+EX,Data Scientist,100,159000,M,medium
+EX,Data Scientist,100,130000,M,low
+MI,Data Analyst,0,430967,M,high
+EN,BI Data Analyst,0,60938,L,low
+MI,Data Analyst,100,16904,L,low
+EN,AI Scientist,100,200000,L,medium
+MI,Machine Learning Scientist,0,135000,M,low
+SE,Data Analyst,100,171000,L,medium
+EN,Data Science Consultant,100,27317,L,low
+MI,BI Data Analyst,100,105066,M,low
+MI,Analytics Engineer,0,104663,M,low
+SE,Data Scientist,100,350000,M,high
+EN,Machine Learning Scientist,100,34672,S,low
+SE,Data Engineer,100,315000,M,high
+EN,Data Manager,100,77300,M,low
+EN,Data Analyst,100,125404,S,low
+SE,Data Scientist,100,120000,S,low
+EN,BI Data Analyst,100,57000,L,low
+EX,Data Manager,100,125976,L,low
+MI,Data Scientist,100,75648,S,low
+MI,Research Scientist,0,126080,S,low
+MI,BI Data Analyst,100,45050,L,low
+SE,Data Engineer,100,178800,L,medium
+SE,Data Engineer,100,132100,L,low
+EN,AI Scientist,100,50000,M,low
+SE,Data Scientist,100,236900,L,medium
+EN,Data Scientist,100,22892,M,low
+EN,BI Data Analyst,100,8050,M,low
+SE,Machine Learning Scientist,0,129300,M,low
+EN,Data Engineer,100,45390,L,low
+EX,Machine Learning Scientist,100,200000,S,medium
+EX,AI Scientist,100,200000,S,medium
+MI,Analytics Engineer,100,7500,M,low
+MI,Data Analyst,0,113000,L,low
+MI,BI Data Analyst,100,53368,M,low
+MI,Research Scientist,100,145000,L,low
+MI,Data Analyst,100,5723,S,low
+MI,BI Data Analyst,100,50432,S,low
+EX,Research Scientist,0,84053,L,low
+SE,Analytics Engineer,100,48000,S,low
+EN,Analytics Engineer,100,130000,L,low
+MI,Data Analyst,100,65257,M,low
+MI,AI Scientist,100,200000,M,medium
+MI,Machine Learning Scientist,100,22800,M,low
+MI,Data Engineer,100,65666,S,low
+MI,AI Scientist,100,200000,L,medium
+MI,AI Scientist,0,120000,M,low
+EN,Data Scientist,0,49268,S,low
+MI,Machine Learning Scientist,100,160000,L,medium
+MI,Machine Learning Scientist,100,112300,L,low
+MI,Data Analyst,0,58000,S,low
+EX,Data Analyst,100,130000,M,low
+MI,Data Analyst,100,167000,M,medium
+EN,Data Engineer,100,65000,S,low
+SE,Research Scientist,100,89306,L,low
+MI,Machine Learning Scientist,100,153000,M,low
+MI,Research Scientist,0,61989,L,low
+EN,Research Scientist,100,120000,L,low
+MI,Data Scientist,0,9466,S,low
+SE,Machine Learning Scientist,100,120000,S,low
+MI,Data Engineer,100,200000,L,medium
+MI,Data Engineer,100,59303,S,low
+MI,Research Scientist,100,62649,M,low
+EN,BI Data Analyst,100,55000,S,low
+MI,Research Scientist,0,450000,M,high
+MI,Data Science Consultant,100,103000,L,low
+EN,Research Scientist,100,82528,L,low
+EX,BI Data Analyst,100,150000,L,low
+EX,Data Engineer,100,79833,L,low
+EN,Machine Learning Scientist,100,225000,L,medium
+EN,Data Science Consultant,100,76833,S,low
+SE,Data Engineer,100,115000,S,low
+MI,Research Scientist,100,187442,L,medium
+EN,Data Scientist,100,90000,S,low
+EN,Data Analyst,0,6072,S,low
+SE,Data Engineer,0,33511,S,low
+SE,Data Engineer,100,96282,L,low
+EN,Data Engineer,100,21637,M,low
+SE,Machine Learning Scientist,0,260000,S,medium
+EN,Research Scientist,0,100000,L,low
+SE,Data Scientist,100,77684,M,low
+EN,Data Science Consultant,0,76833,L,low
+SE,Data Analyst,100,63831,L,low
+EN,BI Data Analyst,100,9272,S,low
+EX,Data Science Consultant,100,69741,S,low
+MI,Data Engineer,0,26005,L,low
+SE,Machine Learning Scientist,100,225000,L,medium
+MI,BI Data Analyst,0,98000,M,low
+MI,Research Scientist,100,56738,S,low
+EN,AI Scientist,100,45896,S,low
+SE,Research Scientist,100,50000,S,low
+MI,Data Scientist,100,42197,S,low
+SE,Data Engineer,100,76833,S,low
+EN,AI Scientist,100,18053,S,low
+SE,Data Scientist,0,91237,S,low
+SE,Data Scientist,100,412000,L,high

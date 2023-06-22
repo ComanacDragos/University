@@ -1,0 +1,103 @@
+Data Scientist,salary_medium,SE
+Data Scientist,company_size_M,SE
+Data Scientist,remote,SE
+Data Analyst,salary_low,SE
+Data Analyst,company_size_M,SE
+Data Analyst,remote,SE
+Data Analyst,salary_low,MI
+Data Analyst,company_size_M,MI
+Data Analyst,remote,MI
+Analytics Engineer,salary_medium,SE
+Analytics Engineer,company_size_M,SE
+Analytics Engineer,remote,SE
+Data Engineer,salary_medium,SE
+Data Engineer,company_size_M,SE
+Data Engineer,salary_medium,MI
+Data Engineer,company_size_M,MI
+Data Scientist,salary_medium,EX
+Data Scientist,company_size_M,EX
+Data Scientist,salary_low,MI
+Data Scientist,company_size_L,MI
+Research Scientist,salary_medium,EN
+Research Scientist,company_size_L,EN
+Research Scientist,remote,EN
+Data Engineer,salary_low,EN
+Data Engineer,company_size_M,EN
+Data Analyst,salary_low,EN
+Data Analyst,company_size_M,EN
+Data Engineer,salary_medium,EX
+Data Engineer,company_size_M,EX
+Research Scientist,salary_low,SE
+Research Scientist,company_size_M,SE
+Research Scientist,remote,SE
+Analytics Engineer,salary_medium,EX
+Analytics Engineer,company_size_M,EX
+Analytics Engineer,remote,EX
+Data Manager,salary_medium,SE
+Data Manager,company_size_M,SE
+Data Scientist,salary_low,EN
+Data Scientist,company_size_L,EN
+Data Scientist,remote,EN
+Research Scientist,salary_medium,MI
+Research Scientist,company_size_M,MI
+Data Manager,salary_low,MI
+Data Manager,company_size_M,MI
+Machine Learning Scientist,salary_medium,MI
+Machine Learning Scientist,company_size_M,MI
+AI Scientist,salary_high,SE
+AI Scientist,company_size_L,SE
+Machine Learning Scientist,salary_medium,SE
+Machine Learning Scientist,company_size_M,SE
+Analytics Engineer,salary_medium,MI
+Analytics Engineer,company_size_M,MI
+Data Science Consultant,salary_low,MI
+Data Science Consultant,company_size_M,MI
+BI Data Analyst,salary_low,SE
+BI Data Analyst,company_size_M,SE
+BI Data Analyst,remote,SE
+Data Science Consultant,salary_low,SE
+Data Science Consultant,company_size_M,SE
+Data Science Consultant,remote,SE
+AI Scientist,salary_low,MI
+AI Scientist,company_size_L,MI
+AI Scientist,remote,MI
+Data Science Consultant,salary_low,EN
+Data Science Consultant,company_size_M,EN
+Data Science Consultant,remote,EN
+BI Data Analyst,salary_low,EN
+BI Data Analyst,company_size_L,EN
+AI Scientist,salary_medium,EN
+AI Scientist,company_size_L,EN
+AI Scientist,remote,EN
+BI Data Analyst,salary_low,MI
+BI Data Analyst,company_size_M,MI
+BI Data Analyst,remote,MI
+Machine Learning Scientist,salary_low,EN
+Machine Learning Scientist,company_size_S,EN
+Machine Learning Scientist,remote,EN
+Data Manager,salary_low,EN
+Data Manager,company_size_M,EN
+Data Manager,remote,EN
+Data Manager,salary_low,EX
+Data Manager,company_size_L,EX
+Data Manager,remote,EX
+Machine Learning Scientist,salary_medium,EX
+Machine Learning Scientist,company_size_S,EX
+Machine Learning Scientist,remote,EX
+AI Scientist,salary_medium,EX
+AI Scientist,company_size_S,EX
+AI Scientist,remote,EX
+Research Scientist,salary_low,EX
+Research Scientist,company_size_L,EX
+Analytics Engineer,salary_low,EN
+Analytics Engineer,company_size_L,EN
+Analytics Engineer,remote,EN
+Data Analyst,salary_low,EX
+Data Analyst,company_size_M,EX
+Data Analyst,remote,EX
+BI Data Analyst,salary_low,EX
+BI Data Analyst,company_size_L,EX
+BI Data Analyst,remote,EX
+Data Science Consultant,salary_low,EX
+Data Science Consultant,company_size_S,EX
+Data Science Consultant,remote,EX

@@ -2,3 +2,6 @@ cifar-10-batches-py
 weights
 tensorboard
 data
+documentation
+*.csv
+newsSpace

@@ -1,0 +1,41 @@
+experience_level,job_title,remote_ratio,salary_in_usd,company_size,salary_type
+SE,Data Scientist,100,175000,M,medium
+SE,Data Analyst,100,130000,M,low
+MI,Data Analyst,100,150000,M,low
+SE,Analytics Engineer,100,230000,M,medium
+SE,Data Engineer,0,253200,M,medium
+MI,Data Engineer,0,162500,M,medium
+EX,Data Scientist,0,258750,M,medium
+MI,Data Scientist,0,65062,L,low
+EN,Research Scientist,100,220000,L,medium
+EN,Data Engineer,0,85000,M,low
+EN,Data Analyst,0,75000,M,low
+EX,Data Engineer,0,220000,M,medium
+SE,Research Scientist,100,130000,M,low
+EX,Analytics Engineer,100,221000,M,medium
+SE,Data Manager,0,198800,M,medium
+EN,Data Scientist,100,51753,L,low
+MI,Research Scientist,0,195895,M,medium
+MI,Data Manager,0,135000,M,low
+MI,Machine Learning Scientist,0,230000,M,medium
+SE,AI Scientist,0,423834,L,high
+SE,Machine Learning Scientist,0,220000,M,medium
+MI,Analytics Engineer,0,185700,M,medium
+MI,Data Science Consultant,0,90000,M,low
+SE,BI Data Analyst,100,71897,M,low
+SE,Data Science Consultant,100,29453,M,low
+MI,AI Scientist,100,38631,L,low
+EN,Data Science Consultant,100,24165,M,low
+EN,BI Data Analyst,0,60938,L,low
+EN,AI Scientist,100,200000,L,medium
+MI,BI Data Analyst,100,105066,M,low
+EN,Machine Learning Scientist,100,34672,S,low
+EN,Data Manager,100,77300,M,low
+EX,Data Manager,100,125976,L,low
+EX,Machine Learning Scientist,100,200000,S,medium
+EX,AI Scientist,100,200000,S,medium
+EX,Research Scientist,0,84053,L,low
+EN,Analytics Engineer,100,130000,L,low
+EX,Data Analyst,100,130000,M,low
+EX,BI Data Analyst,100,150000,L,low
+EX,Data Science Consultant,100,69741,S,low
