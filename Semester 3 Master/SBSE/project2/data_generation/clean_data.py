@@ -17,7 +17,8 @@ java_patterns = [
     "^import",
     "^/\*\*",
     "^\*",
-    "^//"
+    "^//",
+    "^/\*"
 ]
 
 python_patterns = [
