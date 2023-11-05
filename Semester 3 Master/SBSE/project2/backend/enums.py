@@ -1,6 +1,6 @@
-from enum import IntEnum, auto
+from enum import Enum
 
 
-class Stage(IntEnum):
-    TRAIN = auto()
-    VAL = auto()
+class Stage(Enum):
+    TRAIN = 'train'
+    VAL = 'val'

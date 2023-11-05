@@ -9,16 +9,20 @@ output_csv = sys.argv[2]
 
 python_files = []
 java_files = []
-stage = []
 
 for java_file, python_file in mapping.items():
     if python_file:
         python_files.append(python_file)
         java_files.append(java_file)
-        if np.random.rand() < 0.8:
-            stage.append('train')
-        else:
-            stage.append('val')
+
+num_val = int(len(java_files) * 0.2)
+
+stage = [1] * (len(java_files) - num_val) + [0] * num_val
+np.random.shuffle(stage)
+stage = ['train' if x == 1 else 'val' for x in
+         stage
+         ]
+
 
 pd.DataFrame.from_dict({
     'original': java_files,

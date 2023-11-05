@@ -84,7 +84,7 @@ def write_methods(file, methods, output):
         try:
             with open(method_path, 'w') as writer:
                 writer.write(body)
-                name_to_path[name] = method_path
+                name_to_path[name] = Path(file.split(".")[0]) / f"{name}.txt"
         except OSError:
             continue
     return name_to_path
