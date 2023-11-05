@@ -23,10 +23,10 @@ class MethodDataGeneratorConfig:
 
 if __name__ == '__main__':
     print("Starting")
-    MethodDataGeneratorConfig.BATCH_SIZE = 181
+    MethodDataGeneratorConfig.BATCH_SIZE = 32
     db = MethodDataGeneratorConfig.build(Stage.VAL)
     print(len(db))
-    original, duplicate, not_duplicate = db[1]
+    original, duplicate, not_duplicate = db[0]
 
     import matplotlib.pyplot as plt
 
