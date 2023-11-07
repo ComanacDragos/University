@@ -24,7 +24,7 @@ class ConvBlock:
         if self.skip_connection_size:
             for _ in range(self.skip_connection_size):
                 x = self.conv_generator()(x)
-            x = Add([inputs, x])
+            x = Add()([inputs, x])
 
         if self.pooling_generator:
             x = self.pooling_generator()(x)
@@ -33,7 +33,7 @@ class ConvBlock:
             x = self.batch_norm_generator()(x)
 
         if self.activation_generator:
-            x = self.activation_generator(x)
+            x = self.activation_generator()(x)
 
         if self.batch_norm_generator:
             x = self.batch_norm_generator()(x)

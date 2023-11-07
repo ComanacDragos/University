@@ -29,7 +29,7 @@ class ResnetBackboneConfig:
             )
 
         def block_generator(kernel_size=3, filters=32, strides=1, skip_connection_size=1):
-            return lambda: ConvBlock(
+            return ConvBlock(
                 conv_generator(kernel_size, filters, strides),
                 skip_connection_size=skip_connection_size,
                 activation_generator=activation_generator,
@@ -38,11 +38,12 @@ class ResnetBackboneConfig:
             )
 
         return GenericBackbone(blocks=[
-            block_generator(filters=256),
+            block_generator(filters=512, skip_connection_size=0),
             block_generator(filters=256, skip_connection_size=0),
-            block_generator(filters=128),
+            block_generator(filters=256),
             block_generator(filters=128, skip_connection_size=0),
-            block_generator(filters=64),
+            block_generator(filters=128),
             block_generator(filters=64, skip_connection_size=0),
-            block_generator(filters=32),
+            block_generator(filters=64),
+            block_generator(filters=32, skip_connection_size=0),
         ])
