@@ -28,7 +28,7 @@ class ResnetBackboneConfig:
                 kernel_regularizer=l1_l2(l1=1e-6, l2=1e-5)
             )
 
-        def block_generator(kernel_size=3, filters=32, strides=1, skip_connection_size=1):
+        def block_generator(kernel_size=3, filters=32, strides=1, skip_connection_size=0):
             return ConvBlock(
                 conv_generator(kernel_size, filters, strides),
                 skip_connection_size=skip_connection_size,
@@ -38,12 +38,12 @@ class ResnetBackboneConfig:
             )
 
         return GenericBackbone(blocks=[
-            block_generator(filters=512, skip_connection_size=0),
-            block_generator(filters=256, skip_connection_size=0),
+            block_generator(filters=512),
             block_generator(filters=256),
-            block_generator(filters=128, skip_connection_size=0),
+            block_generator(filters=256, skip_connection_size=2),
             block_generator(filters=128),
-            block_generator(filters=64, skip_connection_size=0),
+            block_generator(filters=128, skip_connection_size=2),
             block_generator(filters=64),
-            block_generator(filters=32, skip_connection_size=0),
+            block_generator(filters=64, skip_connection_size=2),
+            block_generator(filters=32),
         ])

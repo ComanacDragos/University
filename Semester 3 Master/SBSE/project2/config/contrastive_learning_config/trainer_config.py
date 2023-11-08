@@ -1,7 +1,7 @@
 from backend.trainer import ContrastiveTrainer
 from loss_config import ContrastiveLossConfig
 from data_generator_config import MethodDataGeneratorConfig
-from callbacks_config import CallbacksConfig
+from config.common.callbacks_config import CallbacksConfig
 from model_config import ModelConfig
 from backend.enums import Stage
 import tensorflow.keras.backend as K
@@ -16,35 +16,39 @@ def cosine_similarity(x, y):
 
 
 class ContrastiveTrainerConfig:
+    EXPERIMENT = 'output/first_train'
+
     EPOCHS = 10
-    START_LR = 1e-4
+    START_LR = 1e-3
 
     @staticmethod
     def build():
+        input_shape = (len(MethodDataGeneratorConfig.ALPHABET), MethodDataGeneratorConfig.MAX_LENGTH)
         return ContrastiveTrainer(
             MethodDataGeneratorConfig.build(Stage.TRAIN),
             MethodDataGeneratorConfig.build(Stage.VAL),
             ContrastiveLossConfig.build(),
             cosine_similarity,
             Adam(learning_rate=ContrastiveTrainerConfig.START_LR),
-            CallbacksConfig.build(Stage.TRAIN),
-            ModelConfig.build(),
+            CallbacksConfig.build(),
+            ModelConfig.build(input_shape),
             ContrastiveTrainerConfig.EPOCHS
         )
 
 
 if __name__ == '__main__':
-    x = [[0., 1.], [1., 1.]]
-    y = [[1., 0.], [0., 0.]]
-
-    print(cosine_similarity(x, y))
-
-    x = [[0., 1.], [1., 1.]]
-    y = [[1., 0.], [1., 1.]]
-
-    print(cosine_similarity(x, y))
-
-    x = [[0., 1.], [1., 1.]]
-    y = [[0., 1.], [1., 1.]]
-
-    print(cosine_similarity(x, y))
+    ContrastiveTrainerConfig.build().train()
+    # x = [[0., 1.], [1., 1.]]
+    # y = [[1., 0.], [0., 0.]]
+    #
+    # print(cosine_similarity(x, y))
+    #
+    # x = [[0., 1.], [1., 1.]]
+    # y = [[1., 0.], [1., 1.]]
+    #
+    # print(cosine_similarity(x, y))
+    #
+    # x = [[0., 1.], [1., 1.]]
+    # y = [[0., 1.], [1., 1.]]
+    #
+    # print(cosine_similarity(x, y))
