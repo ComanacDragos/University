@@ -1,8 +1,8 @@
-from abc import abstractmethod
-
 import tensorflow as tf
 from tensorflow.keras.callbacks import CallbackList
-from state import TrainState, EvalState
+from backend.trainer.state import TrainState, EvalState
+from tqdm import tqdm
+from backend.utils import logger
 
 
 class GenericTrainer:
@@ -11,7 +11,6 @@ class GenericTrainer:
             train_dataset,
             val_dataset,
             loss,
-            similarity_function,
             optimizer,
             callbacks: CallbackList,
             model,
@@ -20,7 +19,6 @@ class GenericTrainer:
         self.train_dataset = train_dataset
         self.val_dataset = val_dataset
         self.loss = loss
-        self.similarity_function = similarity_function
         self.optimizer = optimizer
         self.callbacks = callbacks
         self.model = model
@@ -31,35 +29,67 @@ class GenericTrainer:
 
         self.callbacks.on_train_begin()
         for epoch in range(self.epochs):
+            logger.log(f"Train epoch {epoch}")
             self.callbacks.on_epoch_begin(epoch)
             self.train_loop(epoch)
+            logger.log(f"Eval epoch {epoch}")
             self.eval_loop(epoch)
             self.callbacks.on_epoch_end(epoch)
         self.callbacks.on_train_end()
 
-    @abstractmethod
     def compute_loss(self, inputs):
         samples, labels = inputs
-        predictions = self.model(samples)
-        loss = self.loss(predictions, labels)
+        loss = self.loss(self.forward(inputs), labels)
         return loss
 
+    def forward(self, inputs):
+        samples, _ = inputs
+        predictions = self.model(samples)
+        return predictions
+
     def train_loop(self, epoch):
-        for step, inputs in enumerate(self.train_dataset):
-            self.callbacks.on_train_batch_begin(step)
+        for step, inputs in tqdm(enumerate(self.train_dataset), total=len(self.train_dataset), miniters=0):
+            self.callbacks.on_train_batch_begin(
+                step,
+                logs=TrainState(
+                    epoch=epoch,
+                    inputs=inputs,
+                    optimizer=self.optimizer,
+                    model=self.model,
+                )
+            )
             with tf.GradientTape() as tape:
                 loss_value = self.compute_loss(inputs)
 
             grads = tape.gradient(loss_value, self.model.trainable_weights)
             self.optimizer.apply_gradients(zip(grads, self.model.trainable_weights))
-            # if step % 200 == 0:
-            print(
-                "Training loss (for one batch) at step %d: %.4f"
-                % (step, float(loss_value))
+            self.callbacks.on_train_batch_end(
+                step,
+                logs=TrainState(
+                    epoch=epoch,
+                    inputs=inputs,
+                    optimizer=self.optimizer,
+                    model=self.model,
+                    loss=loss_value
+                )
             )
-            # print("Seen so far: %s samples" % ((step + 1) * self.train_dataset.batch_size))
-
-            self.callbacks.on_train_batch_end(step)
 
     def eval_loop(self, epoch):
-        pass
+        all_predictions = []
+        self.callbacks.on_predict_begin()
+        for step, inputs in tqdm(enumerate(self.val_dataset), total=len(self.val_dataset), miniters=0):
+            self.callbacks.on_predict_batch_begin(
+                step,
+                EvalState(epoch)
+            )
+            predictions = self.forward(inputs)
+            self.callbacks.on_predict_batch_end(
+                step,
+                EvalState(epoch, predictions=predictions)
+            )
+        self.callbacks.on_predict_end(
+            logs=EvalState(
+                epoch,
+                predictions=tf.stack(all_predictions)
+            )
+        )

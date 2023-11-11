@@ -1,7 +1,7 @@
 from pathlib import Path
 import os
 import sys
-from utils import to_json
+from backend.utils import to_json
 
 root = Path(sys.argv[1])
 output = sys.argv[2]

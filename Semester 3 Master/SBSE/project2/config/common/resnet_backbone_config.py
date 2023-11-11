@@ -1,5 +1,5 @@
 from backend.model.blocks import ConvBlock
-from backend.model.generic import GenericBackbone
+from backend.model.generic_model import GenericBackbone
 from tensorflow.keras.layers import LeakyReLU, BatchNormalization, Dropout
 from tensorflow.keras.initializers import HeNormal
 from tensorflow.keras.regularizers import l1_l2

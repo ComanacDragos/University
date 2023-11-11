@@ -1,7 +1,7 @@
 import sys
 
 import pandas as pd
-from utils import open_json
+from backend.utils import open_json
 import numpy as np
 
 mapping = open_json(sys.argv[1])

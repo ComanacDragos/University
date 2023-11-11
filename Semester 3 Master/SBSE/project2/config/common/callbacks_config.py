@@ -1,13 +1,10 @@
 from backend.enums import Stage
-from keras.callbacks import CallbackList, ModelCheckpoint
+from tensorflow.keras.callbacks import CallbackList, ModelCheckpoint
 
 
 class CallbacksConfig:
     @staticmethod
-    def build():
-        return {
-            Stage.TRAIN: CallbackList([
+    def build(output_path):
+        return CallbackList([
 
-            ]),
-            Stage.VAL: [CallbackList([])]
-        }
+        ])

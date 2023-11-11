@@ -2,7 +2,7 @@ import os.path
 import re
 import sys
 
-from utils import open_json, to_json
+from backend.utils import open_json, to_json
 from pathlib import Path
 
 

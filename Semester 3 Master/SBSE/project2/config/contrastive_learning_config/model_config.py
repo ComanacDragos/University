@@ -1,18 +1,31 @@
 from config.common.resnet_backbone_config import ResnetBackboneConfig
-from backend.model.generic import GenericModel
-from tensorflow.keras.layers import Conv1D
+from backend.model.contrastive_model import ContrastiveModel, ContrastiveHead
+from tensorflow.keras.layers import Conv1D, Input
+from tensorflow.keras.models import Model
+from backend.utils import logger
+import tensorflow.keras.backend as K
 
 
-class ModelConfig:
+def cosine_similarity(x, y):
+    x = K.l2_normalize(x, axis=-1)
+    y = K.l2_normalize(y, axis=-1)
+    sim = -K.sum(x * y, axis=-1, keepdims=True)
+    return 1 - ((sim + 1) / 2)  # convert to 0, 1 where 1 means similar
+
+
+class ContrastiveModelConfig:
     @staticmethod
     def build(input_shape):
-        return GenericModel(
+        inputs = [Input(input_shape), Input(input_shape)]
+        x = ContrastiveModel(
+            similarity_function=cosine_similarity,
             backbone=ResnetBackboneConfig.build(Conv1D),
-            head=lambda x: x,  # identity for now
-            name="DuplicateCodeClassifier"
-        )(input_shape)
+            head=ContrastiveHead()
+        )(inputs)
+        model = Model(inputs=inputs, outputs=x, name='DuplicateCodeClassifier')
+        model.summary(print_fn=logger)
+        return model
 
 
 if __name__ == '__main__':
-    model = ModelConfig.build((10, 20))
-    model.summary()
+    ContrastiveModelConfig.build((65, 1024)).summary()

@@ -3,6 +3,7 @@ import tensorflow as tf
 import pandas as pd
 from backend.enums import Stage
 from pathlib import Path
+from backend.utils import logger
 
 
 class MethodDataGenerator(tf.keras.utils.Sequence):
@@ -10,7 +11,7 @@ class MethodDataGenerator(tf.keras.utils.Sequence):
         self.root = Path(root)
         self.data = pd.read_csv(csv_path)
         self.data = self.data[self.data['stage'] == stage.value]
-        print(f"Loaded {csv_path} for {stage.value} - {len(self.data)} samples")
+        logger.log(f"Loaded {csv_path} for {stage.value} - {len(self.data)} samples")
         self.batch_size = batch_size
         self.stage = stage
         self.alphabet = alphabet

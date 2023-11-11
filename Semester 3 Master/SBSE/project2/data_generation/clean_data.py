@@ -1,7 +1,7 @@
 import os.path
 import sys
 
-from utils import open_json
+from backend.utils import open_json
 import re
 from pathlib import Path
 
