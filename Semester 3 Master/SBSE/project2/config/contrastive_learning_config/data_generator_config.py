@@ -4,8 +4,8 @@ from backend.enums import Stage
 
 class MethodDataGeneratorConfig:
     ROOT = 'data/methods'
-    CSV_PATH = 'data/csvs/toy.csv'
-    BATCH_SIZE = 32
+    CSV_PATH = 'data/csvs/duplicate.csv'
+    BATCH_SIZE = 64
     ALPHABET = """!"%&'()*+,-./0123456789:;<=>?@[\\]^_abcdefghijklmnopqrstuvwxyz{|}\n"""
     MAX_LENGTH = 1024
 

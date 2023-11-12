@@ -4,15 +4,17 @@ from data_generator_config import MethodDataGeneratorConfig
 from config.common.callbacks_config import CallbacksConfig
 from model_config import ContrastiveModelConfig
 from backend.enums import Stage
-
+from backend.utils import set_seed
+import shutil
 from tensorflow.keras.optimizers import Adam
+from pathlib import Path
 
 
 class ContrastiveTrainerConfig:
-    EXPERIMENT = 'output/first_train'
+    EXPERIMENT = Path('output/test_train')
 
     EPOCHS = 10
-    START_LR = 1e-3
+    START_LR = 1e-4
 
     @staticmethod
     def build():
@@ -29,18 +31,6 @@ class ContrastiveTrainerConfig:
 
 
 if __name__ == '__main__':
+    set_seed(0)
+    shutil.copytree('config', ContrastiveTrainerConfig.EXPERIMENT / 'config', dirs_exist_ok=True)
     ContrastiveTrainerConfig.build().train()
-    # x = [[0., 1.], [1., 1.]]
-    # y = [[1., 0.], [0., 0.]]
-    #
-    # print(cosine_similarity(x, y))
-    #
-    # x = [[0., 1.], [1., 1.]]
-    # y = [[1., 0.], [1., 1.]]
-    #
-    # print(cosine_similarity(x, y))
-    #
-    # x = [[0., 1.], [1., 1.]]
-    # y = [[0., 1.], [1., 1.]]
-    #
-    # print(cosine_similarity(x, y))

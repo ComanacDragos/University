@@ -8,6 +8,7 @@ class TrainState:
 
 
 class EvalState:
-    def __init__(self, epoch, predictions=None):
+    def __init__(self, epoch, predictions=None, model=None):
         self.epoch = epoch
         self.predictions = predictions
+        self.model = model

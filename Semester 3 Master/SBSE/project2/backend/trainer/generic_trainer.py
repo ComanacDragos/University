@@ -29,10 +29,10 @@ class GenericTrainer:
 
         self.callbacks.on_train_begin()
         for epoch in range(self.epochs):
-            logger.log(f"Train epoch {epoch}")
+            logger.log(f"\nTrain epoch {epoch}")
             self.callbacks.on_epoch_begin(epoch)
             self.train_loop(epoch)
-            logger.log(f"Eval epoch {epoch}")
+            logger.log(f"\nEval epoch {epoch}")
             self.eval_loop(epoch)
             self.callbacks.on_epoch_end(epoch)
         self.callbacks.on_train_end()
@@ -70,7 +70,7 @@ class GenericTrainer:
                     inputs=inputs,
                     optimizer=self.optimizer,
                     model=self.model,
-                    loss=loss_value
+                    loss=loss_value.numpy()
                 )
             )
 
@@ -83,13 +83,19 @@ class GenericTrainer:
                 EvalState(epoch)
             )
             predictions = self.forward(inputs)
+            all_predictions.append(predictions)
             self.callbacks.on_predict_batch_end(
                 step,
-                EvalState(epoch, predictions=predictions)
+                EvalState(
+                    epoch,
+                    predictions=predictions,
+                    model=self.model
+                )
             )
         self.callbacks.on_predict_end(
             logs=EvalState(
                 epoch,
-                predictions=tf.stack(all_predictions)
+                predictions=tf.concat(all_predictions, axis=0),
+                model=self.model
             )
         )

@@ -12,4 +12,4 @@ class ContrastiveLoss:
             -tf.math.log(
                 scaled_positive_similarity / (scaled_positive_similarity + scaled_negative_similarity)
             )
-        )
+        ) / len(positive_similarity)

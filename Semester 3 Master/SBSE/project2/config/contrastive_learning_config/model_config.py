@@ -29,3 +29,18 @@ class ContrastiveModelConfig:
 
 if __name__ == '__main__':
     ContrastiveModelConfig.build((65, 1024)).summary()
+
+    # x = [[0., 1.], [1., 1.]]
+    # y = [[1., 0.], [0., 0.]]
+    #
+    # print(cosine_similarity(x, y))
+    #
+    # x = [[0., 1.], [1., 1.]]
+    # y = [[1., 0.], [1., 1.]]
+    #
+    # print(cosine_similarity(x, y))
+    #
+    # x = [[0., 1.], [1., 1.]]
+    # y = [[0., 1.], [1., 1.]]
+    #
+    # print(cosine_similarity(x, y))
