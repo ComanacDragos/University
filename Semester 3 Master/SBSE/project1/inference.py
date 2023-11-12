@@ -8,7 +8,7 @@ data = tf.keras.datasets.mnist
 
 X_test = process_data(X_test)
 
-model = K.models.load_model('model')
+model = K.models.load_model('model_v0')
 model.summary()
 
 idxs = np.random.randint(0, len(X_test), size=(9,))

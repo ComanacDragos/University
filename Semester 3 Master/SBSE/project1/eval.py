@@ -8,7 +8,7 @@ X_test = process_data(X_test)
 
 print("Test data shape: ", X_test.shape)
 
-model = K.models.load_model('model')
+model = K.models.load_model('model_v0')
 model.compile(metrics='accuracy')
 
 print("Evaluate on test data")

@@ -1,0 +1,6 @@
+j2py (with proper env activated and remove comments)
+create_mapping
+clean_data
+extract_methods
+mapping_to_csv
+statistics_about_dataset
