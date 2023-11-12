@@ -1,2 +1,9 @@
-def main():
-    print("Hello, World!")
+def bubble_sort(arr):
+    n = len(arr)
+    for i in range(0, n-1):
+        for j in range(0, n-i-1):
+            if arr[j] > arr[j+1]:
+                // swap temp and arr[i]
+                temp = arr[j]
+                arr[j] = arr[j+1]
+                arr[j+1] = temp

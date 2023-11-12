@@ -1,8 +1,6 @@
-def __call__(self, positive_similarity, negative_similarity):
-    scaled_positive_similarity = tf.math.exp(positive_similarity / self.tau)
-    scaled_negative_similarity = tf.math.exp(negative_similarity / self.tau)
-    return tf.reduce_sum(
-        -tf.math.log(
-            scaled_positive_similarity / (scaled_positive_similarity + scaled_negative_similarity)
-        )
-    ) / len(positive_similarity)
+def bubble_sort(arr):
+    for i in range(len(arr)-1):
+        for j in range(len(arr)-i-1):
+            if arr[j] > arr[j+1]:
+                # swap
+                arr[j], arr[j+1] = arr[j+1], arr[j]
