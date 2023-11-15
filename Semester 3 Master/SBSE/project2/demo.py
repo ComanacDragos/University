@@ -15,7 +15,7 @@ model = tf.keras.models.load_model('output/second_train/checkpoint')
 model.summary()
 
 prediction = model([original_data, target_duplicate_data])
-print(f"Prob for duplicate: {prediction[0][0]}")
+print(f"Similarity for duplicate: {prediction[0][0]}")
 
 prediction = model([original_data, target_not_duplicate_data])
-print(f"Prob for non duplicate: {prediction[0][0]}")
+print(f"Similarity for non duplicate: {prediction[0][0]}")
