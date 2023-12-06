@@ -3,6 +3,7 @@ from main import load_document, get_tokens
 import os
 import json
 import time
+from nltk.corpus import stopwords
 
 start = time.perf_counter()
 
@@ -11,7 +12,8 @@ valid_chars = "abcdefghijklmnopqrstuvwxyz-'ăîșțâ1234567890,<>,."
 # process_line = lambda x: x.split("+++$+++")[-1].strip().lower()
 process_line = lambda x: x.strip().lower()
 
-stop_words = ['a', 'the', 'are', 'is']
+# stop_words = ['a', 'the', 'are', 'is']
+stop_words = stopwords.words('english')
 
 terms = {}
 for txt in os.listdir('cacm'):
@@ -27,10 +29,9 @@ for txt in os.listdir('cacm'):
                 terms[term] = {txt: 1, **terms[term]}
         else:
             terms[term] = {txt: 1}
-
+end = time.perf_counter()
 print(len(terms))
-with open("vocab.json", 'w') as f:
+with open("vocab_more_stop_words.json", 'w') as f:
     json.dump(terms, f)
 
-end = time.perf_counter()
-print(end-start)
+print(end - start)

@@ -1,9 +1,13 @@
+import threading
+import time
 import xml.etree.ElementTree as ET
 import json
 import numpy as np
 from collections import Counter
 from tqdm import tqdm
 import matplotlib.pyplot as plt
+from utils import run_task
+from nltk.stem import WordNetLemmatizer
 
 valid_chars = "abcdefghijklmnopqrstuvwxyz-"
 
@@ -17,18 +21,29 @@ def clean_text(text):
     return new_string
 
 
-def get_tokens(full_text):
-    tokens = []
-    for line in full_text.split('\n'):
-        text = line.strip().lower()
-        types = text.split()
+class GetTokens:
+    def __init__(self):
+        self.wordnet_lock = threading.Lock()
+        self.use_lock = True
+        self.lemmatizer = WordNetLemmatizer()
+        self.lemmatizer.lemmatize("")
 
-        for type_sample in types:
-            for subtype in type_sample.split('-'):
-                subtype = clean_text(subtype)
-                if len(subtype) > 2:
-                    tokens.append(subtype)
-    return tokens
+    def __call__(self, full_text):
+        tokens = []
+        for line in full_text.split('\n'):
+            text = line.strip().lower()
+            types = text.split()
+
+            for type_sample in types:
+                for subtype in type_sample.split('-'):
+                    subtype = clean_text(subtype)
+                    if len(subtype) > 2:
+                        tokens.append(self.lemmatizer.lemmatize(subtype))
+
+        return tokens
+
+
+get_tokens = GetTokens()
 
 
 def load_mapping():
@@ -74,7 +89,7 @@ def load_document(doc):
 
 
 def load_vocab():
-    with open("vocab.json") as f:
+    with open("vocab_more_stop_words.json") as f:
         vocab = json.load(f)
 
     return vocab
@@ -94,47 +109,56 @@ def invert_vocab(vocab):
 def compute_tf_idf(term_freq, document_freq, number_of_documents):
     # return term_freq * (1 + np.log((1 + number_of_documents) / (1 + document_freq)))
     # return term_freq * (np.log(number_of_documents / (1 + document_freq)))
-    return term_freq * np.log2(number_of_documents / (1 + document_freq))
+    return term_freq * np.log(number_of_documents / document_freq)
 
 
 def cosine_similarity(A, B):
-    sim = np.dot(A, B) / (np.linalg.norm(A) * np.linalg.norm(B))
-    return (sim + 1) / 2  # convert to 0, 1 where 1 means similar
+    return np.dot(A, B) / (np.linalg.norm(A) * np.linalg.norm(B))
 
 
 def euclidian_distance(A, B):
     return np.linalg.norm(A - B)
 
 
-def compute_sym_for_query(query):
+def compute_sim_for_query(query):
     tokens_to_freq = Counter([token for token in get_tokens(query) if token in word_to_docs])
 
     doc_to_sim = {}
 
     number_of_documents = len(doc_to_words)
-    for doc, word_to_freq in doc_to_words.items():
-        # doc_to_freq[doc] = len(set(word_to_freq.keys()).intersection(tokens))
 
-        # common_tokens = set(word_to_freq.keys()).intersection(set(tokens_to_freq.keys()))
-        # if len(common_tokens) == 0:
-        #     doc_to_sim[doc] = 0.
-        #     continue
+    for doc, word_to_freq in doc_to_words.items():
+        common_tokens = set(word_to_freq.keys()).intersection(set(tokens_to_freq.keys()))
+        if len(common_tokens) == 0:
+            doc_to_sim[doc] = 0.
+            continue
 
         query_representation = []
         doc_representation = []
 
-        for word in word_to_freq:
+        all_tokens = set(word_to_freq.keys()).union(set(tokens_to_freq.keys()))
+
+        def compute_tf(word_freq):
+            # return word_freq / len(all_tokens)
+            # return word_freq
+            return np.log(1 + word_freq)
+            # return 1 if word_freq >0 else 0
+
+        for word in all_tokens:
+            query_freq = tokens_to_freq.get(word, 0)
+            doc_freq = word_to_freq.get(word, 0)
+
             query_representation.append(
                 compute_tf_idf(
-                    tokens_to_freq.get(word, 0) / len(tokens_to_freq),
-                    len(word_to_docs[word]),
+                    compute_tf(query_freq),
+                    sum(word_to_docs[word].values()),
                     number_of_documents
                 )
             )
             doc_representation.append(
                 compute_tf_idf(
-                    word_to_freq.get(word, 0) / len(word_to_freq),
-                    len(word_to_docs[word]),
+                    compute_tf(doc_freq),
+                    sum(word_to_docs[word].values()),
                     number_of_documents
                 )
             )
@@ -142,47 +166,27 @@ def compute_sym_for_query(query):
         query_representation = np.asarray(query_representation)
         doc_representation = np.asarray(doc_representation)
 
-        doc_to_sim[doc] = np.dot(query_representation, doc_representation) #cosine_similarity(query_representation, doc_representation)
-        # doc_to_sim[doc] = cosine_similarity(query_representation, doc_representation)
+        doc_to_sim[doc] = cosine_similarity(query_representation, doc_representation)
 
-    # all_sims = list(doc_to_sim.values())
-    # min_sim = np.min(all_sims)
-    # max_sim = np.max(all_sims)
-    #
-    # doc_to_sim = {k: (v-min_sim)/(max_sim-min_sim) for k, v in doc_to_sim.items()}
     return doc_to_sim
 
 
-def compute_metrics(expected, predicted, threshold):
-    predicted = [doc for doc, prob in predicted.items() if prob >= threshold]
+def compute_metrics_at_k(expected, predicted, k):
+    predicted_docs = sorted(list(predicted.items()), key=lambda x: x[1], reverse=True)[:k]
+    predicted_docs = set([x[0] for x in predicted_docs])
+    expected = set(expected)
 
-    if len(expected) == 0 and len(predicted) == 0:
-        return 1., 1., 1.
-    if len(expected) == 0 or len(predicted) == 0:
-        return 0., 0., 0.
+    relevant_in_top_k = len(expected.intersection(predicted_docs))
+    precision_at_k = relevant_in_top_k / k
+    recall_at_k = relevant_in_top_k / len(expected)
 
-    tp = 0
-    fp = 0
-    fn = 0
-
-    for doc in expected:
-        if doc in predicted:
-            tp += 1
-        else:
-            fn += 1
-
-    for doc in predicted:
-        if doc not in expected:
-            fp += 1
-
-    precision = tp / (tp + fp)
-    recall = tp / (tp + fn)
-
-    if precision + recall == 0:
+    # print(k, len(predicted_docs), len(expected), relevant_in_top_k)
+    if precision_at_k + recall_at_k == 0:
         f1 = 0.
     else:
-        f1 = 2 * precision * recall / (precision + recall)
-    return precision, recall, f1
+        f1 = 2 * precision_at_k * recall_at_k / (precision_at_k + recall_at_k)
+
+    return precision_at_k, recall_at_k, f1
 
 
 def repeated_trapezium(x, y):
@@ -190,79 +194,156 @@ def repeated_trapezium(x, y):
     return (x[-1] - x[0]) / (2 * n) * (y[0] + y[-1] + 2 * np.sum(y[:-1]))
 
 
-def compute_thresholded_metrics(expected, predicted, thresholds=100):
-    precisions = []
-    recalls = []
-    f1s = []
-    for threshold in np.linspace(0, 1, thresholds):
-        precision, recall, f1 = compute_metrics(expected, predicted, threshold)
-        precisions.append(precision)
-        recalls.append(recall)
-        f1s.append(f1)
+def compute_metrics_at_all_k(expected, predicted):
+    precisions_at_k = []
+    recalls_at_k = []
+    f1s_at_k = []
+    for k in range(1, len(predicted)):
+        precision_at_k, recall_at_k, f1_at_k = compute_metrics_at_k(expected, predicted, k)
+        precisions_at_k.append(precision_at_k)
+        recalls_at_k.append(recall_at_k)
+        f1s_at_k.append(f1_at_k)
+        if recall_at_k == 1:
+            break
 
-    return precisions, recalls, f1s
-
-
-def compute_ap(precision, recall):
-    return repeated_trapezium(recall, precision)
+    return precisions_at_k, recalls_at_k, f1s_at_k
 
 
 def test_query(query_id):
     print(queries[query_id])
 
-    doc_to_sim = compute_sym_for_query(queries[query_id])
-
+    doc_to_sim = compute_sim_for_query(queries[query_id])
+    tokens_to_freq = Counter([token for token in get_tokens(queries[query_id]) if token in word_to_docs])
+    print(tokens_to_freq)
     print("Sim for doc")
     for doc in mapping[query_id]:
-        print(doc, doc_to_sim[doc])
+        common = set(doc_to_words[doc].keys()).intersection(tokens_to_freq)
+        print(doc, doc_to_sim[doc], common)
 
-    precision, recall, f1 = compute_thresholded_metrics(mapping[query_id], doc_to_sim)
+    precision, recall, f1 = compute_metrics_at_all_k(mapping[query_id], doc_to_sim)
 
     plt.plot(recall, precision)
+
     plt.title("PR cuve")
     plt.show()
     # print("Precision", precision)
     # print("Recall", recall)
-    print("F1", f1)
-    print("AP", compute_ap(precision, recall))
+    # print("F1", f1)
+    number_of_relevant = len(mapping[query_id])
+
+    print("AP", np.mean(precision))
+
+    # for r, p, f in zip(recall, precision, f1):
+    #     if r-p == 0:
+    #         print(r, p, f)
 
     print("Top 10 sim")
     doc_to_sim = sorted(list(doc_to_sim.items()), key=lambda x: x[1], reverse=True)
     for k, v in doc_to_sim[:10]:
         if v != 0:
-            print(k, v)
+            print(k, v, set(doc_to_words[k].keys()).intersection(tokens_to_freq))
 
 
 def test_all_queries():
+    metrics = {}
+    lock = threading.Lock()
+    filtered_queries = {k: v for k, v in queries.items() if k in mapping}
+
+    def _worker(_queries):
+        print(threading.get_ident(), "Starting with", len(_queries))
+        for i, (query_id, query) in enumerate(_queries):
+            expected = mapping[query_id]
+
+            start = time.perf_counter()
+            doc_to_sim = compute_sim_for_query(query)
+            end = time.perf_counter()
+            sim_time = end-start
+
+            start = time.perf_counter()
+            precision, recall, f1 = compute_metrics_at_all_k(expected, doc_to_sim)
+            end = time.perf_counter()
+            metrics_time = end-start
+
+            lock.acquire()
+            metrics[query_id] = {
+                "precision": precision,
+                "recall": recall,
+                "f1": f1,
+                "sim_time": sim_time,
+                "metrics_time": metrics_time
+            }
+            print(threading.get_ident(), "Done", query_id, f"{i}/{len(_queries)}", "sim_time", sim_time, "metrics_time", metrics_time)
+            lock.release()
+
+    start = time.perf_counter()
+    run_task(list(filtered_queries.items()), _worker, [])
+    end = time.perf_counter()
+    print("computed in:", end - start)
+    with open("metrics.json", 'w') as f:
+        json.dump(metrics, f)
+
+
+def process_results():
+    with open("metrics_v1.json") as f:
+        data = json.load(f)
+
+    all_precisions = []
     aps = []
+    beps = []
 
-    for query_id, query in tqdm(queries.items(), total=len(queries), miniters=0):
-        expected = mapping.get(query_id, [])
-        doc_to_sim = compute_sym_for_query(query)
-        precision, recall, f1 = compute_thresholded_metrics(expected, doc_to_sim)
-        aps.append(compute_ap(precision, recall))
+    sim_times = []
+    metric_times = []
 
-    print("MAP", np.mean(aps))
+    for _, metrics in data.items():
+        precision = metrics['precision']
+        recall = metrics['recall']
+        f1 = metrics['f1']
+
+        aps.append(np.mean(precision))
+        all_precisions += precision
+
+        sim_times.append(metrics['sim_time'])
+        metric_times.append(metrics['metrics_time'])
+
+        for p, r, f in zip(precision, recall, f1):
+            if p == r:
+                beps.append(f)
+                break
+
+    print(f"F1 in BEP min: {min(beps)} max: {max(beps)}")
+    print(f"R-precision min: {min(all_precisions)} max: {max(all_precisions)}")
+    print("mAP", np.mean(aps))
+
+    print(f"Similarity time avg: {np.mean(sim_times)} min: {min(sim_times)} max: {max(sim_times)}")
+    print(f"Metrics time avg: {np.mean(metric_times)} min: {min(metric_times)} max: {max(metric_times)}")
 
 
 if __name__ == '__main__':
 
     mapping = load_mapping()
     count = 0
+    documents = set()
     for l in mapping.values():
         count += len(l)
+        for doc in l:
+            documents.add(doc)
     print("Check number of mappings", count)
+    print("Documents in mapping:", len(documents))
+    print("Queries in mapping:", len(mapping))
     # print(len(mapping), mapping)
     queries = load_queries()
     print("Number of queries: ", len(queries))
 
-    content = load_document("cacm/CACM-0011.html")
-
+    # content = load_document("cacm/CACM-1410.html")
+    #
     # print(content)
 
     word_to_docs = load_vocab()
     doc_to_words = invert_vocab(word_to_docs)
+    print("Number of docs:", len(doc_to_words))
     print("Number of words: ", len(word_to_docs), "Number of docs: ", len(doc_to_words))
 
-    test_query("1")
+    # queries['1'] = "pascal"
+    # test_query("1")
     # test_all_queries()
+    process_results()
