@@ -116,10 +116,6 @@ def cosine_similarity(A, B):
     return np.dot(A, B) / (np.linalg.norm(A) * np.linalg.norm(B))
 
 
-def euclidian_distance(A, B):
-    return np.linalg.norm(A - B)
-
-
 def compute_sim_for_query(query):
     tokens_to_freq = Counter([token for token in get_tokens(query) if token in word_to_docs])
 
@@ -139,9 +135,9 @@ def compute_sim_for_query(query):
         all_tokens = set(word_to_freq.keys()).union(set(tokens_to_freq.keys()))
 
         def compute_tf(word_freq):
-            # return word_freq / len(all_tokens)
+            return word_freq / len(all_tokens)
             # return word_freq
-            return np.log(1 + word_freq)
+            # return np.log(1 + word_freq)
             # return 1 if word_freq >0 else 0
 
         for word in all_tokens:
@@ -189,22 +185,15 @@ def compute_metrics_at_k(expected, predicted, k):
     return precision_at_k, recall_at_k, f1
 
 
-def repeated_trapezium(x, y):
-    n = len(x) - 1
-    return (x[-1] - x[0]) / (2 * n) * (y[0] + y[-1] + 2 * np.sum(y[:-1]))
-
-
 def compute_metrics_at_all_k(expected, predicted):
     precisions_at_k = []
     recalls_at_k = []
     f1s_at_k = []
-    for k in range(1, len(predicted)):
+    for k in range(1, len(expected) + 1):
         precision_at_k, recall_at_k, f1_at_k = compute_metrics_at_k(expected, predicted, k)
         precisions_at_k.append(precision_at_k)
         recalls_at_k.append(recall_at_k)
         f1s_at_k.append(f1_at_k)
-        if recall_at_k == 1:
-            break
 
     return precisions_at_k, recalls_at_k, f1s_at_k
 
@@ -214,7 +203,7 @@ def test_query(query_id):
 
     doc_to_sim = compute_sim_for_query(queries[query_id])
     tokens_to_freq = Counter([token for token in get_tokens(queries[query_id]) if token in word_to_docs])
-    print(tokens_to_freq)
+    #print(tokens_to_freq)
     print("Sim for doc")
     for doc in mapping[query_id]:
         common = set(doc_to_words[doc].keys()).intersection(tokens_to_freq)
@@ -257,12 +246,12 @@ def test_all_queries():
             start = time.perf_counter()
             doc_to_sim = compute_sim_for_query(query)
             end = time.perf_counter()
-            sim_time = end-start
+            sim_time = end - start
 
             start = time.perf_counter()
             precision, recall, f1 = compute_metrics_at_all_k(expected, doc_to_sim)
             end = time.perf_counter()
-            metrics_time = end-start
+            metrics_time = end - start
 
             lock.acquire()
             metrics[query_id] = {
@@ -272,7 +261,8 @@ def test_all_queries():
                 "sim_time": sim_time,
                 "metrics_time": metrics_time
             }
-            print(threading.get_ident(), "Done", query_id, f"{i}/{len(_queries)}", "sim_time", sim_time, "metrics_time", metrics_time)
+            print(threading.get_ident(), "Done", query_id, f"{i}/{len(_queries)}", "sim_time", sim_time, "metrics_time",
+                  metrics_time)
             lock.release()
 
     start = time.perf_counter()
@@ -284,32 +274,35 @@ def test_all_queries():
 
 
 def process_results():
-    with open("metrics_v1.json") as f:
+    with open("metrics.json") as f:
         data = json.load(f)
 
     all_precisions = []
     aps = []
     beps = []
-
+    all_f1s = []
     sim_times = []
     metric_times = []
 
-    for _, metrics in data.items():
+    for query_id, metrics in data.items():
         precision = metrics['precision']
         recall = metrics['recall']
         f1 = metrics['f1']
 
-        aps.append(np.mean(precision))
-        all_precisions += precision
-
+        if len(precision) > 0:
+            ap = np.mean(precision)
+            print(query_id, ap)
+            aps.append(ap)
+            all_precisions += precision
+        all_f1s += f1
         sim_times.append(metrics['sim_time'])
         metric_times.append(metrics['metrics_time'])
 
         for p, r, f in zip(precision, recall, f1):
             if p == r:
                 beps.append(f)
-                break
 
+    print(f"F1 min: {np.min(all_f1s)} max: {np.max(all_f1s)}")
     print(f"F1 in BEP min: {min(beps)} max: {max(beps)}")
     print(f"R-precision min: {min(all_precisions)} max: {max(all_precisions)}")
     print("mAP", np.mean(aps))
@@ -344,6 +337,6 @@ if __name__ == '__main__':
     print("Number of words: ", len(word_to_docs), "Number of docs: ", len(doc_to_words))
 
     # queries['1'] = "pascal"
-    # test_query("1")
+    # test_query("28")
     # test_all_queries()
     process_results()
