@@ -15,7 +15,15 @@
     <h1>Manage diseases</h1>
     <button id="goBackButton">Go back</button>
 
+    <button id="loadDiseasesButton">Reload diseases</button>
 
+    <button id="addDiseaseButton">Add disease</button>
+
+    <input class="content" id="diseaseInput" name="diseaseInput">
+
+    <div id="diseases" class="column" style="width: 50%;">
+        <h2>Diseases:</h2>
+    </div>
 
 </div>
 <script>
@@ -24,11 +32,51 @@
             window.location.replace("index.html")
         }
     )
+
+    $("#loadDiseasesButton").click(
+        () => {
+            load_diseases()
+        }
+    )
+
+    function load_diseases(){
+        $.ajax({
+            type : "GET",
+            url : "http://localhost:7777/diseases",
+            data: {},
+                success: function(diseases, status) {
+                    const diseases_container = $("#diseases")
+                    diseases_container.html("")
+                    diseases_container.append(`<h2>Diseases:</h2>`)
+                    diseases.reverse().forEach(element => {
+                        diseases_container.append(`<button class="content">${element}</button>`)
+                    })
+                }
+        });
+
+    }
+    load_diseases()
+
+    $("#addDiseaseButton").click(
+        () => {
+            const disease = $("#diseaseInput").val()
+            console.log("Disease to be added: <" + disease + ">")
+            if(disease.length === 0){
+                alert("Introduce a disease")
+                return
+            }
+            $.ajax({
+            type : "POST",
+            url : "http://localhost:7777/diseases",
+            data: disease,
+                success: function(result, status) {
+                    load_diseases()
+                    alert(result)
+                }
+            })
+
+        }
+    )
 </script>
-</body>
-</html>
-
-<body>
-
 </body>
 </html>

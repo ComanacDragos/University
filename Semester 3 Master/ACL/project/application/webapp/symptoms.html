@@ -15,7 +15,11 @@
     <h1>Manage symptoms</h1>
     <button id="goBackButton">Go back</button>
 
-    <button id="loadSymptoms">Reload symptoms</button>
+    <button id="loadSymptomsButton">Reload symptoms</button>
+
+    <button id="addSymptomButton">Add symptom</button>
+
+    <input class="content" id="symptomInput" name="symptomInput">
 
     <div id="symptoms" class="column" style="width: 50%;">
         <h2>Symptoms:</h2>
@@ -29,7 +33,7 @@
         }
     )
 
-    $("#loadSymptoms").click(
+    $("#loadSymptomsButton").click(
         () => {
             load_symptoms()
         }
@@ -44,14 +48,35 @@
                     const symptoms_container = $("#symptoms")
                     symptoms_container.html("")
                     symptoms_container.append(`<h2>Symptoms:</h2>`)
-                    symptoms.forEach(element => {
-                        $("#symptoms").append(`<button class="content">${element}</button>`)
+                    symptoms.reverse().forEach(element => {
+                        symptoms_container.append(`<button class="content">${element}</button>`)
                     })
                 }
         });
 
     }
     load_symptoms()
+
+    $("#addSymptomButton").click(
+        () => {
+            const symptom = $("#symptomInput").val()
+            console.log("Symptom to be added: <" + symptom + ">")
+            if(symptom.length === 0){
+                alert("Introduce a symptom")
+                return
+            }
+            $.ajax({
+            type : "POST",
+            url : "http://localhost:7777/symptoms",
+            data: symptom,
+                success: function(result, status) {
+                    load_symptoms()
+                    alert(result)
+                }
+            })
+
+        }
+    )
 </script>
 </body>
 </html>

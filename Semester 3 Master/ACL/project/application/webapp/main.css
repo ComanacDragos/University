@@ -63,6 +63,7 @@ input {
     border-color: white;
     padding-bottom: 10px;;
     width: 100%;
+    text-align: center;
 }
 
 nav a, button {
@@ -93,6 +94,10 @@ nav button{
     width: 150px;
 }
 
-.column button{
+.column button, .column .content{
     margin-top: 10px;
+}
+
+input.content{
+    width: 50%;
 }
