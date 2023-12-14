@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="main.css" rel="stylesheet" type="text/css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <title>Symptoms and Diseases</title>
+</head>
+<body>
+<div class="column">
+    <h1>Manage symptoms</h1>
+    <button id="goBackButton">Go back</button>
+
+    <button id="loadSymptoms">Reload symptoms</button>
+
+    <div id="symptoms" class="column" style="width: 50%;">
+        <h2>Symptoms:</h2>
+    </div>
+
+</div>
+<script>
+    $("#goBackButton").click(
+        () => {
+            window.location.replace("index.html")
+        }
+    )
+
+    $("#loadSymptoms").click(
+        () => {
+            load_symptoms()
+        }
+    )
+
+    function load_symptoms(){
+        $.ajax({
+            type : "GET",
+            url : "http://localhost:7777/symptoms",
+            data: {},
+                success: function(symptoms, status) {
+                    const symptoms_container = $("#symptoms")
+                    symptoms_container.html("")
+                    symptoms_container.append(`<h2>Symptoms:</h2>`)
+                    symptoms.forEach(element => {
+                        $("#symptoms").append(`<button class="content">${element}</button>`)
+                    })
+                }
+        });
+
+    }
+    load_symptoms()
+</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="main.css" rel="stylesheet" type="text/css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="index.js" defer></script>
+
+    <title>Symptoms and Diseases</title>
+</head>
+<body>
+<div class="column">
+    <h1>Diseases and Symptoms Ontology</h1>
+    <div class="row">
+        <div class="column">
+            <button id="manageSymptomsButton">Manage symptoms</button>
+        </div>
+        <div class="column">
+            <button id="manageDiseasesButton">Manage diseases</button>
+        </div>
+    </div>
+</div>
+<script>
+$("#manageSymptomsButton").click(
+    () => {
+        window.location.replace("symptoms.html")
+    }
+)
+
+$("#manageDiseasesButton").click(
+    () => {
+        window.location.replace("diseases.html")
+    }
+)
+</script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+html, body{
+    background-color: black;
+    color: rgb(85, 238, 218);
+    width: 100%;
+    margin: 0;
+}
+
+.column{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    width: 100%;
+}
+
+form{
+    width: 50%;
+}
+
+form button{
+    width: 100%;
+}
+
+#images{
+    width: 50%;
+    row-gap: 20px;
+}
+
+.row{
+    display: flex;
+    width: 100%;
+    height: 10%;
+    align-items: center;
+}
+
+.content .row p{
+    margin-left: 10px;
+}
+
+.content .row{
+    height: 50px;
+}
+
+.content .row button{
+    width: 50%;
+    height: 80%;
+    margin-left: 40%;
+}
+
+.content img{
+    width: 90%;
+    height: 400px;
+}
+
+input {
+    background-color: black;
+    color: rgb(85, 238, 218);;
+}
+
+.content{
+    border-style: groove;
+    border-color: white;
+    padding-bottom: 10px;;
+    width: 100%;
+}
+
+nav a, button {
+    padding: 20px 3%;
+    text-decoration: none;
+    background-color: black;
+
+    width: 90%;
+    text-align: center;
+    line-height: 0;
+
+    color: rgb(85, 238, 218);
+    border-style: groove;
+    border-width: 3px;
+    border-color: white;
+}
+
+nav a:hover, button:hover {
+    background-color: rgb(12, 138, 121);
+    transition: 1s;
+    color: black;
+    border-color: rgb(85, 238, 218);
+}
+
+
+nav button{
+    height: 60px;
+    width: 150px;
+}
+
+.column button{
+    margin-top: 10px;
+}
