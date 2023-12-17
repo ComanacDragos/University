@@ -40,6 +40,32 @@ def add_disease():
     return jsonify("Succesfully added disease") if onto.add_disease(disease) else jsonify("Disease already exists")
 
 
+@app.route('/pair', methods=['POST'])
+def add_pair():
+    data = request.get_data().decode('utf-8')
+    data = {k: v for k, v in [x.split("=") for x in data.split('&')]}
+
+    name = data['name'].replace("+", ' ')
+    symptom = data['symptom'].replace("+", ' ')
+    disease = data['disease'].replace("+", ' ')
+
+    result = onto.add_pair(name, symptom, disease)
+    return jsonify(result)
+
+
+@app.route('/pair', methods=['PUT'])
+def get_diseases_for_symptoms():
+    data = request.get_data().decode('utf-8')
+    data = {k: v for k, v in [x.split("=") for x in data.split('&')]}
+
+    first_symptom = data['firstSymptom'].replace("+", ' ')
+    second_symptom = data['secondSymptom'].replace("+", ' ')
+
+
+    result = onto.get_diseases_for_symptoms([first_symptom, second_symptom])
+    return jsonify(result)
+
+
 port = 7777
 print(f"Starting server on port {port}...")
 

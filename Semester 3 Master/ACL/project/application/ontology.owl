@@ -16,8 +16,6 @@
 
 <owl:ObjectProperty rdf:about="#has_symptom">
   <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
   <rdfs:domain rdf:resource="#Patient"/>
   <rdfs:range rdf:resource="#Symptom"/>
 </owl:ObjectProperty>
@@ -28,7 +26,15 @@
 
 <owl:Class rdf:about="#Symptom"/>
 
+<owl:NamedIndividual rdf:about="#Cancer">
+  <rdf:type rdf:resource="#Disease"/>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#Cough">
+  <rdf:type rdf:resource="#Symptom"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Fever">
   <rdf:type rdf:resource="#Symptom"/>
 </owl:NamedIndividual>
 
@@ -44,26 +50,31 @@
   <rdf:type rdf:resource="#Patient"/>
   <has_disease rdf:resource="#Flu"/>
   <has_symptom rdf:resource="#Cough"/>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#Chest pain">
-  <rdf:type rdf:resource="#Symptom"/>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#Runny nose">
-  <rdf:type rdf:resource="#Symptom"/>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#Fever">
-  <rdf:type rdf:resource="#Symptom"/>
+  <has_disease rdf:resource="#Cancer"/>
+  <has_symptom rdf:resource="#Fever"/>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Rash">
   <rdf:type rdf:resource="#Symptom"/>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#Common cold">
+<owl:NamedIndividual rdf:about="#Chest%20pain">
+  <rdf:type rdf:resource="#Symptom"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Common%20cold">
   <rdf:type rdf:resource="#Disease"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Runny%20nose">
+  <rdf:type rdf:resource="#Symptom"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#P1">
+  <rdf:type rdf:resource="#Patient"/>
+  <has_disease rdf:resource="#Common%20cold"/>
+  <has_symptom rdf:resource="#Runny%20nose"/>
+  <has_symptom rdf:resource="#Cough"/>
 </owl:NamedIndividual>
 
 <owl:AllDisjointClasses>

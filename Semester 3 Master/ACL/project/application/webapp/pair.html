@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="main.css" rel="stylesheet" type="text/css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <title>Symptoms and Diseases</title>
+</head>
+<body>
+<div class="column">
+    <h1>Describe your symptom and disease</h1>
+    <button id="goBackButton">Go back</button>
+
+    <p>Name:</p>
+    <input class="content" id="nameInput" name="nameInput">
+
+    <p>Symptom:</p>
+    <input type="text" class="content" id="symptomInput" name="symptomInput" list="symptomDataList">
+    <datalist id="symptomDataList"></datalist>
+
+    <p>Disease:</p>
+    <input type="text" class="content" id="diseaseInput" name="diseaseInput" list="diseaseDataList">
+    <datalist id="diseaseDataList"></datalist>
+
+    <button id="addPairButtonIndex">Add symptom/disease pair</button>
+
+</div>
+<script>
+    $("#goBackButton").click(
+        () => {
+            window.location.replace("index.html")
+        }
+    )
+
+    $("#addPairButtonIndex").click(
+        () => {
+            const name = $("#nameInput").val()
+            const symptom = $("#symptomInput").val()
+            const disease = $("#diseaseInput").val()
+
+            if(name.length > 0 && symptom.length > 0 && disease.length > 0) {
+                console.log(`${name} ${symptom} ${disease}`)
+                $.ajax({
+                type : "POST",
+                url : "http://localhost:7777/pair",
+                data: {
+                    "symptom": symptom,
+                    "disease": disease,
+                    "name": name
+                },
+                success: function(result, status) {
+                    alert(result)
+                }
+            })
+
+            }else{
+                alert("Please complete all fields")
+            }
+        }
+    )
+
+    function createOption(data){
+      var option = document.createElement('option')
+      option.value = data
+      return option
+    }
+
+    $.ajax({
+            type : "GET",
+            url : "http://localhost:7777/symptoms",
+            data: {},
+                success: function(symptoms, status) {
+                    const datalist = document.getElementById("symptomDataList")
+                    symptoms.reverse().forEach(element => {
+                        datalist.appendChild(createOption(element))
+                    })
+                }
+        });
+
+        $.ajax({
+            type : "GET",
+            url : "http://localhost:7777/diseases",
+            data: {},
+                success: function(symptoms, status) {
+                    const datalist = document.getElementById("diseaseDataList")
+                    symptoms.reverse().forEach(element => {
+                        datalist.appendChild(createOption(element))
+                    })
+                }
+        });
+
+
+</script>
+</body>
+</html>

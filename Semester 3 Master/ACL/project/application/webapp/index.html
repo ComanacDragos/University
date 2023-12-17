@@ -23,6 +23,27 @@
             <button id="manageDiseasesButton">Manage diseases</button>
         </div>
     </div>
+
+    <button id="addPairButtonIndex">Add symptom/disease pair</button>
+
+    <div class="row">
+        <div class="column">
+            <p>First Symptom:</p>
+            <input type="text" class="content" id="firstSymptomInput" name="firstSymptomInput" list="firstSymptomDataList">
+            <datalist id="firstSymptomDataList"></datalist>
+        </div>
+
+        <div class="column">
+            <p>Second Symptom:</p>
+            <input type="text" class="content" id="secondSymptomInput" name="secondSymptomInput" list="secondSymptomDataList">
+            <datalist id="secondSymptomDataList"></datalist>
+        </div>
+    </div>
+
+    <button id="seeDiseasesButton">See diseases for symptoms</button>
+
+    <div id="diseases" class="column" style="width: 50%;"></div>
+
 </div>
 <script>
 $("#manageSymptomsButton").click(
@@ -36,6 +57,60 @@ $("#manageDiseasesButton").click(
         window.location.replace("diseases.html")
     }
 )
+
+$("#addPairButtonIndex").click(
+    () => {
+        window.location.replace("pair.html")
+    }
+)
+
+$("#seeDiseasesButton").click(
+    () => {
+        const firstSymptom = $("#firstSymptomInput").val()
+        const secondSymptom = $("#secondSymptomInput").val()
+        if(firstSymptom.length > 0 && secondSymptom.length > 0){
+            $.ajax({
+                type : "PUT",
+                url : "http://localhost:7777/pair",
+                data: {
+                    'firstSymptom': firstSymptom,
+                    'secondSymptom': secondSymptom
+                },
+                success: function(diseases, status) {
+                    const diseases_container = $("#diseases")
+                    diseases_container.html("")
+                    diseases_container.append(`<h2>Diseases:</h2>`)
+                    diseases.forEach(element => {
+                        diseases_container.append(`<button class="content">${element}</button>`)
+                    })
+                }
+            });
+        }else{
+            alert("Choose both symptoms")
+        }
+
+    }
+)
+
+function createOption(data){
+  var option = document.createElement('option')
+  option.value = data
+  return option
+}
+
+$.ajax({
+        type : "GET",
+        url : "http://localhost:7777/symptoms",
+        data: {},
+            success: function(symptoms, status) {
+                const firstSymptomDataList = document.getElementById("firstSymptomDataList")
+                const secondSymptomDataList = document.getElementById("secondSymptomDataList")
+                symptoms.reverse().forEach(element => {
+                    firstSymptomDataList.appendChild(createOption(element))
+                    secondSymptomDataList.appendChild(createOption(element))
+                })
+            }
+    });
 </script>
 </body>
 </html>
